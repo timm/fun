@@ -53,7 +53,7 @@ doc() { gawk -v name="$1" -v path="$2" '
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n" \
-                             "View code: [" name "](" path ")"    }
+                             "View code: [" name "](" path "/" name ")"    }
   NR < 3                   { next }
                            { print } 
   END                      { if (Code) print "```" } '
@@ -70,6 +70,15 @@ gen() { gawk '
   /^(func|BEGIN|END)/,/^}/ { prep($0); next }
                            { print "# " $0  }
  '
+}
+toc() {
+  cd $Doc; cat <<-EOF
+	---
+	title: Contents
+	---
+
+	EOF
+	for i in *.md; do echo "- [$i]($1)" ; done 
 }
 # ----------------------------------------
 # do the work
@@ -97,7 +106,9 @@ for i in $files;do
     echo '#!/usr/bin/env gawk -f ' > $bin1
     cat $lib1 >> $bin1
   fi
+  (toc > $Doc/site-map.md)
 done
+
 
 chmod +x $files $Bin/*
 
