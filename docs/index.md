@@ -5,7 +5,6 @@ title: Contents
 
 # Site Map
 
-<img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 - [col.md](col.md)
 - [colok.md](colok.md)
 - [funny.md](funny.md)

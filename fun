@@ -42,7 +42,7 @@ Bin=${AUKBIN:-$HOME/opt/$Ext/bin}
 Doc=${AUKDOC:-$Root/docs/}
 Url=${AUKURL:-"http://menzies.us/fun"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
-top="[home](/index) | [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) "
+top="[home](/index) :: [code]($Git) :: [discuss]($Git/issues) :: [license](/LICENSE) "
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 
 # end config
@@ -86,7 +86,6 @@ toc() {
 	# Site Map
 
 	EOF
-	echo $banner
 	for i in $Doc/*.md; do f=$(basename $i); echo "- [$f]($f)" ; done 
 }
 # ----------------------------------------
