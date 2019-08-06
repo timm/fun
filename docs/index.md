@@ -16,4 +16,4 @@ title: Contents
 - [tblok.md](tblok.md)
 - [the.md](the.md)
 
-_ &copy; 2019, Tim Menzies, http://menzies.us _
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

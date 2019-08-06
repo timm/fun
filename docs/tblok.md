@@ -42,4 +42,4 @@ func _auto(f,  t,r,n,m) {
 ```
 
 
-_ &copy; 2019, Tim Menzies, http://menzies.us _
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
