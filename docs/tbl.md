@@ -1,6 +1,8 @@
 ---
 title: tbl.fun
 ---
+
+<img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 [HOME](http://menzies.us/fun)
 #--------- --------- --------- --------- --------- ---------
 

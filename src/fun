@@ -38,6 +38,7 @@ Lib=${AUKLIB:-$HOME/opt/$Ext/awk}
 Bin=${AUKBIN:-$HOME/opt/$Ext/bin}
 Doc=${AUKDOC:-$HOME/gits/$USER/fun/docs/}
 Url=${AUKURL:-"http://menzies.us/fun"}
+banner='<img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">'
 
 # end config
 # ----------------------------------------
@@ -49,11 +50,11 @@ parse() { gawk '
   /^(func|BEGIN|END)/,/^}/ { print "CODE "$0; next }
                            { print "DOC " $0} '
 }
-doc() { gawk -v name="$1" -v path="$2" ' 
+doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" ' 
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
-  BEGIN                    { print  "---\ntitle: " name "\n---\n" \
-                             "[HOME]("path")"    }
+  BEGIN                    { print  "---\ntitle: " name "\n---\n\n" banner \
+                             "\n[HOME]("path")"    }
   NR < 3                   { next }
                            { print } 
   END                      { if (Code) print "```" } '
@@ -71,6 +72,7 @@ gen() { gawk '
                            { print "# " $0  }
  '
 }
+
 toc() {
   cd $Doc; cat <<-EOF
 	---
@@ -78,6 +80,7 @@ toc() {
 	---
 
 	EOF
+	echo $banner
 	for i in *.md; do echo "- [$i]($i)" ; done 
 }
 # ----------------------------------------
