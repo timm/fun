@@ -4,9 +4,9 @@ title: funnyok.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-[home](/index) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) 
+[home](/index) :: [code](http://github.com/timm/fun) :: [discuss](http://github.com/timm/fun/issues) :: [license](/LICENSE) 
 
-#funnyok.fun
+# funnyok.fun
 
 ```awk
 @include "funny"
