@@ -123,8 +123,8 @@ done
 
 chmod +x $files $Bin/*
 
-if [ "$1" == "--get" ]; then git pull;                                    exit; fi
-if [ "$1" == "--put" ]; then git commit -am commit; git push; git status; exit; fi
+if [ "$1" == "--pull" ]; then git pull;                                    exit; fi
+if [ "$1" == "--push" ]; then git commit -am commit; git push; git status; exit; fi
 if [ -z "$1"         ]; then                                              exit; fi
 
 f=$(basename $1)
