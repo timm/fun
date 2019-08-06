@@ -56,7 +56,7 @@ parse() { gawk '
 doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" ' 
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
-  BEGIN                    { print  "---\ntitle: " name "\n---\n\n" banner "\n" }
+  BEGIN                    { print  "---\ntitle: " name "\n---\n\n" banner "\n\#" name }
   NR < 3                   { next }
                            { print } 
   END                      { if (Code) print "```" } '
