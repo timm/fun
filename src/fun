@@ -36,8 +36,8 @@
 Ext=${AUKEXT:-fun}
 Lib=${AUKLIB:-$HOME/opt/$Ext/awk}
 Bin=${AUKBIN:-$HOME/opt/$Ext/bin}
-Doc=${AUKDOC:-$HOME/gits/timm/fun/docs/}
-Url=${AUKURL:-"http://menzies/us/fun"}
+Doc=${AUKDOC:-$HOME/gits/$USER/fun/docs/}
+Url=${AUKURL:-"http://menzies.us/fun"}
 
 # end config
 # ----------------------------------------

@@ -1,7 +1,7 @@
 ---
 title: the.fun
 ---
-View code: [the.fun](http://menzies/us/fun/the.fun)
+[HOME](http://menzies.us/fun/the.fun)
 #--------- --------- --------- --------- --------- ---------
 
 ```awk

@@ -1,7 +1,7 @@
 ---
 title: tbl.fun
 ---
-View code: [tbl.fun](http://menzies/us/fun/tbl.fun)
+[HOME](http://menzies.us/fun/tbl.fun)
 #--------- --------- --------- --------- --------- ---------
 
 ```awk

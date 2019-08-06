@@ -1,7 +1,7 @@
 ---
 title: funny.fun
 ---
-View code: [funny.fun](http://menzies/us/fun/funny.fun)
+[HOME](http://menzies.us/fun/funny.fun)
 
 # ---------------------------------
 # misc

@@ -1,7 +1,7 @@
 ---
 title: col.fun
 ---
-View code: [col.fun](http://menzies/us/fun/col.fun/col.fun)
+[HOME](http://menzies.us/fun/col.fun)
 
 ```awk
 @include "funny"
