@@ -78,7 +78,7 @@ toc() {
 	---
 
 	EOF
-	for i in *.md; do echo "- [$i]($1)" ; done 
+	for i in *.md; do echo "- [$i]($i)" ; done 
 }
 # ----------------------------------------
 # do the work
@@ -106,7 +106,7 @@ for i in $files;do
     echo '#!/usr/bin/env gawk -f ' > $bin1
     cat $lib1 >> $bin1
   fi
-  (toc > $Doc/site-map.md)
+  (toc > $Doc/index.md)
 done
 
 
