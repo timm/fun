@@ -34,14 +34,16 @@
 # ---------------------------------------
 # the following can be set by external settings "AUK*"
 Ext=${AUKEXT:-fun}
-Root=${AUKROOT:-$(git rev-parse --show-cdup)}
+
+gitroot=$(git rev-parse --show-toplevel)
+Root=${AUKROOT:-$gitroot}
 Lib=${AUKLIB:-$HOME/opt/$Ext/awk}
 Bin=${AUKBIN:-$HOME/opt/$Ext/bin}
 Doc=${AUKDOC:-$Root/docs/}
 Url=${AUKURL:-"http://menzies.us/fun"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 top="[home](/index) | [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) "
-banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\"><br>$top"
+banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 
 # end config
 # ----------------------------------------
@@ -53,10 +55,10 @@ parse() { gawk '
   /^(func|BEGIN|END)/,/^}/ { print "CODE "$0; next }
                            { print "DOC " $0} '
 }
-doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" ' 
+doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" ' 
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
-  BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\#" name }
+  BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\n" top "\n\n# " name }
   NR < 3                   { next }
                            { print } 
   END                      { if (Code) print "```" } '
@@ -91,12 +93,11 @@ toc() {
 # do the work
 
 ## if command line is "0", blast all prior product
-mkdir -p $Lib $Bin $Doc
+if [ "$1" == "--get" ]; then git pull;                                    exit; fi
+if [ "$1" == "--put" ]; then git commit -am commit; git push; git status; exit; fi
+if [ "$1" == "--zap" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift               ; fi
 
-if [ "$1" == "0" ]; then
-  rm -rf $Lib/* $Bin/* $Doc/*
-  shift
-fi
+mkdir -p $Lib $Bin $Doc
 
 files=$(find $Root -name "*.$Ext")
 
