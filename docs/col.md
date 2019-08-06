@@ -1,7 +1,7 @@
 ---
 title: col.fun
 ---
-[HOME](http://menzies.us/fun/col.fun)
+[HOME](http://menzies.us/fun)
 
 ```awk
 @include "funny"

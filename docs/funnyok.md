@@ -1,7 +1,7 @@
 ---
 title: funnyok.fun
 ---
-[HOME](http://menzies.us/fun/funnyok.fun)
+[HOME](http://menzies.us/fun)
 
 ```awk
 @include "funny"

@@ -1,7 +1,7 @@
 ---
 title: tblok.fun
 ---
-[HOME](http://menzies.us/fun/tblok.fun)
+[HOME](http://menzies.us/fun)
 #--------- --------- --------- --------- --------- ---------
 
 ```awk

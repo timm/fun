@@ -1,7 +1,7 @@
 ---
 title: funny.fun
 ---
-[HOME](http://menzies.us/fun/funny.fun)
+[HOME](http://menzies.us/fun)
 
 # ---------------------------------
 # misc

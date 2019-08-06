@@ -1,7 +1,7 @@
 ---
 title: colok.fun
 ---
-[HOME](http://menzies.us/fun/colok.fun)
+[HOME](http://menzies.us/fun)
 #--------- --------- --------- --------- --------- ---------
 
 ```awk
