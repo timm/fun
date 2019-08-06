@@ -80,6 +80,9 @@ toc() {
 	---
 	title: Contents
 	---
+        $banner
+
+	# Site Map
 
 	EOF
 	echo $banner
