@@ -93,9 +93,7 @@ toc() {
 # do the work
 
 ## if command line is "0", blast all prior product
-if [ "$1" == "--get" ]; then git pull;                                    exit; fi
-if [ "$1" == "--put" ]; then git commit -am commit; git push; git status; exit; fi
-if [ "$1" == "--zap" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift               ; fi
+if [ "$1" == "--zap" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift ; fi
 
 mkdir -p $Lib $Bin $Doc
 
@@ -116,10 +114,11 @@ for i in $files;do
   (toc > $Doc/index.md)
 done
 
-
 chmod +x $files $Bin/*
 
-if [ -z "$1" ]; then exit 0; fi
+if [ "$1" == "--get" ]; then git pull;                                    exit; fi
+if [ "$1" == "--put" ]; then git commit -am commit; git push; git status; exit; fi
+if [ -z "$1"         ]; then                                              exit; fi
 
 f=$(basename $1)
 f=$Lib/${f%.$Ext}.awk
