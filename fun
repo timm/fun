@@ -88,7 +88,7 @@ toc() {
 	---
 	$banner
 
-        $top
+	$top
 
 	# Site Map
 
