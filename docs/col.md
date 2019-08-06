@@ -1,7 +1,7 @@
 ---
 title: col.fun
 ---
-View code: [col.fun](http://menzies/us/fun/col.fun)
+View code: [col.fun](http://menzies/us/fun/col.fun/col.fun)
 
 ```awk
 @include "funny"
@@ -13,13 +13,13 @@ BEGIN {IGNORE="\\?"}
 
 ------------------------------------------------------------
 ```awk
-func Col(i,c,v) { 
+function Col(i,c,v) { 
   Object(i)   
   i.n=0
   i.col=c
   i.txt=v 
 } 
-func Col1(i,v,   add) {
+function Col1(i,v,   add) {
   if (v ~ IGNORE) return v
   add = i.add
   return @add(i,v)
@@ -27,14 +27,14 @@ func Col1(i,v,   add) {
 ```
 ------------------------------------------------------------
 ```awk
-func Sym(i,c,v) { 
+function Sym(i,c,v) { 
   Col(i,c,v)
   i.mode=""
   i.most=0
   has(i,"cnt") 
   i.add ="Sym1" 
 }
-func Sym1(i,v,  tmp) {
+function Sym1(i,v,  tmp) {
   i.n++
   tmp = ++i.cnt[v]
   if (tmp > i.most) {
@@ -46,14 +46,14 @@ func Sym1(i,v,  tmp) {
 ------------------------------------------------------------
 ## Num
 ```awk
-func Num(i,c,v) {
+function Num(i,c,v) {
   Col(i,c,v)
   i.n  = i.mu = i.m2 = i.sd = 0
   i.lo = 10^32 
   i.hi = -1*i.lo
   i.add ="Num1" 
 }
-func Num1(i,v,    d) {
+function Num1(i,v,    d) {
   v += 0
   i.n++
   i.lo  = v < i.lo ? v : i.lo
@@ -64,7 +64,7 @@ func Num1(i,v,    d) {
   i.sd  = i.n < 2 ? 0 : (i.m2/(i.n - 1))^0.5
   return v
 }
-func NumLess(i,v, d) {
+function NumLess(i,v, d) {
   if (i.n < 2) return v
   i.n  -= 1
   d     = v - i.mu
@@ -73,7 +73,7 @@ func NumLess(i,v, d) {
   i.sd  = i.n < 2 ? 0 : (i.m2/(i.n - 1))^0.5
   return v
 }
-func NumNorm(i,x) {
+function NumNorm(i,x) {
   return (x - i.lo) / (i.hi - i.lo + 10^-32)
 }
 ```
