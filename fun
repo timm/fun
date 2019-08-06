@@ -46,7 +46,7 @@ When=${AUKWHEN:-2019}
 Who=${AUKWHO:-Tim Menzies}
 Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
-top="| [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) |"
+top="| [code]($Git) | [discuss]($Git/issues) | [license](/fun/LICENSE) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When, $Who, ${Where}</em>"
 
