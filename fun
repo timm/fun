@@ -53,7 +53,7 @@ doc() { gawk -v name="$1" -v path="$2" '
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n" \
-                             "View code: [" name "](" path "/" name ")"    }
+                             "[HOME]("path")"    }
   NR < 3                   { next }
                            { print } 
   END                      { if (Code) print "```" } '
