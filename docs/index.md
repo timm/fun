@@ -7,6 +7,7 @@ title: Contents
 
 # Site Map
 
+- [LICENSE.md](LICENSE.md)
 - [col.md](col.md)
 - [colok.md](colok.md)
 - [funny.md](funny.md)

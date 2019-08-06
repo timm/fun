@@ -101,7 +101,7 @@ toc() {
 # do the work
 
 ## if command line is "0", blast all prior product
-if [ "$1" == "--new" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift ; fi
+if [ "$1" == "--new" ]; then rm -rf $Lib/*.awk $Bin/* $Doc/*.md; shift ; fi
 
 mkdir -p $Lib $Bin $Doc
 
