@@ -96,12 +96,11 @@ files=$(find . -name "*.$Ext")
 for i in $files;do
   f=$(basename $i)
   stem=${f%.$Ext}
-  url1=$Url/$stem.$Ext
   lib1=$Lib/$stem.awk
   doc1=$Doc/$stem.md
   bin1=$Bin/$stem
   if [ "$i" -nt "$lib1" ]; then cat $i | parse | gen > $lib1; fi
-  if [ "$i" -nt "$doc1" ]; then cat $i | parse | doc $f $url1 > $doc1; fi
+  if [ "$i" -nt "$doc1" ]; then cat $i | parse | doc $f $Url > $doc1; fi
   if [ "$lib1" -nt "$bin1" ]; then
     echo '#!/usr/bin/env gawk -f ' > $bin1
     cat $lib1 >> $bin1
