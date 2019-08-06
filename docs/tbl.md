@@ -80,4 +80,4 @@ func TblCols(i,c,v) {
 
 
 
-_&copy; 2019;, Tim Menzies, 
+_&copy; 2019;, Tim Menzies, http://menzies.us _

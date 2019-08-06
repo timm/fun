@@ -44,11 +44,11 @@ Url=${AUKURL:-"http://menzies.us/fun"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 When=${AUKWHEN:-2019}
 Who=${AUKWHO:-Tim Menzies}
-Where=${AUKWHERE:-http://menzies.us}
+Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 top="|[home]($Url) | [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
-footer="_&copy; $When;, $Who, $Where_"
+footer="_&copy; $When;, $Who, $Where _"
 
 # end config
 # ----------------------------------------
@@ -101,7 +101,7 @@ toc() {
 # do the work
 
 ## if command line is "0", blast all prior product
-if [ "$1" == "--zap" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift ; fi
+if [ "$1" == "--new" ]; then rm -rf $Lib/* $Bin/* $Doc/*; shift ; fi
 
 mkdir -p $Lib $Bin $Doc
 

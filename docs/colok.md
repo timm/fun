@@ -34,4 +34,4 @@ func _weather(f,  n,i, sd,mu) {
 ```
 
 
-_&copy; 2019;, Tim Menzies, 
+_&copy; 2019;, Tim Menzies, http://menzies.us _

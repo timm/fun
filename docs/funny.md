@@ -121,4 +121,4 @@ func has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
 ```
 
 
-_&copy; 2019;, Tim Menzies, 
+_&copy; 2019;, Tim Menzies, http://menzies.us _
