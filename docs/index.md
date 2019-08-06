@@ -15,5 +15,4 @@ title: Contents
 - [tbl.md](tbl.md)
 - [tblok.md](tblok.md)
 - [the.md](the.md)
-
 <hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>

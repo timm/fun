@@ -4,7 +4,7 @@ title: col.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-|[home](/index) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
+|[home](http://menzies.us/fun) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
 
 # col.fun
 
@@ -82,3 +82,4 @@ function NumNorm(i,x) {
   return (x - i.lo) / (i.hi - i.lo + 10^-32)
 }
 ```
+<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>

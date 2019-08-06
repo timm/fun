@@ -4,7 +4,7 @@ title: colok.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-|[home](/index) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
+|[home](http://menzies.us/fun) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
 
 # colok.fun
 #--------- --------- --------- --------- --------- ---------
@@ -32,3 +32,4 @@ func _weather(f,  n,i, sd,mu) {
   }
 }
 ```
+<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>

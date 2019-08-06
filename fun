@@ -60,7 +60,7 @@ parse() { gawk '
   /^(func|BEGIN|END)/,/^}/ { print "CODE "$0; next }
                            { print "DOC " $0} '
 }
-doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v footer="$footer"' 
+doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v footer="$footer" ' 
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\n" top "\n\n# " name }
@@ -94,7 +94,6 @@ toc() {
 
 	EOF
    for i in $Doc/*.md; do f=$(basename $i); echo "- [$f]($f)" ; done 
-   echo
    echo $footer
 }
 # ----------------------------------------
