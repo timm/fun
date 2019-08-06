@@ -6,12 +6,12 @@
 
 BEGIN{  DOT=sprintf("%c",46)}
 
-func trim(s) {
+function trim(s) {
   gsub(/^[ \t\r]*/,"",s)
   gsub(/[ \t\r]*$/,"",s)
   return s
 }
-func lines(i,update,f,sep,  r,line,lst,com) {
+function lines(i,update,f,sep,  r,line,lst,com) {
   f   = f ? f : "/dev/stdin"
   sep = sep ? sep : "[ \t]*,[ \t]*"
   com = "#"DOT"*"
@@ -24,7 +24,7 @@ func lines(i,update,f,sep,  r,line,lst,com) {
   }
   close(f)
 } 
-func flat(x,  cols, s,i,sep) {
+function flat(x,  cols, s,i,sep) {
   ooSortOrder(x)
   if (isarray(cols)) 
     for(i in cols) {s= s sep x[i]; sep="\t"}
@@ -32,7 +32,7 @@ func flat(x,  cols, s,i,sep) {
     for(i in x) {s= s sep x[i]; sep="\t"}
   return s
 }
-func oo(x,p,pre, i,txt) {
+function oo(x,p,pre, i,txt) {
   txt = pre ? pre : (p DOT)
   ooSortOrder(x)
   for(i in x)  {
@@ -43,19 +43,23 @@ func oo(x,p,pre, i,txt) {
       print(txt i (x[i]==""?"": ": " x[i]))
 }}
 
-func ooSortOrder(x, i) {
+function ooSortOrder(x, i) {
   for (i in x)
     return PROCINFO["sorted_in"] =\
       typeof(i+1)=="number" ? "@ind_num_asc" : "@ind_str_asc"
 }
 # ---------------------------------
-func any(x)  { return 1+int(rand()*length(x)) }
+function any(x)  { return 1+int(rand()*length(x)) }
 
-func ksort(lst,k) {
+function become(x,y,     i) {
+  List(x)
+  for(i in y) x[i] = y[i]
+}
+function ksort(lst,k) {
   KSORT=k
   asort(lst,lst,"kcompare")
 }
-func kcompare(i1,v1,i2,v2,  l,r) {
+function kcompare(i1,v1,i2,v2,  l,r) {
   l = v1[KSORT]
   r = v2[KSORT]
   if (l < r) return -1
@@ -64,19 +68,19 @@ func kcompare(i1,v1,i2,v2,  l,r) {
 }  
 # ---------------------------------
 # testing
-func rogues(    s) {
+function rogues(    s) {
   for(s in SYMTAB) if (s ~ /^[A-Z][a-z]/) print "Global " s
   for(s in SYMTAB) if (s ~ /^[_a-z]/    ) print "Rogue: " s
 }
 
-func tests(what, all,   one,a,i,n) {
+function tests(what, all,   one,a,i,n) {
   n = split(all,a,",")
   print "\n#--- " what " -----------------------"
   for(i=1;i<=n;i++) { one = a[i]; @one(one) }
   rogues()
 }
 
-func is(f,got,want) {
+function is(f,got,want) {
   if (want == got) 
     print "#TEST:\tPASSED\t" f "\t" want "\t" got 
   else 
@@ -85,12 +89,11 @@ func is(f,got,want) {
 
 # ---------------------------------
 # object constructors
-func zap(i,k)        { i[k][0]; split("",i[k],"")} 
+function List(i)         { split("",i,"") }
+function zap(i,k)        { i[k][0]; List(i[k])} 
+function Object(i)       { List(i); i["oid"]=++OID }
 
-func List(i)         { split("",i,"") }
-func Object(i)       { List(i); i["oid"]=++OID }
-
-func has( i,k,f)     { f=f?f:"List"; zap(i,k); @f(i[k]) }
-func has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
-func has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
+function has( i,k,f)     { f=f?f:"List"; zap(i,k); @f(i[k]) }
+function has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
+function has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
 

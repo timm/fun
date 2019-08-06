@@ -4,7 +4,7 @@ title: the.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-| [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
+| [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # the.fun
 #--------- --------- --------- --------- --------- ---------
@@ -15,7 +15,11 @@ title: the.fun
 
 ```awk
 func Config(i) {
-   i.row.doms=64
+  Object(i)
+  i.row.doms=   64
+  i.div.min=     0.5
+  i.div.cohen=   0.3
+  i.div.trival=  1.05
 }
 ```
 
