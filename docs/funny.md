@@ -119,4 +119,6 @@ func has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
 func has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
 
 ```
-<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>
+
+
+_&copy; 2019;, Tim Menzies, 

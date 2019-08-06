@@ -32,4 +32,6 @@ func _weather(f,  n,i, sd,mu) {
   }
 }
 ```
-<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>
+
+
+_&copy; 2019;, Tim Menzies, 

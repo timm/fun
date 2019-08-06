@@ -40,4 +40,6 @@ func _auto(f,  t,r,n,m) {
     print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
 }
 ```
-<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>
+
+
+_&copy; 2019;, Tim Menzies, 

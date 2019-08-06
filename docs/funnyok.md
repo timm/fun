@@ -24,4 +24,6 @@ func _lauk(f,   a,b,i) {
   flat(b,1)
 }
 ```
-<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>
+
+
+_&copy; 2019;, Tim Menzies, 

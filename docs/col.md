@@ -82,4 +82,6 @@ function NumNorm(i,x) {
   return (x - i.lo) / (i.hi - i.lo + 10^-32)
 }
 ```
-<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>
+
+
+_&copy; 2019;, Tim Menzies, 
