@@ -71,8 +71,7 @@ gen() { gawk '
   /^@include/              { prep($0); next }
   /^(func|BEGIN|END).*}$/  { prep($0); next }
   /^(func|BEGIN|END)/,/^}/ { prep($0); next }
-                           { print "# " $0  }
- '
+                           { print "# " $0  } '
 }
 
 toc() {
@@ -86,7 +85,7 @@ toc() {
 
 	EOF
 	echo $banner
-	for i in *.md; do echo "- [$i]($i)" ; done 
+	for i in $Doc/*.md; do f=$(basename $i); echo "- [$f]($f)" ; done 
 }
 # ----------------------------------------
 # do the work
