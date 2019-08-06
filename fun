@@ -127,9 +127,9 @@ chmod +x $files $Bin/*
 if   [ "$1" = "Pull" ]
 then git pull;                                    
 elif [ "$1" = "Push" ]
-then    git commit -am commit; git push; git status; 
-elif [ -n "$1" ]       
-then f=$(basename $1)
-     f=$Lib/${f%.$Ext}.awk
-     AWKPATH="$Lib:$AWKPATH" gawk -f $f $*
+then git commit -am commit; git push; git status; 
+elif [ -n "$1"       ] 
+then  $f=$(basename $1)
+      f=$Lib/${f%.$Ext}.awk
+      AWKPATH="$Lib:$AWKPATH" gawk -f $f $*
 fi
