@@ -101,7 +101,7 @@ toc() {
 # do the work
 
 ## if command line is "0", blast all prior product
-if [ "$1" == "--new" ]; then rm -rf $Lib/*.awk $Bin/* $Doc/*.md; shift ; fi
+if [ "$1" = "New" ]; then rm -rf $Lib/*.awk $Bin/* $Doc/*.md; shift ; fi
 
 mkdir -p $Lib $Bin $Doc
 
@@ -124,12 +124,12 @@ done
 
 chmod +x $files $Bin/*
 
-if [ "$1" == "--pull" ]; then git pull;                                    exit; fi
-if [ "$1" == "--push" ]; then git commit -am commit; git push; git status; exit; fi
-if [ -z "$1"         ]; then                                              exit; fi
-
-f=$(basename $1)
-f=$Lib/${f%.$Ext}.awk
-
-shift
-AWKPATH="$Lib:$AWKPATH" gawk -f $f $*
+if   [ "$1" = "Pull" ]
+then git pull;                                    
+elif [ "$1" = "Push" ]
+then    git commit -am commit; git push; git status; 
+elif [ -n "$1" ]       
+then f=$(basename $1)
+     f=$Lib/${f%.$Ext}.awk
+     AWKPATH="$Lib:$AWKPATH" gawk -f $f $*
+fi
