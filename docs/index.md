@@ -3,7 +3,7 @@ title: Contents
 ---
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-        |[home](/index) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
+        |[home](http://menzies.us/fun) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/LICENSE) |
 
 # Site Map
 
@@ -15,3 +15,5 @@ title: Contents
 - [tbl.md](tbl.md)
 - [tblok.md](tblok.md)
 - [the.md](the.md)
+
+<hr><p align=center><em>@copy; 2019;, Tim Menzies, http://menzies.us</em></p>

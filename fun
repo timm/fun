@@ -42,8 +42,13 @@ Bin=${AUKBIN:-$HOME/opt/$Ext/bin}
 Doc=${AUKDOC:-$Root/docs/}
 Url=${AUKURL:-"http://menzies.us/fun"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
-top="|[home](/index) | [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) |"
+When=${AUKWHEN:-2019}
+Who=${AUKWHO:-Tim Menzies}
+Where=${AUKWHERE:-http://menzies.us}
+Git=${AUKGIT:-"http://github.com/timm/fun"}
+top="|[home]($Url) | [code]($Git) | [discuss]($Git/issues) | [license](/LICENSE) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
+footer="<hr><p align=center><em>@copy; $When;, $Who, $Where</em></p>"
 
 # end config
 # ----------------------------------------
@@ -55,13 +60,13 @@ parse() { gawk '
   /^(func|BEGIN|END)/,/^}/ { print "CODE "$0; next }
                            { print "DOC " $0} '
 }
-doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" ' 
+doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v footer="$footer"' 
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\n" top "\n\n# " name }
   NR < 3                   { next }
                            { print } 
-  END                      { if (Code) print "```" } '
+  END                      { if (Code) print "```"; print footer } '
 }
 gen() { gawk ' 
   function prep(s) {
@@ -89,6 +94,8 @@ toc() {
 
 	EOF
    for i in $Doc/*.md; do f=$(basename $i); echo "- [$f]($f)" ; done 
+   echo
+   echo $footer
 }
 # ----------------------------------------
 # do the work
