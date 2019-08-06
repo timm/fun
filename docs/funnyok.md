@@ -26,4 +26,4 @@ func _lauk(f,   a,b,i) {
 ```
 
 
-_&copy; 2019;, Tim Menzies, http://menzies.us _
+_ &copy; 2019, Tim Menzies, http://menzies.us _

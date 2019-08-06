@@ -24,4 +24,4 @@ BEGIN {Config(THE)}
 ```
 
 
-_&copy; 2019;, Tim Menzies, http://menzies.us _
+_ &copy; 2019, Tim Menzies, http://menzies.us _
