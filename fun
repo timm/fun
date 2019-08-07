@@ -98,9 +98,9 @@ toc() {
 	## Fun Stuff
 
 	EOF
-   for i in $(ls $Doc/[^A-Z].*.mdi); do 
+   for i in $(ls $Doc/*.md); do 
         ok="ok\.md$"
-        meta="0"
+        meta="^[A-Z]"
     	if [[ ! $i =~ $ok ]]; then
     	if [[ ! $i =~ $meta ]]; then
           f=$(basename $i)
