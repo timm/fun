@@ -98,7 +98,7 @@ toc() {
 	## Fun Stuff
 
 	EOF
-   for i in $Doc/[^A-Z]*.md; do 
+   for i in $Doc/*.md; do 
         ok="ok\.md$"
     	if [[ ! $i =~ $ok ]]; then
           f=$(basename $i)
