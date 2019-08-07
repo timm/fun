@@ -92,6 +92,8 @@ toc() {
 	$banner
 
 	$top
+   
+        $footer
 
 	## Fun Stuff
 
@@ -105,7 +107,6 @@ toc() {
         fi
    done
    echo
-   echo $footer
 }
 # ----------------------------------------
 # do the work
