@@ -107,6 +107,22 @@ In your unit test file, write a `BEGIN` statement that lists your unit tests. e.
 BEGIN { tests("funny", "_isnt,_any") }
 ```
 
+## Fun with Variables
+
+Call you local function variables with a leading lower case. Define your locals as extra argument funcions.
+For example, here is the `tests` function used to call multiple unit tests. `what` and `all` are passed in and
+`one,a,i,n` are locals.
+
+```awk
+function tests(what, all,   one,a,i,n) {
+  n = split(all,a,",")
+  print "\n#--- " what " -----------------------"
+  for(i=1;i<=n;i++) { one = a[i]; @one(one) }
+  rogues()
+}
+```
+
+
 ### Fun with Objects
 
 Call your objects `i`.
@@ -147,6 +163,7 @@ function Num1(i, x) {
   return x
 }
 ```
+
 
 ## Things that are not Fun
 
