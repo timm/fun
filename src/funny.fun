@@ -42,7 +42,6 @@ function oo(x,p,pre, i,txt) {
     } else
       print(txt i (x[i]==""?"": ": " x[i]))
 }}
-
 function ooSortOrder(x, i) {
   for (i in x)
     return PROCINFO["sorted_in"] =\
@@ -51,9 +50,11 @@ function ooSortOrder(x, i) {
 # ---------------------------------
 function any(x)  { return 1+int(rand()*length(x)) }
 
-function become(x,y,     i) {
-  List(x)
-  for(i in y) x[i] = y[i]
+function push(x,i) { x[length(x)+1]=i; return i }
+
+function become(b4,new,     i) {
+  List(new)
+  for(i in b4) new[i] = b4[i]
 }
 function ksort(lst,k) {
   KSORT=k

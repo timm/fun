@@ -74,7 +74,7 @@ gen() { gawk '
                   "[\"\\1\\2\"]","g",s) } 
    
   sub(/^DOC /,"#")         { print; next }
-                           { gsub(/(CODE |#.*|[ \t]*$)/,"")   }
+                           { gsub(/(CODE |[ \t]*$)/,"")   }
   /^@include/              { prep($0); next }
   /^(func|BEGIN|END).*}$/  { prep($0); next }
   /^(func|BEGIN|END)/,/^}/ { prep($0); next }
@@ -129,7 +129,7 @@ then git pull;
 elif [ "$1" = "Push" ]
 then git commit -am commit; git push; git status; 
 elif [ -n "$1"       ] 
-then  $f=$(basename $1)
+then  f=$(basename $1)
       f=$Lib/${f%.$Ext}.awk
       AWKPATH="$Lib:$AWKPATH" gawk -f $f $*
 fi

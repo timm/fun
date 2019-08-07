@@ -17,21 +17,36 @@ title: div.fun
 ```
 
 ```awk
-function sdiv(xy,    x0,y0,u,cuts)  {
+function sdiv(xy,    
+              xs,ys,i,cuts,step,tiny,x,y)  {
    ksort(xy,"x")
-   Num(x0)
-   Num(y0)
+   Num(xs)
+   Num(ys)
    for(i in xy) {
-     Col1(x0,xy[i].x)
-     Col1(y0,xy[i].y) }
+     x = xy[i].x
+     y = xy[i].y
+     if (x != "?") Num1(xs, x)
+     if (y != "?") Num1(ys, y) }
    List(cuts)
-   scut(xy, 1,length(xy),
-        x0.n*THE.div.min,
-        x0.sd*THE.div.cohen,
-        x0,y0,cuts) 
+   step = xs.n  ^ THE.div.min
+   tiny = xs.sd * THE.div.cohen
+   sdiv1(xy, 1,length(xy), step,tiny, xs,ys,cuts) 
+}
+```
+
+```awk
+function sdiv1(xy,lo,hi,step,tiny,xs,ys,cuts) {
+  Num(xl); Num(yl)
+  Num(xr); Num(yr)
+  cut = sdivCut(xy,lo,hi,step,tiny,xs,ys,xl,xr,yl,yr) 
+  if (cut) {
+    sdiv1(xy,lo,   cut,step,tiny,xl,yl,cuts)
+    sdiv1(xy,cut+1,hi, step,tiny,xr,yr,cuts)
+  }
+    push(cuts,cut)
 }
 function scut1(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
-              start,stop,yl,yr, n,cut,best,i,tmp) {
+               cut,start,stop,yl,xl,n,best,i,x,y,tmp) {
   start = xy[lo].x
   stop  = xy[hi].x
   if (stop - start < tiny) return
@@ -46,13 +61,13 @@ function scut1(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
     if (xl.n >= step)
       if (xr.n >= step)
         if ((x - start) > tiny) 
-          if((stop -x) > tiny)  {
+          if((stop - x) > tiny)  {
             tmp = yl.n/n*ly.sd + yr.n/n*yr.sd
             if (tmp*THE.div.trivial < best) {
               cut  = i
               best = tmp
-              become(yl1,yl) become(yr1,yr)
-              become(xl1,xl) become(xr1,xr) }}}
+              become(yl,yl1); become(yr,yr1)
+              become(xl,xl1); become(xr,xr1) }}}
   return cut
 }
 ```
