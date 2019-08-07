@@ -8,15 +8,16 @@ title: row.fun
 
 # row.fun
 
+<img src="http://yuml.me/diagram/scruffy/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
+
+`Tbl` (tables) have `Row`s.
+
 ```awk
 @include "funny"
 @include "the"
 @include "col"
 ```
 
-<img src="http://yuml.me/diagram/scruffy/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
-
-`Tbl` (tables) have `Row`s.
 As `Row`s accept `cells`, it passes each cell to a table column
 (so that column can update what it knows about that column).
 
