@@ -5,14 +5,14 @@ title: Contents
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
-# Site Map
+## Fun Stuff
 
-- [LICENSE.md](LICENSE.md)
 - [about.md](about.md)
 - [col.md](col.md)
 - [div.md](div.md)
 - [funny.md](funny.md)
 - [index.md](index.md)
+- [license.md](license.md)
 - [row.md](row.md)
 - [tbl.md](tbl.md)
 - [the.md](the.md)

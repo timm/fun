@@ -91,7 +91,7 @@ toc() {
 
 	$top
 
-	# Site Map
+	## Fun Stuff
 
 	EOF
    for i in $Doc/*.md; do 

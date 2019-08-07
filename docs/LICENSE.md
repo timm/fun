@@ -1,5 +1,5 @@
 ---
-title: LICENSE.fun
+title: license.fun
 ---
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
@@ -8,7 +8,7 @@ title: LICENSE.fun
 
 <em> &copy; 2019, Tim Menzies, http://menzies.us</em>
 
-# LICENSE.fun
+# license.fun
 
 
 
