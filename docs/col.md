@@ -13,7 +13,7 @@ title: col.fun
 @include "funny"
 ```
 
-<img src="http://yuml.me/diagram/plain/class/[Col|txr;col;n = 0i|Col1()]^-[Num|mu = 0;m2 = 0;sd = 0;lo = 0; hi = 0].[Col]^-[Sym|mode;most = 0;cnt]">
+<img src="http://yuml.me/diagram/plain/class/[Col|txr;col;n = 0i|Col1()]^-[Num|mu = 0;m2 = 0;sd = 0;lo = 0; hi = 0];[Col]^-[Sym|mode;most = 0;cnt]">
 
 ```awk
 BEGIN {IGNORE="\\?"}
