@@ -3,6 +3,11 @@
 ---------- --------- --------- --------- --------- --
 
 Fun is a transpiler language that adds object-like features to Gawk.
+ `xxx.fun` files are converted into:
+
+-`xxx.awk` files (for scripting) and stored in `$HOME/opt/fun/awk`;
+-`xxx.md` markdown files (for web display) and stored in `docs/`;
+-`xxx` executable scripts (for standalone execution) and stored in `$HOME/opt/fun/bin`;
 
 I use it for teaching. Given code in a language they have never seen before, students
 code up their own versions (in whatever langauge they like best)  of my data mining an optimization tools.
