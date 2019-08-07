@@ -2,7 +2,7 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- ---------
 
-<img src="http://yuml.me/diagram/scruffy/class/[Tbl]1-1+[Row]" >
+#!yuml [Tbl]1-1..+[Row]
 
 function Row(i,t,lst,     c) {
   Object(i)
