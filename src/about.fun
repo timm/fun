@@ -59,63 +59,6 @@ $AWKPATH` to those variables in your `.bashrc` e.g
 - Add the repo to Github, go to `Settings > Github  pages > Source`  and select "master branch /docs folder" (this will publish your `docs/*.md` files to the web).
 
 ## Rules of Fun
-### Fun with Source Code
-
-Write source code into `src/x.fun` and unit tests for `x` into  `src/xok.fun`. 
-Start all your files with
-
-```
- #!/usr/bin/env ../fun
- # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
- ---------- --------- --------- --------- --------- --
-
- @include "funny"
-```
-
-(That second line is only for Vim users. That thrid line is a guide telling you when soruce code
-is getting too wide for web-based display.)
-
-## Fun with Literate  Programming
-
-Documentation is fun. Write explanations of your code around your code. Fun treats anything that matches
-the following as code (and the rest becomes markdown when the `docs/*.md` files are generated):
-
-```
-  /^@include/              
-  /^(func|BEGIN|END).*}$/  
-  /^(func|BEGIN|END)/,/^}/ 
-```
-
-## Fun with Unit Tests
-
-Unit test functions all have to start with an `f` argument that says what file you are testing. Pass
-that argument to the `is` function that checks if a test worked. e.g.
-
-function _any(f,   a,b,i) {
-  split("a,b,c,d,e,f",a,",")
-  for(i=1;i<=50;i++) b[i]=any(a)
-  asort(b)
-  is(f, b[1],1)
-}
-
-Unit test files for `x.fun` are stored in `xok.fun`.
-In your unit test file, write a `BEGIN` statement that lists your unit tests. e.g. in `funny.fun` see
-
-BEGIN { tests("funny", "_isnt,_any") }
-
-## Fun with Variables
-
-Call you local function variables with a leading lower case. Define your locals as extra argument funcions.
-For example, here is the `tests` function used to call multiple unit tests. `what` and `all` are passed in and
-`one,a,i,n` are locals.
-
-function tests(what, all,   one,a,i,n) {
-  n = split(all,a,",")
-  print "\n#--- " what " -----------------------"
-  for(i=1;i<=n;i++) { one = a[i]; @one(one) }
-  rogues()
-}
-
 
 ### Fun with Objects
 
@@ -154,8 +97,64 @@ function Num1(i, x) {
   return x
 }
 
+### Fun with Source Code
 
-## Things that are not Fun
+Write source code into `src/x.fun` and unit tests for `x` into  `src/xok.fun`. 
+Start all your files with
+
+```
+ #!/usr/bin/env ../fun
+ # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
+ ---------- --------- --------- --------- --------- --
+
+ @include "funny"
+```
+
+(That second line is only for Vim users. That thrid line is a guide telling you when soruce code
+is getting too wide for web-based display.)
+
+### Fun with Literate  Programming
+
+Documentation is fun. Write explanations of your code around your code. Fun treats anything that matches
+the following as code. Everything  becomes markdown when the `docs/*.md` files are generated.
+
+```
+  /^@include/              
+  /^(func|BEGIN|END).*}[ \t]*$/  
+  /^(func|BEGIN|END)/,/^}/ 
+```
+
+### Fun with Unit Tests
+
+Unit test functions all have to start with an `f` argument that says what file you are testing. Pass
+that argument to the `is` function that checks if a test worked. e.g.
+
+function _any(f,   a,b,i) {
+  split("a,b,c,d,e,f",a,",")
+  for(i=1;i<=50;i++) b[i]=any(a)
+  asort(b)
+  is(f, b[1],1)
+}
+
+Unit test files for `x.fun` are stored in `xok.fun`.
+In your unit test file, write a `BEGIN` statement that lists your unit tests. e.g. in `funny.fun` see
+
+BEGIN { tests("funny", "_isnt,_any") }
+
+### Fun with Variables
+
+Call you local function variables with a leading lower case. Define your locals as extra argument funcions.
+For example, here is the `tests` function used to call multiple unit tests. `what` and `all` are passed in and
+`one,a,i,n` are locals.
+
+function tests(what, all,   one,a,i,n) {
+  n = split(all,a,",")
+  print "\n#--- " what " -----------------------"
+  for(i=1;i<=n;i++) { one = a[i]; @one(one) }
+  rogues()
+}
+
+### Things that are not Fun
 
 Its [not fun debugging polymorphsim](https://ieeexplore.ieee.org/document/676735), 
 calls to super class methods, etc, etc. If you really 
