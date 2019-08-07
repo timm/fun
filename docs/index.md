@@ -10,15 +10,11 @@ title: Contents
 - [LICENSE.md](LICENSE.md)
 - [about.md](about.md)
 - [col.md](col.md)
-- [colok.md](colok.md)
 - [div.md](div.md)
-- [divok.md](divok.md)
 - [funny.md](funny.md)
-- [funnyok.md](funnyok.md)
 - [index.md](index.md)
 - [row.md](row.md)
 - [tbl.md](tbl.md)
-- [tblok.md](tblok.md)
 - [the.md](the.md)
 
 <em> &copy; 2019, Tim Menzies, http://menzies.us</em>

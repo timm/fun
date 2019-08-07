@@ -95,9 +95,13 @@ toc() {
 
 	EOF
    for i in $Doc/*.md; do 
-    	f=$(basename $i)
- 	g=${f%.$Ext}
-    	echo "- [$g]($f)" ; done 
+        ok="ok\.md$"
+    	if [[ ! $i =~ $ok ]]; then
+          f=$(basename $i)
+ 	   g=${f%.$Ext}
+    	  echo "- [$g]($f)" ; 
+        fi
+   done
    echo
    echo $footer
 }
