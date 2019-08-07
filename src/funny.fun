@@ -6,6 +6,10 @@
 
 BEGIN{  DOT=sprintf("%c",46)}
 
+function Xy(i,x,y) {
+   i.x = x
+   i.y = y
+}
 function trim(s) {
   gsub(/^[ \t\r]*/,"",s)
   gsub(/[ \t\r]*$/,"",s)
@@ -18,7 +22,7 @@ function lines(i,update,f,sep,  r,line,lst,com) {
   while((getline line < f) > 0) {
     sub(com,"",line)
     line=trim(line)
-    if (line) {
+    if (line) { 
       split(line,lst,sep)
       @update(i,++r,lst) }
   }
@@ -51,6 +55,10 @@ function ooSortOrder(x, i) {
 function any(x)  { return 1+int(rand()*length(x)) }
 
 function push(x,i) { x[length(x)+1]=i; return i }
+
+function pash(x,f)      { has(x,length(x)+1,f) }
+function pash1(x,f,m)   { has1(x,length(x)+1,f,m) }
+function pash2(x,f,m,n) { has2(x,length(x)+1,f,m,n) }
 
 function become(b4,new,     i) {
   List(new)
