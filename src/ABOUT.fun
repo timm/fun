@@ -10,8 +10,8 @@ and object-like features to Gawk.
 - `xxx.md` markdown files (for web display) and stored in `docs/`;
 - `xxx` executable scripts (for standalone execution) and stored in `$HOME/opt/fun/bin`;
 
-It is fun to teach with this code.
-Given code in a language they have never seen before, students
+This code is a fun way to teach.
+Given code in a language they have never seen before (i.e. this one), students
 code up their own versions (in whatever langauge they like best).
 
 But why transpile to gawk?
