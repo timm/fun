@@ -1,14 +1,14 @@
 ---
-title: _license.fun
+title: 0license.fun
 ---
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-| [about](/fun/_about) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/_license) |
+| [about](/fun/0about) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/0license) |
 
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
-# _license.fun
+# 0license.fun
 
 
 
