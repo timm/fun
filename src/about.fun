@@ -30,8 +30,9 @@ How to have Fun?
 
 - Install gawk and bash.
 - Create a git repo with directories `root/src` `root/docs`.
-- Download `funny.fun` and `funnyok.fun` into `root/src`.
-- Download `fun` into `root/`. Then 
+- Download `[funny.fun](https://github.com/timm/fun/blob/master/src/funny.fun)`
+  and `[funnyok.fun](https://github.com/timm/fun/blob/master/src/funnyok.fun)` into `root/src`.
+- Download `[fun](https://github.com/timm/fun/blob/master/fun)` into `root/`. Then 
 
 ```
 chmod +x  fun
