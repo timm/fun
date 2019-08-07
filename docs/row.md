@@ -16,7 +16,8 @@ title: row.fun
 
 <img src="http://yuml.me/diagram/scruffy/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
 
-As `Row` accepts `cells`, it passes each cell to a table column
+`Tbl` (tables) have `Row`s.
+As `Roach w` accepts `cells`, it passes each cell to a table column
 (at which point, that column uupdates its stats about the values
 in that column).
 
@@ -51,7 +52,6 @@ then here is better.
 
 ```awk
 function RowDom(i,j,t,   a,b,c,s1,s2,n) {
-#--------- --------- --------- --------- --------- ---------
   n = length(t.my.w)
   for(c in t.my.w) {
     a   = NumNorm( t.cols[c], i.cells[c] )
