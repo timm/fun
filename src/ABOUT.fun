@@ -2,7 +2,8 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-Fun is a transpiler language that adds object-like features to Gawk.
+Fun is a transpiler language that adds literate programming, unit tests,
+and object-like features to Gawk.
  `xxx.fun` files are converted into:
 
 - `xxx.awk` files (for scripting) and stored in `$HOME/opt/fun/awk`;

@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top="| [about](/fun/0about) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/0license) |"
+top="| [about](/fun/ABOUT) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/LICENSE) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
@@ -98,7 +98,7 @@ toc() {
 	## Fun Stuff
 
 	EOF
-   for i in $Doc/*.md; do 
+   for i in $(ls $Doc/[^A-Z].*.mdi); do 
         ok="ok\.md$"
         meta="0"
     	if [[ ! $i =~ $ok ]]; then

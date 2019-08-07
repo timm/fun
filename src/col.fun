@@ -1,7 +1,9 @@
-#!/usr/bin/env ./fun
+#!/usr/bin/env ../fun
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 
 @include "funny"
+
+#!un=ml
 
 BEGIN {IGNORE="\\?"}
 
