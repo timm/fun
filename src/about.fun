@@ -21,7 +21,7 @@ Why transpiler to gawk?
   list comprehensions, metaclasses, macros
   and I will USE and ABUSE them for days and days and days and ...
  The only treatment for excessive language-ism is to use simpler languages. With those, I soon run out
-  net tricks to distract me (at which point, I can finally build useful stuff)
+  neat tricks to distract me (at which point, I can finally build useful stuff)
 
 [^note]: In Lisp, Prolog, Python, Lua, Julia
 
