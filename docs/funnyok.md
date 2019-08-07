@@ -14,14 +14,21 @@ title: funnyok.fun
 ```
 
 ```awk
-BEGIN { tests("lauk", "_lauk") }
+BEGIN { tests("funny", "_isnt,_any") }
 ```
 
 ```awk
-func _lauk(f,   a,b,i) {
+function _isnt(f) {
+  print "this one should fail"
+  is(f, 0,1)
+}
+```
+
+```awk
+function _any(f,   a,b,i) {
   split("a,b,c,d,e,f",a,",")
-  for(i=1;i<=50;i++) b[i]=anyi(a)
+  for(i=1;i<=50;i++) b[i]=any(a)
   asort(b)
-  flat(b,1)
+  is(f, b[1],1)
 }
 ```
