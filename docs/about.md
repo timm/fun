@@ -33,13 +33,16 @@ Why transpiler to gawk?
 
 [^note]: In Lisp, Prolog, Python, Lua, Julia
 
-How to have Fun?
+## Installing Fun
 
-- Install gawk and bash.
-- Create a git repo with directories `root/src` `root/docs`.
-- Download [funny.fun](https://github.com/timm/fun/blob/master/src/funny.fun)
+Install gawk and bash.
+
+Create a git repo with directories `root/src` `root/docs`.
+
+Download [funny.fun](https://github.com/timm/fun/blob/master/src/funny.fun)
   and [funnyok.fun](https://github.com/timm/fun/blob/master/src/funnyok.fun) into `root/src`.
-- Download [fun](https://github.com/timm/fun/blob/master/fun) into `root/`. Then 
+
+Download [fun](https://github.com/timm/fun/blob/master/fun) into `root/`. Then 
 
 ```
 chmod +x  fun
@@ -48,7 +51,7 @@ cd src
 ./funnyok.fun
 ```
 
-- If that works, you should see something like:
+If that works, you should see something like:
 
 ```
 #--- funny -----------------------
@@ -57,10 +60,11 @@ this one should fail
 #TEST:  PASSED  _any    1       1
 ```
 
-- Optionally
-    -  Edit `fun` and find the `Lib` and `Bin` variables near the top. Set your `$PATH` and
-  `$AWKPATH` to those variables in your `.bashrc` e.g
-    - Add the repo to Github, go to `Settings > Github  pages > Source`  and select "master branch /docs folder" (this will publish your `docs/*.md` files to the web).
+Optionally
+
+-  Edit `fun` and find the `Lib` and `Bin` variables near the top. Set your `$PATH` and
+$AWKPATH` to those variables in your `.bashrc` e.g
+- Add the repo to Github, go to `Settings > Github  pages > Source`  and select "master branch /docs folder" (this will publish your `docs/*.md` files to the web).
 
 ## Rules of Fun
 ### Fun with Source Code
@@ -74,7 +78,6 @@ Start all your files with
  ---------- --------- --------- --------- --------- --
 
  @include "funny"
-
 ```
 
 (That second line is only for Vim users. That thrid line is a guide telling you when soruce code
