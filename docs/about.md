@@ -12,10 +12,10 @@ title: about.fun
 
 Objects are called `i`.
 
-Object attributes are accessed with a ".". Accessors can be nestedE.g. `i.num.sd`
+Object attributes are accessed with a " . ". Accessors can be nestedE.g. `i.num.sd`
 
-- "." is a reserved characters. Outside of numbers and accessors, if you need a "." (e.g. in a filename)
-  then use the `DOT` variable (which is a string containing ".").
+- " . " is a reserved characters. Outside of numbers and accessors, if you need a " . " (e.g. in a filename)
+  then use the `DOT` variable (which is a string containing " . ").
 
 Functions with leading uppercase letters are methods.
 
