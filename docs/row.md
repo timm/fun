@@ -9,7 +9,7 @@ title: row.fun
 # row.fun
 ---------- --------- --------- --------- --------- ---------
 
-<img src="http://yuml.me/diagram/scruffy/class/[Tbl]1->1..*[Row]">
+<img src="http://yuml.me/diagram/scruffy/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
 
 ```awk
 function Row(i,t,lst,     c) {

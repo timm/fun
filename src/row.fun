@@ -2,7 +2,7 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- ---------
 
-#!class [Tbl]1->1..*[Row]
+#!class [Tbl]++->1..*[Row|cells;cooked;dom = 0]
 
 function Row(i,t,lst,     c) {
   Object(i)
