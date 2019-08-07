@@ -7,7 +7,6 @@ title: col.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # col.fun
-
 ```awk
 @include "funny"
 ```

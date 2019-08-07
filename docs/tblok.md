@@ -7,7 +7,6 @@ title: tblok.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # tblok.fun
-#--------- --------- --------- --------- --------- ---------
 
 ```awk
 @include "funny"

@@ -7,7 +7,6 @@ title: divok.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # divok.fun
-#--------- --------- --------- --------- --------- ---------
 
 ```awk
 @include "div"

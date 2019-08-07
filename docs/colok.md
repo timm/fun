@@ -7,7 +7,6 @@ title: colok.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # colok.fun
-#--------- --------- --------- --------- --------- ---------
 
 ```awk
 @include "funny"

@@ -7,7 +7,6 @@ title: tbl.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # tbl.fun
-#--------- --------- --------- --------- --------- ---------
 
 ```awk
 @include "funny"

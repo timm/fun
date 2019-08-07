@@ -7,7 +7,6 @@ title: the.fun
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 # the.fun
-#--------- --------- --------- --------- --------- ---------
 
 ```awk
 @include "funny"
