@@ -93,7 +93,7 @@ toc() {
 
 	$top
    
-        $footer
+	$footer
 
 	## Fun Stuff
 
