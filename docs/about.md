@@ -19,10 +19,11 @@ Why Fun?
 line numbers in the output so errors there can be easily traced abck to your source code.)
 - I teach a lot of computer science. The best teaching trick I know is to give
    students a working solution, in a language they've never seen before,
-  and ask them to code it up for themselves (in any other lanfuage they like).
+  and ask them to code it up for themselves (in any other language they like).
 
 Why transpiler to gawk?
 
+- Cause the source is so succinct, its easy to show in lectures.
 - My name is timm and I'm a language-a-holic. Give me a cool language[^note]
   and I use it. All of it. 
   High-order functions, unification, decorators, iterators,
@@ -35,6 +36,10 @@ Why transpiler to gawk?
 [^note]: In Lisp, Prolog, Python, Lua, Julia
 
 ## Rules of Fun
+
+Its [not fun debugging polymorphsim](https://ieeexplore.ieee.org/document/676735), 
+calls to super class methods, etc, etc. If you really 
+need those, see Lua, Python, etc etc.
 
 Objects are called `i`.
 
@@ -58,7 +63,7 @@ function Col(i,name,pos) {
   i.pos = pos
 }
 function Num(i,name,pos) {
-  Col(i,name,pos)
+  Col(i,name,pos)  # call to super class constructor
   i.mu = i.sum = 0 
 }
 ```
