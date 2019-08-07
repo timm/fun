@@ -9,15 +9,4 @@ title: Contents
 
 ## Fun Stuff
 
-- [0about.md](0about.md)
-- [0license.md](0license.md)
-- [ABOUT.md](ABOUT.md)
-- [LICENSE.md](LICENSE.md)
-- [col.md](col.md)
-- [div.md](div.md)
-- [funny.md](funny.md)
-- [index.md](index.md)
-- [row.md](row.md)
-- [tbl.md](tbl.md)
-- [the.md](the.md)
 
