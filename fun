@@ -93,7 +93,10 @@ toc() {
 	# Site Map
 
 	EOF
-   for i in $Doc/*.md; do f=$(basename $i); echo "- [$f]($f)" ; done 
+   for i in $Doc/*.md; do 
+    	f=$(basename $i)
+ 	g=${f%.$Ext}
+    	echo "- [$g]($f)" ; done 
    echo
    echo $footer
 }

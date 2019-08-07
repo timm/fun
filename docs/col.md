@@ -66,16 +66,21 @@ function Num1(i,v,    d) {
   d     = v - i.mu
   i.mu += d/i.n
   i.m2 += d*(v - i.mu)
-  i.sd  = i.n < 2 ? 0 : (i.m2/(i.n - 1))^0.5
+  i.sd  = NumSd0(i)
   return v
 }
+function NumSd0(i) {
+  if (i.m2<0) return 0
+  if (i.n < 2)  return 0
+  return  (i.m2/(i.n - 1))^0.5
+}
 function NumLess(i,v, d) {
-  if (i.n < 2) return v
+  if (i.n < 2) {i.sd=0; return v}
   i.n  -= 1
   d     = v - i.mu
   i.mu -= d/i.n
   i.m2 -= d*(v - i.mu)
-  i.sd  = i.n < 2 ? 0 : (i.m2/(i.n - 1))^0.5
+  i.sd  = NumSd0(i)
   return v
 }
 function NumNorm(i,x) {

@@ -38,9 +38,8 @@ function sdiv1(xy,lo,hi,step,tiny,xs,ys,cuts,pre,
   Num(xl); Num(yl)
   Num(xr); Num(yr)
   cut = sdivCut(xy,lo,hi,step,tiny,xs,ys,xl,xr,yl,yr) 
-  print(pre xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cit",cut)
   if (cut) {
-    oo(yl,"yl")
+    print(pre xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cit",cut)
     sdiv1(xy,lo,   cut,step,tiny,xl,yl,cuts,"|  "pre)
     sdiv1(xy,cut+1, hi,step,tiny,xr,yr,cuts,"|  "pre)
   } else
@@ -52,7 +51,7 @@ function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
   stop  = xy[hi].x
   if (stop - start < tiny) return
   Num(yl); Num(xl)
-  n    = hi - lo
+  n    = hi - lo + 1
   best = yr.sd
   for(i=lo; i<=hi-step; i++) {
     x = xy[i].x
