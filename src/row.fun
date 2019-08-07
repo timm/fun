@@ -2,16 +2,15 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-@include "col"
-@include "the"
 @include "funny"
+@include "the"
+@include "col"
 
 #!class [Tbl]++->1..*[Row|cells;cooked;dom = 0]
 
 `Tbl` (tables) have `Row`s.
-As `Roach w` accepts `cells`, it passes each cell to a table column
-(at which point, that column uupdates its stats about the values
-in that column).
+As `Row`s accept `cells`, it passes each cell to a table column
+(so that column can update what it knows about that column).
 
 function Row(i,t,cells,     c) {
   Object(i)
