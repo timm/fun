@@ -6,10 +6,16 @@
 
 #!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note: "any" does the sampling{bg:cornsilk}]
 
-[Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
+
+
+  [Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
 
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (the `mode`).
+
+See also: [Col](col).
+
+## Sym
 
 function Sym(i,c,v) { 
   Col(i,c,v)

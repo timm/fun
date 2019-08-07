@@ -7,6 +7,8 @@
 
 `Num` and `Sym`s keep summary statistics on `Col`umns in tables. 
 
+See also:  [Num](num),  [Sym](sym).
+
 ## Col
 
 function Col(i,c,v) { 
