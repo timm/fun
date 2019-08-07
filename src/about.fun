@@ -7,8 +7,11 @@
 Why Fun?
 
 - Why not? Inventing your own language with transpilers is fun!
-(Hint: where possible, keep the same
+     - (Hint: if possible, keep the same
 line numbers in the output so errors there can be easily traced abck to your source code.)
+- I teach a lot of computer science. The best teaching trick I know is to give
+   students a working solution, in a language they've never seen before,
+  and ask them to code it up for themselves (in any other lanfuage they like).
 
 Why transpiler to gawk?
 
@@ -17,8 +20,8 @@ Why transpiler to gawk?
   High-order functions, unification, decorators, iterators,
   list comprehensions, metaclasses, macros
   and I will USE and ABUSE them for days and days and days and ...
-- The result is beautiful clever code (IMHO)... that no one else can understand  or use.
-- The only treatment I know for my language-ism is to use simpler languages. With those, I soon run out
+ The result is beautiful clever code (IMHO), that no one else can understand  or use.
+ The only treatment I know for my language-ism is to use simpler languages. With those, I soon run out
   net tricks to distract me (at which point, I can finally build useful stuff)
 
 [^note]: In Lisp, Prolog, Python, Lua, Julia
