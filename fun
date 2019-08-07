@@ -100,7 +100,7 @@ toc() {
 	EOF
    for i in $(ls $Doc/*.md); do 
         ok="ok\.md$"
-        meta="[A-Z]"
+        meta="A-Z"
     	if [[ ! $i =~ $ok ]]; then
     	if [[ ! $i =~ $meta ]]; then
           f=$(basename $i)
