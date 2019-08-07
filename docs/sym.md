@@ -86,3 +86,6 @@ function SymAny(i,without,  r,k,m) {
 ## See also
 
 - [Col](col)
+
+
+## Notes
