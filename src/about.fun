@@ -2,6 +2,26 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
+## F.A.Q.
+
+Why Fun?
+
+- Why not? Inventing your owne language with transpilers is fun!
+(Hint: where possible, keep the same
+line numbers in the output so errors there can be easily traced abck to your source code.)
+
+Why transpiler to gawk?
+
+- My name is timm and I'm a language-a-holic. Give me Lisp, Python, Prolog, Lua, Julia and I will use
+  high-order fucntions, unification, decorators, iterators,
+  list comprehensions, metaclasses, macros[^note]
+  and I will USE and ABUSE them for days and days and days and ...
+- The result is beautiful clever code (IMHO)... that no one else can understand  or use.
+- The only treatment I know for my language-ism is to use simpler languages. With those, I soon run out
+  net tricks to distract me (at which point, I can finally build useful stuff)
+
+[^note]: In Lisp, Prolog, Python, Lua, Julia
+
 ## Rules of Fun
 
 Objects are called `i`.
