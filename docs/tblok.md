@@ -4,7 +4,7 @@ title: tblok.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-| [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/license) |
+| [about](/fub/about) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/license) |
 
 <em> &copy; 2019, Tim Menzies, http://menzies.us</em>
 

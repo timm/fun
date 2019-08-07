@@ -2,26 +2,23 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
+Fun is a transpiler language that adds object-like features to Gawk.
 
-Why Fun?
+I use it for teaching. Given code in a language they have never seen before, students
+code up their own versions (in whatever langauge they like best)  of my data mining an optimization tools.
 
-- Why not? Inventing your own language with transpilers is fun!
-     - (Hint: if possible, keep the same
-line numbers in the output so errors there can be easily traced abck to your source code.)
-- I teach a lot of computer science. The best teaching trick I know is to give
-   students a working solution, in a language they've never seen before,
-  and ask them to code it up for themselves (in any other language they like).
+But why transpile to gawk?
 
-Why transpile to gawk?
-
-- Cause the simpler the target language, the simpler the transpiler.
-- Cause the source is so succinct, its easy to show in lectures.
-- My name is timm and I'm a language-a-holic. Give me a cool language[^note]
+- Cause the simpler the  target language, the simpler the pre-transpiled source code;.
+- Cause the simpler the source code, the easier it is to show students,
+     - The source is so succinct, its easy to show in lectures.
+- Finally, full disclosure, my name is timm and I'm a language-a-holic. 
+     - Give me a cool language[^note]
   and I use it. All of it. 
   High-order functions, unification, decorators, iterators,
   list comprehensions, metaclasses, macros
   and I will USE and ABUSE them for days and days and days and ...
- The only treatment for excessive language-ism is to use simpler languages. With those, I soon run out
+     - The only treatment for excessive language-ism is to use simpler languages. With those, I soon run out
   neat tricks to distract me (at which point, I can finally build useful stuff)
 
 [^note]: In Lisp, Prolog, Smalltalk, Python, Lua, Julia
