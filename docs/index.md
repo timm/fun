@@ -17,4 +17,4 @@ title: Contents
 - [tbl.md](tbl.md)
 - [the.md](the.md)
 
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+<em> &copy; 2019 Tim Menzies. http://menzies.us</em>
