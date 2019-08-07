@@ -14,7 +14,7 @@ title: sym.fun
 @include "col"
 ```
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: '*any' implements 'sampling'{bg:cornsilk}]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: '*SymAny' implements 'sampling'{bg:cornsilk}]">
 
 
 
@@ -22,7 +22,6 @@ title: sym.fun
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (the `mode`).
 
-See also: [Col](col).
 
 ## Sym
 
@@ -87,3 +86,6 @@ function SymAny(i,without,  r,k,m) {
 ```
 
 
+## See also
+
+- [Col](col)

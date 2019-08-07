@@ -17,8 +17,6 @@ title: col.fun
 
 `Num` and `Sym`s keep summary statistics on `Col`umns in tables. 
 
-See also:  [Num](num),  [Sym](sym).
-
 ## Col
 
 ```awk
@@ -51,3 +49,7 @@ at a frequency that is similiar to the data from which they learned their distri
 (see the `*Any()` functions).
 
 
+## See also
+
+- [Num](num)
+- [Sym](sym)
