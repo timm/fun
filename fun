@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top="| [about](/fun/_about) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/_license) |"
+top="| [about](/fun/0about) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/0license) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
@@ -100,7 +100,7 @@ toc() {
 	EOF
    for i in $Doc/*.md; do 
         ok="ok\.md$"
-        meta="_"
+        meta="^0"
     	if [[ ! $i =~ $ok ]]; then
     	if [[ ! $i =~ $meta ]]; then
           f=$(basename $i)
