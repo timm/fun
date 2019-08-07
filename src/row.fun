@@ -31,12 +31,11 @@ function RowDoms(i,all,t,  j) {
     i.dom += RowDom(i, all[any(all)], t) / THE.row.doms
 }
 
-One `Row` dominates another if its goals are "better".
-To compute this "better", we "shout"  the loss between
-each goal (where "shout" means, raise it a power of 10).
-If moving from here to there shouts less than there to here,
-then here is better.
-
+`Row` "_i_" dominates row "_j_"  if "_i_"'s  goals are "better".
+To compute this "better", we complain loudly about   the loss between
+each goal (where "complaining" means, raise it a power of 10).
+If moving from "_i"_ to "_j_" shouts less than the other way around,
+then "_i_" domiantes[^bdom].
 
 function RowDom(i,j,t,   a,b,c,s1,s2,n) {
   n = length(t.my.w)
@@ -48,6 +47,8 @@ function RowDom(i,j,t,   a,b,c,s1,s2,n) {
   }
   return s1/n < s2/n
 }
+
+[^bdom]: XXX
 
 ## See also
 
