@@ -9,8 +9,6 @@ title: Contents
 
 ## Fun Stuff
 
-- [ABOUT.md](ABOUT.md)
-- [LICENSE.md](LICENSE.md)
 - [col.md](col.md)
 - [div.md](div.md)
 - [funny.md](funny.md)

@@ -98,15 +98,13 @@ toc() {
 	## Fun Stuff
 
 	EOF
-   for i in $Doc/*.md; do 
+   for i in $Doc/[^A-Z]*.md; do 
         ok="ok\.md$"
-        meta="^[A-Z]"
     	if [[ ! $i =~ $ok ]]; then
-    	if [[ ! $i =~ $meta ]]; then
           f=$(basename $i)
  	   g=${f%.$Ext}
     	  echo "- [$g]($f)" ; 
-        fi fi
+        fi 
    done
    echo
 }
