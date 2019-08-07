@@ -18,7 +18,7 @@ Methods with only one uppercase letter are constructors e.g. `Num`.
 
 Constructors initialize themselves with superclass attributes by calling the supper; e.g.
 
-#!/class [Col|name;pos;n = 0]^-[Num|mu = 0;sum=0]
+<img src="http://yuml.me/diagram/scruffy/class/[Col|name;pos;n = 0]^-[Num|mu = 0;sum=0]">
 
 ```awk
 function Col(i,name,pos) {
