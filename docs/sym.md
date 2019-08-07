@@ -14,7 +14,7 @@ title: sym.fun
 @include "col"
 ```
 
-<img src="http://yuml.me/diagram/plain/class/[Col|n%20=%200;%20col;%20txt|Col1()]^-[Num|mu%20=%200;%20sd%20=%200],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note:%20"any"%20does%20the%20sampling{bg:cornsilk}]">
+<img src="http://yuml.me/diagram/plain;/class/[Col|n%20=%200;%20col;%20txt|Col1()]^-[Num|mu%20=%200;%20sd%20=%200],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note:%20"any"%20does%20the%20sampling{bg:cornsilk}]">
 
 [Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
 
