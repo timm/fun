@@ -6,6 +6,8 @@ title: div.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # div.fun
 
 Discretization is the process o
@@ -83,6 +85,3 @@ function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
   return cut
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

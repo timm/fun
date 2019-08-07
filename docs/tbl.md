@@ -6,6 +6,8 @@ title: tbl.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # tbl.fun
 
 ```awk
@@ -78,6 +80,3 @@ func TblCols(i,c,v) {
 }
 ```
 
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

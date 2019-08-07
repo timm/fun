@@ -6,6 +6,8 @@ title: row.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # row.fun
 
 <img src="http://yuml.me/diagram/plain/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
@@ -64,6 +66,3 @@ function RowDom(i,j,t,   a,b,c,s1,s2,n) {
 ```
 
  
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

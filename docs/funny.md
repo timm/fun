@@ -6,6 +6,8 @@ title: funny.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # funny.fun
 # ---------------------------------
 # misc
@@ -132,6 +134,3 @@ function has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
 function has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
 
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

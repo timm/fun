@@ -6,6 +6,8 @@ title: colok.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # colok.fun
 
 ```awk
@@ -31,6 +33,3 @@ func _weather(f,  n,i, sd,mu) {
   }
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

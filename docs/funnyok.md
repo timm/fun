@@ -6,6 +6,8 @@ title: funnyok.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # funnyok.fun
 ```awk
 @include "funny"
@@ -23,6 +25,3 @@ func _lauk(f,   a,b,i) {
   flat(b,1)
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

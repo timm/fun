@@ -6,6 +6,8 @@ title: about.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # about.fun
 
 ## F.A.Q.
@@ -18,8 +20,9 @@ line numbers in the output so errors there can be easily traced abck to your sou
 
 Why transpiler to gawk?
 
-- My name is timm and I'm a language-a-holic. Give me Lisp, Python, Prolog, Lua, Julia and I will use
-  high-order fucntions, unification, decorators, iterators,
+- My name is timm and I'm a language-a-holic. Give me a cool language[^note]
+  and I use it. All of it. 
+  High-order functions, unification, decorators, iterators,
   list comprehensions, metaclasses, macros[^note]
   and I will USE and ABUSE them for days and days and days and ...
 - The result is beautiful clever code (IMHO)... that no one else can understand  or use.
@@ -70,6 +73,3 @@ function Num1(i, x) {
 ```
 
 
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

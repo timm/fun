@@ -6,6 +6,8 @@ title: the.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # the.fun
 
 ```awk
@@ -26,6 +28,3 @@ func Config(i) {
 ```awk
 BEGIN {Config(THE)}
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

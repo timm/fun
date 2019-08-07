@@ -6,6 +6,8 @@ title: tblok.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # tblok.fun
 
 ```awk
@@ -39,6 +41,3 @@ func _auto(f,  t,r,n,m) {
     print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

@@ -6,6 +6,8 @@ title: col.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # col.fun
 ```awk
 @include "funny"
@@ -86,6 +88,3 @@ function NumNorm(i,x) {
   return (x - i.lo) / (i.hi - i.lo + 10^-32)
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>

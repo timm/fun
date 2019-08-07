@@ -6,6 +6,8 @@ title: divok.fun
 
 | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
+<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
+
 # divok.fun
 
 ```awk
@@ -33,6 +35,3 @@ function _div(  lst,a,i,cuts,max) {
    oo(cuts)
 }
 ```
-
-
-<em> &copy; 2019, Tim Menzies, http://menzies.us</em>
