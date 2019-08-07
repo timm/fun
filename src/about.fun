@@ -2,7 +2,6 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-## F.A.Q.
 
 Why Fun?
 
@@ -30,9 +29,9 @@ How to have Fun?
 
 - Install gawk and bash.
 - Create a git repo with directories `root/src` `root/docs`.
-- Download `[funny.fun](https://github.com/timm/fun/blob/master/src/funny.fun)`
-  and `[funnyok.fun](https://github.com/timm/fun/blob/master/src/funnyok.fun)` into `root/src`.
-- Download `[fun](https://github.com/timm/fun/blob/master/fun)` into `root/`. Then 
+- Download [funny.fun](https://github.com/timm/fun/blob/master/src/funny.fun)
+  and [funnyok.fun](https://github.com/timm/fun/blob/master/src/funnyok.fun) into `root/src`.
+- Download [fun](https://github.com/timm/fun/blob/master/fun) into `root/`. Then 
 
 ```
 chmod +x  fun
@@ -50,12 +49,13 @@ this one should fail
 #TEST:  PASSED  _any    1       1
 ```
 
-- Optionally, edit `fun` and find the `Lib` and `Bin` variables near the top. Set your `$PATH` and
+- Optionally
+    -  Edit `fun` and find the `Lib` and `Bin` variables near the top. Set your `$PATH` and
   `$AWKPATH` to those variables in your `.bashrc` e.g
-
+    - Add the repo to Github, go to `Settings > Github  pages > Source`  and select "master branch /docs folder" (this will publish your `docs/*.md` files to the web).
 
 ## Rules of Fun
-### Funwith Write Code, Comments, and Unit Tests
+### Fun with Code, Comments, and Unit Tests
 
 Write source code into `src/x.fun` and unit tests for `x` into  `src/xok.fun`. 
 Start all your files with
