@@ -92,7 +92,7 @@ For notes on that syntax, see [here](https://github.com/aklump/yuml-cheatsheet).
 - Use metthod names with only one uppercase letter to define constructors e.g. `Num`.
 - Make constructors initialize themselves with superclass attributes by calling the super constructor; e.g.
 
-<img src="http://yuml.me/diagram/plain/class/[Col|name;pos;n = 0]^-[Num|mu = 0;sum = 0]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|name;pos;n = 0]^-[Num|mu = 0;sum = 0]">
 
 ```awk
 function Col(i,name,pos) {
