@@ -37,8 +37,8 @@ If moving from here to there shouts less than there to here,
 then here is better.
 
 
-#--------- --------- --------- --------- --------- ---------
 function RowDom(i,j,t,   a,b,c,s1,s2,n) {
+#--------- --------- --------- --------- --------- ---------
   n = length(t.my.w)
   for(c in t.my.w) {
     a   = NumNorm( t.cols[c], i.cells[c] )
