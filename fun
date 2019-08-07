@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top="| [about](/fun/ABOUT) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/LICENSE) |"
+top="| [about](/fun/about) | [code]($Git) | [discuss]($Git/issues) | [license](/fun/license) |"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
