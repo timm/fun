@@ -10,7 +10,7 @@ title: row.fun
 
 # row.fun
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Tbl]++-1..*[Row|cells;cooked;dom = 0]-uses-[Col]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Tbl]++-1..*[Row|cells;cooked;dom = 0]-uses-[Col||Col1()]">
 
 `Tbl` (tables) have `Row`s.
 
