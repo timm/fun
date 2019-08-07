@@ -10,7 +10,7 @@ title: row.fun
 
 # row.fun
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Tbl]++-1..*[Row|cells;cooked;dom = 0]-uses-[Col]">
 
 `Tbl` (tables) have `Row`s.
 
@@ -65,4 +65,8 @@ function RowDom(i,j,t,   a,b,c,s1,s2,n) {
 }
 ```
 
+## See also
+
+- [Tbl](tbl)
+- [Col](col)
  

@@ -17,7 +17,7 @@ title: sym.fun
 ```
 
 The `Sym` class incrementally counts of the symbols seen in a column
-as well as the most frequently seen symbol (the `mode`).
+as well as the most frequently seen symbol (which is called the  `mode`).
 
 
 ## Sym

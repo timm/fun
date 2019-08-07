@@ -2,7 +2,7 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-#!class [Tbl]++->1..*[Row|cells;cooked;dom = 0]
+#!class [Tbl]++-1..*[Row|cells;cooked;dom = 0]-uses-[Col]
 
 `Tbl` (tables) have `Row`s.
 
@@ -49,4 +49,8 @@ function RowDom(i,j,t,   a,b,c,s1,s2,n) {
   return s1/n < s2/n
 }
 
+## See also
+
+- [Tbl](tbl)
+- [Col](col)
  

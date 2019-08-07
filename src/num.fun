@@ -56,13 +56,13 @@ function NumLess(i,v, d) {
 
 To sample from `Num`, we assume that its numbers are like a 
 a normal bell-shaped curve. If so,  then
-the `box_muller` function can do the sampling:
+the [Marsaglia function](https://people.maths.ox.ac.uk/gilesm/mc/mc/lec1.pdf)
+can do the sampling:
 
-function NumAny(i) { return i.m + i.sd*box_muller() }
+function NumAny(i) { return i.m + i.sd * marsaglia() }
 
-function box_muller(     w,x1,x2) {
-   w=1;
-   while (w >= 1) {
+function marsaglia(     w,x1,x2) { 
+   while (w == 0 || w >= 1) {
      x1= 2.0 * rand() - 1;
      x2= 2.0 * rand() - 1;
      w = x1*x1 + x2*x2 
