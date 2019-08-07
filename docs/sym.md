@@ -9,15 +9,12 @@ title: sym.fun
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # sym.fun
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]">
+
 ```awk
 @include "funny"
 @include "col"
 ```
-
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: '*SymAny' implements 'sampling'{bg:cornsilk}]">
-
-
-
 
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (the `mode`).
@@ -54,7 +51,7 @@ given symbols at probability P1, P2, etc then entropy is calcuated[^ent] as foll
 Note that the analog  of entropy for continuous distributions is Standard deviation
 (discussed below).
 
-[^ent]: For an approximate justification of  this formula,  consder a piece of string 10 meters long, stained in two places by a  meter of red and two metres of green. The probability of stumbling over those colors is Pr=0.1 and Pg=0.2, respectively. To measure the variety of the signal in that string, we could record the effort associated with reconstructing it (i.e. finding all its parts).  To that end, for each color, fold the string in half till oen color is isolated (which requires a number of folds that is approximately _log2(Px)_). Wehn the  probability of doing tose folds is  proportinal to the odds we'll look for that color, then the total effort is _Px*log2(Px)_ (which is repeated for all colors). Finally, by convention, we throw a minus sign around the summation.
+[^ent]: For an approximate justification of  this formula,  consder a piece of string 10 meters long, stained in two places by a  meter of red and two metres of green. The probability of stumbling over those colors is Pr=0.1 and Pg=0.2, respectively. To measure the variety of the signal in that string, we record the effort associated with reconstructing it (i.e. finding all its parts).  To that end, for each color, we fold the string in half until one color is isolated (this needs approximately _log2(Px)_ folds). The  probability of doing those folds is  proportinal to the odds we'll look for that color. That is,  the total effort is _Px*log2(Px)_ (which must be repeated for all colors; i.e. _&sumlPx*log2(Px)_). Note that, by convention, we throw a minus sign around the summation (otherwise, we will be forever reporting negative values).
 
 ```awk
 function SymEnt(i,   p,e,k) {
