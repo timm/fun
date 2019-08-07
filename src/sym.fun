@@ -4,11 +4,10 @@
 @include "funny"
 @include "col"
 
-#!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note: any does the sampling{bg:cornsilk}]
+#!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: any does the sampling{bg:cornsilk}]
 
 
 
-  [Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
 
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (the `mode`).
