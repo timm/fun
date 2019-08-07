@@ -20,8 +20,9 @@ line numbers in the output so errors there can be easily traced abck to your sou
    students a working solution, in a language they've never seen before,
   and ask them to code it up for themselves (in any other language they like).
 
-Why transpiler to gawk?
+Why transpile to gawk?
 
+- Cause the simpler the target language, the simpler the transpiler.
 - Cause the source is so succinct, its easy to show in lectures.
 - My name is timm and I'm a language-a-holic. Give me a cool language[^note]
   and I use it. All of it. 
@@ -31,7 +32,7 @@ Why transpiler to gawk?
  The only treatment for excessive language-ism is to use simpler languages. With those, I soon run out
   neat tricks to distract me (at which point, I can finally build useful stuff)
 
-[^note]: In Lisp, Prolog, Python, Lua, Julia
+[^note]: In Lisp, Prolog, Smalltalk, Python, Lua, Julia
 
 ## Installing Fun
 
@@ -68,20 +69,24 @@ $AWKPATH` to those variables in your `.bashrc` e.g
 
 ## Rules of Fun
 
+### Fun wuth UML
+
+See the class diagram, below? It was generated using the following like in the `.fun` file:
+
+     #!class [Col|name;pos;n = 0]^-[Num|mu = 0;sum = 0]
+
+For notes on that syntax, see [here](https://github.com/aklump/yuml-cheatsheet).
+
+ 
 ### Fun with Objects
 
-Call your objects `i`.
-
-Access object attributes with a  " . ". Accessors can be nestedE.g. `i.num.sd`
-
-- " . " is a reserved characters. Outside of numbers and accessors, if you need a " . " (e.g. in a filename)
+- Call your objects `i`.
+- Access object attributes with a  " . " (and accessors can be nestedE.g. `i.num.sd`);
+   - " . " is a reserved characters. Outside of numbers and accessors, if you need a " . " (e.g. in a filename)
   then use the `DOT` variable (which is a string containing " . ").
-
-Use  function names  with leading uppercase letters to define methods.
-
-Use metthod names with only one uppercase letter to define constructors e.g. `Num`.
-
-Make constructors initialize themselves with superclass attributes by calling the super constructor; e.g.
+- Use  function names  with leading uppercase letters to define methods.
+- Use metthod names with only one uppercase letter to define constructors e.g. `Num`.
+- Make constructors initialize themselves with superclass attributes by calling the super constructor; e.g.
 
 <img src="http://yuml.me/diagram/plain/class/[Col|name;pos;n = 0]^-[Num|mu = 0;sum = 0]">
 
@@ -97,7 +102,7 @@ function Num(i,name,pos) {
 }
 ```
 
-To update an object, write a Methods ending in "1". Usually, return the added thing
+- To update an object, write a Methods ending in "1". Usually, return the added thing
 (it if is a string or number).  e.g.
 
 ```awk
