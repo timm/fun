@@ -4,7 +4,7 @@
 @include "funny"
 @include "col"
 
-#!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: any does the sampling{bg:cornsilk}]
+#!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()],[Sym]-[note: '*any' implements 'sampling'{bg:cornsilk}]
 
 
 
