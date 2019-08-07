@@ -4,7 +4,7 @@ title: col.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-| [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
+| [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
@@ -16,6 +16,8 @@ title: col.fun
 <img src="http://yuml.me/diagram/plain/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()]">
 
 `Num` and `Sym`s keep summary statistics on `Col`umns in tables. 
+
+See also:  [Num](num),  [Sym](sym).
 
 ## Col
 

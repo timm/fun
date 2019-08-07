@@ -4,7 +4,7 @@ title: sym.fun
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
-| [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
+| [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
 
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
@@ -14,12 +14,18 @@ title: sym.fun
 @include "col"
 ```
 
-<img src="http://yuml.me/diagram/plain;/class/[Col|n%20=%200;%20col;%20txt|Col1()]^-[Num|mu%20=%200;%20sd%20=%200],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note:%20"any"%20does%20the%20sampling{bg:cornsilk}]">
+<img src="http://yuml.me/diagram/plain/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0],[Col]^-[Sym|mode|SymEnt();SymAny()]-[note: any does the sampling{bg:cornsilk}]">
 
-[Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
+
+
+  [Col|txr;col;n = 0|Col1()]^-[Sym|mode;most = 0;cnt:List|SymEnt(); SymAny()]
 
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (the `mode`).
+
+See also: [Col](col).
+
+## Sym
 
 ```awk
 function Sym(i,c,v) { 
