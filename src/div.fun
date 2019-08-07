@@ -2,12 +2,24 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 #--------- --------- --------- --------- --------- ---------
 
+Discretization is the process o
+
 @include "funny"
 @include "col"
 @include "the"
 
-function sdiv(xy,cuts,   xs,ys,i,step,tiny,x,y)  {
-   ksort(xy,"x")
+function sdivEnough(a,b,     m,n,i,j) {
+  n = length(a)
+  m = THE.div.enough/(n+1)
+  for(i=1; i<=n; i++) 
+    if (rand() <=  m) {
+      j++
+      b[j].x = a[i].x
+      b[j].y = a[i].y }
+}
+function sdiv(xy0,cuts,   xy,xs,ys,i,step,tiny,x,y)  {
+   ksort(xy0,"x")
+   sdivEnough(xy0,xy)
    Num(xs)
    Num(ys)
    for(i in xy) {
@@ -16,9 +28,8 @@ function sdiv(xy,cuts,   xs,ys,i,step,tiny,x,y)  {
      if (x != "?") Num1(xs, x)
      if (y != "?") Num1(ys, y) }
    List(cuts)
-   step = xs.n  ^ THE.div.min
    tiny = xs.sd * THE.div.cohen
-   print(step)
+   step = length(xy)  ^ THE.div.min
    sdiv1(xy, 1,length(xy), step,tiny, xs,ys,cuts) 
 }
 
@@ -31,7 +42,8 @@ function sdiv1(xy,lo,hi,step,tiny,xs,ys,cuts,pre,
     print(pre xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cit",cut)
     sdiv1(xy,lo,   cut,step,tiny,xl,yl,cuts,"|  "pre)
     sdiv1(xy,cut+1, hi,step,tiny,xr,yr,cuts,"|  "pre)
-  } else
+  } 
+  else
     push(cuts,xy[lo].x)
 }
 function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
@@ -42,7 +54,7 @@ function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
   Num(yl); Num(xl)
   n    = hi - lo + 1
   best = yr.sd
-  for(i=lo; i<=hi-step; i++) {
+  for(i=lo; i<=hi; i++) {
     x = xy[i].x
     y = xy[i].y
     if (x != "?") {Num1(xl, x); NumLess(xr,x)}

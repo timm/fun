@@ -14,9 +14,10 @@ function _div1(x,max) {
 function _div(  lst,a,i,cuts,max) {
    srand(1)
    List(a)
-   max=30000
-   for(i=1;i<=max;i++) 
-     pash2(a,"Xy",i*(1+rand()), _div1(i,max))
+   max=i=10^4
+   for(i=1;i<=max;i++) {
+     a[i].x = i
+     a[i].y = _div1(i,max) }
    sdiv(a,cuts)
    oo(cuts)
 }

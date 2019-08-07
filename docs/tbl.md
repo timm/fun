@@ -12,6 +12,7 @@ title: tbl.fun
 ```awk
 @include "funny"
 @include "col"
+@include "row"
 @include "the"
 ```
 
