@@ -55,7 +55,7 @@ this one should fail
     - Add the repo to Github, go to `Settings > Github  pages > Source`  and select "master branch /docs folder" (this will publish your `docs/*.md` files to the web).
 
 ## Rules of Fun
-### Fun with Code, Comments, and Unit Tests
+### Fun with Source Code
 
 Write source code into `src/x.fun` and unit tests for `x` into  `src/xok.fun`. 
 Start all your files with
@@ -72,6 +72,8 @@ Start all your files with
 (That second line is only for Vim users. That thrid line is a guide telling you when soruce code
 is getting too wide for web-based display.)
 
+## Fun with Literate  Programming
+
 Documentation is fun. Write explanations of your code around your code. Fun treats anything that matches
 the following as code (and the rest becomes markdown when the `docs/*.md` files are generated):
 
@@ -80,6 +82,8 @@ the following as code (and the rest becomes markdown when the `docs/*.md` files 
   /^(func|BEGIN|END).*}$/  
   /^(func|BEGIN|END)/,/^}/ 
 ```
+
+## Fun with Unit Tests
 
 Unit test functions all have to start with an `f` argument that says what file you are testing. Pass
 that argument to the `is` function that checks if a test worked. e.g.
@@ -91,6 +95,7 @@ function _any(f,   a,b,i) {
   is(f, b[1],1)
 }
 
+Unit test files for `x.fun` are stored in `xok.fun`.
 In your unit test file, write a `BEGIN` statement that lists your unit tests. e.g. in `funny.fun` see
 
 BEGIN { tests("funny", "_isnt,_any") }
