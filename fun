@@ -65,7 +65,7 @@ doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v foo
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\n" top "\n\n# " name }
   NR < 4                   { next }
-  sub(/^#!class /,"")       { print "<img src=\"http://yuml.me/diagram/scruffy/class/"$0"\">"; next}
+  sub(/^#!class /,"")       { print "<img src=\"http://yuml.me/diagram/plain/class/"$0"\">"; next}
                            { print } 
   END                      { if (Code) print "```"; print "\n\n"footer } '
 }

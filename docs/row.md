@@ -8,7 +8,7 @@ title: row.fun
 
 # row.fun
 
-<img src="http://yuml.me/diagram/scruffy/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
+<img src="http://yuml.me/diagram/plain/class/[Tbl]++->1..*[Row|cells;cooked;dom = 0]">
 
 `Tbl` (tables) have `Row`s.
 
