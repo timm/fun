@@ -60,9 +60,10 @@ Given two `Num` objects "_x_" and "_y_" then:
 The standard way to apply these rules is the following ttest test
 for significant differences.
 
--  Different = MeanFX * sqrt(SampleFX/SdFX)  
+-  Different = _MeanFX * sqrt(SampleFX/SdFX) &gt; T_ 
 
-In these equations, "different" is more likely the larger
+where  "_T_" is some threshold that we show how to calculate, below.
+In this equation, "different" is more likely the larger
 the mean difference or the larger the sample size.  Also, larger
 standard deviations will reduce that likelihood (since it is on the
 bottom of the fraction).
