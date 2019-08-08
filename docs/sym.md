@@ -64,11 +64,15 @@ Note that the analog  of entropy for continuous distributions is Standard deviat
 ```
 
 To sample symbols from this distribution, (1) pick a random number;
-then (2) let every entry "eat" some portion of it;
-and (3)
-return the symbols found where there is nothing left to eat. Note that for distributions with many numbers,
-it is useful to sort the ditionary of symbol counts in descending order (since, usually, the first items in that sort
-will be selected most often). But for non-large distribtuions, the following does quite nicely.
+then (2) let every entry "eat" some portion of it; and (3) return
+the symbols found where there is nothing left to eat. 
+
+- Note that for distributions with many numbers, it is useful to
+sort the ditionary of symbol counts in descending order (since, usually, the first items in that sort will be selected most often).
+But for non-large distribtuions, the following does quite nicely.
+- Also note the optional "without" argument. If set then we select
+from the _opposite_ of this distribution. This is useful if this
+distribution is loaded up with things we want to avoid.
 
 ```awk
   25.  function SymAny(i,without,  r,k,m) {
@@ -81,7 +85,6 @@ will be selected most often). But for non-large distribtuions, the following doe
   32.    return k
   33.  }
 ```
-
 
 ## See also
 

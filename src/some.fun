@@ -3,7 +3,7 @@
 ---------- --------- --------- --------- --------- --
 
 
-#!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR()]
+#!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();]
 
 
 `Some` is a reservoir sampler; i.e. is a method for  randomly keep
@@ -60,6 +60,9 @@ function SomeIQR(i,   m) {
   m = int(length(i.cache)/4)
   return i.cache[3*m] - i.cache[m]
 }   
+
+Here, we check if two `Some`s differ by more
+than a small effect.
 
 function SomeDiff(i,j) {
   return cliffsDelta(i.cache, j.cache)

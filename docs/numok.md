@@ -44,8 +44,11 @@ both ways.
   20.  }
 ```
 
+Check that it we pull from some initial gaussian distribution,
+we can sample it to find the same means and standard deviation.
+
 ```awk
-  21.  func _any(f,     max,n,a,i,mu,sd,n0,n1) {
+  21.  func _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
   22.    srand(1)
   23.    Num(n0)
   24.    Num(n1)
@@ -57,9 +60,7 @@ both ways.
   30.      push(a, x) 
   31.    }
   32.    for(i=1;i<=max;i+= 1) Num1(n1, NumAny(n0))
-  33.    oo(n0,"n0")
-  34.    oo(n1,"n1")
-  35.    print(n0.sd, n1.sd)
-  36.    print(n0.mu, n1.mu)
-  37.  }
+  33.    is(f,n0.sd, n1.sd,0.05)
+  34.    is(f, (n0.mu-n1.mu)< 0.05,1 )
+  35.  }
 ```

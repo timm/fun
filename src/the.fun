@@ -13,6 +13,7 @@ func Config(i) {
   i.div.cohen =    0.3
   i.div.trivial=   1.05
   i.div.enough=  512
+  i.div.verbose=   1
 
   i.some.most  = 256
   i.some.cliffs=   0.147 # small effect. From Romano 2006

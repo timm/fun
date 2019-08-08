@@ -7,6 +7,7 @@ Discretization is the process o
 @include "funny"
 @include "col"
 @include "the"
+@include "Num"
 
 function sdivEnough(a,b,     m,n,i,j) {
   n = length(a)

@@ -1,0 +1,89 @@
+---
+title: div1.fun
+---
+
+<img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
+
+| [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
+
+<em> &copy; 2019 Tim Menzies. http://menzies.us</em>
+
+# div1.fun
+
+Discretization is the process o
+
+```awk
+   1.  @include "funny"
+   2.  @include "col"
+   3.  @include "the"
+   4.  @include "Num"
+```
+
+```awk
+   5.  function Sdiv(i,xy0,
+   6.                xs,ys,j,x,y) {
+   7.    print 1
+   8.    has(i,"cuts")
+   9.    has(i,"xy")
+  10.    ksort(xy0,"x")
+  11.    SdivEnough(i,xy0)
+  12.    Num(xs)
+  13.    Num(ys)
+  14.    for(j in i.xy) {
+  15.      x = i.xy[j].x
+  16.      y = i.xy[j].y
+  17.      if (x != "?") Num1(xs, x)
+  18.      if (y != "?") Num1(ys, y) }
+  19.    i.tiny = THE.div.cohen * xs.sd
+  20.    i.step = THE.div.min   * length(i.xy)
+  21.    SdivCuts(i,1,length(i.xy), xs,ys)
+  22.  }
+  23.  function SdivEnough(i,a,     m,n,j) {
+  24.    n = length(a)
+  25.    m = THE.div.enough/(n+0.000001)
+  26.    while(n--)
+  27.      if (rand() <=  m) {
+  28.        j++
+  29.        i.xy[j].x = a[j].x
+  30.        i.xy[j].y = a[j].y }
+  31.  }
+  32.  function SdivCuts(i, lo,hi,xs,ys,pre,
+  33.                   xl,yl,xr,yr,cut) {
+  34.    Num(xl); Num(yl)
+  35.    Num(xr); Num(yr)
+  36.    cut = SdivCut(i,lo,hi,xs,ys,xl,xr,yl,yr) 
+  37.    if (cut) {
+  38.      if (THE.div.verbose)
+  39.        print(pre i.xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cut",cut)
+  40.      SdivCuts(i,   lo, cut,xl,yl,"|  "pre)
+  41.      SdivCuts(i,cut+1,  hi,xr,yr,"|  "pre)
+  42.    } 
+  43.    else
+  44.      push(i.cuts,i.xy[lo].x)
+  45.  }
+  46.  function SdivCut(i,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
+  47.                 j,cut,start,stop,yl,xl,n,best,x,y,tmp) {
+  48.    start = i.xy[lo].x
+  49.    stop  = i.xy[hi].x
+  50.    if (stop - start < i.tiny) return
+  51.    Num(yl); Num(xl)
+  52.    n    = hi - lo + 1
+  53.    best = yr.sd
+  54.    for(j=lo; j<=hi; j++) {
+  55.      x = i.xy[j].x
+  56.      y = i.xy[j].y
+  57.      if (x != "?") {Num1(xl, x); NumLess(xr,x)}
+  58.      if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
+  59.      if (xl.n >= i.step)
+  60.        if (xr.n >= i.step)
+  61.          if ((x - start) > i.tiny) 
+  62.            if((stop - x) > i.tiny)  {
+  63.              tmp = yl.n/n*yl.sd + yr.n/n*yr.sd
+  64.              if (tmp*THE.div.trivial < best) {
+  65.                cut  = j
+  66.                best = tmp
+  67.                become(yl,yl1); become(yr,yr1)
+  68.                become(xl,xl1); become(xr,xr1) }}}
+  69.    return cut
+  70.  }
+```

@@ -30,7 +30,10 @@ func _num(f,     n,a,i,mu,sd) {
     NumLess(n,a[i]) }
 }
 
-func _any(f,     max,n,a,i,mu,sd,n0,n1) {
+Check that it we pull from some initial gaussian distribution,
+we can sample it to find the same means and standard deviation.
+
+func _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
   srand(1)
   Num(n0)
   Num(n1)
@@ -42,8 +45,6 @@ func _any(f,     max,n,a,i,mu,sd,n0,n1) {
     push(a, x) 
   }
   for(i=1;i<=max;i+= 1) Num1(n1, NumAny(n0))
-  oo(n0,"n0")
-  oo(n1,"n1")
-  print(n0.sd, n1.sd)
-  print(n0.mu, n1.mu)
+  is(f,n0.sd, n1.sd,0.05)
+  is(f, (n0.mu-n1.mu)< 0.05,1 )
 }

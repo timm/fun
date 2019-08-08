@@ -16,72 +16,73 @@ Discretization is the process o
    1.  @include "funny"
    2.  @include "col"
    3.  @include "the"
+   4.  @include "Num"
 ```
 
 ```awk
-   4.  function sdivEnough(a,b,     m,n,i,j) {
-   5.    n = length(a)
-   6.    m = THE.div.enough/(n+1)
-   7.    for(i=1; i<=n; i++) 
-   8.      if (rand() <=  m) {
-   9.        j++
-  10.        b[j].x = a[i].x
-  11.        b[j].y = a[i].y }
-  12.  }
-  13.  function sdiv(xy0,cuts,   xy,xs,ys,i,step,tiny,x,y)  {
-  14.     ksort(xy0,"x")
-  15.     sdivEnough(xy0,xy)
-  16.     Num(xs)
-  17.     Num(ys)
-  18.     for(i in xy) {
-  19.       x = xy[i].x
-  20.       y = xy[i].y
-  21.       if (x != "?") Num1(xs, x)
-  22.       if (y != "?") Num1(ys, y) }
-  23.     List(cuts)
-  24.     tiny = xs.sd * THE.div.cohen
-  25.     step = length(xy)  ^ THE.div.min
-  26.     sdiv1(xy, 1,length(xy), step,tiny, xs,ys,cuts) 
-  27.  }
+   5.  function sdivEnough(a,b,     m,n,i,j) {
+   6.    n = length(a)
+   7.    m = THE.div.enough/(n+1)
+   8.    for(i=1; i<=n; i++) 
+   9.      if (rand() <=  m) {
+  10.        j++
+  11.        b[j].x = a[i].x
+  12.        b[j].y = a[i].y }
+  13.  }
+  14.  function sdiv(xy0,cuts,   xy,xs,ys,i,step,tiny,x,y)  {
+  15.     ksort(xy0,"x")
+  16.     sdivEnough(xy0,xy)
+  17.     Num(xs)
+  18.     Num(ys)
+  19.     for(i in xy) {
+  20.       x = xy[i].x
+  21.       y = xy[i].y
+  22.       if (x != "?") Num1(xs, x)
+  23.       if (y != "?") Num1(ys, y) }
+  24.     List(cuts)
+  25.     tiny = xs.sd * THE.div.cohen
+  26.     step = length(xy)  ^ THE.div.min
+  27.     sdiv1(xy, 1,length(xy), step,tiny, xs,ys,cuts) 
+  28.  }
 ```
 
 ```awk
-  28.  function sdiv1(xy,lo,hi,step,tiny,xs,ys,cuts,pre,
-  29.                 xl,yl,xr,yr,cut) {
-  30.    Num(xl); Num(yl)
-  31.    Num(xr); Num(yr)
-  32.    cut = sdivCut(xy,lo,hi,step,tiny,xs,ys,xl,xr,yl,yr) 
-  33.    if (cut) {
-  34.      print(pre xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cit",cut)
-  35.      sdiv1(xy,lo,   cut,step,tiny,xl,yl,cuts,"|  "pre)
-  36.      sdiv1(xy,cut+1, hi,step,tiny,xr,yr,cuts,"|  "pre)
-  37.    } 
-  38.    else
-  39.      push(cuts,xy[lo].x)
-  40.  }
-  41.  function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
-  42.                 cut,start,stop,yl,xl,n,best,i,x,y,tmp) {
-  43.    start = xy[lo].x
-  44.    stop  = xy[hi].x
-  45.    if (stop - start < tiny) return
-  46.    Num(yl); Num(xl)
-  47.    n    = hi - lo + 1
-  48.    best = yr.sd
-  49.    for(i=lo; i<=hi; i++) {
-  50.      x = xy[i].x
-  51.      y = xy[i].y
-  52.      if (x != "?") {Num1(xl, x); NumLess(xr,x)}
-  53.      if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
-  54.      if (xl.n >= step)
-  55.        if (xr.n >= step)
-  56.          if ((x - start) > tiny) 
-  57.            if((stop - x) > tiny)  {
-  58.              tmp = yl.n/n*yl.sd + yr.n/n*yr.sd
-  59.              if (tmp*THE.div.trivial < best) {
-  60.                cut  = i
-  61.                best = tmp
-  62.                become(yl,yl1); become(yr,yr1)
-  63.                become(xl,xl1); become(xr,xr1) }}}
-  64.    return cut
-  65.  }
+  29.  function sdiv1(xy,lo,hi,step,tiny,xs,ys,cuts,pre,
+  30.                 xl,yl,xr,yr,cut) {
+  31.    Num(xl); Num(yl)
+  32.    Num(xr); Num(yr)
+  33.    cut = sdivCut(xy,lo,hi,step,tiny,xs,ys,xl,xr,yl,yr) 
+  34.    if (cut) {
+  35.      print(pre xy[lo].x,"lo",lo,"hi",hi,"d",hi-lo,"cit",cut)
+  36.      sdiv1(xy,lo,   cut,step,tiny,xl,yl,cuts,"|  "pre)
+  37.      sdiv1(xy,cut+1, hi,step,tiny,xr,yr,cuts,"|  "pre)
+  38.    } 
+  39.    else
+  40.      push(cuts,xy[lo].x)
+  41.  }
+  42.  function sdivCut(xy,lo,hi,step,tiny,xr,yr,xl1,xr1,yl1,yr1,
+  43.                 cut,start,stop,yl,xl,n,best,i,x,y,tmp) {
+  44.    start = xy[lo].x
+  45.    stop  = xy[hi].x
+  46.    if (stop - start < tiny) return
+  47.    Num(yl); Num(xl)
+  48.    n    = hi - lo + 1
+  49.    best = yr.sd
+  50.    for(i=lo; i<=hi; i++) {
+  51.      x = xy[i].x
+  52.      y = xy[i].y
+  53.      if (x != "?") {Num1(xl, x); NumLess(xr,x)}
+  54.      if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
+  55.      if (xl.n >= step)
+  56.        if (xr.n >= step)
+  57.          if ((x - start) > tiny) 
+  58.            if((stop - x) > tiny)  {
+  59.              tmp = yl.n/n*yl.sd + yr.n/n*yr.sd
+  60.              if (tmp*THE.div.trivial < best) {
+  61.                cut  = i
+  62.                best = tmp
+  63.                become(yl,yl1); become(yr,yr1)
+  64.                become(xl,xl1); become(xr,xr1) }}}
+  65.    return cut
+  66.  }
 ```

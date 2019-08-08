@@ -11,7 +11,7 @@ title: some.fun
 # some.fun
 
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR()]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();]">
 
 
 `Some` is a reservoir sampler; i.e. is a method for  randomly keep
@@ -80,6 +80,9 @@ IQR is the inter-quartile range and is the difference between the
   33.    return i.cache[3*m] - i.cache[m]
   34.  }   
 ```
+
+Here, we check if two `Some`s differ by more
+than a small effect.
 
 ```awk
   35.  function SomeDiff(i,j) {

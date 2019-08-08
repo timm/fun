@@ -18,21 +18,25 @@ title: nums.fun
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num],[Nums]-.-[note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
 
 To test if two distributions are different, there are some methods
-that are somewhat slow, but very thorough (and these methods are "nonparametric"; i.e. they do not make
-any (potentially silly) assumptions about the shaper of the data).  If you are going to publish results
-(say, in the SE literature), you need to use those thorough methods to check your final conclusions[^slow].
+that are somewhat slow, but very thorough (and these methods are
+"nonparametric"; i.e. they do not make any (potentially silly)
+assumptions about the shaper of the data).  If you are going to
+publish results (say, in the SE literature), you need to use those
+thorough methods to check your final conclusions[^slow].
 
 [^slow]: There are many such methods but I recommend Scott-Knot with bootstrapping and Cliff's Delta.
 
-That said, deep in guts of an inference procedure, you often need a fast heuristic way to peek at
-a distribution  to decide if they seem difference. This page describes two such methods:
+That said, deep in guts of an inference procedure, you often need
+a fast heuristic peek at a distribution  to quickly decide if they
+seem difference. This page describes two such methods (and it recommended that you use this both
+as a conjunction):
 
 - The  ttest for significant differences in distributions;
 - The hedges test for small effects.
 
-Using these tests, two distributions "_x_" and "_y_"
-are different if they are not significantly different and
-have differences larger than a small effect.
+Using these tests, two distributions "_x_" and "_y_" are different
+if they are not significantly different and have differences larger
+than a small effect.
 
 ```awk
    4.  function diff(x,y,      s) { 
@@ -52,8 +56,8 @@ But if we picked one value from each distribution, what are the
 odds that we will _not_ the same value (i.e.  that the value is not
 found in both distributions).  If there was no overlap in the two
 distibutions, then those odds are zero. But these curves overlap
-so we need some rules to decide those odds.
-Given two `Num` objects "_x_" and "_y_" then:
+so we need some rules to decide those odds.  Given two `Num` objects
+"_x_" and "_y_" then:
 
 - _MeanFX_ = the mean effect.
   The larger the mean difference, the higher the odds 

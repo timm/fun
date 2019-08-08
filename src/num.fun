@@ -3,6 +3,7 @@
 
 @include "funny"
 @include "col"
+@include "nums"
 
 #!class [Col|n = 0]^-[Num|mu = 0; m2 = 0; lo; hi| Num1(); NumNorm();NumLess();NumAny()]
 
@@ -78,3 +79,9 @@ function NumAnyT(i) { # Another any, assumes a triangle distribution
   return triangle(i.lo, i.mu, i.hi)
 }
 
+Here, we check if two `Num`s are significantly different
+and differ by mroe than a small effect:
+
+function NumDiff(i,j) {
+  return diff(i,j) # defined in "Nums"
+}
