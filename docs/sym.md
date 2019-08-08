@@ -91,3 +91,6 @@ function SymAny(i,without,  r,k,m) {
 
 
 ## Notes
+
+
+</small>
