@@ -1,7 +1,7 @@
 #!/usr/bin/env ../fun
 # vim: filetype=awk ts=2 sw=2 sts=2  et :
 
-#!class [Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]
+#!class [Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-.-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]
 
 @include "funny"
 @include "col"

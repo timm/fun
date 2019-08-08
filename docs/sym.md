@@ -9,7 +9,7 @@ title: sym.fun
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # sym.fun
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-.-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]">
 
 ```awk
 @include "funny"
