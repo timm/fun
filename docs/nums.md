@@ -15,7 +15,7 @@ title: nums.fun
 @include "the"
 ```
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num], [note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num],[Nums]-.-[note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
 
 To test if two distributions are different, there are some methods
 that are somewhat slow, but very thorough (and these methods are "nonparametric"; i.e. they do not make
@@ -164,7 +164,6 @@ function ttest1(s,df,conf,   n1,n2,old,new,c) {
 }
 ```
 
-
 ## Further Reading:
 
 The above Hedges test (and its thresholds) come from 
@@ -173,3 +172,7 @@ The above Hedges test (and its thresholds) come from
 For more thorough methods to test if distrbutions are different,
 or to check for large effect sizes, see bootstrapping and Cliff's
 Delta (discussed later).
+
+
+## Notes
+
