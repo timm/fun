@@ -46,16 +46,16 @@ Given two `Num` objects "_x_" and "_y_" then:
 - _MeanFX_ = the mean effect.
   The larger the mean difference, the higher the odds 
   that the distrbutions are different;
-      - MeanFX =            `abs(x.mu - y.mu)`;
+    - MeanFX =            `abs(x.mu - y.mu)`;
 - _SdFX_ = the standard deviation effect.
   The larger the standard deviations, the lower those 
   odds (since there is more overlap);
-      - SdFX  = `(x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2`
+    - SdFX  = `(x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2`
 - _SampleFx_ = the sample size effect.
    If the sammple size is very large, then the 
   odds increase since we have more examples of these
   mean differences being actual differences.
-      - SampleFX = `(x.n - 1) + (y.n - 1)`;        
+    - SampleFX = `(x.n - 1) + (y.n - 1)`;        
 
 The standard way to apply these rules is the following ttest test
 for significant differences.
