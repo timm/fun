@@ -2,16 +2,17 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-Fun is a transpiler language that adds literate programming, unit tests,
-and object-like features to Gawk.
+FUN is a succinct scripting langauge that supports literate programming (with a few UML tricks); unit tests;
+and object-like features.
+FUN is a transpiled language.
  `xxx.fun` files are converted into:
 
 - `xxx.awk` files (for scripting) and stored in `$HOME/opt/fun/awk`;
 - `xxx.md` markdown files (for web display) and stored in `docs/`;
 - `xxx` executable scripts (for standalone execution) and stored in `$HOME/opt/fun/bin`;
 
-This code is a fun way to teach.
-Given code in a language they have never seen before (i.e. this one), students
+FUN  is a fun way to teach.
+Given code in a language they have never seen before (i.e. FUN), students
 code up their own versions (in whatever langauge they like best).
 
 But why transpile to gawk?
