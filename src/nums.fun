@@ -4,7 +4,7 @@
 @include "funny"
 @include "num"
 
-#!class [Num]-compares-[Nums],[Nums]-compares-[Num]
+#!class [Nums]1->2[Num], [note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]
 
 `Num` incrementally  maintains the mean and standard deviation of
 the numbers seen in a column.
