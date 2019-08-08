@@ -2,7 +2,6 @@
 title: sym.fun
 ---
 
-<small>
 
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
@@ -93,4 +92,3 @@ function SymAny(i,without,  r,k,m) {
 ## Notes
 
 
-</small>
