@@ -96,27 +96,27 @@ For notes on that syntax, see [here](https://github.com/aklump/yuml-cheatsheet).
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|name;pos;n = 0]^-[Num|mu = 0;sum = 0]">
 
 ```awk
-function Col(i,name,pos) {
-  i.n   = 0
-  i.name= name
-  i.pos = pos
-}
-function Num(i,name,pos) {
-  Col(i,name,pos)  # call to super class constructor
-  i.mu = i.sum = 0 
-}
+   1.  function Col(i,name,pos) {
+   2.    i.n   = 0
+   3.    i.name= name
+   4.    i.pos = pos
+   5.  }
+   6.  function Num(i,name,pos) {
+   7.    Col(i,name,pos)  # call to super class constructor
+   8.    i.mu = i.sum = 0 
+   9.  }
 ```
 
 - To update an object, write a Methods ending in "1". Usually, return the added thing
 (it if is a string or number).  e.g.
 
 ```awk
-function Num1(i, x) {
-  i.sum += x
-  i.n += 1
-  i.mu = i.sum/i.n
-  return x
-}
+  10.  function Num1(i, x) {
+  11.    i.sum += x
+  12.    i.n += 1
+  13.    i.mu = i.sum/i.n
+  14.    return x
+  15.  }
 ```
 
 ### Fun with Source Code
@@ -152,19 +152,19 @@ Unit test functions all have to start with an `f` argument that says what file y
 that argument to the `is` function that checks if a test worked. e.g.
 
 ```awk
-function _any(f,   a,b,i) {
-  split("a,b,c,d,e,f",a,",")
-  for(i=1;i<=50;i++) b[i]=any(a)
-  asort(b)
-  is(f, b[1],1)
-}
+  16.  function _any(f,   a,b,i) {
+  17.    split("a,b,c,d,e,f",a,",")
+  18.    for(i=1;i<=50;i++) b[i]=any(a)
+  19.    asort(b)
+  20.    is(f, b[1],1)
+  21.  }
 ```
 
 Unit test files for `x.fun` are stored in `xok.fun`.
 In your unit test file, write a `BEGIN` statement that lists your unit tests. e.g. in `funny.fun` see
 
 ```awk
-BEGIN { tests("funny", "_isnt,_any") }
+  22.  BEGIN { tests("funny", "_isnt,_any") }
 ```
 
 ### Fun with Variables
@@ -174,12 +174,12 @@ For example, here is the `tests` function used to call multiple unit tests. `wha
 `one,a,i,n` are locals.
 
 ```awk
-function tests(what, all,   one,a,i,n) {
-  n = split(all,a,",")
-  print "\n#--- " what " -----------------------"
-  for(i=1;i<=n;i++) { one = a[i]; @one(one) }
-  rogues()
-}
+  23.  function tests(what, all,   one,a,i,n) {
+  24.    n = split(all,a,",")
+  25.    print "\n#--- " what " -----------------------"
+  26.    for(i=1;i<=n;i++) { one = a[i]; @one(one) }
+  27.    rogues()
+  28.  }
 ```
 
 ### Fun with Config

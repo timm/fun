@@ -10,25 +10,25 @@ title: funnyok.fun
 
 # funnyok.fun
 ```awk
-@include "funny"
+   1.  @include "funny"
 ```
 
 ```awk
-BEGIN { tests("funny", "_isnt,_any") }
+   2.  BEGIN { tests("funny", "_isnt,_any") }
 ```
 
 ```awk
-function _isnt(f) {
-  print "this one should fail"
-  is(f, 0,1)
-}
+   3.  function _isnt(f) {
+   4.    print "this one should fail"
+   5.    is(f, 0,1)
+   6.  }
 ```
 
 ```awk
-function _any(f,   a,b,i) {
-  split("a,b,c,d,e,f",a,",")
-  for(i=1;i<=50;i++) b[i]=any(a)
-  asort(b)
-  is(f, b[1],1)
-}
+   7.  function _any(f,   a,b,i) {
+   8.    split("a,b,c,d,e,f",a,",")
+   9.    for(i=1;i<=50;i++) b[i]=any(a)
+  10.    asort(b)
+  11.    is(f, b[1],1)
+  12.  }
 ```

@@ -11,13 +11,13 @@ title: someok.fun
 # someok.fun
 
 ```awk
-@include "funny"
-@include "some"
-@include "num"
+   1.  @include "funny"
+   2.  @include "some"
+   3.  @include "num"
 ```
 
 ```awk
-BEGIN {  tests("someof","_some") }
+   4.  BEGIN {  tests("someof","_some") }
 ```
 
 `s` are `Some` of some random numbers. `n0` is
@@ -27,21 +27,21 @@ as `n1`, a
 the distribution drawn from `SomeAny(s)`. 
 
 ```awk
-func _some(f,     n0,n1,s,a,max,x,i) {
-  max = 3000
-  srand(1)
-  Num(n0)
-  Num(n1)
-  Some(s)
-  List(a)
-  for(i=1;i<=max;i+= 1) {
-    x = push(a, rand()) 
-    Num1(n0,x)
-    Some1(s,x)
-  }
-  for(i=1;i<=max;i+= 1) 
-    Num1(n1, SomeAny(s))
-  is(f,n0.sd, n1.sd, 0.01)
-  is(f,n0.mu, n1.mu, 0.01)
-}
+   5.  func _some(f,     n0,n1,s,a,max,x,i) {
+   6.    max = 3000
+   7.    srand(1)
+   8.    Num(n0)
+   9.    Num(n1)
+  10.    Some(s)
+  11.    List(a)
+  12.    for(i=1;i<=max;i+= 1) {
+  13.      x = push(a, rand()) 
+  14.      Num1(n0,x)
+  15.      Some1(s,x)
+  16.    }
+  17.    for(i=1;i<=max;i+= 1) 
+  18.      Num1(n1, SomeAny(s))
+  19.    is(f,n0.sd, n1.sd, 0.01)
+  20.    is(f,n0.mu, n1.mu, 0.01)
+  21.  }
 ```

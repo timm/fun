@@ -63,12 +63,12 @@ parse() { gawk '
                            { print "DOC " $0} '
 }
 doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v footer="$footer" ' 
-  sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print $0; next }
+  sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print sprintf("%4s.  ",++N) $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
   BEGIN                    { print  "---\ntitle: " name "\n---\n\n"banner "\n\n" top "\n\n" footer "\n\n# " name }
   NR < 4                   { next }
   sub(/^#!class /,"")       { print "<img src=\"http://yuml.me/diagram/plain;dir:lr/class/"$0"\">"; next}
-                           { print } 
+                           { print }
   END                      { if (Code) print "```";  } '
 }
 gen() { gawk ' 

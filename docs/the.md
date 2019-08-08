@@ -11,28 +11,28 @@ title: the.fun
 # the.fun
 
 ```awk
-@include "funny"
+   1.  @include "funny"
 ```
 
 ```awk
-func Config(i) {
-  Object(i)
-
-  i.row.doms  =   64
-
-  i.div.min   =    0.5
-  i.div.cohen =    0.3
-  i.div.trivial=   1.05
-  i.div.enough=  512
-
-  i.some.most  = 256
-
-  i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
-  i.nums.ttest=   95 # selects thresholds for ttest
-
-}
+   2.  func Config(i) {
+   3.    Object(i)
+   4.  
+   5.    i.row.doms  =   64
+   6.  
+   7.    i.div.min   =    0.5
+   8.    i.div.cohen =    0.3
+   9.    i.div.trivial=   1.05
+  10.    i.div.enough=  512
+  11.  
+  12.    i.some.most  = 256
+  13.  
+  14.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
+  15.    i.nums.ttest=   95 # selects thresholds for ttest
+  16.  
+  17.  }
 ```
 
 ```awk
-BEGIN {Config(THE)}
+  18.  BEGIN {Config(THE)}
 ```

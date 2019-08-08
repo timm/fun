@@ -10,7 +10,7 @@ title: col.fun
 
 # col.fun
 ```awk
-@include "funny"
+   1.  @include "funny"
 ```
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]">
@@ -20,23 +20,23 @@ title: col.fun
 ## Col
 
 ```awk
-function Col(i,c,v) { 
-  Object(i)   
-  i.n=0
-  i.col=c
-  i.txt=v 
-} 
+   2.  function Col(i,c,v) { 
+   3.    Object(i)   
+   4.    i.n=0
+   5.    i.col=c
+   6.    i.txt=v 
+   7.  } 
 ```
 
 The generic add function ignroes anything that is a `"?"`. 
 
 ```awk
-BEGIN {IGNORE="\\?"}
-function Col1(i,v,   add) {
-  if (v ~ IGNORE) return v
-  add = i.add
-  return @add(i,v)
-} 
+   8.  BEGIN {IGNORE="\\?"}
+   9.  function Col1(i,v,   add) {
+  10.    if (v ~ IGNORE) return v
+  11.    add = i.add
+  12.    return @add(i,v)
+  13.  } 
 ```
 
 Sym and Num and Some track the central tendancies and variety  of the the columns they watch

@@ -11,34 +11,34 @@ title: numsok.fun
 # numsok.fun
 
 ```awk
-@include "funny"
-@include "nums"
+   1.  @include "funny"
+   2.  @include "nums"
 ```
 
 ```awk
-BEGIN {  tests("numok","_nums") }
+   3.  BEGIN {  tests("numok","_nums") }
 ```
 
 ```awk
-func _nums(f,     a,i,k) {
-  srand()
-  Config(THE)
-  THE.nums.ttest = 95
-  for(i=1;i<=100;i+= 1)  
-    a[i] = rand()^2
-  for(k=1; k<=1.5; k+=0.05) 
-     _num1(a,k)
-}
+   4.  func _nums(f,     a,i,k) {
+   5.    srand()
+   6.    Config(THE)
+   7.    THE.nums.ttest = 95
+   8.    for(i=1;i<=100;i+= 1)  
+   9.      a[i] = rand()^2
+  10.    for(k=1; k<=1.5; k+=0.05) 
+  11.       _num1(a,k)
+  12.  }
 ```
 
 ```awk
-func _num1(a,k,    i,na,nk) {
-  Num(na)
-  Num(nk)
-  for(i in a) {
-    Num1(na, a[i])
-    Num1(nk, a[i]*k)
-  }
-  print(k,diff(na,nk))
-}
+  13.  func _num1(a,k,    i,na,nk) {
+  14.    Num(na)
+  15.    Num(nk)
+  16.    for(i in a) {
+  17.      Num1(na, a[i])
+  18.      Num1(nk, a[i]*k)
+  19.    }
+  20.    print(k,diff(na,nk))
+  21.  }
 ```

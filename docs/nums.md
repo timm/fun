@@ -10,9 +10,9 @@ title: nums.fun
 
 # nums.fun
 ```awk
-@include "funny"
-@include "num"
-@include "the"
+   1.  @include "funny"
+   2.  @include "num"
+   3.  @include "the"
 ```
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num],[Nums]-.-[note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
@@ -35,10 +35,10 @@ are different if they are not significantly different and
 have differences larger than a small effect.
 
 ```awk
-function diff(x,y,      s) { 
-  Nums(s)
-  return hedges(x,y,s) && ttest(x,y,s)
-}
+   4.  function diff(x,y,      s) { 
+   5.    Nums(s)
+   6.    return hedges(x,y,s) && ttest(x,y,s)
+   7.  }
 ```
 
 First, some theory. Consider the following two normal bell-shaped
@@ -101,52 +101,52 @@ from 95 to 99 makes it harder to prove things are different (and
 95 is the usual conference level).
 
 ```awk
-function Nums(i) {
-  Object(i)
-  i.conf  = THE.nums.ttest  # selects the threshold for ttest
-  i.small = THE.nums.hedged # threshold for effect size test. 
-  # Thresholds for ttests at two different confidence levels
-  # -- 95% --------------------------
-  i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
-  i[95][12]= 2.179; i[95][24]= 2.064; 
-  i[95][48]= 2.011; i[95][98]= 1.985; 
-  # -- 99% --------------------------
-  i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
-  i[99][12]= 3.055; i[99][24]= 2.797; 
-  i[99][48]= 2.682; i[99][98]= 2.625; 
-  i.first = 3  # must be the smallest index of the above arrays
-  i.last  = 98 # must be the last     index of the above arrays
-}
+   8.  function Nums(i) {
+   9.    Object(i)
+  10.    i.conf  = THE.nums.ttest  # selects the threshold for ttest
+  11.    i.small = THE.nums.hedged # threshold for effect size test. 
+  12.    # Thresholds for ttests at two different confidence levels
+  13.    # -- 95% --------------------------
+  14.    i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
+  15.    i[95][12]= 2.179; i[95][24]= 2.064; 
+  16.    i[95][48]= 2.011; i[95][98]= 1.985; 
+  17.    # -- 99% --------------------------
+  18.    i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
+  19.    i[99][12]= 3.055; i[99][24]= 2.797; 
+  20.    i[99][48]= 2.682; i[99][98]= 2.625; 
+  21.    i.first = 3  # must be the smallest index of the above arrays
+  22.    i.last  = 98 # must be the last     index of the above arrays
+  23.  }
 ```
 
 Here's the test for "larger than a small effect":
 
 ```awk
-function hedges(x,y,s,   nom,denom,sp,g,c) {
-  # from http://tiny.cc/fxsize
-  nom   = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2
-  denom = (x.n - 1)        + (y.n - 1)
-  sp    = sqrt( nom / denom )
-  g     = abs(x.mu - y.mu) / sp  
-  c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
-  return g * c > s.small
-}
+  24.  function hedges(x,y,s,   nom,denom,sp,g,c) {
+  25.    # from http://tiny.cc/fxsize
+  26.    nom   = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2
+  27.    denom = (x.n - 1)        + (y.n - 1)
+  28.    sp    = sqrt( nom / denom )
+  29.    g     = abs(x.mu - y.mu) / sp  
+  30.    c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
+  31.    return g * c > s.small
+  32.  }
 ```
 
 Here's the test for significanct difference:
 
 ```awk
-function ttest(x,y,s,    t,a,b,df,c) {
-  # debugged using https://goo.gl/CRl1Bz
-  t  = (x.mu - y.mu) / sqrt(max(10^-64,
-                                x.sd^2/x.n + y.sd^2/y.n ))
-  a  = x.sd^2/x.n
-  b  = y.sd^2/y.n
-  df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
-  c  = ttest1(s, int( df + 0.5 ), s.conf)
-  print("c",c)
-  return abs(t) > c
-}
+  33.  function ttest(x,y,s,    t,a,b,df,c) {
+  34.    # debugged using https://goo.gl/CRl1Bz
+  35.    t  = (x.mu - y.mu) / sqrt(max(10^-64,
+  36.                                  x.sd^2/x.n + y.sd^2/y.n ))
+  37.    a  = x.sd^2/x.n
+  38.    b  = y.sd^2/y.n
+  39.    df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
+  40.    c  = ttest1(s, int( df + 0.5 ), s.conf)
+  41.    print("c",c)
+  42.    return abs(t) > c
+  43.  }
 ```
 
 The following is a minor detail. It  is a 
@@ -155,18 +155,18 @@ values for the test based on degrees of freedom `df` and the specificed
 confidence level. 
 
 ```awk
-function ttest1(s,df,conf,   n1,n2,old,new,c) {
-  if (df < s.first) 
-    return s[conf][s.first]
-  for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
-    n2 = n1*2
-    if (df >= n1 && df <= n2) {
-      old = s[conf][n1]
-      new = s[conf][n2]
-      return old + (new-old) * (df-n1)/(n2-n1)
-  }}
-  return s[conf][s.last]
-}
+  44.  function ttest1(s,df,conf,   n1,n2,old,new,c) {
+  45.    if (df < s.first) 
+  46.      return s[conf][s.first]
+  47.    for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
+  48.      n2 = n1*2
+  49.      if (df >= n1 && df <= n2) {
+  50.        old = s[conf][n1]
+  51.        new = s[conf][n2]
+  52.        return old + (new-old) * (df-n1)/(n2-n1)
+  53.    }}
+  54.    return s[conf][s.last]
+  55.  }
 ```
 
 ## Further Reading:

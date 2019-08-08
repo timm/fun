@@ -11,33 +11,33 @@ title: tblok.fun
 # tblok.fun
 
 ```awk
-@include "funny"
-@include "tbl"
+   1.  @include "funny"
+   2.  @include "tbl"
 ```
 
 ```awk
-BEGIN { tests("tblok","_auto") }
+   3.  BEGIN { tests("tblok","_auto") }
 ```
 
 ```awk
-func _weather(f,  t,com) { 
-  Tbl(t)
-  lines(t,"Tbl1","weather" DOT "csv")
-  oo(t,"t")
-}
-func _auto(f,  t,r,n,m) { 
-  srand(1)
-  Tbl(t)
-  lines(t, "Tbl1", "auto" DOT "csv")
-  for(r in t.rows) 
-    RowDoms(t.rows[r], t.rows, t)
-  ksort(t.rows,"dom")
-  n = length(t.rows)
-  m=5
-  for(r=1;r<=m;r++)
-    print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
-  print ""
-  for(r=n-m;r<=n;r++)
-    print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
-}
+   4.  func _weather(f,  t,com) { 
+   5.    Tbl(t)
+   6.    lines(t,"Tbl1","weather" DOT "csv")
+   7.    oo(t,"t")
+   8.  }
+   9.  func _auto(f,  t,r,n,m) { 
+  10.    srand(1)
+  11.    Tbl(t)
+  12.    lines(t, "Tbl1", "auto" DOT "csv")
+  13.    for(r in t.rows) 
+  14.      RowDoms(t.rows[r], t.rows, t)
+  15.    ksort(t.rows,"dom")
+  16.    n = length(t.rows)
+  17.    m=5
+  18.    for(r=1;r<=m;r++)
+  19.      print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
+  20.    print ""
+  21.    for(r=n-m;r<=n;r++)
+  22.      print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
+  23.  }
 ```
