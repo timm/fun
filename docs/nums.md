@@ -52,35 +52,35 @@ But if we picked one value from each distribution, what are the
 odds that we will _not_ the same value (i.e.  that the value is not
 found in both distributions).  If there was no overlap in the two
 distibutions, then those odds are zero. But these curves overlap
-so we need some rules to decide those odds:
+so we need some rules to decide those odds.
+Given two `Num` objects "_x_" and "_y_" then:
 
 - _MeanFX_ = the mean effect.
   The larger the mean difference, the higher the odds 
   that the distrbutions are different;
+      - MeanFX =            `abs(x.mu - y.mu)`;
 - _SdFX_ = the standard deviation effect.
   The larger the standard deviations, the lower those 
   odds (since there is more overlap);
+      - SdFX  = `(x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2`
 - _SampleFx_ = the sample size effect.
    If the sammple size is very large, then the 
   odds increase since we have more examples of these
   mean differences being actual differences.
+      - SampleFX = `(x.n - 1) + (y.n - 1)`;        
 
 The standard way to apply these rules is the following ttest test
 for significant differences.
-Given two `Num` objects "_x_" and "_y_" then:
 
-        MeanFX           = abs(x.mu - y.mu)  
-        SampleFX         = (x.n - 1) + (y.n - 1)        
-        SdFX             = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2  
-        TheyAreDifferent = MeanFX * sqrt(SampleFX/SdFX)  
+-  Different = MeanFX * sqrt(SampleFX/SdFX)  
 
-In these equations, "they are different" is more certain the larger
+In these equations, "different" is more likely the larger
 the mean difference or the larger the sample size.  Also, larger
-standard deviations will reduce that certainty (since it is on the
+standard deviations will reduce that likelihood (since it is on the
 bottom of the fraction).
 
 The ttest just reports the odds that the distributions are different.
-But what if that difference is a trivially small amount?
+But what if that difference is trivially small?
 
 - To gaurd against spurious decisions, it is good practice
   to pair a ttest with some test for small effects. 

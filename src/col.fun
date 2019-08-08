@@ -27,9 +27,12 @@ function Col1(i,v,   add) {
 
 Sym and Num and Some track the central tendancies and variety  of the the columns they watch
 
-- For `Num`s, that is called mode and entropy (see `mode` and `NumEnt()`);
-- For `Sym`s, that is called mean and standard deviation (see `mu` and `sd`),
+- For `Sym`s, that is called mode and entropy (see `mode` and `NumEnt()`);
+- For `Num`s, that is called mean and standard deviation (see `mu` and `sd`),
 - For `Some`s, that is called median and IRQ (see `SomeMedian` and `SomeIQR`),
+
+(The difference between `Num` and `Some` is that the latter assumes the values come from
+some normal bell-shaped curve.)
 
 All these classes also know  how to "sample"; i.e. to generate
 numbers or symbols at a frequency that is similiar to the data from
