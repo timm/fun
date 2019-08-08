@@ -14,7 +14,7 @@ title: nums.fun
 @include "num"
 ```
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Num]1-compare-1[Num]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Num]-compares-[Nums],[Nums]-compares-[Num]">
 
 `Num` incrementally  maintains the mean and standard deviation of
 the numbers seen in a column.

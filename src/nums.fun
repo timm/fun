@@ -4,7 +4,7 @@
 @include "funny"
 @include "num"
 
-#!class [Num]1-compare-1[Num]
+#!class [Num]-compares-[Nums],[Nums]-compares-[Num]
 
 `Num` incrementally  maintains the mean and standard deviation of
 the numbers seen in a column.
