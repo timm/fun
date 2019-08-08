@@ -69,10 +69,10 @@ The standard way to apply these rules is the following ttest test
 for significant differences.
 Given two `Num` objects "_x_" and "_y_" then:
 
-   MeanFX           = abs(x.mu - y.mu)  
-   SampleFX         = (x.n - 1) + (y.n - 1)        
-   SdFX             = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2  
-   TheyAreDifferent = MeanFX * sqrt(SampleFX/SdFX)  
+        MeanFX           = abs(x.mu - y.mu)  
+        SampleFX         = (x.n - 1) + (y.n - 1)        
+        SdFX             = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2  
+        TheyAreDifferent = MeanFX * sqrt(SampleFX/SdFX)  
 
 In these equations, "they are different" is more certain the larger
 the mean difference or the larger the sample size.  Also, larger
@@ -119,6 +119,8 @@ function Nums(i) {
 }
 ```
 
+Here's the test for "larger than a small effect":
+
 ```awk
 function hedges(x,y,s,   nom,denom,sp,g,c) {
   # from http://tiny.cc/fxsize
@@ -130,6 +132,8 @@ function hedges(x,y,s,   nom,denom,sp,g,c) {
   return g * c > s.small
 }
 ```
+
+Here's the test for significanct difference:
 
 ```awk
 function ttest(x,y,s,    t,a,b,df,c) {

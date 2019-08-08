@@ -57,10 +57,10 @@ The standard way to apply these rules is the following ttest test
 for significant differences.
 Given two `Num` objects "_x_" and "_y_" then:
 
-   MeanFX           = abs(x.mu - y.mu)  
-   SampleFX         = (x.n - 1) + (y.n - 1)        
-   SdFX             = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2  
-   TheyAreDifferent = MeanFX * sqrt(SampleFX/SdFX)  
+        MeanFX           = abs(x.mu - y.mu)  
+        SampleFX         = (x.n - 1) + (y.n - 1)        
+        SdFX             = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2  
+        TheyAreDifferent = MeanFX * sqrt(SampleFX/SdFX)  
 
 In these equations, "they are different" is more certain the larger
 the mean difference or the larger the sample size.  Also, larger
@@ -105,6 +105,8 @@ function Nums(i) {
   i.last  = 98 # must be the last     index of the above arrays
 }
 
+Here's the test for "larger than a small effect":
+
 function hedges(x,y,s,   nom,denom,sp,g,c) {
   # from http://tiny.cc/fxsize
   nom   = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2
@@ -114,6 +116,8 @@ function hedges(x,y,s,   nom,denom,sp,g,c) {
   c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
   return g * c > s.small
 }
+
+Here's the test for significanct difference:
 
 function ttest(x,y,s,    t,a,b,df,c) {
   # debugged using https://goo.gl/CRl1Bz
