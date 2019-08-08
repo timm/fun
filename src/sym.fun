@@ -59,7 +59,7 @@ will be selected most often). But for non-large distribtuions, the following doe
 function SymAny(i,without,  r,k,m) {
   r = rand()
   for(k in i.cnt) {
-    m   = without : i.n - i.cnt[k] : i.cnt[k]
+    m   = without ? i.n - i.cnt[k] : i.cnt[k]
     r  -= m/i.n
     if (r <= 0) return k
   }

@@ -11,6 +11,7 @@ func Config(i) {
   i.div.cohen =    0.3
   i.div.trivial=   1.05
   i.div.enough=  512
+  i.some.most  = 256
 }
 
 BEGIN {Config(THE)}

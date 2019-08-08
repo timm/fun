@@ -52,7 +52,15 @@ function ooSortOrder(x, i) {
       typeof(i+1)=="number" ? "@ind_num_asc" : "@ind_str_asc"
 }
 # ---------------------------------
+function abs(x)  { return x < 0 ? -1*x : x }
 function any(x)  { return 1+int(rand()*length(x)) }
+
+function median(l,    m,n,l1) {
+  n = length(l)
+  m = int(n/2)
+  l1 = l[m+1]
+  return (n % 2) ? l1 : (l[m] + l1)/2
+}
 
 function push(x,i) { x[length(x)+1]=i; return i }
 
@@ -89,8 +97,13 @@ function tests(what, all,   one,a,i,n) {
   rogues()
 }
 
-function is(f,got,want) {
-  if (want == got) 
+function is(f,got,want,   epsilon,     ok) {
+  if (typeof(want) == "number") {
+     epsilon = epsilon ? epsilon : 0.001
+     ok = abs(want - got)/(want + 10^-32)  < epsilon
+  } else
+     ok = want == got
+  if (ok) 
     print "#TEST:\tPASSED\t" f "\t" want "\t" got 
   else 
     print "#TEST:\tFAILED\t" f "\t" want "\t" got 

@@ -9,13 +9,6 @@ title: LICENSE.fun
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # LICENSE.fun
-
-
-
-
-BSD 2-Clause License
-
-Copyright (c) 2019, Tim Menzies
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

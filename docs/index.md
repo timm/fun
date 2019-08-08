@@ -15,6 +15,7 @@ title: Contents
 - [index.md](index.md)
 - [num.md](num.md)
 - [row.md](row.md)
+- [some.md](some.md)
 - [sym.md](sym.md)
 - [tbl.md](tbl.md)
 - [the.md](the.md)

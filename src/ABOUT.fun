@@ -164,6 +164,10 @@ function tests(what, all,   one,a,i,n) {
   rogues()
 }
 
+### Fun with Config
+
+Do place all the magic control variables in one place ([the.fun](the.fun)). This allows for simpler hyperparameter optimization.
+
 ### Things that are not Fun
 
 Its [not fun debugging polymorphsim](https://ieeexplore.ieee.org/document/676735), 

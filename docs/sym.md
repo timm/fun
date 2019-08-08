@@ -2,7 +2,6 @@
 title: sym.fun
 ---
 
-
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
 
 | [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
@@ -75,7 +74,7 @@ will be selected most often). But for non-large distribtuions, the following doe
 function SymAny(i,without,  r,k,m) {
   r = rand()
   for(k in i.cnt) {
-    m   = without : i.n - i.cnt[k] : i.cnt[k]
+    m   = without ? i.n - i.cnt[k] : i.cnt[k]
     r  -= m/i.n
     if (r <= 0) return k
   }
@@ -90,5 +89,3 @@ function SymAny(i,without,  r,k,m) {
 
 
 ## Notes
-
-
