@@ -55,6 +55,9 @@ function ooSortOrder(x, i) {
 function abs(x)  { return x < 0 ? -1*x : x }
 function any(x)  { return 1+int(rand()*length(x)) }
 
+function max(x,y) { return x>y ? x : y }
+function min(x,y) { return x<y ? x : y }
+
 function median(l,    m,n,l1) {
   n = length(l)
   m = int(n/2)

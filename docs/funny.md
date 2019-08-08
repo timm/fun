@@ -70,6 +70,11 @@ function any(x)  { return 1+int(rand()*length(x)) }
 ```
 
 ```awk
+function max(x,y) { return x>y ? x : y }
+function min(x,y) { return x<y ? x : y }
+```
+
+```awk
 function median(l,    m,n,l1) {
   n = length(l)
   m = int(n/2)

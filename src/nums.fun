@@ -127,6 +127,7 @@ function ttest(x,y,s,    t,a,b,df,c) {
   b  = y.sd^2/y.n
   df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
   c  = ttest1(s, int( df + 0.5 ), s.conf)
+  print("c",c)
   return abs(t) > c
 }
 

@@ -16,6 +16,14 @@ function Num(i,c,v) {
   i.hi = -1*i.lo
   i.add ="Num1" 
 }
+
+The slow way to compute standard deviation is to run over the data
+in two passes. In pass1, we find the mean, then in pass2 you look
+for the difference of everything else to the mean; i.e.
+_sqrt(&sum;(x-&mu;)^2/(n-1))_.  The following code does the same
+thing, in one pass using 
+[Welford's on-line algorithm](https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm):
+
 function Num1(i,v,    d) {
   v += 0
   i.n++
@@ -24,17 +32,17 @@ function Num1(i,v,    d) {
   d     = v - i.mu
   i.mu += d/i.n
   i.m2 += d*(v - i.mu)
-  i.sd  = NumSd0(i)
+  i.sd  = _NumSd(i)
   return v
 }
 
-function NumSd0(i) {
+function _NumSd(i) {
   if (i.m2 < 0) return 0
   if (i.n < 2)  return 0
   return  (i.m2/(i.n - 1))^0.5
 }
 
-Also maintained is the lowest and highest number seen so far. With
+`Num` also maintains is the lowest and highest number seen so far. With
 that information we can normalize numbers zero to one.
 
 function NumNorm(i,x) {
@@ -52,7 +60,7 @@ function NumLess(i,v, d) {
   d     = v - i.mu
   i.mu -= d/i.n
   i.m2 -= d*(v - i.mu)
-  i.sd  = NumSd0(i)
+  i.sd  = _NumSd(i)
   return v
 }
 
