@@ -2,8 +2,6 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-#!/usr/bin/env ../fun
-# vim: filetype=awk ts=2 sw=2 sts=2  et :
 
 #!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR()]
 

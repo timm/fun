@@ -14,6 +14,7 @@ title: Contents
 - [funny.md](funny.md)
 - [index.md](index.md)
 - [num.md](num.md)
+- [nums.md](nums.md)
 - [row.md](row.md)
 - [some.md](some.md)
 - [sym.md](sym.md)
