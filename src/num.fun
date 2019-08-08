@@ -73,3 +73,8 @@ function NumAny(i,  z) {
   z = sqrt(-2*log(rand()))*cos(6.2831853*rand())
   return i.m + i.sd * z 
 }
+
+function NumAnyT(i) { # Another any, assumes a triangle distribution
+  return triangle(i.lo, i.mu, i.hi)
+}
+

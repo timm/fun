@@ -37,7 +37,7 @@ have differences larger than a small effect.
 ```awk
    4.  function diff(x,y,      s) { 
    5.    Nums(s)
-   6.    return hedges(x,y,s) && ttest(x,y,s)
+   6.    return ttest(x,y,s) && hedges(x,y,s)  
    7.  }
 ```
 
@@ -57,22 +57,20 @@ Given two `Num` objects "_x_" and "_y_" then:
 
 - _MeanFX_ = the mean effect.
   The larger the mean difference, the higher the odds 
-  that the distrbutions are different;
-    - MeanFX =            `abs(x.mu - y.mu)`;
+  that the distrbutions are different.
 - _SdFX_ = the standard deviation effect.
   The larger the standard deviations, the lower those 
-  odds (since there is more overlap);
-    - SdFX  = `(x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2`
+  odds (since there is more overlap). Note that the _SdFx_
+  interacts with the enxt effect.
 - _SampleFx_ = the sample size effect.
-   If the sammple size is very large, then the 
-  odds increase since we have more examples of these
-  mean differences being actual differences.
-    - SampleFX = `(x.n - 1) + (y.n - 1)`;        
+   The largeer the sampel size, the less worried we are 
+   that the standard deviation will confuse us. So
+   large sample sizes mitigate for _SdFX_.
 
 The standard way to apply these rules is the following ttest test
 for significant differences.
 
--  Different = _MeanFX * sqrt(SampleFX/SdFX) &gt; T_ 
+-  Different = `abs(xmu - y.mu) / sqrt(x.sd^2/s.n + y.sd^2/y.n) >  T` 
 
 where  "_T_" is some threshold that we show how to calculate, below.
 In this equation, "different" is more likely the larger
@@ -105,16 +103,16 @@ from 95 to 99 makes it harder to prove things are different (and
    8.  function Nums(i) {
    9.    Object(i)
   10.    i.conf  = THE.nums.ttest  # selects the threshold for ttest
-  11.    i.small = THE.nums.hedged # threshold for effect size test. 
+  11.    i.small = THE.nums.hedges # threshold for effect size test. 
   12.    # Thresholds for ttests at two different confidence levels
   13.    # -- 95% --------------------------
   14.    i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
   15.    i[95][12]= 2.179; i[95][24]= 2.064; 
-  16.    i[95][48]= 2.011; i[95][98]= 1.985; 
+  16.    i[95][48]= 2.011; i[95][96]= 1.985; 
   17.    # -- 99% --------------------------
   18.    i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
   19.    i[99][12]= 3.055; i[99][24]= 2.797; 
-  20.    i[99][48]= 2.682; i[99][98]= 2.625; 
+  20.    i[99][48]= 2.682; i[99][96]= 2.625; 
   21.    i.first = 3  # must be the smallest index of the above arrays
   22.    i.last  = 98 # must be the last     index of the above arrays
   23.  }
@@ -139,15 +137,14 @@ Here's the test for significanct difference:
 ```awk
   33.  function ttest(x,y,s,    t,a,b,df,c) {
   34.    # debugged using https://goo.gl/CRl1Bz
-  35.    t  = (x.mu - y.mu) / sqrt(max(10^-64,
+  35.    t  = abs(x.mu - y.mu) / sqrt(max(10^-64,
   36.                                  x.sd^2/x.n + y.sd^2/y.n ))
   37.    a  = x.sd^2/x.n
   38.    b  = y.sd^2/y.n
   39.    df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
   40.    c  = ttest1(s, int( df + 0.5 ), s.conf)
-  41.    print("c",c)
-  42.    return abs(t) > c
-  43.  }
+  41.    return abs(t) > c
+  42.  }
 ```
 
 The following is a minor detail. It  is a 
@@ -156,18 +153,18 @@ values for the test based on degrees of freedom `df` and the specificed
 confidence level. 
 
 ```awk
-  44.  function ttest1(s,df,conf,   n1,n2,old,new,c) {
-  45.    if (df < s.first) 
-  46.      return s[conf][s.first]
-  47.    for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
-  48.      n2 = n1*2
-  49.      if (df >= n1 && df <= n2) {
-  50.        old = s[conf][n1]
-  51.        new = s[conf][n2]
-  52.        return old + (new-old) * (df-n1)/(n2-n1)
-  53.    }}
-  54.    return s[conf][s.last]
-  55.  }
+  43.  function ttest1(s,df,conf,   n1,n2,old,new,c) {
+  44.    if (df < s.first) 
+  45.      return s[conf][s.first]
+  46.    for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
+  47.      n2 = n1*2
+  48.      if (df >= n1 && df <= n2) {
+  49.        old = s[conf][n1]
+  50.        new = s[conf][n2]
+  51.        return old + (new-old) * (df-n1)/(n2-n1)
+  52.    }}
+  53.    return s[conf][s.last]
+  54.  }
 ```
 
 ## Further Reading:

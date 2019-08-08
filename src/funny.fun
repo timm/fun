@@ -58,12 +58,39 @@ function any(x)  { return 1+int(rand()*length(x)) }
 function max(x,y) { return x>y ? x : y }
 function min(x,y) { return x<y ? x : y }
 
+function gt(x,y)  { return x > y }
+function lt(x,y)  { return x < y }
+
 function median(l,    m,n,l1) {
   n = length(l)
   m = int(n/2)
   l1 = l[m+1]
   return (n % 2) ? l1 : (l[m] + l1)/2
 }
+
+function triangle(a,c,b,   u) {
+  u = rand()
+  if (u < (c-a)/(b-a))
+    return a + (    u*(b-a)*(c-a))^0.5
+  else
+    return b - ((1-u)*(b-a)*(b-c))^0.5
+}
+function bsearch(lst,x,approx,lt,gt,
+                 lo,mid,hi,val) {
+  lo = 1
+  hi = length(lst)
+  lt = lt ? lt : "lt"
+  gt = gt ? gt : "gt"
+  while (lo <= hi) {
+    mid = int(lo + (hi - lo) / 2)
+    val = lst[mid]
+    if     (@gt(val,x)) hi = mid - 1
+    else if(@lt(val,x)) lo = mid + 1
+    else return mid
+  }
+  return approx ? mid : notFound()
+}
+
 
 function push(x,i) { x[length(x)+1]=i; return i }
 

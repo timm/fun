@@ -95,3 +95,10 @@ sampling:
   40.    return i.m + i.sd * z 
   41.  }
 ```
+
+```awk
+  42.  function NumAnyT(i) { # Another any, assumes a triangle distribution
+  43.    return triangle(i.lo, i.mu, i.hi)
+  44.  }
+```
+

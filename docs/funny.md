@@ -75,82 +75,113 @@ title: funny.fun
 ```
 
 ```awk
-  51.  function median(l,    m,n,l1) {
-  52.    n = length(l)
-  53.    m = int(n/2)
-  54.    l1 = l[m+1]
-  55.    return (n % 2) ? l1 : (l[m] + l1)/2
-  56.  }
+  51.  function gt(x,y)  { return x > y }
+  52.  function lt(x,y)  { return x < y }
 ```
 
 ```awk
-  57.  function push(x,i) { x[length(x)+1]=i; return i }
+  53.  function median(l,    m,n,l1) {
+  54.    n = length(l)
+  55.    m = int(n/2)
+  56.    l1 = l[m+1]
+  57.    return (n % 2) ? l1 : (l[m] + l1)/2
+  58.  }
 ```
 
 ```awk
-  58.  function pash(x,f)      { has(x,length(x)+1,f) }
-  59.  function pash1(x,f,m)   { has1(x,length(x)+1,f,m) }
-  60.  function pash2(x,f,m,n) { has2(x,length(x)+1,f,m,n) }
+  59.  function triangle(a,c,b,   u) {
+  60.    u = rand()
+  61.    if (u < (c-a)/(b-a))
+  62.      return a + (    u*(b-a)*(c-a))^0.5
+  63.    else
+  64.      return b - ((1-u)*(b-a)*(b-c))^0.5
+  65.  }
+  66.  function bsearch(lst,x,approx,lt,gt,
+  67.                   lo,mid,hi,val) {
+  68.    lo = 1
+  69.    hi = length(lst)
+  70.    lt = lt ? lt : "lt"
+  71.    gt = gt ? gt : "gt"
+  72.    while (lo <= hi) {
+  73.      mid = int(lo + (hi - lo) / 2)
+  74.      val = lst[mid]
+  75.      if     (@gt(val,x)) hi = mid - 1
+  76.      else if(@lt(val,x)) lo = mid + 1
+  77.      else return mid
+  78.    }
+  79.    return approx ? mid : notFound()
+  80.  }
+```
+
+
+```awk
+  81.  function push(x,i) { x[length(x)+1]=i; return i }
 ```
 
 ```awk
-  61.  function become(b4,new,     i) {
-  62.    List(new)
-  63.    for(i in b4) new[i] = b4[i]
-  64.  }
-  65.  function ksort(lst,k) {
-  66.    KSORT=k
-  67.    asort(lst,lst,"kcompare")
-  68.  }
-  69.  function kcompare(i1,v1,i2,v2,  l,r) {
-  70.    l = v1[KSORT] +0
-  71.    r = v2[KSORT] +0
-  72.    if (l < r) return -1
-  73.    if (l == r) return 0
-  74.    return 1
-  75.  }  
+  82.  function pash(x,f)      { has(x,length(x)+1,f) }
+  83.  function pash1(x,f,m)   { has1(x,length(x)+1,f,m) }
+  84.  function pash2(x,f,m,n) { has2(x,length(x)+1,f,m,n) }
+```
+
+```awk
+  85.  function become(b4,new,     i) {
+  86.    List(new)
+  87.    for(i in b4) new[i] = b4[i]
+  88.  }
+  89.  function ksort(lst,k) {
+  90.    KSORT=k
+  91.    asort(lst,lst,"kcompare")
+  92.  }
+  93.  function kcompare(i1,v1,i2,v2,  l,r) {
+  94.    l = v1[KSORT] +0
+  95.    r = v2[KSORT] +0
+  96.    if (l < r) return -1
+  97.    if (l == r) return 0
+  98.    return 1
+  99.  }  
 ```
 # ---------------------------------
 # testing
 ```awk
-  76.  function rogues(    s) {
-  77.    for(s in SYMTAB) if (s ~ /^[A-Z][a-z]/) print "Global " s
-  78.    for(s in SYMTAB) if (s ~ /^[_a-z]/    ) print "Rogue: " s
-  79.  }
+ 100.  function rogues(    s) {
+ 101.    for(s in SYMTAB) if (s ~ /^[A-Z][a-z]/) print "Global " s
+ 102.    for(s in SYMTAB) if (s ~ /^[_a-z]/    ) print "Rogue: " s
+ 103.  }
 ```
 
 ```awk
-  80.  function tests(what, all,   one,a,i,n) {
-  81.    n = split(all,a,",")
-  82.    print "\n#--- " what " -----------------------"
-  83.    for(i=1;i<=n;i++) { one = a[i]; @one(one) }
-  84.    rogues()
-  85.  }
+ 104.  function tests(what, all,   one,a,i,n) {
+ 105.    n = split(all,a,",")
+ 106.    print "\n#--- " what " -----------------------"
+ 107.    for(i=1;i<=n;i++) { one = a[i]; @one(one) }
+ 108.    rogues()
+ 109.  }
 ```
 
 ```awk
-  86.  function is(f,got,want,   epsilon,     ok) {
-  87.    if (typeof(want) == "number") {
-  88.       epsilon = epsilon ? epsilon : 0.001
-  89.       ok = abs(want - got)/(want + 10^-32)  < epsilon
-  90.    } else
-  91.       ok = want == got
-  92.    if (ok) 
-  93.      print "#TEST:\tPASSED\t" f "\t" want "\t" got 
-  94.    else 
-  95.      print "#TEST:\tFAILED\t" f "\t" want "\t" got 
-  96.  }
+ 110.  function is(f,got,want,   epsilon,     ok) {
+ 111.    if (typeof(want) == "number") {
+ 112.       epsilon = epsilon ? epsilon : 0.001
+ 113.       ok = abs(want - got)/(want + 10^-32)  < epsilon
+ 114.    } else
+ 115.       ok = want == got
+ 116.    if (ok) 
+ 117.      print "#TEST:\tPASSED\t" f "\t" want "\t" got 
+ 118.    else 
+ 119.      print "#TEST:\tFAILED\t" f "\t" want "\t" got 
+ 120.  }
 ```
 
 # ---------------------------------
 # object constructors
 ```awk
-  97.  function List(i)         { split("",i,"") }
-  98.  function zap(i,k)        { i[k][0]; List(i[k])} 
-  99.  function Object(i)       { List(i); i["oid"]=++OID }
- 100.  
- 101.  function has( i,k,f)     { f=f?f:"List"; zap(i,k); @f(i[k]) }
- 102.  function has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
- 103.  function has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
- 104.  
+ 121.  function List(i)         { split("",i,"") }
+ 122.  function zap(i,k)        { i[k][0]; List(i[k])} 
+ 123.  function Object(i)       { List(i); i["oid"]=++OID }
+ 124.  
+ 125.  function has( i,k,f)     { f=f?f:"List"; zap(i,k); @f(i[k]) }
+ 126.  function has1(i,k,f,m)   {               zap(i,k); @f(i[k],m) }
+ 127.  function has2(i,k,f,m,n) {               zap(i,k); @f(i[k],m,n) }
+ 128.  
 ```

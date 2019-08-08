@@ -26,13 +26,14 @@ title: the.fun
   10.    i.div.enough=  512
   11.  
   12.    i.some.most  = 256
-  13.  
-  14.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
-  15.    i.nums.ttest=   95 # selects thresholds for ttest
-  16.  
-  17.  }
+  13.    i.some.cliffs=   0.147 # small effect. From Romano 2006
+  14.  
+  15.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
+  16.    i.nums.ttest=   95 # selects thresholds for ttest
+  17.  
+  18.  }
 ```
 
 ```awk
-  18.  BEGIN {Config(THE)}
+  19.  BEGIN {Config(THE)}
 ```

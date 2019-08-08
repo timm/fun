@@ -26,7 +26,7 @@ have differences larger than a small effect.
 
 function diff(x,y,      s) { 
   Nums(s)
-  return hedges(x,y,s) && ttest(x,y,s)
+  return ttest(x,y,s) && hedges(x,y,s)  
 }
 
 First, some theory. Consider the following two normal bell-shaped
@@ -45,22 +45,20 @@ Given two `Num` objects "_x_" and "_y_" then:
 
 - _MeanFX_ = the mean effect.
   The larger the mean difference, the higher the odds 
-  that the distrbutions are different;
-    - MeanFX =            `abs(x.mu - y.mu)`;
+  that the distrbutions are different.
 - _SdFX_ = the standard deviation effect.
   The larger the standard deviations, the lower those 
-  odds (since there is more overlap);
-    - SdFX  = `(x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2`
+  odds (since there is more overlap). Note that the _SdFx_
+  interacts with the enxt effect.
 - _SampleFx_ = the sample size effect.
-   If the sammple size is very large, then the 
-  odds increase since we have more examples of these
-  mean differences being actual differences.
-    - SampleFX = `(x.n - 1) + (y.n - 1)`;        
+   The largeer the sampel size, the less worried we are 
+   that the standard deviation will confuse us. So
+   large sample sizes mitigate for _SdFX_.
 
 The standard way to apply these rules is the following ttest test
 for significant differences.
 
--  Different = _MeanFX * sqrt(SampleFX/SdFX) &gt; T_ 
+-  Different = `abs(xmu - y.mu) / sqrt(x.sd^2/s.n + y.sd^2/y.n) >  T` 
 
 where  "_T_" is some threshold that we show how to calculate, below.
 In this equation, "different" is more likely the larger
@@ -92,16 +90,16 @@ from 95 to 99 makes it harder to prove things are different (and
 function Nums(i) {
   Object(i)
   i.conf  = THE.nums.ttest  # selects the threshold for ttest
-  i.small = THE.nums.hedged # threshold for effect size test. 
+  i.small = THE.nums.hedges # threshold for effect size test. 
   # Thresholds for ttests at two different confidence levels
   # -- 95% --------------------------
   i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
   i[95][12]= 2.179; i[95][24]= 2.064; 
-  i[95][48]= 2.011; i[95][98]= 1.985; 
+  i[95][48]= 2.011; i[95][96]= 1.985; 
   # -- 99% --------------------------
   i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
   i[99][12]= 3.055; i[99][24]= 2.797; 
-  i[99][48]= 2.682; i[99][98]= 2.625; 
+  i[99][48]= 2.682; i[99][96]= 2.625; 
   i.first = 3  # must be the smallest index of the above arrays
   i.last  = 98 # must be the last     index of the above arrays
 }
@@ -122,13 +120,12 @@ Here's the test for significanct difference:
 
 function ttest(x,y,s,    t,a,b,df,c) {
   # debugged using https://goo.gl/CRl1Bz
-  t  = (x.mu - y.mu) / sqrt(max(10^-64,
+  t  = abs(x.mu - y.mu) / sqrt(max(10^-64,
                                 x.sd^2/x.n + y.sd^2/y.n ))
   a  = x.sd^2/x.n
   b  = y.sd^2/y.n
   df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
   c  = ttest1(s, int( df + 0.5 ), s.conf)
-  print("c",c)
   return abs(t) > c
 }
 

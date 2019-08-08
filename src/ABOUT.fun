@@ -11,8 +11,9 @@ FUN is a transpiled language.
 - `xxx.md` markdown files (for web display) and stored in `docs/`;
 - `xxx` executable scripts (for standalone execution) and stored in `$HOME/opt/fun/bin`;
 
-FUN  is a fun way to teach.
-Given code in a language they have never seen before (i.e. FUN), students
+FUN  can be used as a notation to teach, say, data mining and optimization
+concepts.
+Given code written in a language they have never seen before (i.e. FUN), students
 code up their own versions (in whatever langauge they like best).
 
 But why transpile to gawk?
