@@ -19,17 +19,17 @@ code up their own versions (in whatever langauge they like best).
 But why transpile to gawk?
 
 - Cause the simpler the  target language, the simpler the pre-transpiled source code;.
-- Cause the simpler the source code, the easier it is to show students,
-     - The source is so succinct, its easy to show in lectures.
+- Cause the simpler the source code, the easier it is to show students (the source is so succinct, its easy to show in lectures).
+- After decades of coding in may langages[^note], I found that I kept using the same tricks in every languages (e.g.
+  every file kmows it own dependancies and can be tested seperately from the rest; code has doco which is extracted to seperate
+  markdown files; code has unit tests; etc).
+  FUN codes all those tricks.
 - Finally, full disclosure, my name is timm and I'm a language-a-holic. 
      - Give me a cool language[^note]
   and I use it. All of it. 
   High-order functions, unification, decorators, iterators,
   list comprehensions, metaclasses, macros
-  and I will USE and ABUSE them for days and days and days and ...
-     - The only treatment for excessive language-ism is to use simpler languages. With those, I soon run out
-  neat tricks to distract me (at which point, I can finally build useful stuff)
-
+  and I will USE them to write code that no one else can undersrand.
 [^note]: In Lisp, Prolog, Smalltalk, Python, Lua, Julia
 
 ## Installing Fun
