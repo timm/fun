@@ -2,7 +2,25 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-FUN is a succinct scripting langauge that supports literate programming (with a few UML tricks); unit tests;
+Recent experience suggests that the twin technologies of
+data mining and optimization are closely connected and that, after some
+refactoring, data miners can work as optimizers and vice versa. That refactored
+code offers many design options, some of which could even contribute
+to ethically-aligned code (e.g. 
+it is ethical to deliver transparent and reliable code;
+rule learners help transparency; and 
+mult-objective optimziation helps reliability).  
+
+FUN is a work-on-progress with the goal
+to build
+a reference system that demonstrates all the above,
+in one succinct code base.
+Ideally, the reader looks here and says "I can do better than that", then rushes
+off to refactor their own ethical code (in which case, all the code here
+would become a spec for their implementation in  some other language).
+
+
+FUN supports literate programming (with a few UML tricks); unit tests;
 and object-like features.
 FUN is a transpiled language.
  `xxx.fun` files are converted into:
