@@ -2,7 +2,7 @@
 title: someok.fun
 ---
 
- [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) <br>
+ [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) <hr><br>
 <br>
 
 # someok.fun
