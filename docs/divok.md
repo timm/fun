@@ -7,7 +7,7 @@ title: divok.fun
 
 # divok.fun
 
-See also:  "[div](div)"<br>
+Uses:  "[div](div)"<br>
 
 ```awk
    1.  BEGIN { tests("divok", "_div1") }

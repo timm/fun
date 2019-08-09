@@ -8,8 +8,8 @@ title: sym.fun
 # sym.fun
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Sym|mode|Sym1(); SymEnt();SymAny()],[Sym]-.-[note: 'SymAny' implements 'sampling'{bg:cornsilk}]">
 
-See also:  "[funny](funny)"<br>
-See also:  "[col](col)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[col](col)"<br>
 
 The `Sym` class incrementally counts of the symbols seen in a column
 as well as the most frequently seen symbol (which is called the  `mode`).

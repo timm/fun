@@ -15,8 +15,8 @@ title: some.fun
 a sample of items from a list containing items, where is either a
 very large or unknown number.
 
-See also:  "[funny](funny)"<br>
-See also:  "[the](the)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[the](the)"<br>
 
 ```awk
    1.  function Some(i,c,v,     most) {

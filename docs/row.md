@@ -11,9 +11,9 @@ title: row.fun
 
 `Tbl` (tables) have `Row`s.
 
-See also:  "[funny](funny)"<br>
-See also:  "[the](the)"<br>
-See also:  "[col](col)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[the](the)"<br>
+Uses:  "[col](col)"<br>
 
 As `Row`s accept `cells`, it passes each cell to a table column
 (so that column can update what it knows about that column).

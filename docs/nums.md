@@ -6,9 +6,9 @@ title: nums.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # nums.fun
-See also:  "[funny](funny)"<br>
-See also:  "[num](num)"<br>
-See also:  "[the](the)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[num](num)"<br>
+Uses:  "[the](the)"<br>
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num],[Nums]-.-[note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
 

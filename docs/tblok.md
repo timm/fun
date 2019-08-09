@@ -7,8 +7,8 @@ title: tblok.fun
 
 # tblok.fun
 
-See also:  "[funny](funny)"<br>
-See also:  "[tbl](tbl)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[tbl](tbl)"<br>
 
 ```awk
    1.  BEGIN { tests("tblok","_auto") }

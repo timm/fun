@@ -7,9 +7,9 @@ title: someok.fun
 
 # someok.fun
 
-See also:  "[funny](funny)"<br>
-See also:  "[some](some)"<br>
-See also:  "[num](num)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[some](some)"<br>
+Uses:  "[num](num)"<br>
 
 ```awk
    1.  BEGIN {  tests("someof","_some") }

@@ -7,8 +7,8 @@ title: skok.fun
 
 # skok.fun
 
-See also:  "[funny](funny)"<br>
-See also:  "[sk](sk)"<br>
+Uses:  "[funny](funny)"<br>
+Uses:  "[sk](sk)"<br>
 
 ```awk
    1.  BEGIN { tests("skok", "_sk") }

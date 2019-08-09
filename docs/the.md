@@ -7,7 +7,7 @@ title: the.fun
 
 # the.fun
 
-See also:  "[funny](funny)"<br>
+Uses:  "[funny](funny)"<br>
 
 ```awk
    1.  func Config(i) {
