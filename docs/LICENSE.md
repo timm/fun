@@ -4,7 +4,7 @@ title: LICENSE.fun
 
  [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE)<br>
 
-----
+
 
 # LICENSE.fun
 All rights reserved.

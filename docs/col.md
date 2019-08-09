@@ -4,7 +4,7 @@ title: col.fun
 
  [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE)<br>
 
-----
+
 
 # col.fun
 Uses:  "[funny](funny)"<br>

@@ -4,7 +4,7 @@ title: row.fun
 
  [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE)<br>
 
-----
+
 
 # row.fun
 

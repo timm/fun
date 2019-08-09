@@ -4,7 +4,7 @@ title: tbl.fun
 
  [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE)<br>
 
-----
+
 
 # tbl.fun
 
