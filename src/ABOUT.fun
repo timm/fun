@@ -2,11 +2,14 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-Recent experience suggests that the twin technologies of
-data mining and optimization are closely connected and that, after some
-refactoring, data miners can work as optimizers and vice versa. That refactored
+[Experience suggests](REFS#agrawal-2019)
+https://arxiv.org/pdf/1812.01550.pdf) that the twin technologies of
+data mining and optimization are so closely connected 
+that they can be usefully refactored.
+such that
+data miners can work as optimizers and vice versa. That refactored
 code offers many design options, some of which could even contribute
-to ethically-aligned code (e.g. 
+to ethical goals (e.g. 
 it is ethical to deliver transparent and reliable code;
 rule learners help transparency; and 
 mult-objective optimziation helps reliability).  

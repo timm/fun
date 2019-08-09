@@ -1,7 +1,18 @@
 #!/usr/bin/env ../fun
 # vim: filetype=awk ts=2 sw=2 sts=2  et :
 
-## K
+
+https://arxiv.org/pdf/1812.01550.pdf
+
+## A
+
+### Agrawal 2019
+
+Amritanshu Agrawal, Tim Menzies, Leandro L. Minku, Markus Wagner, Zhe Yu.
+(2019).
+Better Software Analytics via "DUO": Data Mining Algorithms Using/Used-by Optimizers
+arXiv:1812.01550.
+https://arxiv.org/pdf/1812.01550.pdf
 
 ### Kampenes 2007
 
