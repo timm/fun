@@ -1,2 +1,6 @@
-title: 'data mining + optimization, simplified'
+title: 'FUN (version 1.0)'
 description: "Data mining , optimization, simplified"
+logo: /assets/img/fun.png
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-minimal
