@@ -93,9 +93,9 @@ Here's a convenience function to load all the numbers of an array
 `a` into a `Num`. 
 
 function nums(n,a,   x,    v,i) {
-  if (!isarray(n))
-   Num(n)
-   for(i in a)  {
-      v= x ? a[i][x] : a[i]
-      if (v != "?") Num1(n, v) }
+  if (!isarray(n)) # if n is not already a Num..
+    Num(n)         # ... then make it a num
+  for(i in a)  {
+    v= x ? a[i][x] : a[i]
+    if (v != "?") Num1(n, v) }
 }

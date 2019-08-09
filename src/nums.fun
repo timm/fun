@@ -67,10 +67,10 @@ _SdFX_ effect, mitigated by the _SampleFX_, are where they should be;
 i.e. in  the denominator
 (bottom part of the fraction).
 
--  Different = `abs(xmu - y.mu) / sqrt(x.sd^2/s.n + y.sd^2/y.n) >  T` 
+- Other= `(abs(x.mu-y.mu) / sqrt(x.sd^2/s.n+y.sd^2/y.n) >  T` 
 
 where  "_T_" is some threshold that we show how to calculate, below.
-In this equation, "different" is more likely the larger
+In this equation, "other" is more likely the larger
 the mean difference or the larger the sample size.  Also, larger
 standard deviations will reduce that likelihood (since it is on the
 bottom of the fraction).
@@ -90,9 +90,8 @@ But what if that difference is trivially small?
   use Cohen's rule which says anything smaller
   that 30 percent of the  standard deviation is small effect.
 
-
-The comparison process is controlled by a `Nums` object that holds
-a whole bunch of magic variables. Increasing the `conf`idence
+The comparison process is controlled by a `Nums` object that defines
+a set of tthresholds. Increasing the `conf`idence
 from 95 to 99 makes it harder to prove things are different (and
 95 is the usual conference level).
 
@@ -110,7 +109,7 @@ function Nums(i) {
   i[99][12]= 3.055; i[99][24]= 2.797; 
   i[99][48]= 2.682; i[99][96]= 2.625; 
   i.first = 3  # must be the smallest index of the above arrays
-  i.last  = 98 # must be the last     index of the above arrays
+  i.last  = 96 # must be the last     index of the above arrays
 }
 
 Here's the test for "larger than a small effect":

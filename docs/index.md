@@ -21,4 +21,5 @@ title: Contents
 - [sym.md](sym.md)
 - [tbl.md](tbl.md)
 - [the.md](the.md)
+- [tiny.md](tiny.md)
 

@@ -116,10 +116,10 @@ Here's a convenience function to load all the numbers of an array
 
 ```awk
   49.  function nums(n,a,   x,    v,i) {
-  50.    if (!isarray(n))
-  51.     Num(n)
-  52.     for(i in a)  {
-  53.        v= x ? a[i][x] : a[i]
-  54.        if (v != "?") Num1(n, v) }
+  50.    if (!isarray(n)) # if n is not already a Num..
+  51.      Num(n)         # ... then make it a num
+  52.    for(i in a)  {
+  53.      v= x ? a[i][x] : a[i]
+  54.      if (v != "?") Num1(n, v) }
   55.  }
 ```
