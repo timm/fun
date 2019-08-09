@@ -7,8 +7,8 @@ title: symok.fun
 
 # symok.fun
 
-@include "[funny](funny)"<br>
-@include "[sym](sym)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[sym](sym)"<br>
 
 ```awk
    1.  BEGIN {  tests("colok","_sym,_syms") }

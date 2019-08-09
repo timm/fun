@@ -7,8 +7,8 @@ title: numsok.fun
 
 # numsok.fun
 
-@include "[funny](funny)"<br>
-@include "[nums](nums)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[nums](nums)"<br>
 
 ```awk
    1.  BEGIN {  tests("numok","_nums") }

@@ -7,7 +7,7 @@ title: the.fun
 
 # the.fun
 
-@include "[funny](funny)"<br>
+See also:  "[funny](funny)"<br>
 
 ```awk
    1.  func Config(i) {

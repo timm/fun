@@ -6,8 +6,8 @@ title: sk.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # sk.fun
-@include "[funny](funny)"<br>
-@include "[nums](nums)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[nums](nums)"<br>
 
 #/class [Array1]-.-[note: sk(){bg:cornsilk}]]-.-[Array2]
 

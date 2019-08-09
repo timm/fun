@@ -9,10 +9,10 @@ title: div.fun
 
 Discretization is the process o
 
-@include "[funny](funny)"<br>
-@include "[col](col)"<br>
-@include "[the](the)"<br>
-@include "[Num](Num)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[col](col)"<br>
+See also:  "[the](the)"<br>
+See also:  "[Num](Num)"<br>
 
 ```awk
    1.  function Sdiv(i,xy0,

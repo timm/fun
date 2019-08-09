@@ -7,8 +7,8 @@ title: numok.fun
 
 # numok.fun
 
-@include "[funny](funny)"<br>
-@include "[num](num)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[num](num)"<br>
 
 ```awk
    1.  BEGIN {  tests("colok","_num,_any") }

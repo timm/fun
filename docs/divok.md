@@ -7,7 +7,7 @@ title: divok.fun
 
 # divok.fun
 
-@include "[div](div)"<br>
+See also:  "[div](div)"<br>
 
 ```awk
    1.  BEGIN { tests("divok", "_div1") }

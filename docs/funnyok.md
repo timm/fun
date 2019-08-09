@@ -6,7 +6,7 @@ title: funnyok.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # funnyok.fun
-@include "[funny](funny)"<br>
+See also:  "[funny](funny)"<br>
 
 ```awk
    1.  BEGIN { tests("funny", "_isnt,_any") }

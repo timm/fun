@@ -6,9 +6,9 @@ title: num.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # num.fun
-@include "[funny](funny)"<br>
-@include "[col](col)"<br>
-@include "[nums](nums)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[col](col)"<br>
+See also:  "[nums](nums)"<br>
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0]^-[Num|mu = 0; m2 = 0; lo; hi| Num1(); NumNorm();NumLess();NumAny()]">
 

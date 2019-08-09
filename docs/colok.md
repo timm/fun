@@ -7,8 +7,8 @@ title: colok.fun
 
 # colok.fun
 
-@include "[funny](funny)"<br>
-@include "[tbl](tbl)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[tbl](tbl)"<br>
 
 ```awk
    1.  BEGIN { tests("colok","_weather") }

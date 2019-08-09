@@ -7,8 +7,8 @@ title: skok.fun
 
 # skok.fun
 
-@include "[funny](funny)"<br>
-@include "[sk](sk)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[sk](sk)"<br>
 
 ```awk
    1.  BEGIN { tests("skok", "_sk") }

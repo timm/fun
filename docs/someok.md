@@ -7,9 +7,9 @@ title: someok.fun
 
 # someok.fun
 
-@include "[funny](funny)"<br>
-@include "[some](some)"<br>
-@include "[num](num)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[some](some)"<br>
+See also:  "[num](num)"<br>
 
 ```awk
    1.  BEGIN {  tests("someof","_some") }

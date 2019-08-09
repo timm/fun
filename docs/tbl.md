@@ -7,10 +7,10 @@ title: tbl.fun
 
 # tbl.fun
 
-@include "[funny](funny)"<br>
-@include "[col](col)"<br>
-@include "[row](row)"<br>
-@include "[the](the)"<br>
+See also:  "[funny](funny)"<br>
+See also:  "[col](col)"<br>
+See also:  "[row](row)"<br>
+See also:  "[the](the)"<br>
 
 ```awk
    1.  BEGIN  {
