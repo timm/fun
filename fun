@@ -94,7 +94,7 @@ toc() {
         $xbanner<br>
 	$xfooter
 
-        ---
+	---
 
 	## Fun Stuff
 
