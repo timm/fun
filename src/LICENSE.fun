@@ -2,7 +2,7 @@ BSD 2-Clause License
 
 <img align=right src="https://images-na.ssl-images-amazon.com/images/I/818rA7W9WOL._SX425_.jpg">
 
-Copyright (c) 2019,,2020  Tim Menzies
+Copyright (c) 2019, 2020  Tim Menzies
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
