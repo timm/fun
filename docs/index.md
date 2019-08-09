@@ -1,7 +1,7 @@
 ---
 title: Contents
 ---
-<img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png">
+
 
 | [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
    
@@ -11,7 +11,6 @@ title: Contents
 
 - [col.md](col.md)
 - [div.md](div.md)
-- [div1.md](div1.md)
 - [funny.md](funny.md)
 - [index.md](index.md)
 - [num.md](num.md)
