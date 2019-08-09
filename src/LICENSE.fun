@@ -1,5 +1,6 @@
 
-![](https://images-na.ssl-images-amazon.com/images/I/818rA7W9WOL._SX425_.jpg)
+![](/assets/img/license.png)
+
 
 BSD 2-Clause License
 
