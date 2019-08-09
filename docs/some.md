@@ -81,30 +81,4 @@ IQR is the inter-quartile range and is the difference between the
   34.  }   
 ```
 
-Here, we check if two `Some`s differ by more
-than a small effect.
-
-```awk
-  35.  function SomeDiff(i,j) {
-  36.    return cliffsDelta(i.cache, j.cache)
-  37.  }
-```
-
-```awk
-  38.  function cliffsDelta(lst1,lst2,
-  39.                       lst3, m,n,j,x,lo,hi,lt,gt) {
-  40.    n= asort(lst2, lst3)
-  41.    for(j in lst1) {
-  42.      x= lst1[j]
-  43.      lo= hi= bsearch(lst3,x,1)
-  44.      while(lo >= 1 && lst3[lo] >= x) lo--
-  45.      while(hi <= n && lst3[hi] <= x) hi++
-  46.      lt += n - hi + 1
-  47.      gt += lo 
-  48.    }
-  49.    m = length(lst1)*length(lst2)
-  50.    return abs(gt - lt) / m > THE.some.cliffs
-  51.  }
-```
-
 

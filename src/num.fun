@@ -85,3 +85,15 @@ and differ by mroe than a small effect:
 function NumDiff(i,j) {
   return diff(i,j) # defined in "Nums"
 }
+
+Here's a convenience function to load all the numbers of an array into a `Num`.
+
+function nums(n,a,    i) {
+  if (!isarray(n)) 
+   Num(n)
+  for(i in a)
+    if (a[i] != "?") 
+     Num1(n, a[i])
+}
+
+

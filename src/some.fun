@@ -61,26 +61,4 @@ function SomeIQR(i,   m) {
   return i.cache[3*m] - i.cache[m]
 }   
 
-Here, we check if two `Some`s differ by more
-than a small effect.
-
-function SomeDiff(i,j) {
-  return cliffsDelta(i.cache, j.cache)
-}
-
-function cliffsDelta(lst1,lst2,
-                     lst3, m,n,j,x,lo,hi,lt,gt) {
-  n= asort(lst2, lst3)
-  for(j in lst1) {
-    x= lst1[j]
-    lo= hi= bsearch(lst3,x,1)
-    while(lo >= 1 && lst3[lo] >= x) lo--
-    while(hi <= n && lst3[hi] <= x) hi++
-    lt += n - hi + 1
-    gt += lo 
-  }
-  m = length(lst1)*length(lst2)
-  return abs(gt - lt) / m > THE.some.cliffs
-}
-
 

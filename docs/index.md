@@ -17,6 +17,7 @@ title: Contents
 - [num.md](num.md)
 - [nums.md](nums.md)
 - [row.md](row.md)
+- [sk.md](sk.md)
 - [some.md](some.md)
 - [sym.md](sym.md)
 - [tbl.md](tbl.md)

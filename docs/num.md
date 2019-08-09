@@ -111,3 +111,17 @@ and differ by mroe than a small effect:
   47.    return diff(i,j) # defined in "Nums"
   48.  }
 ```
+
+Here's a convenience function to load all the numbers of an array into a `Num`.
+
+```awk
+  49.  function nums(n,a,    i) {
+  50.    if (!isarray(n)) 
+  51.     Num(n)
+  52.    for(i in a)
+  53.      if (a[i] != "?") 
+  54.       Num1(n, a[i])
+  55.  }
+```
+
+
