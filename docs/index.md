@@ -3,7 +3,7 @@ title: Contents
 ---
 
 
-| [index](/fun/index) | [about](/fun/ABOUT) | [code](http://github.com/timm/fun) | [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
+| [index](/fun/index) | [about](/fun/ABOUT) |  [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE) |
    
 <em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
