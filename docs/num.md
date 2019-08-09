@@ -87,37 +87,39 @@ bell-shaped curve. If so,  then the [Box Muller
 sampling:
 
 ```awk
-  36.  function NumAny(i,  z) { 
-  37.    z = sqrt(-2*log(rand()))*cos(6.2831853*rand())
-  38.    return i.m + i.sd * z 
-  39.  }
+  36.  function NumAny(i) { 
+  37.    return i.m + i.sd * z()
+  38.  }
 ```
 
 ```awk
-  40.  function NumAnyT(i) { # Another any, assumes a triangle distribution
-  41.    return triangle(i.lo, i.mu, i.hi)
+  39.  function z() {
+  40.    return sqrt(-2*log(rand()))*cos(6.2831853*rand())
+  41.  
   42.  }
+  43.  function NumAnyT(i) { # Another any, assumes a triangle distribution
+  44.    return triangle(i.lo, i.mu, i.hi)
+  45.  }
 ```
 
 Here, we check if two `Num`s are significantly different
 and differ by mroe than a small effect:
 
 ```awk
-  43.  function NumDiff(i,j) {
-  44.    return diff(i,j) # defined in "Nums"
-  45.  }
+  46.  function NumDiff(i,j) {
+  47.    return diff(i,j) # defined in "Nums"
+  48.  }
 ```
 
-Here's a convenience function to load all the numbers of an array into a `Num`.
+Here's a convenience function to load all the numbers of an array 
+`a` into a `Num`. 
 
 ```awk
-  46.  function nums(n,a,    i) {
-  47.    if (!isarray(n)) 
-  48.     Num(n)
-  49.    for(i in a)
-  50.      if (a[i] != "?") 
-  51.       Num1(n, a[i])
-  52.  }
+  49.  function nums(n,a,   x,    v,i) {
+  50.    if (!isarray(n))
+  51.     Num(n)
+  52.     for(i in a)  {
+  53.        v= x ? a[i][x] : a[i]
+  54.        if (v != "?") Num1(n, v) }
+  55.  }
 ```
-
-

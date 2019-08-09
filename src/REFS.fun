@@ -14,6 +14,16 @@ Better Software Analytics via "DUO": Data Mining Algorithms Using/Used-by Optimi
 arXiv:1812.01550.
 https://arxiv.org/pdf/1812.01550.pdf
 
+## E
+
+### Efron 1993
+
+B. Efron, R. Tibshirani. (1993).
+An Introduction to the Bootstrap.
+Chapman 7 Hall.
+
+## K
+
 ### Kampenes 2007
 
 Kampenes Tore Dybå,

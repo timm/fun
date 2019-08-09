@@ -25,8 +25,8 @@ Uses:  "[funny](funny)"<br>
   12.    i.some.most  =  256
   13.  
   14.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  15.    i.sk.b       = 1000
-  16.    i.sk.conf    = 0.01
+  15.    i.sk.b       = 500 
+  16.    i.sk.conf    = 95
   17.  
   18.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
   19.    i.nums.ttest=   95 # selects thresholds for ttest

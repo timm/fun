@@ -70,11 +70,14 @@ bell-shaped curve. If so,  then the [Box Muller
 ](https://people.maths.ox.ac.uk/gilesm/mc/mc/lec1.pdf) can do the
 sampling:
 
-function NumAny(i,  z) { 
-  z = sqrt(-2*log(rand()))*cos(6.2831853*rand())
-  return i.m + i.sd * z 
+function NumAny(i) { 
+  return i.m + i.sd * z()
 }
 
+function z() {
+  return sqrt(-2*log(rand()))*cos(6.2831853*rand())
+
+}
 function NumAnyT(i) { # Another any, assumes a triangle distribution
   return triangle(i.lo, i.mu, i.hi)
 }
@@ -86,14 +89,13 @@ function NumDiff(i,j) {
   return diff(i,j) # defined in "Nums"
 }
 
-Here's a convenience function to load all the numbers of an array into a `Num`.
+Here's a convenience function to load all the numbers of an array 
+`a` into a `Num`. 
 
-function nums(n,a,    i) {
-  if (!isarray(n)) 
+function nums(n,a,   x,    v,i) {
+  if (!isarray(n))
    Num(n)
-  for(i in a)
-    if (a[i] != "?") 
-     Num1(n, a[i])
+   for(i in a)  {
+      v= x ? a[i][x] : a[i]
+      if (v != "?") Num1(n, v) }
 }
-
-
