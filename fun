@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top=" [about](/fun/ABOUT) |   [discuss]($Git/issues) | [license](/fun/LICENSE) <hr>"
+top=" [about](/fun/ABOUT) |   [discuss]($Git/issues) | [license](/fun/LICENSE)"
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
@@ -66,7 +66,7 @@ doc() {  gawk -v name="$1" -v path="$2" -v banner="$banner" -v top="$top" -v foo
   sub(/^CODE @include[ \t]*/,"") { $0=gensub(/"([^"]*)"/,"Uses:  \"[\\1](\\1)\"<br>","g",$0) }
   sub(/^CODE /,"")         { if(!Code) print "```awk"; Code=1; print sprintf("%4s.  ",++N) $0; next }
   sub(/^DOC /,"")          { if( Code) print "```";    Code=0 }
-  BEGIN                    { print  "---\ntitle: " name "\n---\n\n"top "<br>\n" xbanner "<br>" xfooter "\n\n# " name }
+  BEGIN                    { print  "---\ntitle: " name "\n---\n\n"top "<br>\n\n----" xbanner  xfooter "\n\n# " name }
   NR < 4                   { next }
   sub(/^#!class /,"")       { print "<img src=\"http://yuml.me/diagram/plain;dir:lr/class/"$0"\">"; next}
                            { print }
