@@ -7,6 +7,7 @@ title: LICENSE.fun
 
 
 # LICENSE.fun
+BSD 2-Clause License
 
 Copyright (c) 2019, 2020  Tim Menzies
 All rights reserved.
