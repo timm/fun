@@ -8,7 +8,9 @@ title: ABOUT.fun
 
 # ABOUT.fun
 
-[Experience suggests](REFS#agrawal-2019)
+<button class="button">Green</button>
+
+[Experience suggests](/REFS#agrawal-2019)
 https://arxiv.org/pdf/1812.01550.pdf) that the twin technologies of
 data mining and optimization are so closely connected 
 that they can be usefully refactored.

@@ -75,3 +75,22 @@ pre { font-size: 9px; line-spacing: 120%;}
 .highlight .vi { color: #003333 } /* Name.Variable.Instance */
 .highlight .vm { color: #003333 } /* Name.Variable.Magic */
 .highlight .il { color: #FF6600 } /* Literal.Number.Integer.Long */
+
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
