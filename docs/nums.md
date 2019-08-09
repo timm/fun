@@ -6,11 +6,9 @@ title: nums.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # nums.fun
-```awk
-   1.  @include "funny"
-   2.  @include "num"
-   3.  @include "the"
-```
+@include "[funny](funny)"<br>
+@include "[num](num)"<br>
+@include "[the](the)"<br>
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Nums]1-2[Num],[Nums]-.-[note: v.fast comparison two Nums (assumes normal bell-shaped curves){bg:cornsilk}]">
 
@@ -36,10 +34,10 @@ if they are not significantly different and have differences larger
 than a small effect.
 
 ```awk
-   4.  function diff(x,y,      s) { 
-   5.    Nums(s)
-   6.    return ttest(x,y,s) && hedges(x,y,s)  
-   7.  }
+   1.  function diff(x,y,      s) { 
+   2.    Nums(s)
+   3.    return ttest(x,y,s) && hedges(x,y,s)  
+   4.  }
 ```
 
 First, some theory. Consider the following two normal bell-shaped
@@ -63,13 +61,18 @@ so we need some rules to decide those odds.  Given two `Num` objects
   The larger the standard deviations, the lower those 
   odds (since there is more overlap). Note that the _SdFx_
   interacts with the enxt effect.
-- _SampleFx_ = the sample size effect.
+- _SampleFX_ = the sample size effect.
    The largeer the sampel size, the less worried we are 
    that the standard deviation will confuse us. So
    large sample sizes mitigate for _SdFX_.
 
 The standard way to apply these rules is the following ttest test
-for significant differences.
+for significant differences. Note thats Othe _MeanFx_
+is in the numerator (top part of the fraction) so large increases
+in the mean difference makes "different" more likely. Also, the
+_SdFX_ effect, mitigated by the _SampleFX_, are where they should be;
+i.e. in  the denominator
+(bottom part of the fraction).
 
 -  Different = `abs(xmu - y.mu) / sqrt(x.sd^2/s.n + y.sd^2/y.n) >  T` 
 
@@ -101,51 +104,51 @@ from 95 to 99 makes it harder to prove things are different (and
 95 is the usual conference level).
 
 ```awk
-   8.  function Nums(i) {
-   9.    Object(i)
-  10.    i.conf  = THE.nums.ttest  # selects the threshold for ttest
-  11.    i.small = THE.nums.hedges # threshold for effect size test. 
-  12.    # Thresholds for ttests at two different confidence levels
-  13.    # -- 95% --------------------------
-  14.    i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
-  15.    i[95][12]= 2.179; i[95][24]= 2.064; 
-  16.    i[95][48]= 2.011; i[95][96]= 1.985; 
-  17.    # -- 99% --------------------------
-  18.    i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
-  19.    i[99][12]= 3.055; i[99][24]= 2.797; 
-  20.    i[99][48]= 2.682; i[99][96]= 2.625; 
-  21.    i.first = 3  # must be the smallest index of the above arrays
-  22.    i.last  = 98 # must be the last     index of the above arrays
-  23.  }
+   5.  function Nums(i) {
+   6.    Object(i)
+   7.    i.conf  = THE.nums.ttest  # selects the threshold for ttest
+   8.    i.small = THE.nums.hedges # threshold for effect size test. 
+   9.    # Thresholds for ttests at two different confidence levels
+  10.    # -- 95% --------------------------
+  11.    i[95][ 3]= 3.182; i[95][ 6]= 2.447; 
+  12.    i[95][12]= 2.179; i[95][24]= 2.064; 
+  13.    i[95][48]= 2.011; i[95][96]= 1.985; 
+  14.    # -- 99% --------------------------
+  15.    i[99][ 3]= 5.841; i[99][ 6]= 3.707; 
+  16.    i[99][12]= 3.055; i[99][24]= 2.797; 
+  17.    i[99][48]= 2.682; i[99][96]= 2.625; 
+  18.    i.first = 3  # must be the smallest index of the above arrays
+  19.    i.last  = 98 # must be the last     index of the above arrays
+  20.  }
 ```
 
 Here's the test for "larger than a small effect":
 
 ```awk
-  24.  function hedges(x,y,s,   nom,denom,sp,g,c) {
-  25.    # from http://tiny.cc/fxsize
-  26.    nom   = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2
-  27.    denom = (x.n - 1)        + (y.n - 1)
-  28.    sp    = sqrt( nom / denom )
-  29.    g     = abs(x.mu - y.mu) / sp  
-  30.    c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
-  31.    return g * c > s.small
-  32.  }
+  21.  function hedges(x,y,s,   nom,denom,sp,g,c) {
+  22.    # from http://tiny.cc/fxsize
+  23.    nom   = (x.n - 1)*x.sd^2 + (y.n - 1)*y.sd^2
+  24.    denom = (x.n - 1)        + (y.n - 1)
+  25.    sp    = sqrt( nom / denom )
+  26.    g     = abs(x.mu - y.mu) / sp  
+  27.    c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
+  28.    return g * c > s.small
+  29.  }
 ```
 
 Here's the test for significanct difference:
 
 ```awk
-  33.  function ttest(x,y,s,    t,a,b,df,c) {
-  34.    # debugged using https://goo.gl/CRl1Bz
-  35.    t  = abs(x.mu - y.mu) / sqrt(max(10^-64,
-  36.                                  x.sd^2/x.n + y.sd^2/y.n ))
-  37.    a  = x.sd^2/x.n
-  38.    b  = y.sd^2/y.n
-  39.    df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
-  40.    c  = ttest1(s, int( df + 0.5 ), s.conf)
-  41.    return abs(t) > c
-  42.  }
+  30.  function ttest(x,y,s,    t,a,b,df,c) {
+  31.    # debugged using https://goo.gl/CRl1Bz
+  32.    t  = abs(x.mu - y.mu) / sqrt(max(10^-64,
+  33.                                  x.sd^2/x.n + y.sd^2/y.n ))
+  34.    a  = x.sd^2/x.n
+  35.    b  = y.sd^2/y.n
+  36.    df = (a + b)^2 / (10^-64 + a^2/(x.n-1) + b^2/(y.n - 1))
+  37.    c  = ttest1(s, int( df + 0.5 ), s.conf)
+  38.    return abs(t) > c
+  39.  }
 ```
 
 The following is a minor detail. It  is a 
@@ -154,18 +157,18 @@ values for the test based on degrees of freedom `df` and the specificed
 confidence level. 
 
 ```awk
-  43.  function ttest1(s,df,conf,   n1,n2,old,new,c) {
-  44.    if (df < s.first) 
-  45.      return s[conf][s.first]
-  46.    for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
-  47.      n2 = n1*2
-  48.      if (df >= n1 && df <= n2) {
-  49.        old = s[conf][n1]
-  50.        new = s[conf][n2]
-  51.        return old + (new-old) * (df-n1)/(n2-n1)
-  52.    }}
-  53.    return s[conf][s.last]
-  54.  }
+  40.  function ttest1(s,df,conf,   n1,n2,old,new,c) {
+  41.    if (df < s.first) 
+  42.      return s[conf][s.first]
+  43.    for(n1 = s.first*2; n1 < s.last; n1 *= 2) {
+  44.      n2 = n1*2
+  45.      if (df >= n1 && df <= n2) {
+  46.        old = s[conf][n1]
+  47.        new = s[conf][n2]
+  48.        return old + (new-old) * (df-n1)/(n2-n1)
+  49.    }}
+  50.    return s[conf][s.last]
+  51.  }
 ```
 
 ## Further Reading:

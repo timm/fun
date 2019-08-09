@@ -54,13 +54,18 @@ so we need some rules to decide those odds.  Given two `Num` objects
   The larger the standard deviations, the lower those 
   odds (since there is more overlap). Note that the _SdFx_
   interacts with the enxt effect.
-- _SampleFx_ = the sample size effect.
+- _SampleFX_ = the sample size effect.
    The largeer the sampel size, the less worried we are 
    that the standard deviation will confuse us. So
    large sample sizes mitigate for _SdFX_.
 
 The standard way to apply these rules is the following ttest test
-for significant differences.
+for significant differences. Note thats Othe _MeanFx_
+is in the numerator (top part of the fraction) so large increases
+in the mean difference makes "different" more likely. Also, the
+_SdFX_ effect, mitigated by the _SampleFX_, are where they should be;
+i.e. in  the denominator
+(bottom part of the fraction).
 
 -  Different = `abs(xmu - y.mu) / sqrt(x.sd^2/s.n + y.sd^2/y.n) >  T` 
 

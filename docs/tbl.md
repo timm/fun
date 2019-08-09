@@ -7,73 +7,71 @@ title: tbl.fun
 
 # tbl.fun
 
-```awk
-   1.  @include "funny"
-   2.  @include "col"
-   3.  @include "row"
-   4.  @include "the"
-```
+@include "[funny](funny)"<br>
+@include "[col](col)"<br>
+@include "[row](row)"<br>
+@include "[the](the)"<br>
 
 ```awk
-   5.  BEGIN  {
-   6.    SKIPCOL = "\\?"
-   7.    NUMCOL  = "[<>\\$]"
-   8.    GOALCOL = "[<>!]"
-   9.    LESS    = "<"
-  10.  }
+   1.  BEGIN  {
+   2.    SKIPCOL = "\\?"
+   3.    NUMCOL  = "[<>\\$]"
+   4.    GOALCOL = "[<>!]"
+   5.    LESS    = "<"
+   6.  }
 ```
 #------------------------------------------------------------
 ```awk
-  11.  func Row(i,t,lst,     c) {
-  12.    Object(i)
-  13.    has(i,"cells")
-  14.    i.dom = 0
-  15.    for(c in t.cols) 
-  16.      i.cells[c] = Col1(t.cols[c],  lst[c]) 
-  17.  }
-  18.  func RowDoms(i,all,t,  j) {
-  19.    i.dom = 0
-  20.    for(j=1; j<=THE.row.doms; j++)
-  21.      i.dom += RowDom(i, all[any(all)], t) / THE.row.doms
-  22.  }
-  23.  func RowDom(i,j,t,   a,b,c,s1,s2,n) {
-  24.    n = length(t.my.w)
-  25.    for(c in t.my.w) {
-  26.      a   = NumNorm( t.cols[c], i.cells[c] )
-  27.      b   = NumNorm( t.cols[c], j.cells[c] )
-  28.      s1 -= 10^( t.my.w[c] * (a-b)/n )
-  29.      s2 -= 10^( t.my.w[c] * (b-a)/n )
-  30.    }
-  31.    return s1/n < s2/n
-  32.  }
+   7.  func Row(i,t,lst,     c) {
+   8.    Object(i)
+   9.    has(i,"cells")
+  10.    i.dom = 0
+  11.    for(c in t.cols) 
+  12.      i.cells[c] = Col1(t.cols[c],  lst[c]) 
+  13.  }
+  14.  func RowDoms(i,all,t,  j) {
+  15.    i.dom = 0
+  16.    for(j=1; j<=THE.row.doms; j++)
+  17.      i.dom += RowDom(i, all[any(all)], t) / THE.row.doms
+  18.  }
+  19.  func RowDom(i,j,t,   a,b,c,s1,s2,n) {
+  20.    n = length(t.my.w)
+  21.    for(c in t.my.w) {
+  22.      a   = NumNorm( t.cols[c], i.cells[c] )
+  23.      b   = NumNorm( t.cols[c], j.cells[c] )
+  24.      s1 -= 10^( t.my.w[c] * (a-b)/n )
+  25.      s2 -= 10^( t.my.w[c] * (b-a)/n )
+  26.    }
+  27.    return s1/n < s2/n
+  28.  }
 ```
 
   
 #------------------------------------------------------------
 ```awk
-  33.  func Tbl(i) { 
-  34.    Object(i)
-  35.    has(i,"my")
-  36.    has(i,"cols")
-  37.    has(i,"rows") 
-  38.  }
-  39.  func Tbl1(i,r,lst,    c) {
-  40.    if (r==1)  {
-  41.      for(c in lst)
-  42.        if (lst[c] !~ SKIPCOL) 
-  43.          TblCols(i, c, lst[c])
-  44.    } else  
-  45.      has2(i.rows,r-1,"Row",i,lst)  
-  46.  }
-  47.  func TblCols(i,c,v) {
-  48.    if (v ~ CLASSCOL) i.my.class = c
-  49.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
-  50.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  51.    if (v ~ />/) i.my.w[c] =  1
-  52.    if (v ~ /</) i.my.w[c] = -1
-  53.    has2(i.cols,c,
-  54.         v ~NUMCOL ? "Num" : "Sym",
-  55.         c,v) 
-  56.  }
+  29.  func Tbl(i) { 
+  30.    Object(i)
+  31.    has(i,"my")
+  32.    has(i,"cols")
+  33.    has(i,"rows") 
+  34.  }
+  35.  func Tbl1(i,r,lst,    c) {
+  36.    if (r==1)  {
+  37.      for(c in lst)
+  38.        if (lst[c] !~ SKIPCOL) 
+  39.          TblCols(i, c, lst[c])
+  40.    } else  
+  41.      has2(i.rows,r-1,"Row",i,lst)  
+  42.  }
+  43.  func TblCols(i,c,v) {
+  44.    if (v ~ CLASSCOL) i.my.class = c
+  45.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
+  46.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
+  47.    if (v ~ />/) i.my.w[c] =  1
+  48.    if (v ~ /</) i.my.w[c] = -1
+  49.    has2(i.cols,c,
+  50.         v ~NUMCOL ? "Num" : "Sym",
+  51.         c,v) 
+  52.  }
 ```
 

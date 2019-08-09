@@ -7,36 +7,34 @@ title: numsok.fun
 
 # numsok.fun
 
+@include "[funny](funny)"<br>
+@include "[nums](nums)"<br>
+
 ```awk
-   1.  @include "funny"
-   2.  @include "nums"
+   1.  BEGIN {  tests("numok","_nums") }
 ```
 
 ```awk
-   3.  BEGIN {  tests("numok","_nums") }
+   2.  func _nums(f,     a,i,k) {
+   3.    srand(1)
+   4.    for(i=1;i<=100;i+= 1)  
+   5.      a[i] = rand()
+   6.    for(k=1; k<=1.5; k+=0.05) 
+   7.       _num1(a,k)
+   8.  }
 ```
 
 ```awk
-   4.  func _nums(f,     a,i,k) {
-   5.    srand(1)
-   6.    for(i=1;i<=100;i+= 1)  
-   7.      a[i] = rand()
-   8.    for(k=1; k<=1.5; k+=0.05) 
-   9.       _num1(a,k)
-  10.  }
-```
-
-```awk
-  11.  func _num1(a,k,    i,na,nk,s) {
-  12.    Num(na)
-  13.    Num(nk)
-  14.    for(i in a) 
-  15.       Num1(nk, 
-  16.            k * Num1(na, a[i]))
-  17.    Nums(s)
-  18.    print("k",k,
-  19.           "\tsigDifferent",ttest(na,nk,s),
-  20.           "notSmallEffect",hedges(na,nk,s), 
-  21.           "and", diff(na,nk))
-  22.  }
+   9.  func _num1(a,k,    i,na,nk,s) {
+  10.    Num(na)
+  11.    Num(nk)
+  12.    for(i in a) 
+  13.       Num1(nk, 
+  14.            k * Num1(na, a[i]))
+  15.    Nums(s)
+  16.    print("k",k,
+  17.           "\tsigDifferent",ttest(na,nk,s),
+  18.           "notSmallEffect",hedges(na,nk,s), 
+  19.           "and", diff(na,nk))
+  20.  }
 ```

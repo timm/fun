@@ -7,34 +7,32 @@ title: the.fun
 
 # the.fun
 
+@include "[funny](funny)"<br>
+
 ```awk
-   1.  @include "funny"
+   1.  func Config(i) {
+   2.    Object(i)
+   3.  
+   4.    i.row.doms   =  64
+   5.  
+   6.    i.div.min    =   0.5
+   7.    i.div.cohen  =   0.3
+   8.    i.div.trivial=   1.05
+   9.    i.div.enough =  512
+  10.    i.div.verbose=    1
+  11.  
+  12.    i.some.most  =  256
+  13.  
+  14.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
+  15.    i.sk.b       = 1000
+  16.    i.sk.conf    = 0.01
+  17.  
+  18.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
+  19.    i.nums.ttest=   95 # selects thresholds for ttest
+  20.  
+  21.  }
 ```
 
 ```awk
-   2.  func Config(i) {
-   3.    Object(i)
-   4.  
-   5.    i.row.doms   =  64
-   6.  
-   7.    i.div.min    =   0.5
-   8.    i.div.cohen  =   0.3
-   9.    i.div.trivial=   1.05
-  10.    i.div.enough =  512
-  11.    i.div.verbose=    1
-  12.  
-  13.    i.some.most  =  256
-  14.  
-  15.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  16.    i.sk.b       = 1000
-  17.    i.sk.conf    = 0.01
-  18.  
-  19.    i.nums.hedges=   0.38 # small effect. Use 1.0 for medium effect
-  20.    i.nums.ttest=   95 # selects thresholds for ttest
-  21.  
-  22.  }
-```
-
-```awk
-  23.  BEGIN {Config(THE)}
+  22.  BEGIN {Config(THE)}
 ```

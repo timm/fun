@@ -7,47 +7,45 @@ title: symok.fun
 
 # symok.fun
 
-```awk
-   1.  @include "funny"
-   2.  @include "sym"
-```
+@include "[funny](funny)"<br>
+@include "[sym](sym)"<br>
 
 ```awk
-   3.  BEGIN {  tests("colok","_sym,_syms") }
+   1.  BEGIN {  tests("colok","_sym,_syms") }
 ```
 
 If we sample from a `Sym`, does it generate
 items at the right frequency?
 
 ```awk
-   4.  func _syms(f,   max,s,a,b,i,j,k) {
-   5.    max=256
-   6.    s="aaaabbc"
-   7.    Sym(i)
-   8.    Sym(j)
-   9.    split(s,a,"")
-  10.    for(k in a) Sym1(i, a[k]) # load "i"
-  11.    for(k=1; k<=max; k++) 
-  12.      Sym1(j,SymAny(i))  # sample "i" to load "j"
-  13.    is(f, SymEnt(i), SymEnt(j), 0.05)
-  14.  }
+   2.  func _syms(f,   max,s,a,b,i,j,k) {
+   3.    max=256
+   4.    s="aaaabbc"
+   5.    Sym(i)
+   6.    Sym(j)
+   7.    split(s,a,"")
+   8.    for(k in a) Sym1(i, a[k]) # load "i"
+   9.    for(k=1; k<=max; k++) 
+  10.      Sym1(j,SymAny(i))  # sample "i" to load "j"
+  11.    is(f, SymEnt(i), SymEnt(j), 0.05)
+  12.  }
 ```
 
 Checkng some sample entropy counts:
 
 ```awk
-  15.  function _sym(f) {
-  16.    is(f, _sym1("aaaabbc"), 1.37878) 
-  17.    is(f, _sym1("aaaaaaa"), 0)
-  18.  }
+  13.  function _sym(f) {
+  14.    is(f, _sym1("aaaabbc"), 1.37878) 
+  15.    is(f, _sym1("aaaaaaa"), 0)
+  16.  }
 ```
 
 ```awk
-  19.  func _sym1(s,   a,i,j) {
-  20.    Sym(i)
-  21.    split(s,a,"")
-  22.    for(j in a) 
-  23.      Sym1(i, a[j])
-  24.    return SymEnt(i)
-  25.  }
+  17.  func _sym1(s,   a,i,j) {
+  18.    Sym(i)
+  19.    split(s,a,"")
+  20.    for(j in a) 
+  21.      Sym1(i, a[j])
+  22.    return SymEnt(i)
+  23.  }
 ```

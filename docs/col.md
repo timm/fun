@@ -6,9 +6,7 @@ title: col.fun
 <img style="width:100%;" src="https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png"><br><em> &copy; 2019 Tim Menzies. http://menzies.us</em>
 
 # col.fun
-```awk
-   1.  @include "funny"
-```
+@include "[funny](funny)"<br>
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]">
 
@@ -17,23 +15,23 @@ title: col.fun
 ## Col
 
 ```awk
-   2.  function Col(i,c,v) { 
-   3.    Object(i)   
-   4.    i.n=0
-   5.    i.col=c
-   6.    i.txt=v 
-   7.  } 
+   1.  function Col(i,c,v) { 
+   2.    Object(i)   
+   3.    i.n=0
+   4.    i.col=c
+   5.    i.txt=v 
+   6.  } 
 ```
 
 The generic add function ignroes anything that is a `"?"`. 
 
 ```awk
-   8.  BEGIN {IGNORE="\\?"}
-   9.  function Col1(i,v,   add) {
-  10.    if (v ~ IGNORE) return v
-  11.    add = i.add
-  12.    return @add(i,v)
-  13.  } 
+   7.  BEGIN {IGNORE="\\?"}
+   8.  function Col1(i,v,   add) {
+   9.    if (v ~ IGNORE) return v
+  10.    add = i.add
+  11.    return @add(i,v)
+  12.  } 
 ```
 
 Sym and Num and Some track the central tendancies and variety  of the the columns they watch
