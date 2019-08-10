@@ -87,18 +87,18 @@ pre { font-size: 9px; line-spacing: 120%;}
   display: inline-block;
   font-size: 12px;
   margin: 4px 2px;
-  color: white;
+  font-color: white;
 border-radius: 12px;
   cursor: pointer;
 }
 
-a.button:link { color:white; text-decoration:none; font-weight:normal; }
-a.button:visited { color: white; text-decoration:none; font-weight:normal; }
-a.button:hover { color: white; text-decoration:underline; font-weight:normal; }
-a.button:active { color: white; text-decoration:none; font-weight:normal; }
+.button a:link { color:white; text-decoration:none; font-weight:normal; }
+.button a:visited { color: white; text-decoration:none; font-weight:normal; }
+.button a:hover { color: white; text-decoration:underline; font-weight:normal; }
+.button a:active { color: white; text-decoration:none; font-weight:normal; }
 
 .button1 { background-color: rgb(33,110,185); } /* Gray */ 
 .button2 { background-color: rgb(118,212,240); } /* Blue */
 .button3 { background-color: rgb(33,110,185);  } /* Red */ 
-.button5 {background-color: #555555;} /* Black */
+.button5  {background-color: #555555;} /* Black */
 
