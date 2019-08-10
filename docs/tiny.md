@@ -2,7 +2,7 @@
 title: tiny.fun
 ---
 
-<<button class="button button1"><a href="/fun/index">index</a></button>   button class="button button2"><a href="/fun/ABOUT">about</a></button>   <button class="button button1"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button2"><a href="/fun/license">license</a></button> <br>
+<button class="button button1"><a href="/fun/index">index</a></button>   <button class="button button2"><a href="/fun/ABOUT">about</a></button>   <button class="button button1"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button2"><a href="/fun/license">license</a></button> <br>
 
 
 
