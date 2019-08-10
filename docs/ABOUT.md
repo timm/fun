@@ -8,7 +8,6 @@ title: ABOUT.fun
 
 # ABOUT.fun
 
-<button class="button">Green</button>
 
 [Experience suggests](/REFS#agrawal-2019)
 that the twin technologies of

@@ -2,7 +2,6 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
-<button class="button">Green</button>
 
 [Experience suggests](/REFS#agrawal-2019)
 that the twin technologies of
