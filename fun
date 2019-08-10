@@ -108,8 +108,8 @@ toc() {
     	if [[ ! $i =~ $ok ]]; then
           f=$(basename $i)
  	   g=${f%.*}
-    	  echo "- [$g]($f)" ; 
-          grep "^##" $i  | head -1 | sed 's/^##//'
+    	  echo "- [$g]($f). " ; 
+          grep "^##" $i  | head -1 | sed 's/^##//'; echo "."
         fi 
    done
    echo

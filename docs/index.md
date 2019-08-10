@@ -32,22 +32,35 @@ other language).
 
 ## Funny Stuff
 
-- [col](col.md)
+- [col](col.md). 
  Keep summaries  of table columns
-- [div](div.md)
-- [funny](funny.md)
-- [index](index.md)
+.
+- [div](div.md). 
+.
+- [funny](funny.md). 
+.
+- [index](index.md). 
  Funny Stuff
-- [num](num.md)
-- [nums](nums.md)
+.
+- [num](num.md). 
+.
+- [nums](nums.md). 
  Further Reading:
-- [row](row.md)
+.
+- [row](row.md). 
  See also
-- [sk](sk.md)
-- [some](some.md)
-- [sym](sym.md)
+.
+- [sk](sk.md). 
+.
+- [some](some.md). 
+.
+- [sym](sym.md). 
  Sym
-- [tbl](tbl.md)
-- [the](the.md)
-- [tiny](tiny.md)
+.
+- [tbl](tbl.md). 
+.
+- [the](the.md). 
+.
+- [tiny](tiny.md). 
+.
 
