@@ -9,7 +9,7 @@ title: col.fun
 # col.fun
 Uses:  "[funny](funny)"<br>
 
-# Col : fun stuff
+## Keep summaries  of table columns
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]">
 

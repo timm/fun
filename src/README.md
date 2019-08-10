@@ -1,10 +1,3 @@
----
-title: Contents
----
-<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/ABOUT">doc</a></button>   <button class="button button1"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button2"><a href="/fun/license">license</a></button> <br>
-        <br>
-
-
 [Experience suggests](/REFS#agrawal-2019) that the twin technologies
 of data mining and optimization are so closely connected that 
 data miners can work as
@@ -28,26 +21,4 @@ the code here would become a spec for their implementation in  some
 other language).
 
 
-
-
-## Funny Stuff
-
-- [col](col.md)
- Keep summaries  of table columns
-- [div](div.md)
-- [funny](funny.md)
-- [index](index.md)
- Funny Stuff
-- [num](num.md)
-- [nums](nums.md)
- Further Reading:
-- [row](row.md)
- See also
-- [sk](sk.md)
-- [some](some.md)
-- [sym](sym.md)
- Sym
-- [tbl](tbl.md)
-- [the](the.md)
-- [tiny](tiny.md)
 

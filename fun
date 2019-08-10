@@ -109,6 +109,7 @@ toc() {
           f=$(basename $i)
  	   g=${f%.*}
     	  echo "- [$g]($f)" ; 
+          grep "^##" $i  | head -1 | sed 's/^##//'
         fi 
    done
    echo
@@ -135,9 +136,9 @@ for i in $files;do
     echo '#!/usr/bin/env gawk -f ' > $bin1
     cat $lib1 >> $bin1
   fi
-  (toc > $Doc/index.md)
 done
 
+toc > $Doc/index.md
 chmod +x $files $Bin/*
 
 if   [ "$1" = "Pull" ]
