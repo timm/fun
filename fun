@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top="<button class=\"button button1\"><a href=\"/fun/index\">home</a></button>   <button class=\"button button2\"><a href=\"/fun/ABOUT\">about</a></button>   <button class=\"button button1\"><a href=\"$Git/issues\">discuss</a></button>    <button class=\"button button2\"><a href=\"/fun/license\">license</a></button> "
+top="<button class=\"button button1\"><a href=\"/fun/index\">home</a></button>   <button class=\"button button2\"><a href=\"/fun/ABOUT\">doc</a></button>   <button class=\"button button1\"><a href=\"$Git/issues\">discuss</a></button>    <button class=\"button button2\"><a href=\"/fun/license\">license</a></button> "
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
@@ -94,7 +94,11 @@ toc() {
         $xbanner<br>
 	$xfooter
 
-	---
+	EOF
+   if [ -f "$Root/src/README.md" ]; then
+      cat $Root/src/README.md
+   fi
+   cat <<-EOF
 
 	## Fun Stuff
 
@@ -104,7 +108,7 @@ toc() {
     	if [[ ! $i =~ $ok ]]; then
           f=$(basename $i)
  	   g=${f%.$Ext}
-    	  echo "- [$g]($f)" ; 
+    	  echo "- [$f]($f.md)" ; 
         fi 
    done
    echo
