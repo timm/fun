@@ -9,25 +9,21 @@ title: Contents
 of data mining and optimization are so closely connected that 
 data miners can work as
 optimizers and vice versa. 
-
 Once refactored in that way,
 the new code offers many novel
 design options,
 some of which could even contribute to ethical goals. For example:
 
-- It is ethical to deliver transparent and reliable code; 
-   - Rule learners help transparency; 
-   - Multi-objective optimization helps reliability.
-- Inclusiveness is an ethical goal;
-   - Inclusiveness is helped by transparency;
-   - Active learners, that incrementally improve a system using just a few (carefully selected) questions
-     help humans to be included in the development process.
-- Explanation is another goal, that help's transparency and inclusiveness.
+- It is ethical to deliver transparent and reliable code: rule learners help transparency;  
+  multi-objective optimization helps reliability);
+- Inclusiveness is an ethical goal: inclusiveness is helped by transparency; also,   
+  active learners, that incrementally improve a system using just a few carefully selected questions
+  help humans to be included in the development process).
+- Explanation is another goal, that helped by transparency and inclusiveness.
   It is  also a 
-  legal requirement for AI systems[^legal].
-    - Rule learners, and contrast sets learners, help explanation.
-- Privacy is another ethical goals:
-   - Prototype learners sub-sample the data, thus making private anything outside the prototypes.
+  legal requirement for AI systems[^legal]: rule learners, and contrast sets learners, help explanation.
+- Privacy is another ethical goals: prototype learners sub-sample the data, 
+  thus making private anything outside the prototypes.
 - etc.
 
 
