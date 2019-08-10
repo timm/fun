@@ -7,9 +7,9 @@ the new code offers many novel
 design options,
 some of which could even contribute to ethical goals. For example:
 
-- It is ethical to deliver transparent and reliable code: rule learners help transparency;  
+- It is ethical to deliver transparent and reliable code: rule learners help transparency;
   multi-objective optimization helps reliability);
-- Inclusiveness is an ethical goal: inclusiveness is helped by transparency; also,   
+- Inclusiveness is an ethical goal: inclusiveness is helped by transparency; also,
   active learners, that incrementally improve a system using just a few carefully selected questions
   help humans to be included in the development process).
 - Explanation is another goal, that helped by transparency and inclusiveness.

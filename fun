@@ -112,7 +112,9 @@ toc() {
           grep "^##" $i  | head -1 | sed 's/^##//'
         fi 
    done
-   echo
+   echo ""
+   echo "---"
+   echo ""
 }
 # ----------------------------------------
 # do the work
