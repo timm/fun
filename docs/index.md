@@ -6,7 +6,7 @@ title: Contents
 
 
 
-## Fun Stuff
+## Funny Stuff
 
 - [col.md](col.md.md)
 - [div.md](div.md.md)

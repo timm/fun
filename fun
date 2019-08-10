@@ -100,7 +100,7 @@ toc() {
    fi
    cat <<-EOF
 
-	## Fun Stuff
+	## Funny Stuff
 
 	EOF
    for i in $(ls $Doc/[^A-Z]*.md); do 
