@@ -2,27 +2,13 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
+FUN is a lightweight executable notation, used
+here to describe various data mining and optimization
+concepts.
 
-[Experience suggests](/REFS#agrawal-2019)
-that the twin technologies of
-data mining and optimization are so closely connected 
-that they can be usefully refactored.
-such that
-data miners can work as optimizers and vice versa. That refactored
-code offers many design options, some of which could even contribute
-to ethical goals (e.g. 
-it is ethical to deliver transparent and reliable code;
-rule learners help transparency; and 
-mult-objective optimziation helps reliability).  
-
-FUN is a work-on-progress with the goal
-to build
-a reference system that demonstrates all the above,
-in one succinct code base.
-Ideally, the reader looks here and says "I can do better than that", then rushes
-off to refactor their own ethical code (in which case, all the code here
-would become a spec for their implementation in  some other language).
-
+FUN  can be used as a teaching tool.
+Given code written in a language they have never seen before (i.e. FUN), students
+code up their own versions (in whatever langauge they like best).
 
 FUN supports literate programming (with a few UML tricks); unit tests;
 and object-like features.
@@ -33,25 +19,20 @@ FUN is a transpiled language.
 - `xxx.md` markdown files (for web display) and stored in `docs/`;
 - `xxx` executable scripts (for standalone execution) and stored in `$HOME/opt/fun/bin`;
 
-FUN  can be used as a notation to teach, say, data mining and optimization
-concepts.
-Given code written in a language they have never seen before (i.e. FUN), students
-code up their own versions (in whatever langauge they like best).
+FUN transpiles to GAWK since:
 
-But why transpile to gawk?
-
-- Cause the simpler the  target language, the simpler the pre-transpiled source code;.
-- Cause the simpler the source code, the easier it is to show students (the source is so succinct, its easy to show in lectures).
-- After decades of coding in may langages[^note], I found that I kept using the same tricks in every languages (e.g.
+- The simpler the  target language, the simpler the pre-transpiled source code;.
+- The simpler the source code, the easier it is to show students (the source is so succinct, its easy to show in lectures).
+- If you want to test that you undestand something,
+  code it if GAWK. If you are not clear what is going on,
+  the code will be a mess. So while not clean code, recode in GAWK.
+- After much coding in may langages[^note], I found that I kept using the same tricks in every languages (e.g.
   every file kmows it own dependancies and can be tested seperately from the rest; code has doco which is extracted to seperate
   markdown files; code has unit tests; etc).
   FUN codes all those tricks.
-- Finally, full disclosure, my name is timm and I'm a language-a-holic. 
-     - Give me a cool language[^note]
-  and I use it. All of it. 
-  High-order functions, unification, decorators, iterators,
-  list comprehensions, metaclasses, macros
-  and I will USE them to write code that no one else can undersrand.
+- Finally, FUN is therapy and treatment for my addiction to tricky langauge features[^addict].
+
+[^addict]: My name is timm and I'm a language-a-holic.  Give me a cool language[^note] and I use it. All of it.  High-order functions, unification, decorators, iterators, list comprehensions, metaclasses, macros and I will USE them to write code that no one else can undersrand.
 [^note]: In Lisp, Prolog, Smalltalk, Python, Lua, Julia
 
 ## Rules of Fun
