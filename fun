@@ -48,7 +48,7 @@ Where=${AUKWHERE:-"http://menzies.us"}
 Git=${AUKGIT:-"http://github.com/timm/fun"}
 
 
-top="<button class=\"button button1\"><a href=\"/fun/index\">home</a></button>   <button class=\"button button2\"><a href=\"/fun/INSTALL\">install</a></button>   <button class=\"button button1\"><a href=\"/fun/ABOUT\">doc</a></button>   <button class=\"button button2\"><a href=\"$Git/issues\">discuss</a></button>    <button class=\"button button1\"><a href=\"/fun/license\">license</a></button> "
+top="<button class=\"button button1\"><a href=\"/fun/index\">home</a></button>   <button class=\"button button2\"><a href=\"/fun/INSTALL\">install</a></button>   <button class=\"button button1\"><a href=\"/fun/ABOUT\">doc</a></button>   <button class=\"button button2\"><a href=\"$Git/issues\">discuss</a></button>    <button class=\"button button1\"><a href=\"/fun/LICENSE\">license</a></button> "
 banner="<img style=\"width:100%;\" src=\"https://raw.githubusercontent.com/timm/fun/master/etc/img/fun1.png\">"
 footer="<em> &copy; $When $Who. ${Where}</em>"
 
@@ -109,7 +109,7 @@ toc() {
           f=$(basename $i)
  	   g=${f%.*}
     	  echo "- [$g]($f). " ; 
-          grep "^##" $i  | head -1 | sed 's/^##//'; echo "."
+          grep "^##" $i  | head -1 | sed 's/^##//'
         fi 
    done
    echo

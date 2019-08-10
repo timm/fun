@@ -2,11 +2,14 @@
 title: tbl.fun
 ---
 
-<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/license">license</a></button> <br>
+<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/LICENSE">license</a></button> <br>
 
 
 
 # tbl.fun
+
+
+## Store rows of data (and summarize the columns).
 
 Uses:  "[funny](funny)"<br>
 Uses:  "[col](col)"<br>

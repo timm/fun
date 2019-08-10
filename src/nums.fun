@@ -1,6 +1,9 @@
 #!/usr/bin/env ../fun
 # vim: filetype=awk ts=2 sw=2 sts=2  et :
 
+
+## Compare two numeric distributions.
+
 @include "funny"
 @include "num"
 @include "the"

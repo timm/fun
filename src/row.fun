@@ -2,6 +2,9 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 ---------- --------- --------- --------- --------- --
 
+
+## Store rows of tables.
+
 #!class [Tbl]++-1..*[Row|cells;cooked;dom = 0],[Row]-uses-[Col||Col1()]
 
 `Tbl` (tables) have `Row`s.

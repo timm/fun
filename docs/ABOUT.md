@@ -2,7 +2,7 @@
 title: ABOUT.fun
 ---
 
-<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/license">license</a></button> <br>
+<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/LICENSE">license</a></button> <br>
 
 
 
@@ -18,6 +18,7 @@ code up their own versions (in whatever langauge they like best).
 
 FUN supports literate programming (with a few UML tricks); unit tests;
 and object-like features.
+
 FUN is a transpiled language.
  `xxx.fun` files are converted into:
 
@@ -32,11 +33,8 @@ FUN transpiles to GAWK since:
 - If you want to test that you undestand something,
   code it if GAWK. If you are not clear what is going on,
   the code will be a mess. So while not clean code, recode in GAWK.
-- After much coding in may langages[^note], I found that I kept using the same tricks in every languages (e.g.
-  every file kmows it own dependancies and can be tested seperately from the rest; code has doco which is extracted to seperate
-  markdown files; code has unit tests; etc).
-  FUN codes all those tricks.
-- Finally, FUN is therapy and treatment for my addiction to tricky langauge features[^addict].
+- Finally, FUN is therapy and treatment for programmers
+  addicted to arcane langauge features[^addict].
 
 [^addict]: My name is timm and I'm a language-a-holic.  Give me a cool language[^note] and I use it. All of it.  High-order functions, unification, decorators, iterators, list comprehensions, metaclasses, macros and I will USE them to write code that no one else can undersrand.
 [^note]: In Lisp, Prolog, Smalltalk, Python, Lua, Julia

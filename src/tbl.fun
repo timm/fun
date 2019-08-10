@@ -2,6 +2,9 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 #--------- --------- --------- --------- --------- ---------
 
+
+## Store rows of data (and summarize the columns).
+
 @include "funny"
 @include "col"
 @include "row"

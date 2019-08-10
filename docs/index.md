@@ -1,7 +1,7 @@
 ---
 title: Contents
 ---
-<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/license">license</a></button> <br>
+<button class="button button1"><a href="/fun/index">home</a></button>   <button class="button button2"><a href="/fun/INSTALL">install</a></button>   <button class="button button1"><a href="/fun/ABOUT">doc</a></button>   <button class="button button2"><a href="http://github.com/timm/fun/issues">discuss</a></button>    <button class="button button1"><a href="/fun/LICENSE">license</a></button> <br>
         <br>
 
 
@@ -33,34 +33,27 @@ other language).
 ## Funny Stuff
 
 - [col](col.md). 
- Keep summaries  of table columns
-.
+ Summarize  table columns.
 - [div](div.md). 
-.
+ Chop numbers into useful ranges.
 - [funny](funny.md). 
-.
+ Misc utilities.
 - [index](index.md). 
  Funny Stuff
-.
 - [num](num.md). 
-.
+ Summarize numeric columns.
 - [nums](nums.md). 
- Further Reading:
-.
+ Compare two numeric distributions.
 - [row](row.md). 
- See also
-.
+ Store rows of tables.
 - [sk](sk.md). 
-.
+ Non-parametric comparisons of numerics.
 - [some](some.md). 
-.
+ Reservoir sampling (only get some of the data).
 - [sym](sym.md). 
- Sym
-.
+ Summarize symbolic columns.
 - [tbl](tbl.md). 
-.
+ Store rows of data (and summarize the columns).
 - [the](the.md). 
-.
-- [tiny](tiny.md). 
-.
+ Configuration options.
 

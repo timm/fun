@@ -1,6 +1,8 @@
 #!/usr/bin/env ../fun
 # vim: filetype=awk ts=2 sw=2 sts=2  et :
 
+## Summarize numeric columns.
+
 @include "funny"
 @include "col"
 @include "nums"

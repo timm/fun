@@ -3,7 +3,7 @@
 
 @include "funny"
 
-## Keep summaries  of table columns
+## Summarize  table columns.
 
 #!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]
 

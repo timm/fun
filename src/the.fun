@@ -2,6 +2,9 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 #--------- --------- --------- --------- --------- ---------
 
+
+## Configuration options.
+
 @include "funny"
 
 Generates `THE`,  a global to store all the configuration settings.

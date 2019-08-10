@@ -1,6 +1,9 @@
 #!/usr/bin/env ../fun
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 
+
+## Non-parametric comparisons of numerics.
+
 @include "funny"
 @include "nums"
 

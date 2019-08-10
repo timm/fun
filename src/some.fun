@@ -3,6 +3,8 @@
 ---------- --------- --------- --------- --------- --
 
 
+## Reservoir sampling (only get some of the data).
+
 #!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();]
 
 

@@ -2,7 +2,7 @@
 # vim: nospell filetype=awk ts=2 sw=2 sts=2  et :
 #--------- --------- --------- --------- --------- ---------
 
-Discretization is the process o
+## Chop numbers into useful ranges.
 
 @include "funny"
 @include "col"
