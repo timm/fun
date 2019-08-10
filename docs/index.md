@@ -18,29 +18,29 @@ code up their own versions (in whatever language they like best).
 
 ## Funny Stuff
 
-- [col](col.md). 
+- [col](col.md): 
  Summarize  table columns.
-- [div](div.md). 
+- [div](div.md): 
  Chop numbers into useful ranges.
-- [funny](funny.md). 
+- [funny](funny.md): 
  Misc utilities.
-- [index](index.md). 
+- [index](index.md): 
  Funny Stuff
-- [num](num.md). 
+- [num](num.md): 
  Summarize numeric columns.
-- [nums](nums.md). 
+- [nums](nums.md): 
  Compare two numeric distributions.
-- [row](row.md). 
+- [row](row.md): 
  Store rows of tables.
-- [sk](sk.md). 
+- [sk](sk.md): 
  Non-parametric comparisons of numerics.
-- [some](some.md). 
+- [some](some.md): 
  Reservoir sampling (only get some of the data).
-- [sym](sym.md). 
+- [sym](sym.md): 
  Summarize symbolic columns.
-- [tbl](tbl.md). 
+- [tbl](tbl.md): 
  Store rows of data (and summarize the columns).
-- [the](the.md). 
+- [the](the.md): 
  Configuration options.
 
 ---
