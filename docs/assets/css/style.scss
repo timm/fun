@@ -87,11 +87,13 @@ pre { font-size: 9px; line-spacing: 120%;}
   display: inline-block;
   font-size: 12px;
   margin: 4px 2px;
+  font-color: white;
   cursor: pointer;
 }
 
 
-.button1 {color: white; background-color: #7FDBFF; color: black;} /* Gray */ 
-.button2 {color: white; background-color: #C9F9FF;} /* Blue */
-.button3 {color: white; background-color: #7FDBFF;} /* Red */ 
+.button1 {color: white; background-color: rgb(33,110,185); } /* Gray */ 
+.button2 {color: white; background-color: rgb(118,212,240); /* Blue */
+.button3 {color: white; background-color: rgb(33,110,185); } /* Red */ 
 .button5 {background-color: #555555;} /* Black */
+
