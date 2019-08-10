@@ -2,7 +2,7 @@
 title: tblok.fun
 ---
 
- [about](/fun/ABOUT) |   [discuss](http://github.com/timm/fun/issues) | [license](/fun/LICENSE)<br>
+<button class="button"><a href="/fun/ABOUT">about></a></button>   <button class="button1"><a href="http://github.com/timm/fun/issues">discuss></a></button>    <button class="button2"><a href="/fun/license">license</a></button> <br>
 
 
 
