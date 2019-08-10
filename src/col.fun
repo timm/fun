@@ -3,11 +3,12 @@
 
 @include "funny"
 
+# Col : fun stuff
+
 #!class [Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]
 
 `Num` and `Sym` and `Some` keep summary statistics on `Col`umns in tables. 
 
-## Col
 
 function Col(i,c,v) { 
   Object(i)   

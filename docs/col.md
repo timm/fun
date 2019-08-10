@@ -9,11 +9,12 @@ title: col.fun
 # col.fun
 Uses:  "[funny](funny)"<br>
 
+# Col : fun stuff
+
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0; col; txt|Col1()]^-[Num|mu = 0; sd = 0|NumAny()],[Col]^-[Sym|mode|NumEnt();SymAny()],[Col]^-[Some||SomeMedian()|SomeIQR()|SomeAny()]">
 
 `Num` and `Sym` and `Some` keep summary statistics on `Col`umns in tables. 
 
-## Col
 
 ```awk
    1.  function Col(i,c,v) { 
