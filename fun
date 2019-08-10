@@ -107,8 +107,8 @@ toc() {
         ok="ok\.md$"
     	if [[ ! $i =~ $ok ]]; then
           f=$(basename $i)
- 	   g=${f%.$Ext}
-    	  echo "- [$g]($g.md)" ; 
+ 	   g=${f%.*}
+    	  echo "- [$g]($f)" ; 
         fi 
    done
    echo
