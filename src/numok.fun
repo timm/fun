@@ -12,7 +12,7 @@ counter. Then walk down, removing numbers. Check
 that we get to the same mu and standard deviation
 both ways.
 
-func _num(f,     n,a,i,mu,sd) {
+function _num(f,     n,a,i,mu,sd) {
   srand()
   Num(n,"c","v")
   List(a)
@@ -33,7 +33,7 @@ func _num(f,     n,a,i,mu,sd) {
 Check that it we pull from some initial gaussian distribution,
 we can sample it to find the same means and standard deviation.
 
-func _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
+function _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
   srand(1)
   Num(n0)
   Num(n1)

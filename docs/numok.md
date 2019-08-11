@@ -21,7 +21,7 @@ that we get to the same mu and standard deviation
 both ways.
 
 ```awk
-   2.  func _num(f,     n,a,i,mu,sd) {
+   2.  function _num(f,     n,a,i,mu,sd) {
    3.    srand()
    4.    Num(n,"c","v")
    5.    List(a)
@@ -44,7 +44,7 @@ Check that it we pull from some initial gaussian distribution,
 we can sample it to find the same means and standard deviation.
 
 ```awk
-  19.  func _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
+  19.  function _any(f,     max,n,a,i,mu,sd,n0,n1,x) {
   20.    srand(1)
   21.    Num(n0)
   22.    Num(n1)
