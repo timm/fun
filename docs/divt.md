@@ -45,7 +45,8 @@ Uses:  "[num](num)"<br>
 ```
 
 Sort the table rows, then place a sample of those
-sorted row indexes into `i.sort`.
+sorted row indexes into `i.sort` (this trick means that
+that we can effeciently divide very long columns).
 
 ```awk
   24.  function DivSort(i,t,     m,n,j,k) {

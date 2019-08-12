@@ -35,7 +35,8 @@ function Divt(i,t,k1,k2,
 }
 
 Sort the table rows, then place a sample of those
-sorted row indexes into `i.sort`.
+sorted row indexes into `i.sort` (this trick means that
+that we can effeciently divide very long columns).
 
 function DivSort(i,t,     m,n,j,k) {
   rsort(t.rows,  i.k1)
