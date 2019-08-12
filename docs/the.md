@@ -31,8 +31,8 @@ of options.
   10.    i.some.most  =  256
   11.  
   12.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  13.    i.sk.b       =  500 
-  14.    i.sk.conf    =   95
+  13.    i.sk.b       =  200 
+  14.    i.sk.conf    =   99
   15.  
   16.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   17.    i.nums.ttest=    95 # selects thresholds for ttest

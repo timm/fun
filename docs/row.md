@@ -33,8 +33,8 @@ As `Row`s accept `cells`, it passes each cell to a table column
    8.  }
 ```
 
-To assess the worth of a `Row`, we compare it to a random
-number of other `Row`s.
+To assess the worth of a `Row`, we compare it to a random number
+of other `Row`s.
 
 ```awk
    9.  function RowDoms(i,all,t,  j) {
@@ -46,8 +46,8 @@ number of other `Row`s.
 
 `Row` "_i_" dominates row "_j_"  if "_i_"'s  goals are "better".
 To compute this "better", we complain loudly about   the loss between
-each goal (where "complaining" means, raise it a power of 10).
-If moving from "_i"_ to "_j_" shouts less than the other way around,
+each goal (where "complaining" means, raise it a power of 10).  If
+moving from "_i"_ to "_j_" shouts less than the other way around,
 then "_i_" domiantes[^bdom].
 
 ```awk
@@ -63,6 +63,30 @@ then "_i_" domiantes[^bdom].
   23.  }
 ```
 
+Here are some low-level trisk for sorting rows.  If the sort key
+is numeric, sort on some cell of `Row`.  Else sort on some key of
+the `Row` (outside of the cells).
+
+```awk
+  24.  function rcol(r,k) {
+  25.    return typeof(k) == "number" ? r.cells[k] : r[k]
+  26.  }
+```
+
+```awk
+  27.  function rsort(t,k) {
+  28.    RSORT=k
+  29.    asort(t.rows,t.rows,"rcompare")
+  30.  }
+  31.  function rcompare(i1,v1,i2,v2,  l,r) {
+  32.    l = rcol(v1, RSORT) +0
+  33.    r = rcol(v2, RSORT) +0
+  34.    if (l <  r) return  -1
+  35.    if (l == r) return   0
+  36.    return 1
+  37.  }
+```
+ 
 [^bdom]: XXX
 
 ## See also

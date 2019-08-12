@@ -11,10 +11,10 @@ BEGIN { tests("skok", "_sk,_cd1,_cd2,_cd3") }
 function _sample(fun,   w,a,b,x,max) {
    print ""
    srand(1)
-   for(w=1;w<1.5;w+=0.05) {
+   for(w=1;w<1.3;w*=1.03) {
      List(a)
      List(b)
-     max=500
+     max=100
      for(x=1;x<=max;x++) {
        a[x] = rand()
        b[x] = a[x]*w }

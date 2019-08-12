@@ -22,6 +22,8 @@ code up their own versions (in whatever language they like best).
  Summarize  table columns.
 - [div](div.md): 
  Chop numbers into useful ranges.
+- [divt](divt.md): 
+ Chop numbers into useful ranges.
 - [funny](funny.md): 
  Misc utilities.
 - [index](index.md): 

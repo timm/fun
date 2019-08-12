@@ -12,7 +12,7 @@ Uses:  "[funny](funny)"<br>
 Uses:  "[tbl](tbl)"<br>
 
 ```awk
-   1.  BEGIN { tests("tblok","_weather _auto") }
+   1.  BEGIN { tests("tblok","_weather,_auto") }
 ```
 
 ```awk

@@ -20,10 +20,10 @@ Uses:  "[num](num)"<br>
    2.  function _sample(fun,   w,a,b,x,max) {
    3.     print ""
    4.     srand(1)
-   5.     for(w=1;w<1.5;w+=0.05) {
+   5.     for(w=1;w<1.3;w*=1.03) {
    6.       List(a)
    7.       List(b)
-   8.       max=500
+   8.       max=100
    9.       for(x=1;x<=max;x++) {
   10.         a[x] = rand()
   11.         b[x] = a[x]*w }

@@ -24,8 +24,8 @@ function Config(i) {
   i.some.most  =  256
 
   i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  i.sk.b       =  500 
-  i.sk.conf    =   95
+  i.sk.b       =  200 
+  i.sk.conf    =   99
 
   i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   i.nums.ttest=    95 # selects thresholds for ttest

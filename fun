@@ -143,7 +143,19 @@ done
 toc > $Doc/index.md
 chmod +x $files $Bin/*
 
-if   [ "$1" = "Pull" ]
+if   [ "$1" = "Test" ]
+then for f in $Root/src/*ok.fun; do 
+       echo ""; echo "---| $(basename $f) |------------"; echo "";
+       $Root/fun $f
+     done |  gawk '
+     1 
+     $2 ~ /PASSED/ {p++} 
+     $2 ~ /FAILED/ {f++} 
+     END           {print "#PASSED: " p " FAILED: " f " %: " int(p*100/(p+f+0.001))
+                    if (f> 1) exit 1
+                   }'
+     exit $?
+elif [ "$1" = "Pull" ]
 then git pull;                                    
 elif [ "$1" = "Push" ]
 then git commit -am commit; git push; git status; 

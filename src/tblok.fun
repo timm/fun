@@ -5,7 +5,7 @@
 @include "funny"
 @include "tbl"
 
-BEGIN { tests("tblok","_weather _auto") }
+BEGIN { tests("tblok","_weather,_auto") }
 
 function _weather(f,  t,com) { 
   Tbl(t)

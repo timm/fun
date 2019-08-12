@@ -25,8 +25,8 @@ function Row(i,t,cells,     c) {
     i.cells[c] = Col1(t.cols[c],  cells[c]) 
 }
 
-To assess the worth of a `Row`, we compare it to a random
-number of other `Row`s.
+To assess the worth of a `Row`, we compare it to a random number
+of other `Row`s.
 
 function RowDoms(i,all,t,  j) {
   i.dom = 0
@@ -36,8 +36,8 @@ function RowDoms(i,all,t,  j) {
 
 `Row` "_i_" dominates row "_j_"  if "_i_"'s  goals are "better".
 To compute this "better", we complain loudly about   the loss between
-each goal (where "complaining" means, raise it a power of 10).
-If moving from "_i"_ to "_j_" shouts less than the other way around,
+each goal (where "complaining" means, raise it a power of 10).  If
+moving from "_i"_ to "_j_" shouts less than the other way around,
 then "_i_" domiantes[^bdom].
 
 function RowDom(i,j,t,   a,b,c,s1,s2,n) {
@@ -51,6 +51,26 @@ function RowDom(i,j,t,   a,b,c,s1,s2,n) {
   return s1/n < s2/n
 }
 
+Here are some low-level trisk for sorting rows.  If the sort key
+is numeric, sort on some cell of `Row`.  Else sort on some key of
+the `Row` (outside of the cells).
+
+function rcol(r,k) {
+  return typeof(k) == "number" ? r.cells[k] : r[k]
+}
+
+function rsort(t,k) {
+  RSORT=k
+  asort(t.rows,t.rows,"rcompare")
+}
+function rcompare(i1,v1,i2,v2,  l,r) {
+  l = rcol(v1, RSORT) +0
+  r = rcol(v2, RSORT) +0
+  if (l <  r) return  -1
+  if (l == r) return   0
+  return 1
+}
+ 
 [^bdom]: XXX
 
 ## See also
