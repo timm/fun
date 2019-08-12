@@ -7,7 +7,7 @@
 @include "funny"
 @include "col"
 @include "the"
-@include "Num"
+@include "num"
 
 function _k1(i,t,r) {return rcol(t.rows[ i.sort[r] ], i.k1)}
 function _k2(i,t,r) {return rcol(t.rows[ i.sort[r] ], i.k2)}

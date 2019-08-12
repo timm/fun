@@ -13,7 +13,7 @@ title: divt.fun
 Uses:  "[funny](funny)"<br>
 Uses:  "[col](col)"<br>
 Uses:  "[the](the)"<br>
-Uses:  "[Num](Num)"<br>
+Uses:  "[num](num)"<br>
 
 ```awk
    1.  function _k1(i,t,r) {return rcol(t.rows[ i.sort[r] ], i.k1)}
