@@ -46,9 +46,9 @@ function DivSort(i,t,     m,n,j,k) {
       i.sort[++k] = j
 }
 
-If you can find a cuti between `lo` and `hi`, then recurse on each
-cut.  Else, `cook` the column contents (i.e. assign on value to
-that column from `lo` to `hi`.
+If we can find a cut between `lo` and `hi`, then recurse on each
+side of the cut.  Else, `cook` the column contents (i.e. assign on
+value to that column from `lo` to `hi`).
 
 function DivCuts(i,t,lo,hi,xs,ys,pre,
                  xl,yl,xr,yr,cut,r) {
@@ -70,10 +70,14 @@ function DivCuts(i,t,lo,hi,xs,ys,pre,
 
 `DivArgMin` finds the `cut` that splits of `lo`..`hi` such that
 it most reduces the expected value of the standard deviation, after
-the split. Rject splits that are too small (fewer than `i.step`
-items) or which have too little difference (less thatn `i.tiny`)
-between the lower/upper bound of the split. If nothing satisfies
-those constraints, the return nothing.
+the split. 
+
+- Reject any splits that are too small (fewer than `i.step`
+items);
+- Rekect any splits which have too little difference (less than `i.tiny`)
+between the lower/upper bound of the split. 
+- If nothing satisfies
+those constraints, then return nothing.
 
 function DivArgMin(i,t,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
                    j,cut,start,stop,yl,xl,n,best,x,y,tmp) {
