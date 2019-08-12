@@ -72,9 +72,9 @@ function DivCuts(i,t,lo,hi,xs,ys,pre,
 it most reduces the expected value of the standard deviation, after
 the split. 
 
-- Reject any splits that are too small (fewer than `i.step`
+- Reject any split that is too small (fewer than `i.step`
 items);
-- Rekect any splits which have too little difference (less than `i.tiny`)
+- Reject any split which has too little difference (less than `i.tiny`)
 between the lower/upper bound of the split. 
 - If nothing satisfies
 those constraints, then return nothing.
