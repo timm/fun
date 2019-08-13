@@ -93,8 +93,10 @@ function DivArgMin(i,t,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
   n    = hi - lo + 1
   best = yr.sd
   for(j=lo; j<=hi; j++) {
+    print 3
     x  = _k1(i,t,j)
     y  = _k2(i,t,j)
+    print 4
     if (x != "?") {Num1(xl, x); NumLess(xr,x)}
     if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
     if (xl.n >= i.step)

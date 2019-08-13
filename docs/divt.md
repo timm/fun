@@ -108,24 +108,26 @@ those constraints, then return nothing.
   59.    n    = hi - lo + 1
   60.    best = yr.sd
   61.    for(j=lo; j<=hi; j++) {
-  62.      x  = _k1(i,t,j)
-  63.      y  = _k2(i,t,j)
-  64.      if (x != "?") {Num1(xl, x); NumLess(xr,x)}
-  65.      if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
-  66.      if (xl.n >= i.step)
-  67.        if (xr.n >= i.step)
-  68.          if ((x - start) > i.tiny) 
-  69.            if((stop - x) > i.tiny)  {
-  70.              tmp = yl.n/n*yl.sd + yr.n/n*yr.sd
-  71.              if (tmp*THE.div.trivial < best) {
-  72.                cut  = j
-  73.                best = tmp
-  74.                become(yl,yl1); become(yr,yr1)
-  75.                become(xl,xl1); become(xr,xr1) }}}
-  76.    return cut
-  77.  }
+  62.      print 3
+  63.      x  = _k1(i,t,j)
+  64.      y  = _k2(i,t,j)
+  65.      print 4
+  66.      if (x != "?") {Num1(xl, x); NumLess(xr,x)}
+  67.      if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
+  68.      if (xl.n >= i.step)
+  69.        if (xr.n >= i.step)
+  70.          if ((x - start) > i.tiny) 
+  71.            if((stop - x) > i.tiny)  {
+  72.              tmp = yl.n/n*yl.sd + yr.n/n*yr.sd
+  73.              if (tmp*THE.div.trivial < best) {
+  74.                cut  = j
+  75.                best = tmp
+  76.                become(yl,yl1); become(yr,yr1)
+  77.                become(xl,xl1); become(xr,xr1) }}}
+  78.    return cut
+  79.  }
 ```
 
 ```awk
-  78.  BEGIN { rogues() }
+  80.  BEGIN { rogues() }
 ```
