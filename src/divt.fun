@@ -18,7 +18,6 @@ function Divt(i,t,k1,k2,
   i.k2 = k2 ? k2 : k1
   has(i,"stats") 
   has(i,"sort")
-  has(i,"keys")
   DivSort(i,t)
   Num(xs)
   Num(ys)
@@ -29,7 +28,7 @@ function Divt(i,t,k1,k2,
     if (y != "?") Num1(ys, y) 
   }
   i.tiny = xs.sd * THE.div.cohen
-  i.step = length(i.sort) ^ THE.div.min
+  i.step = length(t.rows) ^ THE.div.min
   print(i.tiny,i.step)
   DivCuts(i,t, 1,length(i.sort), xs,ys)
 }
@@ -38,13 +37,18 @@ Sort the table rows, then place a sample of those
 sorted row indexes into `i.sort` (this trick means that
 that we can effeciently divide very long columns).
 
-function DivSort(i,t,     m,n,j,k) {
-  rsort(t.rows,  i.k1)
+function DivSort(i,t,     m,n,j,k1) {
   n = length(t.rows)
   m = THE.div.enough/(n+0.00001)
   for(j=1; j<=n; j++) 
-    if (rand() <= m) 
-      i.sort[++k] = j
+    if (rand() <= m)  {
+     print 1
+      k1 = rcol( t.rows[j], i.k1 )
+    print 2
+      i.sort[ k1 ] = j 
+  }
+  PROCINFO["sorted_in"] = "@ind_num_asc"
+  return asorti(i.sort)
 }
 
 If we can find a cut between `lo` and `hi`, then recurse on each
@@ -106,4 +110,4 @@ function DivArgMin(i,t,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
   return cut
 }
 
-BEGIN {rogues() }
+BEGIN { rogues() }

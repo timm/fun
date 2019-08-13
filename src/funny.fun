@@ -18,7 +18,6 @@ function lines(i,update,f,sep,  r,line,lst,com) {
   f   = f ? f : "/dev/stdin"
   sep = sep ? sep : "[ \t]*,[ \t]*"
   com = "#"DOT"*"
-  print("f",f,"sep",sep,"com",com)
   while((getline line < f) > 0) {
     sub(com,"",line)
     line=trim(line)

@@ -35,24 +35,22 @@ Uses:  "[sym](sym)"<br>
   11.    has(i,"rows") 
   12.  }
   13.  function Tbl1(i,r,lst,    c) {
-  14.    print("r",r)
-  15.    if (r==1)  {
-  16.      for(c in lst)
-  17.        if (lst[c] !~ SKIPCOL) 
-  18.          TblCols(i, c, lst[c])
-  19.    } else  
-  20.      has2(i.rows,r-1,"Row",i,lst)  
-  21.  }
-  22.  function TblCols(i,c,v) {
-  23.    if (v ~ CLASSCOL) i.my.class = c
-  24.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
-  25.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  26.    if (v ~ />/) i.my.w[c] =  1
-  27.    if (v ~ /</) i.my.w[c] = -1
-  28.    has2(i.cols,c,
-  29.         v ~NUMCOL ? "Num" : "Sym",
-  30.         c,v) 
-  31.  }
+  14.    if (r==1)  {
+  15.      for(c in lst)
+  16.        if (lst[c] !~ SKIPCOL) 
+  17.          TblCols(i, c, lst[c])
+  18.    } else  
+  19.      has2(i.rows,r-1,"Row",i,lst)  
+  20.  }
+  21.  function TblCols(i,c,v) {
+  22.    if (v ~ CLASSCOL) i.my.class = c
+  23.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
+  24.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
+  25.    if (v ~ />/) i.my.w[c] =  1
+  26.    if (v ~ /</) i.my.w[c] = -1
+  27.    has2(i.cols,c,
+  28.         v ~NUMCOL ? "Num" : "Sym",
+  29.         c,v) 
+  30.  }
 ```
-
 

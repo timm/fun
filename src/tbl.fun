@@ -26,7 +26,6 @@ function Tbl(i) {
   has(i,"rows") 
 }
 function Tbl1(i,r,lst,    c) {
-  print("r",r)
   if (r==1)  {
     for(c in lst)
       if (lst[c] !~ SKIPCOL) 
@@ -44,5 +43,4 @@ function TblCols(i,c,v) {
        v ~NUMCOL ? "Num" : "Sym",
        c,v) 
 }
-
 

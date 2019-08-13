@@ -59,17 +59,6 @@ function rcol(r,k) {
   return typeof(k) == "number" ? r.cells[k] : r[k]
 }
 
-function rsort(t,k) {
-  RSORT=k
-  asort(t.rows,t.rows,"rcompare")
-}
-function rcompare(i1,v1,i2,v2,  l,r) {
-  l = rcol(v1, RSORT) +0
-  r = rcol(v2, RSORT) +0
-  if (l <  r) return  -1
-  if (l == r) return   0
-  return 1
-}
  
 [^bdom]: XXX
 

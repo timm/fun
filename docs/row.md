@@ -73,19 +73,6 @@ the `Row` (outside of the cells).
   26.  }
 ```
 
-```awk
-  27.  function rsort(t,k) {
-  28.    RSORT=k
-  29.    asort(t.rows,t.rows,"rcompare")
-  30.  }
-  31.  function rcompare(i1,v1,i2,v2,  l,r) {
-  32.    l = rcol(v1, RSORT) +0
-  33.    r = rcol(v2, RSORT) +0
-  34.    if (l <  r) return  -1
-  35.    if (l == r) return   0
-  36.    return 1
-  37.  }
-```
  
 [^bdom]: XXX
 
