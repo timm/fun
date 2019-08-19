@@ -9,11 +9,12 @@
 
 BEGIN { tests("divtok", "_divt") }
 
-function  _divt(f,  i,t) {
+function  _divt(f,  i,t,r) {
   Tbl(t)
-print 1
-  lines(t,"Tbl1",DOT DOT "/data/weather" DOT "csv")
-print 2
+  lines(t,"Tbl1",DOT DOT "/data/auto" DOT "csv")
+  for(r in t.rows) 
+    RowDoms(t.rows[r], t.rows, t)
   is(f, length(t.rows), 14)
-  Divt(i,t,2,2)
+  Divt(i,t,2,"dom")
+  oo(t.my.nums)
 }

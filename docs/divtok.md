@@ -18,12 +18,13 @@ Uses:  "[tbl](tbl)"<br>
 ```
 
 ```awk
-   2.  function  _divt(f,  i,t) {
+   2.  function  _divt(f,  i,t,r) {
    3.    Tbl(t)
-   4.  print 1
-   5.    lines(t,"Tbl1",DOT DOT "/data/weather" DOT "csv")
-   6.  print 2
+   4.    lines(t,"Tbl1",DOT DOT "/data/auto" DOT "csv")
+   5.    for(r in t.rows) 
+   6.      RowDoms(t.rows[r], t.rows, t)
    7.    is(f, length(t.rows), 14)
-   8.    Divt(i,t,2,2)
-   9.  }
+   8.    Divt(i,t,2,"dom")
+   9.    oo(t.my.nums)
+  10.  }
 ```

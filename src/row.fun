@@ -56,7 +56,7 @@ is numeric, sort on some cell of `Row`.  Else sort on some key of
 the `Row` (outside of the cells).
 
 function rcol(r,k) {
-  return typeof(k) == "number" ? r.cells[k] : r[k]
+  return (typeof(k) == "number")  ? r.cells[k] : r[k]
 }
 
  

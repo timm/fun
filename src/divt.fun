@@ -9,8 +9,8 @@
 @include "the"
 @include "num"
 
-function _k1(i,t,r) {return rcol(t.rows[ i.sort[r] ], i.k1)}
-function _k2(i,t,r) {return rcol(t.rows[ i.sort[r] ], i.k2)}
+function _k1(i,t,r) {return rcol(t.rows[ i.sort[r].row ], i.k1)}
+function _k2(i,t,r) {return rcol(t.rows[ i.sort[r].row ], i.k2)}
 
 function Divt(i,t,k1,k2,
               xs,ys,r,x,y) {
@@ -28,7 +28,7 @@ function Divt(i,t,k1,k2,
     if (y != "?") Num1(ys, y) 
   }
   i.tiny = xs.sd * THE.div.cohen
-  i.step = length(t.rows) ^ THE.div.min
+  i.step = length(i.sort) ^ THE.div.min
   print(i.tiny,i.step)
   DivCuts(i,t, 1,length(i.sort), xs,ys)
 }
@@ -37,18 +37,17 @@ Sort the table rows, then place a sample of those
 sorted row indexes into `i.sort` (this trick means that
 that we can effeciently divide very long columns).
 
-function DivSort(i,t,     m,n,j,k1) {
+function DivSort(i,t,     m,n,j,k,k1,v) {
   n = length(t.rows)
   m = THE.div.enough/(n+0.00001)
   for(j=1; j<=n; j++) 
     if (rand() <= m)  {
-     print 1
-      k1 = rcol( t.rows[j], i.k1 )
-    print 2
-      i.sort[ k1 ] = j 
-  }
-  PROCINFO["sorted_in"] = "@ind_num_asc"
-  return asorti(i.sort)
+      v = rcol( t.rows[j], i.k1 )
+      if (v != "?") {
+        i.sort[ ++k ].row = j
+        i.sort[   k ].v   = v 
+  }} 
+  return ksort(i.sort,"v")
 }
 
 If we can find a cut between `lo` and `hi`, then recurse on each
@@ -62,14 +61,14 @@ function DivCuts(i,t,lo,hi,xs,ys,pre,
   cut = DivArgMin(i,t,lo,hi,xs,ys,xl,xr,yl,yr) 
   if (cut) {
     if (THE.div.verbose)
-      print(pre _k1(i,t,lo),"lo",lo,"hi",hi,"d",hi-lo,"cut",cut)
+      print(pre _k2(i,t,cut)," n ", hi - lo)
     DivCuts(i, t,    lo, cut, xl, yl,"|  "pre)
     DivCuts(i, t, cut+1,  hi, xr, yr,"|  "pre)
   } 
   else {
     push(i.stats, ys.sd*ys.n) 
     for(r=lo; r<=hi; r++)
-      t.rows[ i.sort[r] ].cooked[i.k1] = xs.lo
+      t.rows[ i.sort[r].row ].cooked[i.k1] = xs.lo
   }
 }
 
@@ -77,12 +76,10 @@ function DivCuts(i,t,lo,hi,xs,ys,pre,
 it most reduces the expected value of the standard deviation, after
 the split. 
 
-- Reject any split that is too small (fewer than `i.step`
-items);
-- Reject any split which has too little difference (less than `i.tiny`)
-between the lower/upper bound of the split. 
-- If nothing satisfies
-those constraints, then return nothing.
+- Reject any split that is too small (fewer than `i.step` items);
+- Reject any split which has too little difference (less than `i.tiny`) 
+  between the lower/upper bound of the split. 
+- If nothing satisfies those constraints, then return nothing.
 
 function DivArgMin(i,t,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
                    j,cut,start,stop,yl,xl,n,best,x,y,tmp) {
@@ -93,10 +90,8 @@ function DivArgMin(i,t,lo,hi,xr,yr,xl1,xr1,yl1,yr1,
   n    = hi - lo + 1
   best = yr.sd
   for(j=lo; j<=hi; j++) {
-    print 3
     x  = _k1(i,t,j)
     y  = _k2(i,t,j)
-    print 4
     if (x != "?") {Num1(xl, x); NumLess(xr,x)}
     if (y != "?") {Num1(yl, y); NumLess(yr,y)} 
     if (xl.n >= i.step)

@@ -69,7 +69,7 @@ the `Row` (outside of the cells).
 
 ```awk
   24.  function rcol(r,k) {
-  25.    return typeof(k) == "number" ? r.cells[k] : r[k]
+  25.    return (typeof(k) == "number")  ? r.cells[k] : r[k]
   26.  }
 ```
 
