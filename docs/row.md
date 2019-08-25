@@ -33,6 +33,8 @@ As `Row`s accept `cells`, it passes each cell to a table column
    8.  }
 ```
 
+## Scoring Rows
+
 To assess the worth of a `Row`, we compare it to a random number
 of other `Row`s.
 

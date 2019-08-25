@@ -37,9 +37,12 @@ of options.
   16.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   17.    i.nums.ttest=    95 # selects thresholds for ttest
   18.  
-  19.  }
+  19.    i.cocomo.num= "[+-]?([0-9]+[.]?[0-9]*|[.][0-9]+)([eE][+-]?[0-9]+)?"
+  20.  
+  21.  
+  22.  }
 ```
 
 ```awk
-  20.  BEGIN {Config(THE)}
+  23.  BEGIN {Config(THE)}
 ```

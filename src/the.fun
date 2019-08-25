@@ -30,6 +30,9 @@ function Config(i) {
   i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   i.nums.ttest=    95 # selects thresholds for ttest
 
+  i.cocomo.num= "[+-]?([0-9]+[.]?[0-9]*|[.][0-9]+)([eE][+-]?[0-9]+)?"
+
+
 }
 
 BEGIN {Config(THE)}
