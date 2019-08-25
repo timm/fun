@@ -25,7 +25,7 @@ function Row(i,t,cells,     c) {
     i.cells[c] = Col1(t.cols[c],  cells[c]) 
 }
 
-[## Scoring Rows](#scoring)
+## Scoring Rows
 
 To assess the worth of a `Row`, we compare it to a random number
 of other `Row`s.
