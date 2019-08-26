@@ -5,12 +5,15 @@
 @include "funny"
 @include "tbl"
 
-BEGIN { tests("tblok","_weather,_auto") }
+#BEGIN { tests("tblok","_weather,_auto") }
+BEGIN { tests("tblok","_weathernum") }
 
-function _weather(f,  t,com) { 
+function _weather(f) { return _tbl0(f,"weather") }
+function _weathernum(f) { return _tbl0(f,"weathernum") }
+
+function _tbl0(f,d,  t,com) { 
   Tbl(t)
-  print(1)
-  lines(t,"Tbl1",DOT DOT "/data/weather" DOT "csv")
+  lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
   oo(t,"t")
   is(f, length(t.rows), 14)
 }

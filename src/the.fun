@@ -12,7 +12,8 @@ The thing to note here is that a data miner/optimizer uses many,
 many settings.  AI tools are needed to explore this very large space
 of options.
 
-function Config(i) {
+function Config(i,   dot) {
+  dot = sprintf("%c",46)
   i.row.doms   =   64
 
   i.div.min    =    0.5
@@ -30,8 +31,7 @@ function Config(i) {
   i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   i.nums.ttest=    95 # selects thresholds for ttest
 
-  i.cocomo.num= "[+-]?([0-9]+[.]?[0-9]*|[.][0-9]+)([eE][+-]?[0-9]+)?"
-
+  i.cocomo.num= "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
 
 }
 

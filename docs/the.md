@@ -19,26 +19,26 @@ many settings.  AI tools are needed to explore this very large space
 of options.
 
 ```awk
-   1.  function Config(i) {
-   2.    i.row.doms   =   64
-   3.  
-   4.    i.div.min    =    0.5
-   5.    i.div.cohen  =    0.3
-   6.    i.div.trivial=    1.05
-   7.    i.div.enough =  512
-   8.    i.div.verbose=    1
-   9.  
-  10.    i.some.most  =  256
-  11.  
-  12.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  13.    i.sk.b       =  200 
-  14.    i.sk.conf    =   99
-  15.  
-  16.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
-  17.    i.nums.ttest=    95 # selects thresholds for ttest
-  18.  
-  19.    i.cocomo.num= "[+-]?([0-9]+[.]?[0-9]*|[.][0-9]+)([eE][+-]?[0-9]+)?"
-  20.  
+   1.  function Config(i,   dot) {
+   2.    dot = sprintf("%c",46)
+   3.    i.row.doms   =   64
+   4.  
+   5.    i.div.min    =    0.5
+   6.    i.div.cohen  =    0.3
+   7.    i.div.trivial=    1.05
+   8.    i.div.enough =  512
+   9.    i.div.verbose=    1
+  10.  
+  11.    i.some.most  =  256
+  12.  
+  13.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
+  14.    i.sk.b       =  200 
+  15.    i.sk.conf    =   99
+  16.  
+  17.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
+  18.    i.nums.ttest=    95 # selects thresholds for ttest
+  19.  
+  20.    i.cocomo.num= "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
   21.  
   22.  }
 ```

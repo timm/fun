@@ -116,6 +116,32 @@ toc() {
    echo "---"
    echo ""
 }
+_c0="\033[00m"     # white
+_c1="\033[01;32m"  # green
+_c2="\033[01;34m"  # blue
+_c3="\033[31m"     # red
+_c5="\033[35m"     # purple
+_c6="\033[33m"     # yellow
+_c7="\033[36m"     # turquoise
+_c8="\033[96m"     # magenta
+
+
+help() { echo -en "${_c3}"; 
+	 echo -e "usage: ../fun [Option]${_c6}"
+	 cat<<-'EOF'
+
+	Options:
+	../fun New      set up config files; do only once
+	../fun Test     run all the *.ok files
+	../fun Push     push source to Github
+	../fun Pull     grab source from Github
+	../fun Help     print this text
+	../fun xxx.fun  run xxx.fun (but first, update all files)
+	../fun          update all files
+EOF
+	echo -en "${_c0}"
+}
+
 # ----------------------------------------
 # do the work
 
@@ -159,6 +185,8 @@ elif [ "$1" = "Pull" ]
 then git pull;                                    
 elif [ "$1" = "Push" ]
 then git commit -am commit; git push; git status; 
+elif [ "$1" = "Help" ]
+then help
 elif [ -n "$1"       ] 
 then  f=$(basename $1)
       f=$Lib/${f%.$Ext}.awk
