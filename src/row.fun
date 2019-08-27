@@ -64,39 +64,41 @@ function rcol(r,k) {
 
 ## Distance
 
-function RowDist(i,j,t,what,     n,p,c,d) {
+function RowDist(i,j,t,what) {
   what = what ? what : "xs"
-  p    = THE.row.p
-  for (c in t.my[what]) {
+  return _rowDist(i,j, t.my[what], t.my.syms, t.cols)
+}
+
+function _rowDist(i,j,what,syms,cols,    p,c,n,d0,d) {
+  p = THE.row.p
+  for (c in what) {
     n  = n + 1 
-    d += _rowDist1(i.cells[c], j.cells[c], t.cols[c],
-                   c in t.my.nums) ^ p
+    d0 = _rowDist1(i.cells[c], j.cells[c], cols[c], c in syms)
+    d += d0^p
   }
-  #print("d",d,"n",n,"p",p)
   return (d/n)^(1/p)
 }
 
-function _rowDist1(x, y, col, nump,     no) {
+function _rowDist1(x, y, col, symp,     no) {
   no = THE.row.skip
-  if (x==no && y==no)   
-    return 1
-  if (!nump) {
-    if (x==no || y==no) 
-      return 1 
-    else 
-      return x==y ? 0 : 1 
-  }
-  if (x==no) {
-    y = NumNorm(col, y)
-    x = y>0.5 ? 0 : 1
-    return abs(x-y)
-  } 
-  if (y==no) {
-    x = NumNorm(col, x)
-    y = x>0.5 ? 0 : 1
-    return abs(x-y)
-  } 
-  x = NumNorm(col, x)
-  y = NumNorm(col, y) 
-  return abs(x-y)
+  if (x==no && y==no)    
+    return 1 # assume max
+  else {
+    if (symp) {
+      if (x==no || y==no) 
+        return 1 # assume max
+      else 
+        return x==y ? 0 : 1 # identical symbols have no distance
+    } else { # if nump, set mising values to max, normalize numbers
+        if (x==no) {
+          y = NumNorm(col, y)
+          x = y>0.5 ? 0 : 1
+        } else if (y==no) {
+          x = NumNorm(col, x)
+          y = x>0.5 ? 0 : 1
+        } else {
+          x = NumNorm(col, x)
+          y = NumNorm(col, y) 
+        }
+        return abs(x-y) }}
 }

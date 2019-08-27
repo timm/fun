@@ -44,7 +44,7 @@ Uses:  "[tbl](tbl)"<br>
   22.    for(r=n-m;r<=n;r++)
   23.      print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
   24.  }
-  25.  function _dist(f) { return _dist0(f, "weathernum") }
+  25.  function _dist(f) { return _dist0(f, "auto") }
 ```
 
 ```awk
@@ -52,9 +52,11 @@ Uses:  "[tbl](tbl)"<br>
   27.    Tbl(t)
   28.    lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
   29.    for(r1 in t.rows)  {
-  30.      print("\n" r1, flat(t.rows[r1].cells))
-  31.      for(r2 in t.rows)
-  32.        if(r1 > r2) 
-  33.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
-  34.  }}
+  30.      if (r1==390) {
+  31.      print("\n" r1, flat(t.rows[r1].cells))
+  32.      for(r2 in t.rows) {
+  33.        if (r2==391) {
+  34.        if(r2+0 > r1+0) 
+  35.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
+  36.  }}}}}
 ```

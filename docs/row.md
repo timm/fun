@@ -79,42 +79,48 @@ the `Row` (outside of the cells).
 ## Distance
 
 ```awk
-  27.  function RowDist(i,j,t,what,     n,p,c,d) {
+  27.  function RowDist(i,j,t,what) {
   28.    what = what ? what : "xs"
-  29.    p    = THE.row.p
-  30.    for (c in t.my[what]) {
-  31.      n  = n + 1 
-  32.      d += _rowDist1(i.cells[c], j.cells[c], t.cols[c],
-  33.                     c in t.my.nums) ^ p
-  34.    }
-  35.    #print("d",d,"n",n,"p",p)
-  36.    return (d/n)^(1/p)
-  37.  }
+  29.    return _rowDist(i,j, t.my[what], t.my.syms, t.cols)
+  30.  }
 ```
 
 ```awk
-  38.  function _rowDist1(x, y, col, nump,     no) {
-  39.    no = THE.row.skip
-  40.    if (x==no && y==no)   
-  41.      return 1
-  42.    if (!nump) {
-  43.      if (x==no || y==no) 
-  44.        return 1 
-  45.      else 
-  46.        return x==y ? 0 : 1 
-  47.    }
-  48.    if (x==no) {
-  49.      y = NumNorm(col, y)
-  50.      x = y>0.5 ? 0 : 1
-  51.      return abs(x-y)
-  52.    } 
-  53.    if (y==no) {
-  54.      x = NumNorm(col, x)
-  55.      y = x>0.5 ? 0 : 1
-  56.      return abs(x-y)
-  57.    } 
-  58.    x = NumNorm(col, x)
-  59.    y = NumNorm(col, y) 
-  60.    return abs(x-y)
-  61.  }
+  31.  function _rowDist(i,j,what,syms,cols,    p,c,n,d0,d) {
+  32.    p = THE.row.p
+  33.    for (c in what) {
+  34.      n  = n + 1 
+  35.      d0 = _rowDist1(i.cells[c], j.cells[c], cols[c], c in syms)
+  36.      d += d0^p
+  37.    }
+  38.    return (d/n)^(1/p)
+  39.  }
+```
+
+```awk
+  40.  function _rowDist1(x, y, col, symp,     no) {
+  41.    no = THE.row.skip
+  42.    if (x==no && y==no)    
+  43.      return 1 # assume max
+  44.    else {
+  45.      if (symp) {
+  46.        if (x==no || y==no) 
+  47.          return 1 # assume max
+  48.        else 
+  49.          return x==y ? 0 : 1 # identical symbols have no distance
+  50.      } else { # if nump, set mising values to max, normalize numbers
+  51.          print(x,y)
+  52.          if (x==no) {
+  53.            y = NumNorm(col, y)
+  54.            x = y>0.5 ? 0 : 1
+  55.          } else if (y==no) {
+  56.            x = NumNorm(col, x)
+  57.            y = x>0.5 ? 0 : 1
+  58.          } else {
+  59.            x = NumNorm(col, x)
+  60.            y = NumNorm(col, y) 
+  61.          }
+  62.          print(x,y)
+  63.          return abs(x-y) }}
+  64.  }
 ```

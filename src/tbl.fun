@@ -21,7 +21,7 @@ BEGIN  {
 
 function Tbl(i) { 
   Object(i)
-  has(i,"my")
+  has(i,"my","TblAbout")
   has(i,"cols")
   has(i,"rows") 
 }
@@ -32,6 +32,15 @@ function Tbl1(i,r,lst,    c) {
         TblCols(i, c, lst[c])
   } else  
     has2(i.rows,r-1,"Row",i,lst)  
+}
+
+function TblAbout(i) {
+  i.class = ""
+  has(i,"nums")
+  has(i,"syms")
+  has(i,"goals")
+  has(i,"xs")
+  has(i,"w")
 }
 function TblCols(i,c,v) {
   if (v ~ CLASSCOL) i.my.class = c
