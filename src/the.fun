@@ -15,6 +15,8 @@ of options.
 function Config(i,   dot) {
   dot = sprintf("%c",46)
   i.row.doms   =   64
+  i.row.p      =    2
+  i.row.skip   =    "?"
 
   i.div.min    =    0.5
   i.div.cohen  =    0.3
@@ -29,9 +31,10 @@ function Config(i,   dot) {
   i.sk.conf    =   99
 
   i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
-  i.nums.ttest=    95 # selects thresholds for ttest
+  i.nums.ttest =   95 # selects thresholds for ttest
 
-  i.cocomo.num= "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
+  i.cocomo.num = "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
+
 
 }
 

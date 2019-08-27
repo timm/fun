@@ -12,8 +12,9 @@ Uses:  "[funny](funny)"<br>
 Uses:  "[tbl](tbl)"<br>
 
 #BEGIN { tests("tblok","_weather,_auto") }
+#BEGIN { tests("tblok","_weathernum") }
 ```awk
-   1.  BEGIN { tests("tblok","_weathernum") }
+   1.  BEGIN { tests("tblok","_dist") }
 ```
 
 ```awk
@@ -43,4 +44,17 @@ Uses:  "[tbl](tbl)"<br>
   22.    for(r=n-m;r<=n;r++)
   23.      print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
   24.  }
+  25.  function _dist(f) { return _dist0(f, "weathernum") }
+```
+
+```awk
+  26.  function _dist0(f,d,   t,r1,r2) {
+  27.    Tbl(t)
+  28.    lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
+  29.    for(r1 in t.rows)  {
+  30.      print("\n" r1, flat(t.rows[r1].cells))
+  31.      for(r2 in t.rows)
+  32.        if(r1 > r2) 
+  33.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
+  34.  }}
 ```

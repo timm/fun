@@ -17,6 +17,7 @@ title: row.fun
 
 Uses:  "[funny](funny)"<br>
 Uses:  "[the](the)"<br>
+Uses:  "[tbl](tbl)"<br>
 Uses:  "[col](col)"<br>
 
 As `Row`s accept `cells`, it passes each cell to a table column
@@ -75,11 +76,45 @@ the `Row` (outside of the cells).
   26.  }
 ```
 
- 
-[^bdom]: XXX
+## Distance
 
-## See also
+```awk
+  27.  function RowDist(i,j,t,what,     n,p,c,d) {
+  28.    what = what ? what : "xs"
+  29.    p    = THE.row.p
+  30.    for (c in t.my[what]) {
+  31.      n  = n + 1 
+  32.      d += _rowDist1(i.cells[c], j.cells[c], t.cols[c],
+  33.                     c in t.my.nums) ^ p
+  34.    }
+  35.    #print("d",d,"n",n,"p",p)
+  36.    return (d/n)^(1/p)
+  37.  }
+```
 
-- [Tbl](tbl)
-- [Col](col)
- 
+```awk
+  38.  function _rowDist1(x, y, col, nump,     no) {
+  39.    no = THE.row.skip
+  40.    if (x==no && y==no)   
+  41.      return 1
+  42.    if (!nump) {
+  43.      if (x==no || y==no) 
+  44.        return 1 
+  45.      else 
+  46.        return x==y ? 0 : 1 
+  47.    }
+  48.    if (x==no) {
+  49.      y = NumNorm(col, y)
+  50.      x = y>0.5 ? 0 : 1
+  51.      return abs(x-y)
+  52.    } 
+  53.    if (y==no) {
+  54.      x = NumNorm(col, x)
+  55.      y = x>0.5 ? 0 : 1
+  56.      return abs(x-y)
+  57.    } 
+  58.    x = NumNorm(col, x)
+  59.    y = NumNorm(col, y) 
+  60.    return abs(x-y)
+  61.  }
+```

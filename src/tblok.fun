@@ -6,7 +6,8 @@
 @include "tbl"
 
 #BEGIN { tests("tblok","_weather,_auto") }
-BEGIN { tests("tblok","_weathernum") }
+#BEGIN { tests("tblok","_weathernum") }
+BEGIN { tests("tblok","_dist") }
 
 function _weather(f) { return _tbl0(f,"weather") }
 function _weathernum(f) { return _tbl0(f,"weathernum") }
@@ -32,3 +33,14 @@ function _auto(f,  t,r,n,m) {
   for(r=n-m;r<=n;r++)
     print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
 }
+function _dist(f) { return _dist0(f, "weathernum") }
+
+function _dist0(f,d,   t,r1,r2) {
+  Tbl(t)
+  lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
+  for(r1 in t.rows)  {
+    print("\n" r1, flat(t.rows[r1].cells))
+    for(r2 in t.rows)
+      if(r1 > r2) 
+        print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
+}}

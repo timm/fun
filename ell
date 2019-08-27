@@ -17,7 +17,7 @@ done
 $AFTER
 
 export Ell=$(git rev-parse --show-toplevel)
-From=https://raw.githubusercontent.com/se4ai/code/master/etc
+From=https://raw.githubusercontent.com/timm/fun/master/etc
 
 mkdir -p etc
 for f in .bashrc .vimrc .tmuxrc; do

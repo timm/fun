@@ -11,6 +11,7 @@
 
 @include "funny"
 @include "the"
+@include "tbl"
 @include "col"
 
 As `Row`s accept `cells`, it passes each cell to a table column
@@ -61,11 +62,41 @@ function rcol(r,k) {
   return (typeof(k) == "number")  ? r.cells[k] : r[k]
 }
 
- 
-[^bdom]: XXX
+## Distance
 
-## See also
+function RowDist(i,j,t,what,     n,p,c,d) {
+  what = what ? what : "xs"
+  p    = THE.row.p
+  for (c in t.my[what]) {
+    n  = n + 1 
+    d += _rowDist1(i.cells[c], j.cells[c], t.cols[c],
+                   c in t.my.nums) ^ p
+  }
+  #print("d",d,"n",n,"p",p)
+  return (d/n)^(1/p)
+}
 
-- [Tbl](tbl)
-- [Col](col)
- 
+function _rowDist1(x, y, col, nump,     no) {
+  no = THE.row.skip
+  if (x==no && y==no)   
+    return 1
+  if (!nump) {
+    if (x==no || y==no) 
+      return 1 
+    else 
+      return x==y ? 0 : 1 
+  }
+  if (x==no) {
+    y = NumNorm(col, y)
+    x = y>0.5 ? 0 : 1
+    return abs(x-y)
+  } 
+  if (y==no) {
+    x = NumNorm(col, x)
+    y = x>0.5 ? 0 : 1
+    return abs(x-y)
+  } 
+  x = NumNorm(col, x)
+  y = NumNorm(col, y) 
+  return abs(x-y)
+}
