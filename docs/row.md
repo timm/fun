@@ -236,9 +236,15 @@ There are several assumptions in the above poinbts and if you do not like those,
 More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality):  "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
 )
 
-Method1: Use simpler models.
+Method1: Do not use Euclidean distance.
+[Aggarwal et al.](#aggarwal-2001) comment  that in the above code, _p=1_ might do better than _p=2_ or even higher values.
 
-In summary, as the number of dimensions increase, look for ways to reduce them.  There are so many ways to do this.
+
+Method2: Use simpler models. If high dimensions are a curse, the avoid the curse. 
+Look for ways to reduce dimensionality:
+
+If multiple dimensions are correlated, then seek an udnerlying set of dimensions that best capture the essence of the domensions.
+.  There are so many ways to do this.
 
 Sort the columns by their standard deviation and just use the ones that vary the most variance.
 
