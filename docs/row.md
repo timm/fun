@@ -216,9 +216,9 @@ To answer that question,  we ask how close do things need to be in order to fall
 some fixed radius? In the following, we  will say a radius of `r=1` but the following holds for any radius of constat size.
 
 - Let the center of the sphere be (0,0,0,...).
-- The radius is tge Euclidean distance  from the center to  any point (x,y,z,...) i.e.      
-  `r= 1 = sqrt(x^2 + y^2 + z^2 + ...)`
-- If all our points are spread out uniformally such that  `x=y=z` then
+- The radius is tge Euclidean distance  from the center to  any point (x,y,z,...) i.e.
+  `r=1=sqrt(x^2+y^2+z^2+...)`
+- If all our points are spread out uniformally in `N` dimensions such that  `x=y=z` then
   `1=sqrt(N*x^2)` so
   `x=`&pm;`1/sqrt(N)` but since we use the absolute value for distances (i.e. no minuses) then
   `x=1/sqrt(N)`.
