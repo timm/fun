@@ -97,30 +97,64 @@ the `Row` (outside of the cells).
   39.  }
 ```
 
+The following needs a little explaination. Accoring to [Aha91](#aha-91):
+
+- _Principle1_ : when doing distance calculations, normalize all distances for
+   each attribte from zero to one (otherwise, one attribute can have an undue 
+   influence, For example,  astronauts have age 0 to 120 but 
+   fly at speeds 0 to 25,000. So before we compare to rows containing
+   information and astronaut age and velocity, make all ranges 0..1, min..max.
+   - For symbols, this is is easy: indentical symbols have distance 
+     zero; otherwise, their distance is one.
+   - For numerics, just normalize all values `x` with `(x - lo)/(hi - lo`+&epsilon;`)` where `x` comes from some column and `lo,hi` are the smallest and largest
+     values in that colum, and &epsilon; is some tiny amout (`10^-32`) included
+     to avoid divde-by-zero errirs).
+- _Principle2_: when position are unknown, assume maximum. This heuristic
+  assumes that unknown things can be anywhere which means, on average,
+  they are not close by.
+
+The following code applies these principles:
+
+- _Case1_: randomly selected items can be very distant so if i
+  there is uncertainty about both position, assume worst case.
+- _Case2_: identical things are not seperated. 
+- If a symbol then
+    - _Case3_if either is unknown, assume max distance=1;
+    - _Case4_ else, if they are different, then distance=1;
+    - _Case5_ else, if the same, then distance=0 (covered by _Case2_)
+- If a number, then:
+    - _Case6_ if one is unknown, make the assumptions that maximizies the distance
+    - _Case7_: Finally, after normalizing the nuers zero to one, return
+      the distance between them
+
 ```awk
   40.  function _rowDist1(x, y, col, symp,     no) {
   41.    no = THE.row.skip
   42.    if (x==no && y==no)    
-  43.      return 1 # assume max
-  44.    else {
-  45.      if (symp) {
-  46.        if (x==no || y==no) 
-  47.          return 1 # assume max
-  48.        else 
-  49.          return x==y ? 0 : 1 # identical symbols have no distance
-  50.      } else { # if nump, set mising values to max, normalize numbers
-  51.          print(x,y)
-  52.          if (x==no) {
-  53.            y = NumNorm(col, y)
-  54.            x = y>0.5 ? 0 : 1
-  55.          } else if (y==no) {
-  56.            x = NumNorm(col, x)
-  57.            y = x>0.5 ? 0 : 1
-  58.          } else {
-  59.            x = NumNorm(col, x)
-  60.            y = NumNorm(col, y) 
-  61.          }
-  62.          print(x,y)
-  63.          return abs(x-y) }}
-  64.  }
+  43.      return 1 # Case1: assume max
+  44.    else if (x==y)
+  45.       return 0 # Case2: return min
+  46.    else {
+  47.      if (symp) 
+  48.        return 1 # Case3, Case4
+  49.      else { 
+  50.        if (x==no) { #Case6
+  51.          y = NumNorm(col, y)
+  52.          x = y>0.5 ? 0 : 1
+  53.        } else if (y==no) { #Case6
+  54.          x = NumNorm(col, x)
+  55.          y = x>0.5 ? 0 : 1
+  56.        } else { #ensure everything is noralized
+  57.          x = NumNorm(col, x)
+  58.          y = NumNorm(col, y) 
+  59.        }
+  60.        return abs(x-y) }} # Case7
+  61.  }
 ```
+
+
+## References
+
+### Aha 91
+
+David W. Aha, Dennis Kibler, and Marc K. Albert. 1991. Instance-Based Learning Algorithms. Mach. Learn. 6, 1 (January 1991), 37-66. DOI: https://doi.org/10.1023/A:1022689900470

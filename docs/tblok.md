@@ -10,11 +10,14 @@ title: tblok.fun
 
 Uses:  "[funny](funny)"<br>
 Uses:  "[tbl](tbl)"<br>
+Uses:  "[num](num)"<br>
 
 #BEGIN { tests("tblok","_weather,_auto") }
 #BEGIN { tests("tblok","_weathernum") }
+#BEGIN { tests("tblok","_dist1") }
+#BEGIN { tests("tblok","_dist2") }
 ```awk
-   1.  BEGIN { tests("tblok","_dist") }
+   1.  BEGIN { tests("tblok","_distances") }
 ```
 
 ```awk
@@ -44,19 +47,48 @@ Uses:  "[tbl](tbl)"<br>
   22.    for(r=n-m;r<=n;r++)
   23.      print(t.rows[r].oid "\t" t.rows[r].dom "\t" flat(t.rows[r].cells, t.my.goals)) 
   24.  }
-  25.  function _dist(f) { return _dist0(f, "auto") }
+  25.  function _dist1(f) { return _dist0(f, "auto") }
+  26.  function _dist2(f) { return _dist0(f, "labor") }
 ```
 
 ```awk
-  26.  function _dist0(f,d,   t,r1,r2) {
-  27.    Tbl(t)
-  28.    lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
-  29.    for(r1 in t.rows)  {
-  30.      if (r1==390) {
-  31.      print("\n" r1, flat(t.rows[r1].cells))
-  32.      for(r2 in t.rows) {
-  33.        if (r2==391) {
-  34.        if(r2+0 > r1+0) 
-  35.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
-  36.  }}}}}
+  27.  function _dist0(f,d,   t,r1,r2) {
+  28.    Tbl(t)
+  29.    lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
+  30.    for(r1 in t.rows)  {
+  31.      if(r1==57) {
+  32.      print("\n" r1, flat(t.rows[r1].cells))
+  33.      for(r2 in t.rows) {
+  34.        if(r2==58) {
+  35.        if(r2+0 > r1+0) 
+  36.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
+  37.  }}}}}
+```
+
+
+```awk
+  38.  function _distances(f,  d,sum,n,i,r) {
+  39.    for(d=2;d<=100;d+=5) { 
+  40.       sum=0
+  41.       Num(n)
+  42.       r=100
+  43.       for(i=1;i<=r;i++)
+  44.          Num1(n,_distances1(d) )
+  45.       print d,n.mu,n.sd,n.lo,n.hi}
+  46.  }
+  47.  function _distances1(d,   a,b) {
+  48.    while(d--) {
+  49.      a[d]=rand()
+  50.      b[d]=rand()
+  51.    }
+  52.    return _distance(a,b) 
+  53.  }
+```
+      
+```awk
+  54.  function _distance(a,b,  i,d) {
+  55.     for(i in a) 
+  56.       d += (a[i]-b[i])^2
+  57.    return (d/length(a))^0.5
+  58.  }
 ```
