@@ -200,7 +200,7 @@ some fixed radius? In the following, we  will say a radius of `r=1` but the foll
   `r=1=sqrt(x^2+y^2+z^2+...)`
 - If all our points are spread out uniformally in `N` dimensions such that  `x=y=z` then
   `1=sqrt(N*x^2)` so
-  `x=`&pm;`1/sqrt(N)` but since we use the absolute value for distances (i.e. no minuses) then
+  `x=`&plusmn;`1/sqrt(N)` but since we use the absolute value for distances (i.e. no minuses) then
   `x=1/sqrt(N)`.
 - From this expression we see that as `N` increases, the distance from the radius to any point must decrease. 
 - To say that another way, the volume where we must search for similiar examples gets smaller and smaller and smaller.
