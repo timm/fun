@@ -160,9 +160,9 @@ where shapes of one type are often approximated by shapes of another."
 
 If you want to get a sense of the wierdness of higher dimensionalty, consider the volume of an N-dimensional sphere:
 
-- for `N=2`, it is V<sub>2</sup>(r)=&pi;r<sup>2</sup>
-- for `N=3`, it is V<sub>3</sup>(r)=4/3&pi;r<sup>2</sup>
-- for `N>3`, it is V<sub>N</sup>(r)=V<sub>N-2</sub>&pi;r<sup>2</sup>/N.  That is, we compute the volume of a
+- for `N=2`, it is V<sub>2</sub>(r)=&pi;r<sup>2</sup>
+- for `N=3`, it is V<sub>3</sub>(r)=4/3&pi;r<sup>2</sup>
+- for `N>3`, it is V<sub>N</sub>(r)=V<sub>N-2</sub>&pi;r<sup>2</sup>/N.  That is, we compute the volume of a
   higher dimensional sphere by multiplyiung a lower dimensional sphere by some additional factor.
 
 Now there is the wierd partx 
