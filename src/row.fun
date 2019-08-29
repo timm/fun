@@ -185,7 +185,7 @@ Now there is the wierd part:
 - More generally, dimensionality decreases volume. 
      - After 20 dimensions, the volume of the unit sphere is effectively zero.
 
-![](assets/img/sphere.png){:width=300px}
+![](assets/img/sphere.png){:width="300px"}
 
 If that seems wrong, then consider another way to show the same thing.
 
