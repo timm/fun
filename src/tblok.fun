@@ -9,8 +9,8 @@
 #BEGIN { tests("tblok","_weather,_auto") }
 #BEGIN { tests("tblok","_weathernum") }
 #BEGIN { tests("tblok","_dist1") }
-#BEGIN { tests("tblok","_dist2") }
-BEGIN { tests("tblok","_distances") }
+BEGIN { tests("tblok","_dist2") }
+#BEGIN { tests("tblok","_distances") }
 
 function _weather(f) { return _tbl0(f,"weather") }
 function _weathernum(f) { return _tbl0(f,"weathernum") }
@@ -43,13 +43,11 @@ function _dist0(f,d,   t,r1,r2) {
   Tbl(t)
   lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
   for(r1 in t.rows)  {
-    if(r1==57) {
     print("\n" r1, flat(t.rows[r1].cells))
     for(r2 in t.rows) {
-      if(r2==58) {
       if(r2+0 > r1+0) 
         print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
-}}}}}
+}}}
 
 
 function _distances(f,  d,sum,n,i,r) {

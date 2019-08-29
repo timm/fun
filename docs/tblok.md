@@ -15,10 +15,10 @@ Uses:  "[num](num)"<br>
 #BEGIN { tests("tblok","_weather,_auto") }
 #BEGIN { tests("tblok","_weathernum") }
 #BEGIN { tests("tblok","_dist1") }
-#BEGIN { tests("tblok","_dist2") }
 ```awk
-   1.  BEGIN { tests("tblok","_distances") }
+   1.  BEGIN { tests("tblok","_dist2") }
 ```
+#BEGIN { tests("tblok","_distances") }
 
 ```awk
    2.  function _weather(f) { return _tbl0(f,"weather") }
@@ -56,39 +56,37 @@ Uses:  "[num](num)"<br>
   28.    Tbl(t)
   29.    lines(t,"Tbl1",DOT DOT "/data/" d DOT "csv")
   30.    for(r1 in t.rows)  {
-  31.      if(r1==57) {
-  32.      print("\n" r1, flat(t.rows[r1].cells))
-  33.      for(r2 in t.rows) {
-  34.        if(r2==58) {
-  35.        if(r2+0 > r1+0) 
-  36.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
-  37.  }}}}}
+  31.      print("\n" r1, flat(t.rows[r1].cells))
+  32.      for(r2 in t.rows) {
+  33.        if(r2+0 > r1+0) 
+  34.          print(r2, flat(t.rows[r2].cells), RowDist(t.rows[r1],t.rows[r2],t))
+  35.  }}}
 ```
 
 
 ```awk
-  38.  function _distances(f,  d,sum,n,i,r) {
-  39.    for(d=2;d<=100;d+=5) { 
-  40.       sum=0
-  41.       Num(n)
-  42.       r=100
-  43.       for(i=1;i<=r;i++)
-  44.          Num1(n,_distances1(d) )
-  45.       print d,n.mu,n.sd,n.lo,n.hi}
-  46.  }
-  47.  function _distances1(d,   a,b) {
-  48.    while(d--) {
-  49.      a[d]=rand()
-  50.      b[d]=rand()
-  51.    }
-  52.    return _distance(a,b) 
-  53.  }
+  36.  function _distances(f,  d,sum,n,i,r) {
+  37.    for(d=2;d<=100;d+=5) { 
+  38.       sum=0
+  39.       Num(n)
+  40.       r=100
+  41.       for(i=1;i<=r;i++)
+  42.          Num1(n,_distances1(d) )
+  43.       print d,n.mu,n.sd,n.lo,n.hi}
+  44.  }
+  45.  function _distances1(d,   a,b) {
+  46.    while(d--) {
+  47.      a[d]=rand()
+  48.      b[d]=rand()
+  49.    }
+  50.    return _distance(a,b) 
+  51.  }
 ```
       
 ```awk
-  54.  function _distance(a,b,  i,d) {
-  55.     for(i in a) 
-  56.       d += (a[i]-b[i])^2
-  57.    return (d/length(a))^0.5
-  58.  }
+  52.  function _distance(a,b,  i,d) {
+  53.     for(i in a) 
+  54.       d += (a[i]-b[i])^2
+  55.    return (d/length(a))^0.5
+  56.  }
 ```
