@@ -200,11 +200,12 @@ Dont use all dimensions.
 
 Invent better dimensions. PCA, SVM
 
+Method2: 
+find 
+  the dimensions that (e.g.) most distinguish class values and explore those. If you repeat this process recursively,
+then that is how you bilt decision/regression trees.
 ![](assets/img/tree201.png)
 
-- Find 
-  <img src="assets/img/tree201.png" align=right>
-  the ones that (e.g.) mist distinguish class values and explore those. THis is how decision trees work.
 
  <MATH>&int;_a_^b^{f(x)<over>1+x} dx</MATH>
 
