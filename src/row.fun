@@ -200,7 +200,7 @@ Dont use all dimensions.
 
 Invent better dimensions. PCA, SVM
 
-![](assets/img/tree201.png){:width="400px" .align-right}
+![](assets/img/tree201.png){: width="400px" .align-right}
 Method2:
 find 
   the dimensions that (e.g.) most distinguish class values and explore those. If you repeat this process recursively,
