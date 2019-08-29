@@ -129,9 +129,9 @@ function _rowDist1(x, y, col, symp,     no) {
   if (x==no && y==no) return 1 # Case1: assume max
   if (x==y)           return 0 # Case2: return min
   if (symp)           return 1 # Case3, Case4
-  if (x==no) {y=NumNorm(col, y); x=y>0.5 ? 0 : 1;return abs(x-y)} # Case5
-  if (y==no) {x=NumNorm(col, x); y=x>0.5 ? 0 : 1;return abs(x-y)} # Case6
-  if (1)     {x=NumNorm(col, x);y=NumNorm(col,y);return abs(x-y)} # Case7
+  if (x==no) {y=NumNorm(col,y); x=y>0.5 ? 0 : 1 ;return abs(x-y)} # Case5
+  if (y==no) {x=NumNorm(col,x); y=x>0.5 ? 0 : 1 ;return abs(x-y)} # Case6
+  if (1)     {x=NumNorm(col,x); y=NumNorm(col,y);return abs(x-y)} # Case7
 }
 
 ## References
