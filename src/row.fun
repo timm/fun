@@ -132,8 +132,32 @@ function _rowDist1(x, y, col, symp,     no) {
   if (x==no)        {y=NumNorm(col,y); x=y>0.5 ? 0 : 1} # Case5
   else if (y==no)   {x=NumNorm(col,x); y=x>0.5 ? 0 : 1} # Case6
   else              {x=NumNorm(col,x); y=NumNorm(col,y)}
-  return abs(x-y) # Case7
+  return abs(x-y)   # Case7
 }
+
+## The Curse of Dimensionality
+
+The above distance calculation has issues as dimensionality increases.
+As pointed on in
+ [A Few Useful Things to Know about Machine Learning](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf),
+Pedro Domingos comments:
+
+
+- "Our intuitions, which come from a three-dimensional world, often do not apply in high-dimensional ones. In high dimensions, most of the mass of a multivariate Gaussian distribution is not near the mean, but in an increasingly distant 'shell' around it; and most of the volume of a high-dimensional orange is in the skin, not the pulp. If a constant number of examples is distributed uniformly in a high-dimensional hypercube, beyond some dimensionality most examples are closer to a face of the hypercube than to their nearest neighbor. And if we approximate a hypersphere by inscribing it in a hypercube, in high dimensions almost all the volume of the hypercube is outside the hypersphere. This is bad news for machine learning, where shapes of one type are often approximated by shapes of another."
+
+If you want to get a sense of the wierdness of higher dimensionalty, consider the volume of an N-dimensional sphere:
+
+- for `N=2`, it is V<sub>2</sup>(r)=&pi;r<sup>2</sup>
+- for `N=3`, it is V<sub>3</sup>(r)=4/3&pi;r<sup>2</sup>
+- for `N>3`, it is V<sub>N</sup>(r)=V<sub>N-2</sub>&pi;r<sup>2</sup>/N.  That is, we compute the volume of a
+  higher dimensional sphere byu multiplyiung a lower dimensional shpere by some additional factor.
+
+
+
+In summary, as the number of dimensions increase, look for ways to reduce them.  There are so many ways to do this.
+
+Sort the columns by their standard deviation and just use the ones that vary the most variance.
+
 
 ## References
 
