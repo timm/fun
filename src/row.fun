@@ -178,29 +178,33 @@ If you want to get a sense of the wierdness of higher dimensionalty, consider th
 
 Now there is the wierd part:
 
-- For  the unit sphere (`r=1`) and `N = 7`,   
-  V<sub>7</sub>(r)=V<sub>N-2</sub>6.28/7.   
-      0 That is, the volume of the 7 dimensional unit sphere is _smaller_
-  than the 5 dimensional unit sphere. 
-- And as `N` increases, spheres of larger and larger volume get smaller and smaller.
+- For  the unit sphere (`r=1`) and `N = 7`, V<sub>7</sub>(r)=V<sub>N-2</sub>6.28/7.   
+       That is, the volume of the 7 dimensional unit sphere is _smaller_
+       than the 5 dimensional unit sphere. 
+- And as `N` increases, spheres of larger and larger volume get smaller and smaller (by a factor of `6.28/N`).
 - More generally, dimensionality decreases volume. 
      - After 20 dimensions, the volume of the unit sphere is effectively zero.
 
 ![](assets/img/sphere.png)
 
-If that seems wrong, then consider another way to show the same thing. When we build a model,we are sumamrizing some phenomena. It is good practice to build
+If that seems wrong, then consider another way to show the same thing.
+
+- When we build a model,we are sumamrizing some phenomena.
+- It is good practice to build
 different models for different phenomena; i.e. before we model, we should seperate the data into regions of similar items.
-How large is the volume within which we need to search to find simnilar examples? 
+- How large is the volume within which we need to search to find similar examples (here, by "similar", we mean that
+ the distance between them is not large)? 
 
 To answer that question,  we ask how close do things need to be in order to fall within a sphere of
 some fixed radius? In the following, we  will say a radius of `r=1` but the following holds for any radius of constat size.
 
 - Let the center of the sphere be (0,0,0,...).
-- The radius is tge Euclidean distance  from the center to  any point (x,y,z,...) i.e.
+- The radius is the Euclidean distance  from the center to  any point (x,y,z,...) i.e.
   `r=1=sqrt(x^2+y^2+z^2+...)`
 - If all our points are spread out uniformally in `N` dimensions such that  `x=y=z` then
-  `1=sqrt(N*x^2)` so
-  `x=`&plusmn;`1/sqrt(N)` but since we use the absolute value for distances (i.e. no minuses) then
+  -  `1=sqrt(N*x^2)` so
+  - so `x=`&plusmn;`1/sqrt(N)` 
+  -  since we use the absolute value for distances (i.e. no minuses) then
   `x=1/sqrt(N)`.
 - From this expression we see that as `N` increases, the distance from the radius to any point must decrease. 
 - To say that another way, the volume where we must search for similiar examples gets smaller and smaller and smaller.
@@ -209,9 +213,10 @@ There are several assumptions in the above poinbts and if you do not like those,
 
 - The more complex your model (the more dimensions it uses) the harder it is to find data to support that model.
   
-More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality) "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
+More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality):  "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
+):
 
-
+Method1: Use simpler models.
 
 In summary, as the number of dimensions increase, look for ways to reduce them.  There are so many ways to do this.
 
