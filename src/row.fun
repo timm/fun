@@ -103,7 +103,7 @@ The following code applies these principles:
   there is uncertainty about both position, assume worst case.
 - _Case2_: identical things are not seperated. 
 - If a symbol then
-    - _Case3_if either is unknown, assume max distance=1;
+    - _Case3_ if either is unknown, assume max distance=1;
     - _Case4_ else, if they are different, then distance=1;
     - _Case5_ else, if the same, then distance=0 (covered by _Case2_)
 - If a number, then:
