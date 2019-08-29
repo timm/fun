@@ -220,6 +220,8 @@ Dont use all dimensions.
 
 Invent better dimensions. PCA, SVM
 
+![](assests/img/tree201.png)
+
 - Find 
   <img src="assests/img/tree20.png" align=right>
   the ones that (e.g.) mist distinguish class values and explore those. THis is how decision trees work.
