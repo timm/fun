@@ -185,11 +185,11 @@ Now there is the wierd part:
 - More generally, dimensionality decreases volume. 
      - After 20 dimensions, the volume of the unit sphere is effectively zero.
 
-![](assets/img/sphere.png){:width=300}
+![](assets/img/sphere.png){:width=300px}
 
 If that seems wrong, then consider another way to show the same thing.
 
-- When we build a model,we are sumamrizing some phenomena.
+- When we build a model,we are sumamrizing some phenomenon.
 - It is good practice to build
 different models for different phenomena; i.e. before we model, we should seperate the data into regions of similar items.
 - How large is the volume within which we need to search to find similar examples (here, by "similar", we mean that
@@ -214,7 +214,7 @@ There are several assumptions in the above poinbts and if you do not like those,
 - The more complex your model (the more dimensions it uses) the harder it is to find data to support that model.
   
 More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality):  "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
-):
+)
 
 Method1: Use simpler models.
 
