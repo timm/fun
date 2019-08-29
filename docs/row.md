@@ -145,28 +145,14 @@ The following code applies these principles:
 ```awk
   40.  function _rowDist1(x, y, col, symp,     no) {
   41.    no = THE.row.skip
-  42.    if (x==no && y==no)    
-  43.      return 1 # Case1: assume max
-  44.    else if (x==y)
-  45.       return 0 # Case2: return min
-  46.    else {
-  47.      if (symp) 
-  48.        return 1 # Case3, Case4
-  49.      else { 
-  50.        if (x==no) { #Case6
-  51.          y = NumNorm(col, y)
-  52.          x = y>0.5 ? 0 : 1
-  53.        } else if (y==no) { #Case6
-  54.          x = NumNorm(col, x)
-  55.          y = x>0.5 ? 0 : 1
-  56.        } else { #ensure everything is noralized
-  57.          x = NumNorm(col, x)
-  58.          y = NumNorm(col, y) 
-  59.        }
-  60.        return abs(x-y) }} # Case7
-  61.  }
+  42.    if (x==no && y==no) return 1 # Case1: assume max
+  43.    if (x==y)           return 0 # Case2: return min
+  44.    if (symp)           return 1 # Case3, Case4
+  45.    if (x==no) {y=NumNorm(col, y); x=y>0.5 ? 0 : 1;return abs(x-y)} # Case5
+  46.    if (y==no) {x=NumNorm(col, x); y=x>0.5 ? 0 : 1;return abs(x-y)} # Case6
+  47.    if (1)     {x=NumNorm(col, x);y=NumNorm(col,y);return abs(x-y)} # Case7
+  48.  }
 ```
-
 
 ## References
 
