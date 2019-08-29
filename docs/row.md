@@ -188,7 +188,9 @@ If you want to get a sense of the wierdness of higher dimensionalty, consider th
 
 Now there is the wierd part:
 
-- <a href="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg" align=right width=400></a>
+![](https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg) | width=400)
+
+- 
   For  the unit sphere (`r=1`) and `N = 7`,   
   V<sub>7</sub>(r)=V<sub>N-2</sub>6.28/7.   That is, the volume of the 7 dimensional unit sphere is _smaller_
   than the 5 dimensional unit sphere.
