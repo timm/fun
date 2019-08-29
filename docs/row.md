@@ -106,7 +106,9 @@ The following needs a little explaination. Accoring to [Aha91](#aha-91):
    information and astronaut age and velocity, make all ranges 0..1, min..max.
    - For symbols, this is is easy: indentical symbols have distance 
      zero; otherwise, their distance is one.
-   - For numerics, just normalize all values `x` with `(x - lo)/(hi - lo`+&epsilon;`)` where `x` comes from some column and `lo,hi` are the smallest and largest
+   - For numerics, just normalize all values `x` via    
+     `(x - lo)/(hi - lo`+&epsilon;`)`    
+     where `x` comes from some column and `lo,hi` are the smallest and largest
      values in that colum, and &epsilon; is some tiny amout (`10^-32`) included
      to avoid divde-by-zero errirs).
 - _Principle2_: when position are unknown, assume maximum. This heuristic
