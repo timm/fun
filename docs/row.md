@@ -182,10 +182,17 @@ If you want to get a sense of the wierdness of higher dimensionalty, consider th
 
 - for `N=2`, it is V<sub>2</sub>(r)=&pi;r<sup>2</sup>
 - for `N=3`, it is V<sub>3</sub>(r)=4/3&pi;r<sup>2</sup>
-- for `N>3`, it is V<sub>N</sub>(r)=V<sub>N-2</sub>&pi;r<sup>2</sup>/N.  That is, we compute the volume of a
+- for `N>3`, it is V<sub>N</sub>(r)=V<sub>N-2</sub>2&pi;r<sup>2</sup>/N.  
+  That is, we compute the volume of a
   higher dimensional sphere by multiplyiung a lower dimensional sphere by some additional factor.
 
-Now there is the wierd partx 
+Now there is the wierd part:
+
+- <a href="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg" align=right width=400></a>
+  For  the unit sphere (`r=1`) and `N = 7`,   
+  V<sub>7</sub>(r)=V<sub>N-2</sub>6.28/7.   That is, the volume of the 7 dimensional unit sphere is _smaller_
+  than the 5 dimensional unit sphere.
+- More generally, as the dimensions increase (over 6), the volume decreases
 
 In summary, as the number of dimensions increase, look for ways to reduce them.  There are so many ways to do this.
 
