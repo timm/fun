@@ -188,7 +188,7 @@ If you want to get a sense of the wierdness of higher dimensionalty, consider th
 
 Now there is the wierd part:
 
-![](https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg | width=400)
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg" width=400>
 
 - 
   For  the unit sphere (`r=1`) and `N = 7`,   
