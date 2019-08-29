@@ -137,8 +137,18 @@ function _rowDist1(x, y, col, symp,     no) {
 
 ## The Curse of Dimensionality
 
-The above distance calculation has issues as dimensionality increases.
+In case you missed it, the above distance function is defined for `N` dimensions:
+
+-  If we are learning from some spreadsheet,
+- and that spreadsheet has 100 columns, 
+- and we are trying to predict for some binary class in the 101th column (say, `true` or `false`) 
+- then those `true`s and `false`s are dots floating in a 100 dimensional space.
+
+So congrats-- you have just left behing the dull 2D and 3D world and  entered multi-dimensional space!
+
+Now multi-dimensional space gets... intersting.
 For a really good discussion on this, see [Stats.stackexchange](https://stats.stackexchange.com/questions/99171/why-is-euclidean-distance-not-a-good-metric-in-high-dimensions), which is sumamrized (and extended a little), below.
+Also [Aggarwal et al.](#aggarwal-2001) is a widely cited reference on this topic.
 
 As pointed on in
  [A Few Useful Things to Know about Machine Learning](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf),
@@ -168,18 +178,35 @@ If you want to get a sense of the wierdness of higher dimensionalty, consider th
 
 Now there is the wierd part:
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Hypersphere_volume_and_surface_area_graphs.svg" width=400>
-
-- 
-  For  the unit sphere (`r=1`) and `N = 7`,   
+- For  the unit sphere (`r=1`) and `N = 7`,   
   V<sub>7</sub>(r)=V<sub>N-2</sub>6.28/7.   That is, the volume of the 7 dimensional unit sphere is _smaller_
-  than the 5 dimensional unit sphere.
-- More generally, as the dimensions increase (over 6), the volume decreases
+  than the 5 dimensional unit sphere. And as `N` increases, spheres of larger and larger volume get smaller and smaller.
+- More generally, dimensionality decreases volume. 
+     - After 20 dimensions, the volume of the unit sphere is effectively zero.
+     - More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality) "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
+     - To say that another way, the more complex your model (the more dimensions it uses) the harder it is to find data to support that model.
+
+![](assests/img/sphere.png)
 
 In summary, as the number of dimensions increase, look for ways to reduce them.  There are so many ways to do this.
 
 Sort the columns by their standard deviation and just use the ones that vary the most variance.
 
+Use a different itnernal rpresetnations (sparse amtrixes)
+
+For text mining, TFIDF
+
+Dont use all dimensions. 
+
+Invent better dimensions. PCA, SVM
+
+- Find 
+  <img src="assests/img/tree20.png" align=right>
+  the ones that (e.g.) mist distinguish class values and explore those. THis is how decision trees work.
+
+ <MATH>&int;_a_^b^{f(x)<over>1+x} dx</MATH>
+
+blessun
 
 ## References
 
@@ -187,6 +214,10 @@ Sort the columns by their standard deviation and just use the ones that vary the
 
 David W. Aha, Dennis Kibler, and Marc K. Albert. 1991. Instance-Based Learning Algorithms. Mach. Learn. 6, 1 (January 1991), 37-66. DOI: https://doi.org/10.1023/A:1022689900470
 
+### Aggarwal 2001
+
+Charu C. Aggarwal, Alexander Hinneburg, and Daniel A. Keim. 2001. On the Surprising Behavior of Distance Metrics in High Dimensional Spaces. In Proceedings of the 8th International Conference on Database Theory (ICDT '01), Jan Van den Bussche and Victor Vianu (Eds.). Springer-Verlag, Berlin, Heidelberg, 420-434.
+https://bib.dbvis.de/uploadedFiles/155.pdf
 
 ### Smotuned
 
