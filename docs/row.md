@@ -78,12 +78,24 @@ the `Row` (outside of the cells).
 
 ## Distance
 
+First we have to decide what attributes to use for the distance calculation.
+The default is to use all the standard independent variables (i.e. `xs`).
+
 ```awk
   27.  function RowDist(i,j,t,what) {
   28.    what = what ? what : "xs"
   29.    return _rowDist(i,j, t.my[what], t.my.syms, t.cols)
   30.  }
 ```
+
+Next, for a Euclidean distance measure, we have to compute the
+square root of the sum of the square of the distances. This Euclidean
+distance is just a general case of the [Minkoski
+distance](https://en.wikipedia.org/wiki/Minkowski_distance) Give
+some power factor "_p_" this distance is the  _p-th_ root of the
+sum of the distances raised to the power "_p_". Formally, this is
+known as a Note that, for SE data, [it  is known that it is useful
+to tune "_p_" to values other than _p=2_](#smotuned)
 
 ```awk
   31.  function _rowDist(i,j,what,syms,cols,    p,c,n,d0,d) {
@@ -97,7 +109,8 @@ the `Row` (outside of the cells).
   39.  }
 ```
 
-The following needs a little explaination. Accoring to [Aha91](#aha-91):
+Finally, we compare two galues.
+The following needs a little explaination. According to [Aha91](#aha-91):
 
 - _Principle1_ : when doing distance calculations, normalize all distances for
    each attribte from zero to one (otherwise, one attribute can have an undue 
@@ -160,3 +173,9 @@ The following code applies these principles:
 ### Aha 91
 
 David W. Aha, Dennis Kibler, and Marc K. Albert. 1991. Instance-Based Learning Algorithms. Mach. Learn. 6, 1 (January 1991), 37-66. DOI: https://doi.org/10.1023/A:1022689900470
+
+
+### Smotuned
+
+See Table5 and Fig5c of https://arxiv.org/pdf/1705.03697.pdf.
+ Amritanshu Agrawal and Tim Menzies. 2018. Is "better data" better than "better data miners"?: on the benefits of tuning SMOTE for defect prediction. In Proceedings of the 40th International Conference on Software Engineering (ICSE '18). ACM, New York, NY, USA, 1050-1061. DOI: https://doi.org/10.1145/3180155.3180197
