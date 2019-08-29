@@ -201,7 +201,7 @@ Dont use all dimensions.
 Invent better dimensions. PCA, SVM
 
 ![](assets/img/tree201.png){:width="400px" .align-right}
-Method2::
+Method2:
 find 
   the dimensions that (e.g.) most distinguish class values and explore those. If you repeat this process recursively,
 then that is how you bilt decision/regression trees.
