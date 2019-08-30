@@ -305,12 +305,12 @@ sub-sub-sub-sub-sub divisions are truly similar).
 
 A small variant of the above (that never recusrses) can visual points in N dimensions onto a 2D plane (which is useful for visualization and debugging):
 
-- Let the poles be `east,west`, seperated by distance `c`.
-- Let any other point `z`' have distance `a,b` to _east,west_.
-- By the cosine rule `x=(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup) / (2c)`
-- Cap `x` such that if x is above,below 0,1, set it to 0,1 (respectively).
-- Let `y=sqrt(a<sup>2</sup> - x<sup>2</sup>`
-- Plot `z` at `x,y`
+- Let the poles be _east,west_, seperated by distance _c_.
+- Let any other point _z_ have distance _a,b_ to _east,west_.
+- By the cosine rule _x=(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup) / (2c)_
+- Cap _x_ such that if x is above,below 0,1, set it to 0,1 (respectively).
+- Let _y=sqrt(a<sup>2</sup> - x<sup>2</sup>_
+- Plot _z_ at _x,y_
 
 ![](assets/img/xy.png)
 
