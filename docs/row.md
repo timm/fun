@@ -276,7 +276,8 @@ Method3: For text mining:
 Method4: Exploing the class/goal variables:
   - Before reasoning over numerous indeepdnent features (of which theyre may be many), first reason over the dependent features (which are usually very few). That is,
   - Group the data  using the goal/class variables
-  - Ignore anything that has [similar distributions in different groups](nums.md). 
+  - Ignore anything that has similar distributions in different groups.
+    - And you'll need different tests for [numerics](nums.md) and [symbols](syms.md)
 
 
 Method5: exploint the blessing of non-uniformity.
@@ -327,12 +328,22 @@ A small variant of the above (that never recusrses) can visual points in N dimen
 
 - Let the poles be _east,west_, seperated by distance _c_.
 - Let any other point _z_ have distance _a,b_ to _east,west_.
-- By the cosine rule _x=(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup) / (2c)_
+- By the cosine rule _x=(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup>) / (2c)_
 - Cap _x_ such that if x is above,below 0,1, set it to 0,1 (respectively).
-- Let _y=sqrt(a<sup>2</sup> - x<sup>2</sup>_
+- Let _y=sqrt(a<sup>2</sup> - x<sup>2</sup>)_
 - Plot _z_ at _x,y_
 
 ![](assets/img/xy.png)
+
+_WARNING:_ the dimensions found by PCA orrandom projections can capture the _bulges_ in the data BUT they introduce an explanation problem. If a business user asks "what have you learned"
+and you show them the random projections, they will not see the raw dimensions that they are most familiar with. One (partial) solution to this is to:
+
+- Use random projections to find data groupings
+- Look at the distribution of variables at either poles of the bottom division
+- Use some stats to prune variables that have the same distribution 
+    - And you'll need different tests for [numerics](nums.md) and [symbols](syms.md)
+- Build models using the remaining variables
+- Only show the business users those generated models.
 
 ## References
 
