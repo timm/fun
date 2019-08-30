@@ -229,60 +229,86 @@ To put that another way,
 harder it is to find data to support that model.
 
 
+Method0: Do not build complex models. K.I.S.S.= Keep it simple, surely?
+
 Method1: Do not use Euclidean distance.
-[Aggarwal et al.](#aggarwal-2001) comment  that in the above code, _p=1_ might do better than _p=2_ or even higher values.
-
-Method2: Do use all those dimensions.
-
-- Exploit some _feature selection_ method to get rid of (e.g.) features not relevant to predicting for a class.
-  -  e.g. remove features that vary little across the whole data (those with least variance); or those with most inforamtion (defined later in this book).
-  -  e g. for text mining, when thate may be 100,000s of columns, only use the features that appear a lot, but only in a small number of documents. This is call TFidf (or term frequency inverse document
-     frequency). 
-     If there be `Words` number of document and each word `i` appears `Word[i]` number of times inside a set of Documents and if `Document[i]` be the documents containing `i`, then
-     `TFidf = Word[i]/Words*log(Documents/Document[i])`.
-- Before reasoning over numerous indeepdnent features (of which theyre may be many), first reason over the dependent features (which are usually very few)
-  - Cluster using the goal/class variables
-  - Ignore anything that has similar means and standard deviations in the different clusters
-
-
-
-Method2: exploint the blessing of non-uniformity.
-
-## The Blessing of Non-Uniformity
-
-
--unformatiy
-
-Method2: Use simpler models. If high dimensions are a curse, the avoid the curse. 
-Look for ways to reduce dimensionality:
-
-REason frist about goals (mch lower disminsioanlity)
-
-exploring spare data
-
-If multiple dimensions are correlated, then seek an udnerlying set of dimensions that best capture the essence of the domensions.
-.  There are so many ways to do this.
-
-Sort the columns by their standard deviation and just use the ones that vary the most variance.
-
-Use a different itnernal rpresetnations (sparse amtrixes)
-
-For text mining, TFIDF
-
-Dont use all dimensions. 
-
-Invent better dimensions. PCA, SVM
+[Aggarwal et al.](#aggarwal-2001) comment  that in the above code, _p=1_ might do better than _p=2_.
+The actually best value of _p_ for data can be found via
+ [automatic methods](#smotuned).
 
 Method2:
-find 
-  the dimensions that (e.g.) most distinguish class values and explore those. If you repeat this process recursively,
+only use
+  the dimensions that (e.g.) most distinguish class values and explore those. FYI: if you repeat this process recursively,
 then that is how you bilt decision/regression trees.
 
 ![](assets/img/tree201.png)
 
- <MATH>&int;_a_^b^{f(x)<over>1+x} dx</MATH>
 
-blessun
+Method3: For text mining:
+  when thate may be 100,000s of columns, only use the features that appear a lot, but only in a small number of documents. This is call TFidf (or term frequency inverse document
+     frequency). 
+
+- If there be `Words` number of document and each word `i` appears `Word[i]` number of times inside a set of Documents and if `Document[i]` be the documents containing `i`, 
+- Then 
+     `TFidf = Word[i]/Words*log(Documents/Document[i])`.
+- A useful trick is to only use the top, say, 100 TFidf-ing scoring words.
+
+Method4: Exploing the class/goal variables:
+  - Before reasoning over numerous indeepdnent features (of which theyre may be many), first reason over the dependent features (which are usually very few). That is,
+  - Group the data  using the goal/class variables
+  - Ignore anything that has [similar distributions in different groups](nums.md). 
+
+
+Method5: exploint the blessing of non-uniformity.
+
+## The Blessing of Non-Uniformity ("Bulges" in the data)
+
+A repeated result in data mining (and image processing and astronomy)  is that data expressed in `D` dimensions can be usefully approximated in some smaller set. 
+
+- The [Johnson-Lindenstrauss](johnson-2004) lemma  states that if points in a vector space are of sufficiently high dimension, 
+then they may be projected into a suitable lower-dimensional space in a way which approximately preserves the distances between the points. T
+- According to [Levina and Bickel](#levina-2004):
+    - "the only reason any methods work in very high dimensions is that, in fact, the data are not truly high-dimensional ... but can be efficiently summarized in a space of a much lower dimension". 
+
+One way to find that lower dimnsionality is too look for "bulges" in the data.
+
+- If all the data is spread uniformly across the space, then you cannot ignore some dimensions. 
+- But  if there are many intra-conencted variables, then the data will "bulge out" in a just a few dimensions.
+- If so, it is possible  to infer a smaller set of dimensions that better capture those "bulges" (the intra-connectivities). 
+
+A traditional way to model the "bulges"  is principle components analysis (PCA), that explores the [Eigenvectors of the covariance  matrix](#pca). PCA can compute the dark arrows in the following
+diagram (actually, PCA does find two arrows, but N orthogonal dimensions where the N+1 dimension "retires" the direction of greatest uncertainty left behind after then N-th dimension).
+
+![](assets/img/pca.png)
+
+Note that traditional PCA requires some (potentially) slow polynomial-time matrix multiplications. Also it is only defined for numbers.
+Once we have a distance metric defined for symbols and numbers, then we can deploy some analogs to PCA, that run much faster, and which handle symbols as well as numbers.
+For example, here is a "random projections"  algorithm:
+
+1. As data arrives, keep the first `M` items.
+2. Once you get `M` items, then find a random projection; i.e. two _poles_, which are somewhat distant:
+   - `N` times, pick two points at random and compute their seperation (use `N` more than 20).
+   - Use the pair that are most distant
+3. For those first `M` items, and then anything that follows after tha:
+  - Divide the data according to which pole is closer;
+  - For each division, goto step 1
+
+_Note1_: This is a recursive clustering algorithm suitable for very large data sets. 
+
+_Note2_: The few divisions found in this way  will only be approximate. However, after a couple of random projections seperate your data, it becomes likely that the points in one of
+the sub-sub-sub-sub-sub-divisions are bulging the same way.
+
+A small variant of the above (that never recusrses) can visual points in N dimensions onto a 2D plane (which is useful for visualization and debugging):
+
+- Let the poles be `east,west`, seperated by distance `c`.
+- Let any other point `z`' have distance `a,b` to _east,west_.
+- By the cosine rule `x=(a<sup>2</sup> + c<sup>2</sup> - b<sup>2</sup) / (2c)`
+- Cap `x` such that if x is above,below 0,1, set it to 0,1 (respectively).
+- Let `y=sqrt(a<sup>2</sup> - x<sup>2</sup>`
+- Plot `z` at `x,y`
+
+![](assets/ing/xy.png)
+
 
 Data mining = data carving?
 
@@ -302,6 +328,20 @@ David W. Aha, Dennis Kibler, and Marc K. Albert. 1991. Instance-Based Learning A
 
 Charu C. Aggarwal, Alexander Hinneburg, and Daniel A. Keim. 2001. On the Surprising Behavior of Distance Metrics in High Dimensional Spaces. In Proceedings of the 8th International Conference on Database Theory (ICDT '01), Jan Van den Bussche and Victor Vianu (Eds.). Springer-Verlag, Berlin, Heidelberg, 420-434.
 https://bib.dbvis.de/uploadedFiles/155.pdf
+
+### Johnson 2004
+
+ Johnson, William B.; Lindenstrauss, Joram (1984). "Extensions of Lipschitz mappings into a Hilbert space". In Beals, Richard; Beck, Anatole; Bellow, Alexandra; et al. (eds.). Conference in modern analysis and probability (New Haven, Conn., 1982). Contemporary Mathematics. 26. Providence, RI: American Mathematical Society. pp. 189–206. doi:10.1090/conm/026/737400. ISBN 0-8218-5030-X. MR 0737400.
+
+### Levina  2004
+
+Elizaveta Levina and Peter J. Bickel. Maximum likelihood estimation of intrinsic dimension. In NIPS, 2004.
+
+### PCA
+
+For an step-by-step guide on how to do this, 
+see Matt Brem's excellent article 
+[A One-Stop Shop for Principal Component Analysis](https://towardsdatascience.com/a-one-stop-shop-for-principal-component-analysis-5582fb7e0a9c).
 
 ### Smotuned
 
