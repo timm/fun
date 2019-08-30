@@ -301,7 +301,8 @@ diagram (actually, PCA does find two arrows, but N orthogonal dimensions where t
 
 ![](assets/img/pca.png)
 
-Note that traditional PCA requires some (potentially) slow polynomial-time matrix multiplications. Also it is only defined for numbers.
+ 
+Note that traditional PCA requires some (potentially) slow polynomial-time matrix multiplications. Also it is only defined only for numbers.
 Once we have a distance metric defined for symbols and numbers, then we can deploy some analogs to PCA, that run much faster, and which handle symbols as well as numbers.
 For example, here is a "random projections"  algorithm:
 
@@ -316,9 +317,11 @@ For example, here is a "random projections"  algorithm:
 _Note1_: This is a recursive clustering algorithm suitable for very large data sets. 
 
 _Note2_: The few divisions found in this way  will only be approximate. However, after a couple of random projections seperate your data, it becomes likely that the points in one of
-the sub-sub-sub-sub-sub-divisions are bulging the same way.
+the 
+sub-sub-sub-sub-sub-divisions are bulging the same way (and the items found in those 
+sub-sub-sub-sub-sub divisions are truly similar).
 
-![](assets/img/rp101.png)
+![](assets/img/rp101.jpg)
 
 A small variant of the above (that never recusrses) can visual points in N dimensions onto a 2D plane (which is useful for visualization and debugging):
 
@@ -345,6 +348,7 @@ https://bib.dbvis.de/uploadedFiles/155.pdf
 ### Johnson 2004
 
  Johnson, William B.; Lindenstrauss, Joram (1984). "Extensions of Lipschitz mappings into a Hilbert space". In Beals, Richard; Beck, Anatole; Bellow, Alexandra; et al. (eds.). Conference in modern analysis and probability (New Haven, Conn., 1982). Contemporary Mathematics. 26. Providence, RI: American Mathematical Society. pp. 189–206. doi:10.1090/conm/026/737400. ISBN 0-8218-5030-X. MR 0737400.
+
 
 ### Levina  2004
 
