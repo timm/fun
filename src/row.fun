@@ -189,12 +189,13 @@ Now there is the wierd part:
 
 If that seems wrong, then consider another way to show the same thing.
 
-- When we build a model,we are sumamrizing some phenomenon.
+- When we build a model, we are trying to summarize  some phenomenon.
 - It is good practice to build
 different models for different phenomena; i.e. before we model, we should seperate the data into regions of similar items.
-- How large is the volume within which we need to search to find similar examples (here, by "similar", we mean that
- the distance between them is not large)? 
+- Hence, a relevant question to ask is "how large is the volume within which we need to search to find similar examples?".
 
+Here, by "similar", we mean that
+ the distance between them is "not large". 
 To answer that question,  we ask how close do things need to be in order to fall within a sphere of
 some fixed radius? In the following, we  will say a radius of `r=1` but the following holds for any radius of constat size.
 
@@ -209,19 +210,55 @@ some fixed radius? In the following, we  will say a radius of `r=1` but the foll
 - From this expression we see that as `N` increases, the distance from the radius to any point must decrease. 
 - To say that another way, the volume where we must search for similiar examples gets smaller and smaller and smaller.
   
-There are several assumptions in the above poinbts and if you do not like those, then we refer you back to the  V<sub>N</sub>(r)=V<sub>N-2</sub>2&pi;r<sup>2</sup>/N expression. Either way, the lesson is clear:
+There are several assumptions in the above poinbts and if you do
+not like those, then we refer you back to the
+V<sub>N</sub>(r)=V<sub>N-2</sub>2&pi;r<sup>2</sup>/N expression.
+Either way, the lesson is clear:
 
-- The more complex your model (the more dimensions it uses) the harder it is to find data to support that model.
-  
-More formally (from [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality):  "When the dimensionality increases, the volume of the space increases so fast that the available data becomes sparse. This sparsity is problematic for any method that requires statistical significance. In order to obtain a statistically sound and reliable result, the amount of data needed to support the result often grows exponentially with the dimensionality." 
-)
+- From [Wikipedia](https://en.wikipedia.org/wiki/Curse_of_dimensionality):  "When
+the dimensionality increases, the volume of the space increases so
+fast that the available data becomes sparse. This sparsity is
+problematic for any method that requires statistical significance.
+In order to obtain a statistically sound and reliable result, the
+amount of data needed to support the result often grows exponentially
+with the dimensionality." 
+
+To put that another way,
+
+- The more complex your model (the more dimensions it uses) the
+harder it is to find data to support that model.
+
 
 Method1: Do not use Euclidean distance.
 [Aggarwal et al.](#aggarwal-2001) comment  that in the above code, _p=1_ might do better than _p=2_ or even higher values.
 
+Method2: Do use all those dimensions.
+
+- Exploit some _feature selection_ method to get rid of (e.g.) features not relevant to predicting for a class.
+  -  e.g. remove features that vary little across the whole data (those with least variance); or those with most inforamtion (defined later in this book).
+  -  e g. for text mining, when thate may be 100,000s of columns, only use the features that appear a lot, but only in a small number of documents. This is call TFidf (or term frequency inverse document
+     frequency). 
+     If there be `Words` number of document and each word `i` appears `Word[i]` number of times inside a set of Documents and if `Document[i]` be the documents containing `i`, then
+     `TFidf = Word[i]/Words*log(Documents/Document[i])`.
+- Before reasoning over numerous indeepdnent features (of which theyre may be many), first reason over the dependent features (which are usually very few)
+  - Cluster using the goal/class variables
+  - Ignore anything that has similar means and standard deviations in the different clusters
+
+
+
+Method2: exploint the blessing of non-uniformity.
+
+## The Blessing of Non-Uniformity
+
+
+-unformatiy
 
 Method2: Use simpler models. If high dimensions are a curse, the avoid the curse. 
 Look for ways to reduce dimensionality:
+
+REason frist about goals (mch lower disminsioanlity)
+
+exploring spare data
 
 If multiple dimensions are correlated, then seek an udnerlying set of dimensions that best capture the essence of the domensions.
 .  There are so many ways to do this.
@@ -246,6 +283,14 @@ then that is how you bilt decision/regression trees.
  <MATH>&int;_a_^b^{f(x)<over>1+x} dx</MATH>
 
 blessun
+
+Data mining = data carving?
+
+![](assets/img/block.png)
+1. Find some cr\*p
+2. Cut the cr\*p
+3. Goto step 1
+
 
 ## References
 

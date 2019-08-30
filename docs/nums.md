@@ -49,7 +49,7 @@ curves. The wider curve has a larger standard deviation. Their mean
 values occur at different places so, at first glance, they look
 different.
 
-![](https://miro.medium.com/max/700/1*knCUJJjFHW92ec8d8iq4kQ.png)
+![](assets/img/normalbell.png)
 
 But if we picked one value from each distribution, what are the
 odds that we will _not_ the same value (i.e.  that the value is not
