@@ -18,6 +18,8 @@ code up their own versions (in whatever language they like best).
 
 ## Funny Stuff
 
+- [cocomo](cocomo.md): 
+ Software project estimation and risk calculations
 - [col](col.md): 
  Summarize  table columns.
 - [div](div.md): 

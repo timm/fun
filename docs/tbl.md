@@ -30,7 +30,7 @@ Uses:  "[sym](sym)"<br>
 ```awk
    7.  function Tbl(i) { 
    8.    Object(i)
-   9.    has(i,"my")
+   9.    has(i,"my","TblAbout")
   10.    has(i,"cols")
   11.    has(i,"rows") 
   12.  }
@@ -42,15 +42,26 @@ Uses:  "[sym](sym)"<br>
   18.    } else  
   19.      has2(i.rows,r-1,"Row",i,lst)  
   20.  }
-  21.  function TblCols(i,c,v) {
-  22.    if (v ~ CLASSCOL) i.my.class = c
-  23.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
-  24.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  25.    if (v ~ />/) i.my.w[c] =  1
-  26.    if (v ~ /</) i.my.w[c] = -1
-  27.    has2(i.cols,c,
-  28.         v ~NUMCOL ? "Num" : "Sym",
-  29.         c,v) 
-  30.  }
+```
+
+```awk
+  21.  function TblAbout(i) {
+  22.    i.class = ""
+  23.    has(i,"nums")
+  24.    has(i,"syms")
+  25.    has(i,"goals")
+  26.    has(i,"xs")
+  27.    has(i,"w")
+  28.  }
+  29.  function TblCols(i,c,v) {
+  30.    if (v ~ CLASSCOL) i.my.class = c
+  31.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
+  32.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
+  33.    if (v ~ />/) i.my.w[c] =  1
+  34.    if (v ~ /</) i.my.w[c] = -1
+  35.    has2(i.cols,c,
+  36.         v ~NUMCOL ? "Num" : "Sym",
+  37.         c,v) 
+  38.  }
 ```
 
