@@ -298,6 +298,8 @@ _Note1_: This is a recursive clustering algorithm suitable for very large data s
 _Note2_: The few divisions found in this way  will only be approximate. However, after a couple of random projections seperate your data, it becomes likely that the points in one of
 the sub-sub-sub-sub-sub-divisions are bulging the same way.
 
+![](assets/img/rp101.png)
+
 A small variant of the above (that never recusrses) can visual points in N dimensions onto a 2D plane (which is useful for visualization and debugging):
 
 - Let the poles be `east,west`, seperated by distance `c`.
@@ -307,16 +309,7 @@ A small variant of the above (that never recusrses) can visual points in N dimen
 - Let `y=sqrt(a<sup>2</sup> - x<sup>2</sup>`
 - Plot `z` at `x,y`
 
-![](assets/ing/xy.png)
-
-
-Data mining = data carving?
-
-![](assets/img/block.png)
-1. Find some cr\*p
-2. Cut the cr\*p
-3. Goto step 1
-
+![](assets/img/xy.png)
 
 ## References
 
