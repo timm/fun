@@ -41,7 +41,7 @@ curves. The wider curve has a larger standard deviation. Their mean
 values occur at different places so, at first glance, they look
 different.
 
-![](https://miro.medium.com/max/700/1*knCUJJjFHW92ec8d8iq4kQ.png)
+![](assets/img/normalbell.png)
 
 But if we picked one value from each distribution, what are the
 odds that we will _not_ the same value (i.e.  that the value is not
@@ -63,20 +63,31 @@ so we need some rules to decide those odds.  Given two `Num` objects
    large sample sizes mitigate for _SdFX_.
 
 The standard way to apply these rules is the following ttest test
-for significant differences. Note thats Othe _MeanFx_
+for significant differences:
+
+- `(abs(x.mu-y.mu) / sqrt(x.sd^2/s.n+y.sd^2/y.n) >  T` 
+
+where  "_T_" is some threshold that we show how to calculate, below.
+
+Note that
+
+- The _MeanFx_
 is in the numerator (top part of the fraction) so large increases
-in the mean difference makes "different" more likely. Also, the
+in the mean difference makes "different" more likely. 
+-  The
 _SdFX_ effect, mitigated by the _SampleFX_, are where they should be;
 i.e. in  the denominator
 (bottom part of the fraction).
 
-- Other= `(abs(x.mu-y.mu) / sqrt(x.sd^2/s.n+y.sd^2/y.n) >  T` 
+Note that:
 
-where  "_T_" is some threshold that we show how to calculate, below.
-In this equation, "other" is more likely the larger
-the mean difference or the larger the sample size.  Also, larger
-standard deviations will reduce that likelihood (since it is on the
-bottom of the fraction).
+- It is more likely that we will see a significant difference
+if  
+the mean difference is large or if  the sample size is larger  
+- It is less likely that we will see a significant difference
+if the 
+standard deviation is large  (since that is on the
+bottom of the fraction shown above).
 
 The ttest just reports the odds that the distributions are different.
 But what if that difference is trivially small?

@@ -122,3 +122,4 @@ nn <F7> :setlocal spell! spell?<CR>
 
 
 let g:vim_markdown_fenced_languages = ['awk=awk']
+colorscheme slate
