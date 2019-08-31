@@ -325,6 +325,8 @@ and you show them the random projections, they will not see the raw dimensions t
 - Build models using the remaining variables
 - Only show the business users those generated models.
 
+----
+
 ## References
 
 ### Aha 91
