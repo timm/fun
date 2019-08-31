@@ -315,7 +315,7 @@ A small variant of the above (that never recusrses) can visual points in N dimen
 
 ![](assets/img/xy.png)
 
-_WARNING:_ the dimensions found by PCA orrandom projections can capture the _bulges_ in the data BUT they introduce an explanation problem. If a business user asks "what have you learned"
+_WARNING:_ the dimensions found by PCA or random projections can capture the _bulges_ in the data BUT they introduce an explanation problem. If a business user asks "what have you learned"
 and you show them the random projections, they will not see the raw dimensions that they are most familiar with. One (partial) solution to this is to:
 
 - Use random projections to find data groupings
