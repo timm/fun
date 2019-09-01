@@ -122,7 +122,8 @@ The Kolmogorov–Smirnov statistic quantifies a distance between the
 empirical distribution function of two samples. This distance
 is compared against a critical value computed using `SomeProbKs`
 
-function SomeProbks(e,eps1,eps2,alam,    a2,fac,sum,term,termbf,j) {
+function SomeProbks(e,eps1,eps2,alam,    
+                    a2,fac,sum,term,termbf,j) {
    fac=2   
    a2 = -2*alam*alam
    for(j=1;j<=100;j++) {

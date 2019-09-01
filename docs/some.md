@@ -141,17 +141,18 @@ empirical distribution function of two samples. This distance
 is compared against a critical value computed using `SomeProbKs`
 
 ```awk
-  62.  function SomeProbks(e,eps1,eps2,alam,    a2,fac,sum,term,termbf,j) {
-  63.     fac=2   
-  64.     a2 = -2*alam*alam
-  65.     for(j=1;j<=100;j++) {
-  66.        term = fac*e^(a2*j*j)
-  67.        sum += term
-  68.        if (abs(term) <= eps1*termbf) return sum
-  69.        if (abs(term) <= eps2*sum)    return sum
-  70.        fac *= -1
-  71.       termbf = abs(term)
-  72.    }
-  73.    return 1
-  74.  }
+  62.  function SomeProbks(e,eps1,eps2,alam,    
+  63.                      a2,fac,sum,term,termbf,j) {
+  64.     fac=2   
+  65.     a2 = -2*alam*alam
+  66.     for(j=1;j<=100;j++) {
+  67.        term = fac*e^(a2*j*j)
+  68.        sum += term
+  69.        if (abs(term) <= eps1*termbf) return sum
+  70.        if (abs(term) <= eps2*sum)    return sum
+  71.        fac *= -1
+  72.       termbf = abs(term)
+  73.    }
+  74.    return 1
+  75.  }
 ```
