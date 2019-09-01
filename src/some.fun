@@ -63,4 +63,48 @@ function SomeIQR(i,   m) {
   return i.cache[3*m] - i.cache[m]
 }   
 
+The 
 
+function SomeKS(i,j, 
+               d,d1,d2,dt,en1,en2,en,fn1,fn2,k1,k2,n1,n2) {
+  if (!i.sorted) i.sorted = asort(i.cache)
+  if (!j.sorted) j.sorted = asort(j.cache)
+  n1= length(i.cache)
+  n2= length(j.cache)   
+  en1=n1;
+  en2=n2;
+  d=0.0;
+  k1=k2=1
+  while (k1 <= n1 && k2 <= n2) {
+    if ((d1=i.cache[k1]) <= (d2=j.cache[k2])) {
+      do {
+        fn1=k1/en1;
+        k1++
+      } while (k1 <= n1 && d1 == i.cache[k1]);
+    }
+    if (d2 <= d1) {
+      do  {
+        fn2=k2/en2;
+        k2++
+      } while (k2 <= n2 && d2 == j.cache[k2]);
+    }
+    if ((dt=abs(fn2-fn1)) > d) d=dt;
+  }
+  en=sqrt(en1*en2/(en1+en2));
+  return SomeProbks(2.718281828, 0.001, 10^-8,
+                    (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
+}
+
+function SomeProbks(e,eps1,eps2,alam,    a2,fac,sum,term,termbf,j) {
+   fac=2   
+   a2 = -2*alam*alam
+   for(j=1;j<=100;j++) {
+      term = fac*e^(a2*j*j)
+      sum += term
+      if (abs(term) <= eps1*termbf) return sum
+      if (abs(term) <= eps2*sum)    return sum
+      fac *= -1
+     termbf = abs(term)
+  }
+  return 1
+}

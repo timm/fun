@@ -25,6 +25,7 @@ function Config(i,   dot) {
   i.div.verbose=    1
 
   i.some.most  =  256
+  i.some.ks    =   95
 
   i.sk.cliffs  =    0.147 # small effect. From Romano 2006
   i.sk.b       =  200 

@@ -13,7 +13,7 @@ Uses:  "[some](some)"<br>
 Uses:  "[num](num)"<br>
 
 ```awk
-   1.  BEGIN {  tests("someof","_some") }
+   1.  BEGIN {  tests("someof","_some,_someks") }
 ```
 
 `s` are `Some` of some random numbers. `n0` is
@@ -40,4 +40,23 @@ the distribution drawn from `SomeAny(s)`.
   16.    is(f,n0.sd, n1.sd, 0.01)
   17.    is(f,n0.mu, n1.mu, 0.01)
   18.  }
+  19.  function _someks(f,  g) {
+  20.     srand(1)
+  21.    for(g=1; g<=1.5;g += 0.05)  
+  22.      is(f g,_someks1(g),g>= 1.15) 
+  23.  }
+```
+
+```awk
+  24.  function _someks1(g,  s1,s2,n,x) {
+  25.    Some(s1)
+  26.    Some(s2)
+  27.    n=10000
+  28.    while(n--) {
+  29.      x=rand()
+  30.      Some1(s1,x)
+  31.      Some1(s2,x*g)
+  32.    } 
+  33.    return SomeKS(s1,s2)
+  34.  }
 ```

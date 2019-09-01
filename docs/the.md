@@ -32,20 +32,21 @@ of options.
   11.    i.div.verbose=    1
   12.  
   13.    i.some.most  =  256
-  14.  
-  15.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
-  16.    i.sk.b       =  200 
-  17.    i.sk.conf    =   99
-  18.  
-  19.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
-  20.    i.nums.ttest =   95 # selects thresholds for ttest
-  21.  
-  22.    i.cocomo.num = "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
-  23.  
+  14.    i.some.ks    =   95
+  15.  
+  16.    i.sk.cliffs  =    0.147 # small effect. From Romano 2006
+  17.    i.sk.b       =  200 
+  18.    i.sk.conf    =   99
+  19.  
+  20.    i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
+  21.    i.nums.ttest =   95 # selects thresholds for ttest
+  22.  
+  23.    i.cocomo.num = "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
   24.  
-  25.  }
+  25.  
+  26.  }
 ```
 
 ```awk
-  26.  BEGIN {Config(THE)}
+  27.  BEGIN {Config(THE)}
 ```
