@@ -63,7 +63,28 @@ function SomeIQR(i,   m) {
   return i.cache[3*m] - i.cache[m]
 }   
 
-The 
+## Compare two distributions
+
+For normal distributions, we can test if they are different
+using a [t-test](nums.md). For arbitary distributions,
+we cannot assume normality and must compare distributions
+using another method.
+The Kolmogorov–Smirnov test is a nonparametric test of the equality
+of two continuous one-dimensional probability distributions. We can
+use it to compare two `Some`s by
+
+- sorted the `cache` lists
+- then using the two sorted lists as two probability distributions.
+
+![](../etc/img/ks101.png)
+
+Intiatively, the KS compares  a cumulative distribution against
+a reference distribution (in our case, a second distribution) and 
+comments on the distance between them,
+
+As to how that is computed,
+in the following, the _smaller_ the value computed from `SomeKS`,
+the _more_ likely that the distributions are different.
 
 function SomeKS(i,j, 
                d,d1,d2,dt,en1,en2,en,fn1,fn2,k1,k2,n1,n2) {
@@ -94,6 +115,10 @@ function SomeKS(i,j,
   return SomeProbks(2.718281828, 0.001, 10^-8,
                     (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
 }
+
+The Kolmogorov–Smirnov statistic quantifies a distance between the
+empirical distribution function of two samples. This distance
+is compared against a critical value computed using `SomeProbKs`
 
 function SomeProbks(e,eps1,eps2,alam,    a2,fac,sum,term,termbf,j) {
    fac=2   
