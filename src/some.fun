@@ -65,12 +65,11 @@ function SomeIQR(i,   m) {
 
 ## Compare two distributions
 
-For normal distributions, we can test if they are different
-using a [t-test](nums.md). For arbitary distributions,
-we cannot assume normality and must compare distributions
-using another method.
-The Kolmogorov–Smirnov test is a nonparametric test of the equality
-of two continuous one-dimensional probability distributions. We can
+For normal distributions, we can test if they are different using
+a [t-test](nums.md). For arbitary distributions, we cannot assume
+normality and must compare distributions using another method.  The
+Kolmogorov–Smirnov test is a nonparametric test of the equality of
+two continuous one-dimensional probability distributions. We can
 use it to compare two `Some`s by
 
 - sorted the `cache` lists
@@ -84,7 +83,9 @@ comments on the distance between them,
 ![](assets/img/ks101.png)
 
 As to how that is computed,
-in the following, the _smaller_ the value computed from `SomeKS`,
+the following code comes from
+[Numerical Recipes in "C"](https://github.com/txt/ase19/blob/master/etc/img/NumericalRecipesinC.pdf), section 14.3, pages 623 to 626.
+In the following, the _smaller_ the value computed from `SomeKS`,
 the _more_ likely that the distributions are different.
 
 function SomeKS(i,j, 
