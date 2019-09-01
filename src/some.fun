@@ -84,46 +84,43 @@ comments on the distance between them,
 
 As to how that is computed, the following code comes from 
 [Numerical Recipes in "C"](https://github.com/txt/ase19/blob/master/etc/img/NumericalRecipesinC.pdf),
-section 14.3, pages 623 to 626.  The key variable here is `dt` which
+section 14.3, pages 623 to 626.  The key variable here is the _supreme distance_ (denoted below as  `d`)
+ which
 is the largest y-value difference between the distributons found in `i.cache`
-and `j.cache`.  The significance that `dt` is a disproof that the
-distributions are the same is computed from the `SomeKS` function.
-In the following, the _smaller_ the value returned from `SomeKS`,
-the _more_ likely that the distributions are different.
+and `j.cache`.  
+If the supreme distance is small, then the distributions are the same.
 
 function SomeKS(i,j, 
-               d,d1,d2,dt,en1,en2,en,fn1,fn2,k1,k2,n1,n2) {
+               d,d1,d2,dt,ns,fn1,fn2,k1,k2,n1,n2) {
   if (!i.sorted) i.sorted = asort(i.cache)
   if (!j.sorted) j.sorted = asort(j.cache)
   n1= length(i.cache)
   n2= length(j.cache)   
-  en1=n1;
-  en2=n2;
-  d=0.0;
   k1=k2=1
   while (k1 <= n1 && k2 <= n2) {
     if ((d1=i.cache[k1]) <= (d2=j.cache[k2])) {
       do {
-        fn1=k1/en1;
+        fn1=k1/n1;
         k1++
       } while (k1 <= n1 && d1 == i.cache[k1]);
     }
     if (d2 <= d1) {
       do  {
-        fn2=k2/en2;
+        fn2=k2/n2;
         k2++
       } while (k2 <= n2 && d2 == j.cache[k2]);
     }
     if ((dt=abs(fn2-fn1)) > d) d=dt;
   }
-  en=sqrt(en1*en2/(en1+en2));
+  ns=sqrt(n1*n2/(n1+n2));
   return _SomeProbks(2.718281828, 0.001, 10^-8,
-           (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
+           (ns+0.12+0.11/ns)*d) <= (1-THE.some.ks/100) 
 }
 
-The Kolmogorov–Smirnov statistic quantifies a distance between the
-empirical distribution function of two samples. This distance
-is compared against a critical value computed using `_SomeProbKs`.
+The significance that `d` disproofs that the
+distributions are the same is computed from the `SomeKS` function.
+In the following, the _smaller_ the value returned from `SomeKS`,
+the _more_ likely that the distributions are different.
 
 function _SomeProbks(e,eps1,eps2,alam,    
                     a2,fac,sum,term,termbf,j) {
@@ -135,7 +132,7 @@ function _SomeProbks(e,eps1,eps2,alam,
       if (abs(term) <= eps1*termbf) return sum
       if (abs(term) <= eps2*sum)    return sum
       fac *= -1
-     termbf = abs(term)
+      termbf = abs(term)
   }
   return 1
 }
