@@ -11,7 +11,7 @@ title: some.fun
 
 ## Reservoir sampling (only get some of the data).
 
-<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();]">
+<img src="http://yuml.me/diagram/plain;dir:lr/class/[Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();SomeKs();]">
 
 
 `Some` is a reservoir sampler; i.e. is a method for  randomly keep
@@ -131,17 +131,17 @@ the _more_ likely that the distributions are different.
   56.      if ((dt=abs(fn2-fn1)) > d) d=dt;
   57.    }
   58.    en=sqrt(en1*en2/(en1+en2));
-  59.    return SomeProbks(2.718281828, 0.001, 10^-8,
+  59.    return _SomeProbks(2.718281828, 0.001, 10^-8,
   60.             (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
   61.  }
 ```
 
 The Kolmogorov–Smirnov statistic quantifies a distance between the
 empirical distribution function of two samples. This distance
-is compared against a critical value computed using `SomeProbKs`
+is compared against a critical value computed using `_SomeProbKs`
 
 ```awk
-  62.  function SomeProbks(e,eps1,eps2,alam,    
+  62.  function _SomeProbks(e,eps1,eps2,alam,    
   63.                      a2,fac,sum,term,termbf,j) {
   64.     fac=2   
   65.     a2 = -2*alam*alam

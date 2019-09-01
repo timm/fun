@@ -8,7 +8,7 @@ title: nums.fun
 
 # nums.fun
 
-## Compare two numeric distributions.
+## Compare two normal bell curves
 
 Uses:  "[funny](funny)"<br>
 Uses:  "[num](num)"<br>

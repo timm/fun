@@ -33,7 +33,7 @@ code up their own versions (in whatever language they like best).
 - [num](num.md): 
  Summarize numeric columns.
 - [nums](nums.md): 
- Compare two numeric distributions.
+ Compare two normal bell curves
 - [row](row.md): 
  Store rows of tables.
 - [sk](sk.md): 

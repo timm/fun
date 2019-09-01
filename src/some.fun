@@ -5,7 +5,7 @@
 
 ## Reservoir sampling (only get some of the data).
 
-#!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();]
+#!class [Col|n = 0]^-[Some|most = 256; sorted = 0|Some1(); SomeAny();SomeMedian();SomeIQR();SomeDiff();SomeKs();]
 
 
 `Some` is a reservoir sampler; i.e. is a method for  randomly keep
@@ -114,15 +114,15 @@ function SomeKS(i,j,
     if ((dt=abs(fn2-fn1)) > d) d=dt;
   }
   en=sqrt(en1*en2/(en1+en2));
-  return SomeProbks(2.718281828, 0.001, 10^-8,
+  return _SomeProbks(2.718281828, 0.001, 10^-8,
            (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
 }
 
 The Kolmogorov–Smirnov statistic quantifies a distance between the
 empirical distribution function of two samples. This distance
-is compared against a critical value computed using `SomeProbKs`
+is compared against a critical value computed using `_SomeProbKs`
 
-function SomeProbks(e,eps1,eps2,alam,    
+function _SomeProbks(e,eps1,eps2,alam,    
                     a2,fac,sum,term,termbf,j) {
    fac=2   
    a2 = -2*alam*alam
