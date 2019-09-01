@@ -92,11 +92,12 @@ use it to compare two `Some`s by
 - sorted the `cache` lists
 - then using the two sorted lists as two probability distributions.
 
-![](assets/img/ks101.png)
 
 Intiatively, the KS compares  a cumulative distribution against
 a reference distribution (in our case, a second distribution) and 
 comments on the distance between them,
+
+![](assets/img/ks101.png)
 
 As to how that is computed,
 in the following, the _smaller_ the value computed from `SomeKS`,
