@@ -76,7 +76,7 @@ use it to compare two `Some`s by
 - sorted the `cache` lists
 - then using the two sorted lists as two probability distributions.
 
-![](../etc/img/ks101.png)
+![](assets/img/ks101.png)
 
 Intiatively, the KS compares  a cumulative distribution against
 a reference distribution (in our case, a second distribution) and 
