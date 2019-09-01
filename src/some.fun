@@ -115,7 +115,7 @@ function SomeKS(i,j,
   }
   en=sqrt(en1*en2/(en1+en2));
   return SomeProbks(2.718281828, 0.001, 10^-8,
-                    (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
+           (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
 }
 
 The Kolmogorov–Smirnov statistic quantifies a distance between the

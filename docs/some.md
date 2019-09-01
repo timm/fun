@@ -132,7 +132,7 @@ the _more_ likely that the distributions are different.
   57.    }
   58.    en=sqrt(en1*en2/(en1+en2));
   59.    return SomeProbks(2.718281828, 0.001, 10^-8,
-  60.                      (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
+  60.             (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
   61.  }
 ```
 
