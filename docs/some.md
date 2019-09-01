@@ -141,7 +141,7 @@ the _more_ likely that the distributions are different.
 
 The Kolmogorov–Smirnov statistic quantifies a distance between the
 empirical distribution function of two samples. This distance
-is compared against a critical value computed using `_SomeProbKs`
+is compared against a critical value computed using `_SomeProbKs`.
 
 ```awk
   62.  function _SomeProbks(e,eps1,eps2,alam,    

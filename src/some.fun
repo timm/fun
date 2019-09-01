@@ -123,7 +123,7 @@ function SomeKS(i,j,
 
 The Kolmogorov–Smirnov statistic quantifies a distance between the
 empirical distribution function of two samples. This distance
-is compared against a critical value computed using `_SomeProbKs`
+is compared against a critical value computed using `_SomeProbKs`.
 
 function _SomeProbks(e,eps1,eps2,alam,    
                     a2,fac,sum,term,termbf,j) {
