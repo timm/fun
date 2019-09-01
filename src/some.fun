@@ -82,10 +82,13 @@ comments on the distance between them,
 
 ![](assets/img/ks101.png)
 
-As to how that is computed,
-the following code comes from
-[Numerical Recipes in "C"](https://github.com/txt/ase19/blob/master/etc/img/NumericalRecipesinC.pdf), section 14.3, pages 623 to 626.
-In the following, the _smaller_ the value computed from `SomeKS`,
+As to how that is computed, the following code comes from 
+[Numerical Recipes in "C"](https://github.com/txt/ase19/blob/master/etc/img/NumericalRecipesinC.pdf),
+section 14.3, pages 623 to 626.  The key variables is `dt` which
+is the largeest difference between the distributons found in `i.cache`
+and `j.cache`.  The significance that `dt` is a disproof that the
+distributions are the same is computed from the `SomeKS` function.
+In the following, the _smaller_ the value returned from `SomeKS`,
 the _more_ likely that the distributions are different.
 
 function SomeKS(i,j, 
