@@ -89,16 +89,7 @@ same thing can come back multiple times):
 ```
 
 Here's the code that does the multiple sampling. Technical, this
-is known as a bootstrap test.  First we find a `baseline`; i.e.
-what does the test statistic look like for the two distributions.
-Next, Efron recommends transforming  the two distrbutions `y0,z0`
-into some comparaiable (by making them both have the same mean--
-see the `yhat` and `zhat` distributions).  After that, we count how
-often samples of the data  surprised us (i.e. we see something
-larger than the `baseline`).
-
-- If we often see something larger than the baseline.
-- Then this test reports that the two lists of numbers are different.
+is known as a bootstrap test.  
 
 ```awk
   22.  function bootstrap(y0,z0,   
@@ -122,3 +113,15 @@ larger than the `baseline`).
   40.    return strange / b < THE.sk.conf / 100
   41.  }
 ```
+
+In this code, first we find a `baseline`; i.e.
+what does the test statistic look like for the two distributions.
+Next, Efron recommends transforming  the two distrbutions `y0,z0`
+into some comparaiable (by making them both have the same mean--
+see the `yhat` and `zhat` distributions).  After that, we count how
+often samples of the data  surprised us (i.e. we see something
+larger than the `baseline`).
+
+- If we often see something larger than the baseline.
+- Then this test reports that the two lists of numbers are different.
+

@@ -5,6 +5,29 @@
 
 @include "funny"
 
+To use this code:
+
+1. Create an `Abcd` object.
+2. Run your classifier on a test suite. Take the `predicted` and `actual` classification and throw it a `Abcd1`.
+3. After that, get  a report using `AbcdReport`.
+
+For example suppose:
+
+- Six times, `yes` objects are predicted to be `yes`;
+- Twice, a `no` obect is rpedicted to be `no`;
+- Five tines, `maybe`s are called `maybe`s;
+- And once, a `maybe` is called `no`.
+
+After all that,  `AbcdReport` would print:
+
+```
+    db |    rx |   num |     a |     b |     c |     d |  acc |  pre |   pd |   pf |    f |    g | class
+  ---- |  ---- |  ---- |  ---- |  ---- |  ---- |  ---- | ---- | ---- | ---- | ---- | ---- | ---- |-----
+  data |    rx |    14 |    11 |       |     1 |     2 | 0.93 | 0.67 | 1.00 | 0.08 | 0.80 | 0.96 | no
+  data |    rx |    14 |     8 |       |       |     6 | 0.93 | 1.00 | 1.00 | 0.00 | 1.00 | 1.00 | yes
+  data |    rx |    14 |     8 |     1 |       |     5 | 0.93 | 1.00 | 0.83 | 0.00 | 0.91 | 0.91 | maybe
+```
+
 function Abcd(i, data,rx)  {
   Object(i)
   has(i,"known")
@@ -28,7 +51,7 @@ function Abcd1(i,actual, predicted,   x) {
       predicted == x      ? i.c[x]++ : i.a[x]++
 }
 
-function AbcdReport(i,   x,p,q,s,ds,pd,pf,pn,prec,g,f,acc,a,b,c,d) {
+function AbcdReport(i,   x,p,q,r,s,ds,pd,pf,pn,prec,g,f,acc,a,b,c,d) {
   p = " %4.2f"
   q = " %4s"
   r = " %5s"
