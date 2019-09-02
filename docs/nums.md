@@ -73,7 +73,7 @@ so we need some rules to decide those odds.  Given two `Num` objects
 The standard way to apply these rules is the following ttest test
 for significant differences:
 
-- (abs(x.mu-y.mu) / sqrt(x.sd<sup>2</sup>/s.n + y.sd<sup>2</sup>/y.n)) >  T` 
+- ( abs(x.mu-y.mu) / sqrt(x.sd<sup>2</sup>/s.n + y.sd<sup>2</sup>/y.n)i ) >  T 
 
 where  "_T_" is some threshold that we show how to calculate, below.
 
