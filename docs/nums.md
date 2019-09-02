@@ -136,6 +136,8 @@ from 95 to 99 makes it harder to prove things are different (and
   20.  }
 ```
 
+### Hedges Test
+
 Here's the test for "larger than a small effect":
 
 ```awk
@@ -149,6 +151,8 @@ Here's the test for "larger than a small effect":
   28.    return g * c > s.small
   29.  }
 ```
+
+### Ttest
 
 Here's the test for significanct difference:
 
