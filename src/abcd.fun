@@ -18,15 +18,15 @@ function Abcd(i, data,rx)  {
 }
 
 function Abcd1(i,actual, predicted,   x) {
-  if (++i.known[actual]     == 1 ) i.a[actual]     = i.yes + i.no 
-  if (++i.known[predicted]  == 1 ) i.a[predicted]  = i.yes + i.no 
+  if (++i.known[actual]    == 1) i.a[actual]   = i.yes + i.no 
+  if (++i.known[predicted] == 1) i.a[predicted]= i.yes + i.no 
   actual == predicted ? i.yes++ : i.no++ 
-  for (x in i.known) {
+  for (x in i.known) 
     if (actual == x) 
       actual == predicted ? i.d[x]++ : i.b[x]++
     else 
       predicted == x      ? i.c[x]++ : i.a[x]++
-}}
+}
 
 function AbcdReport(i,   x,p,q,s,ds,pd,pf,pn,prec,g,f,acc,a,b,c,d) {
   p = " %4.2f"

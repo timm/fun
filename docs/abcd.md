@@ -27,15 +27,15 @@ Uses:  "[funny](funny)"<br>
 
 ```awk
   12.  function Abcd1(i,actual, predicted,   x) {
-  13.    if (++i.known[actual]     == 1 ) i.a[actual]     = i.yes + i.no 
-  14.    if (++i.known[predicted]  == 1 ) i.a[predicted]  = i.yes + i.no 
+  13.    if (++i.known[actual]    == 1) i.a[actual]   = i.yes + i.no 
+  14.    if (++i.known[predicted] == 1) i.a[predicted]= i.yes + i.no 
   15.    actual == predicted ? i.yes++ : i.no++ 
-  16.    for (x in i.known) {
+  16.    for (x in i.known) 
   17.      if (actual == x) 
   18.        actual == predicted ? i.d[x]++ : i.b[x]++
   19.      else 
   20.        predicted == x      ? i.c[x]++ : i.a[x]++
-  21.  }}
+  21.  }
 ```
 
 ```awk

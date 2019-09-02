@@ -126,6 +126,8 @@ function Nums(i) {
   i.last  = 96 # must be the last     index of the above arrays
 }
 
+### Hedges Test
+
 Here's the test for "larger than a small effect":
 
 function hedges(x,y,s,   nom,denom,sp,g,c) {
@@ -137,6 +139,8 @@ function hedges(x,y,s,   nom,denom,sp,g,c) {
   c     = 1 - 3.0 / (4*(x.n + y.n - 2) - 1)
   return g * c > s.small
 }
+
+### Ttest
 
 Here's the test for significanct difference:
 
