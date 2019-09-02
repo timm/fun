@@ -125,3 +125,17 @@ Here's a convenience function to load all the numbers of an array
   54.      if (v != "?") Num1(n, v) }
   55.  }
 ```
+
+
+`Num`s can also report how much they "like" some number `x`, by assuming it is drawn from some
+normal bell-shapped curve (all we need do is report the height of that curve at `x`).
+
+```awk
+  56.  function NumLike(i,x,      var,denom,num) {
+  57.    var   = i.sd()^2
+  58.    denom = (3.14159*2*var)^.5
+  59.    num   =  2.71828^(-(x-i.mu)^2/(2*var))
+  60.    return num/denom
+  61.  }
+```
+

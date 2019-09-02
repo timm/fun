@@ -34,6 +34,9 @@ function Config(i,   dot) {
   i.nums.hedges=    0.38 # small effect. Use 1.0 for medium effect
   i.nums.ttest =   95 # selects thresholds for ttest
 
+  i.nb.m      =     2
+  i.nb.k      =     1
+
   i.cocomo.num = "[+-]?([0-9]+["dot"]?[0-9]*|["dot"][0-9]+)([eE][+-]?[0-9]+)?"
 
 

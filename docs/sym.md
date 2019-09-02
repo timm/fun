@@ -85,9 +85,15 @@ distribution is loaded up with things we want to avoid.
   31.  }
 ```
 
-## See also
+`Sym`s can also report how much they "like" some symbol. If `x` occours
+at frequency `f` then it is liked at `f/i.n`. The `m` param is added
+to handle low frequency cases (in the manner recommeded in Section 3.1 of [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf). 
+In the following, `m` defaults to zero but if you want to be smarter,
+a typical values for `m` is 2.
 
-- [Col](col)
-
-
-## Notes
+```awk
+  32.  function SymLike(i,x,prior,m,   f) {
+  33.    f = x in i.cnt ? i.cnt[x] : 0
+  34.    return (f + m*prior)/(i.n + m)
+  35.  
+```

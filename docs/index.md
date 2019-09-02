@@ -18,6 +18,7 @@ code up their own versions (in whatever language they like best).
 
 ## Funny Stuff
 
+- [abcd](abcd.md): 
 - [cocomo](cocomo.md): 
  Software project estimation and risk calculations
 - [col](col.md): 
@@ -30,6 +31,8 @@ code up their own versions (in whatever language they like best).
  Misc utilities.
 - [index](index.md): 
  Funny Stuff
+- [nb](nb.md): 
+ Naive Bayes Classifier
 - [num](num.md): 
  Summarize numeric columns.
 - [nums](nums.md): 

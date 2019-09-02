@@ -101,3 +101,15 @@ function nums(n,a,   x,    v,i) {
     v= x ? a[i][x] : a[i]
     if (v != "?") Num1(n, v) }
 }
+
+
+`Num`s can also report how much they "like" some number `x`, by assuming it is drawn from some
+normal bell-shapped curve (all we need do is report the height of that curve at `x`).
+
+function NumLike(i,x,      var,denom,num) {
+  var   = i.sd()^2
+  denom = (3.14159*2*var)^.5
+  num   =  2.71828^(-(x-i.mu)^2/(2*var))
+  return num/denom
+}
+
