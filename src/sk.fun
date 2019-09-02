@@ -54,14 +54,16 @@ function cliffsDelta(a1,a2,
   return abs(gt - lt) / m > THE.sk.cliffs
 }
 
+### Booostrap
 
-From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.
+_(From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.)_
 
-To determine if two distributions are different, first we define some
+To check if two distributions are statistically significantly
+different (without making any parametric assumptions),
+first we define some
 test statistic.
 
-function testStatistic(i,j) { 
-   return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
+function testStatistic(i,j) { return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
 
 Then, many times, we see if this test statistic holds
 across many samples of the two distributions.
@@ -71,13 +73,11 @@ the same thing can come back multiple times):
 function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
 
 Here's the code that does the multiple sampling. Technical, this is known as a bootstrap test.
-First we find a `baseline`; i.e. wahat does the test statistic look like for the two distributions.
+First we find a `baseline`; i.e. what does the test statistic look like for the two distributions.
 Next, Efron recommends
 transforming  the two distrbutions `y0,z0` into
 some comparaiable (by making them both have the same mean-- see the `yhat` and `zhat` distributions).
 After that, we count how often we are surprised (we see something larger than the `baseline`).
-
-
 
 function bootstrap(y0,z0,   
                   x,y,z,baseline,w,b,yhat,zhat,y1,z1,ynum,znum,strange) {
@@ -98,5 +98,3 @@ function bootstrap(y0,z0,
   }
   return strange / b < THE.sk.conf / 100
 }
-
-BEGIN{rogues()}

@@ -136,7 +136,7 @@ from 95 to 99 makes it harder to prove things are different (and
   20.  }
 ```
 
-### Hedges Test
+### Hedge's Test
 
 Here's the test for "larger than a small effect":
 

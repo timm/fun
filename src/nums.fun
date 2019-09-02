@@ -126,7 +126,7 @@ function Nums(i) {
   i.last  = 96 # must be the last     index of the above arrays
 }
 
-### Hedges Test
+### Hedge's Test
 
 Here's the test for "larger than a small effect":
 

@@ -64,53 +64,53 @@ This is a non-parametric _effect size test_ that two distributions `a1,a2` are n
   17.  }
 ```
 
+### Booostrap
 
-From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.
+_(From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.)_
 
-To determine if two distributions are different, first we define some
+To check if two distributions are statistically significantly
+different (without making any parametric assumptions),
+first we define some
 test statistic.
 
 ```awk
-  18.  function testStatistic(i,j) { 
-  19.     return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
-  20.  
-  21.  Then, many times, we see if this test statistic holds
-  22.  across many samples of the two distributions.
-  23.  Here's how we build one such sample (and note that this is "sample with replacement"; i.e
-  24.  the same thing can come back multiple times):
-  25.  
-  26.  function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
-  27.  
-  28.  Here's the code that does the multiple sampling. Technical, this is known as a bootstrap test.
-  29.  First we find a `baseline`; i.e. wahat does the test statistic look like for the two distributions.
-  30.  Next, Efron recommends
-  31.  transforming  the two distrbutions `y0,z0` into
-  32.  some comparaiable (by making them both have the same mean-- see the `yhat` and `zhat` distributions).
-  33.  After that, we count how often we are surprised (we see something larger than the `baseline`).
-  34.  
-  35.  
-  36.  
-  37.  function bootstrap(y0,z0,   
-  38.                    x,y,z,baseline,w,b,yhat,zhat,y1,z1,ynum,znum,strange) {
-  39.    nums(x,y0)
-  40.    nums(x,z0)
-  41.    nums(y,y0)
-  42.    nums(z,z0)
-  43.    baseline = testStatistic(y,z)
-  44.    for(w in y0) yhat[w]= y0[w]- y.mu + x.mu 
-  45.    for(w in z0) zhat[w]= z0[w]- z.mu + x.mu 
-  46.    b = THE.sk.b
-  47.    for(w=1; w<=b; w++) { 
-  48.      sample(yhat, y1) 
-  49.      nums(ynum,   y1)
-  50.      sample(zhat, z1) 
-  51.      nums(znum,   z1)
-  52.      strange +=  testStatistic(ynum,znum) >=  baseline
-  53.    }
-  54.    return strange / b < THE.sk.conf / 100
-  55.  }
+  18.  function testStatistic(i,j) { return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
 ```
 
+Then, many times, we see if this test statistic holds
+across many samples of the two distributions.
+Here's how we build one such sample (and note that this is "sample with replacement"; i.e
+the same thing can come back multiple times):
+
 ```awk
-  56.  BEGIN{rogues()}
+  19.  function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
+```
+
+Here's the code that does the multiple sampling. Technical, this is known as a bootstrap test.
+First we find a `baseline`; i.e. what does the test statistic look like for the two distributions.
+Next, Efron recommends
+transforming  the two distrbutions `y0,z0` into
+some comparaiable (by making them both have the same mean-- see the `yhat` and `zhat` distributions).
+After that, we count how often we are surprised (we see something larger than the `baseline`).
+
+```awk
+  20.  function bootstrap(y0,z0,   
+  21.                    x,y,z,baseline,w,b,yhat,zhat,y1,z1,ynum,znum,strange) {
+  22.    nums(x,y0)
+  23.    nums(x,z0)
+  24.    nums(y,y0)
+  25.    nums(z,z0)
+  26.    baseline = testStatistic(y,z)
+  27.    for(w in y0) yhat[w]= y0[w]- y.mu + x.mu 
+  28.    for(w in z0) zhat[w]= z0[w]- z.mu + x.mu 
+  29.    b = THE.sk.b
+  30.    for(w=1; w<=b; w++) { 
+  31.      sample(yhat, y1) 
+  32.      nums(ynum,   y1)
+  33.      sample(zhat, z1) 
+  34.      nums(znum,   z1)
+  35.      strange +=  testStatistic(ynum,znum) >=  baseline
+  36.    }
+  37.    return strange / b < THE.sk.conf / 100
+  38.  }
 ```
