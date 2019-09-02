@@ -100,62 +100,59 @@ comments on the distance between them,
 
 As to how that is computed, the following code comes from 
 [Numerical Recipes in "C"](https://github.com/txt/ase19/blob/master/etc/img/NumericalRecipesinC.pdf),
-section 14.3, pages 623 to 626.  The key variable here is `dt` which
+section 14.3, pages 623 to 626.  The key variable here is the _supreme distance_ (denoted below as  `d`)
+ which
 is the largest y-value difference between the distributons found in `i.cache`
-and `j.cache`.  The significance that `dt` is a disproof that the
+and `j.cache`.  
+If the supreme distance is small, then the distributions are the same.
+
+```awk
+  33.  function SomeKS(i,j, 
+  34.                 d,d1,d2,dt,ns,fn1,fn2,k1,k2,n1,n2) {
+  35.    if (!i.sorted) i.sorted = asort(i.cache)
+  36.    if (!j.sorted) j.sorted = asort(j.cache)
+  37.    n1= length(i.cache)
+  38.    n2= length(j.cache)   
+  39.    k1=k2=1
+  40.    while (k1 <= n1 && k2 <= n2) {
+  41.      if ((d1=i.cache[k1]) <= (d2=j.cache[k2])) {
+  42.        do {
+  43.          fn1=k1/n1;
+  44.          k1++
+  45.        } while (k1 <= n1 && d1 == i.cache[k1]);
+  46.      }
+  47.      if (d2 <= d1) {
+  48.        do  {
+  49.          fn2=k2/n2;
+  50.          k2++
+  51.        } while (k2 <= n2 && d2 == j.cache[k2]);
+  52.      }
+  53.      if ((dt=abs(fn2-fn1)) > d) d=dt;
+  54.    }
+  55.    ns=sqrt(n1*n2/(n1+n2));
+  56.    return _SomeProbks(2.718281828, 0.001, 10^-8,
+  57.             (ns+0.12+0.11/ns)*d) <= (1-THE.some.ks/100) 
+  58.  }
+```
+
+The significance that `d` disproofs that the
 distributions are the same is computed from the `SomeKS` function.
 In the following, the _smaller_ the value returned from `SomeKS`,
 the _more_ likely that the distributions are different.
 
 ```awk
-  33.  function SomeKS(i,j, 
-  34.                 d,d1,d2,dt,en1,en2,en,fn1,fn2,k1,k2,n1,n2) {
-  35.    if (!i.sorted) i.sorted = asort(i.cache)
-  36.    if (!j.sorted) j.sorted = asort(j.cache)
-  37.    n1= length(i.cache)
-  38.    n2= length(j.cache)   
-  39.    en1=n1;
-  40.    en2=n2;
-  41.    d=0.0;
-  42.    k1=k2=1
-  43.    while (k1 <= n1 && k2 <= n2) {
-  44.      if ((d1=i.cache[k1]) <= (d2=j.cache[k2])) {
-  45.        do {
-  46.          fn1=k1/en1;
-  47.          k1++
-  48.        } while (k1 <= n1 && d1 == i.cache[k1]);
-  49.      }
-  50.      if (d2 <= d1) {
-  51.        do  {
-  52.          fn2=k2/en2;
-  53.          k2++
-  54.        } while (k2 <= n2 && d2 == j.cache[k2]);
-  55.      }
-  56.      if ((dt=abs(fn2-fn1)) > d) d=dt;
-  57.    }
-  58.    en=sqrt(en1*en2/(en1+en2));
-  59.    return _SomeProbks(2.718281828, 0.001, 10^-8,
-  60.             (en+0.12+0.11/en)*d) <= (1-THE.some.ks/100)
-  61.  }
-```
-
-The Kolmogorov–Smirnov statistic quantifies a distance between the
-empirical distribution function of two samples. This distance
-is compared against a critical value computed using `_SomeProbKs`.
-
-```awk
-  62.  function _SomeProbks(e,eps1,eps2,alam,    
-  63.                      a2,fac,sum,term,termbf,j) {
-  64.     fac=2   
-  65.     a2 = -2*alam*alam
-  66.     for(j=1;j<=100;j++) {
-  67.        term = fac*e^(a2*j*j)
-  68.        sum += term
-  69.        if (abs(term) <= eps1*termbf) return sum
-  70.        if (abs(term) <= eps2*sum)    return sum
-  71.        fac *= -1
-  72.       termbf = abs(term)
-  73.    }
-  74.    return 1
-  75.  }
+  59.  function _SomeProbks(e,eps1,eps2,alam,    
+  60.                      a2,fac,sum,term,termbf,j) {
+  61.     fac=2   
+  62.     a2 = -2*alam*alam
+  63.     for(j=1;j<=100;j++) {
+  64.        term = fac*e^(a2*j*j)
+  65.        sum += term
+  66.        if (abs(term) <= eps1*termbf) return sum
+  67.        if (abs(term) <= eps2*sum)    return sum
+  68.        fac *= -1
+  69.        termbf = abs(term)
+  70.    }
+  71.    return 1
+  72.  }
 ```

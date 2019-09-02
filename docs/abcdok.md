@@ -7,7 +7,7 @@ title: abcdok.fun
 
 
 # abcdok.fun
-Uses:  "[fun](fun)"<br>
+Uses:  "[funny](funny)"<br>
 Uses:  "[abcd](abcd)"<br>
 
 ```awk

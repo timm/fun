@@ -1,7 +1,7 @@
 #!/usr/bin/env ../fun
 # vim: filetype=awk ts=2 sw=2 sts=2  et :
 
-@include "fun"
+@include "funny"
 @include "abcd"
 
 BEGIN { tests("abcd", "_abcd") }
