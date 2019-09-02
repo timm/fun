@@ -64,7 +64,7 @@ This is a non-parametric _effect size test_ that two distributions `a1,a2` are n
   17.  }
 ```
 
-### Booostrap
+### Bootstrap
 
 _(From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.)_
 
@@ -74,43 +74,51 @@ first we define some
 test statistic.
 
 ```awk
-  18.  function testStatistic(i,j) { return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
+  18.  function testStatistic(i,j) { 
+  19.    return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 
+  20.  }
 ```
 
-Then, many times, we see if this test statistic holds
-across many samples of the two distributions.
-Here's how we build one such sample (and note that this is "sample with replacement"; i.e
-the same thing can come back multiple times):
+Then, many times, we see if this test statistic holds across many
+samples of the two distributions.  Here's how we build one such
+sample (and note that this is "sample with replacement"; i.e the
+same thing can come back multiple times):
 
 ```awk
-  19.  function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
+  21.  function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
 ```
 
-Here's the code that does the multiple sampling. Technical, this is known as a bootstrap test.
-First we find a `baseline`; i.e. what does the test statistic look like for the two distributions.
-Next, Efron recommends
-transforming  the two distrbutions `y0,z0` into
-some comparaiable (by making them both have the same mean-- see the `yhat` and `zhat` distributions).
-After that, we count how often we are surprised (we see something larger than the `baseline`).
+Here's the code that does the multiple sampling. Technical, this
+is known as a bootstrap test.  First we find a `baseline`; i.e.
+what does the test statistic look like for the two distributions.
+Next, Efron recommends transforming  the two distrbutions `y0,z0`
+into some comparaiable (by making them both have the same mean--
+see the `yhat` and `zhat` distributions).  After that, we count how
+often samples of the data  surprised us (i.e. we see something
+larger than the `baseline`).
+
+- If we often see something larger than the baseline.
+- Then this test reports that the two lists of numbers are different.
 
 ```awk
-  20.  function bootstrap(y0,z0,   
-  21.                    x,y,z,baseline,w,b,yhat,zhat,y1,z1,ynum,znum,strange) {
-  22.    nums(x,y0)
-  23.    nums(x,z0)
-  24.    nums(y,y0)
-  25.    nums(z,z0)
-  26.    baseline = testStatistic(y,z)
-  27.    for(w in y0) yhat[w]= y0[w]- y.mu + x.mu 
-  28.    for(w in z0) zhat[w]= z0[w]- z.mu + x.mu 
-  29.    b = THE.sk.b
-  30.    for(w=1; w<=b; w++) { 
-  31.      sample(yhat, y1) 
-  32.      nums(ynum,   y1)
-  33.      sample(zhat, z1) 
-  34.      nums(znum,   z1)
-  35.      strange +=  testStatistic(ynum,znum) >=  baseline
-  36.    }
-  37.    return strange / b < THE.sk.conf / 100
-  38.  }
+  22.  function bootstrap(y0,z0,   
+  23.                    x,y,z,baseline,w,b,yhat,zhat,
+  24.                    y1,z1,ynum,znum,strange) {
+  25.    nums(x,y0)
+  26.    nums(x,z0)
+  27.    nums(y,y0)
+  28.    nums(z,z0)
+  29.    baseline = testStatistic(y,z)
+  30.    for(w in y0) yhat[w]= y0[w]- y.mu + x.mu 
+  31.    for(w in z0) zhat[w]= z0[w]- z.mu + x.mu 
+  32.    b = THE.sk.b
+  33.    for(w=1; w<=b; w++) { 
+  34.      sample(yhat, y1) 
+  35.      nums(ynum,   y1)
+  36.      sample(zhat, z1) 
+  37.      nums(znum,   z1)
+  38.      strange +=  testStatistic(ynum,znum) >=  baseline
+  39.    }
+  40.    return strange / b < THE.sk.conf / 100
+  41.  }
 ```

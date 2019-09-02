@@ -54,7 +54,7 @@ function cliffsDelta(a1,a2,
   return abs(gt - lt) / m > THE.sk.cliffs
 }
 
-### Booostrap
+### Bootstrap
 
 _(From Chapter 16 of [Efron's text](REFS#efron-1993) on bootstrapping.)_
 
@@ -63,24 +63,32 @@ different (without making any parametric assumptions),
 first we define some
 test statistic.
 
-function testStatistic(i,j) { return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 }
+function testStatistic(i,j) { 
+  return abs(j.mu - i.mu) / (i.sd/i.n + j.sd/j.n )^0.5 
+}
 
-Then, many times, we see if this test statistic holds
-across many samples of the two distributions.
-Here's how we build one such sample (and note that this is "sample with replacement"; i.e
-the same thing can come back multiple times):
+Then, many times, we see if this test statistic holds across many
+samples of the two distributions.  Here's how we build one such
+sample (and note that this is "sample with replacement"; i.e the
+same thing can come back multiple times):
 
 function sample(a,b,w) { for(w in a) b[w] = a[any(a)] }
 
-Here's the code that does the multiple sampling. Technical, this is known as a bootstrap test.
-First we find a `baseline`; i.e. what does the test statistic look like for the two distributions.
-Next, Efron recommends
-transforming  the two distrbutions `y0,z0` into
-some comparaiable (by making them both have the same mean-- see the `yhat` and `zhat` distributions).
-After that, we count how often we are surprised (we see something larger than the `baseline`).
+Here's the code that does the multiple sampling. Technical, this
+is known as a bootstrap test.  First we find a `baseline`; i.e.
+what does the test statistic look like for the two distributions.
+Next, Efron recommends transforming  the two distrbutions `y0,z0`
+into some comparaiable (by making them both have the same mean--
+see the `yhat` and `zhat` distributions).  After that, we count how
+often samples of the data  surprised us (i.e. we see something
+larger than the `baseline`).
+
+- If we often see something larger than the baseline.
+- Then this test reports that the two lists of numbers are different.
 
 function bootstrap(y0,z0,   
-                  x,y,z,baseline,w,b,yhat,zhat,y1,z1,ynum,znum,strange) {
+                  x,y,z,baseline,w,b,yhat,zhat,
+                  y1,z1,ynum,znum,strange) {
   nums(x,y0)
   nums(x,z0)
   nums(y,y0)
