@@ -19,6 +19,7 @@ code up their own versions (in whatever language they like best).
 ## Funny Stuff
 
 - [abcd](abcd.md): 
+ Compute classifier  performance measures
 - [cocomo](cocomo.md): 
  Software project estimation and risk calculations
 - [col](col.md): 
