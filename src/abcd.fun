@@ -15,7 +15,7 @@ For example suppose:
 
 - Six times, `yes` objects are predicted to be `yes`;
 - Twice, a `no` obect is rpedicted to be `no`;
-- Five tines, `maybe`s are called `maybe`s;
+- Five times, `maybe`s are called `maybe`s;
 - And once, a `maybe` is called `no`.
 
 After all that,  `AbcdReport` would print:
@@ -51,7 +51,9 @@ function Abcd1(i,actual, predicted,   x) {
       predicted == x      ? i.c[x]++ : i.a[x]++
 }
 
-function AbcdReport(i,   x,p,q,r,s,ds,pd,pf,pn,prec,g,f,acc,a,b,c,d) {
+function AbcdReport(i,   
+                    x,p,q,r,s,ds,pd,pf,
+                    pn,prec,g,f,acc,a,b,c,d) {
   p = " %4.2f"
   q = " %4s"
   r = " %5s"

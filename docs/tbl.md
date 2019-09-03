@@ -70,7 +70,7 @@ If `norows` is true. just keep the statistics for the columns.
   37.    if (v ~ CLASSCOL) i.my.class = c
   38.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
   39.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  40.    if (c in i.my.xs && c in i.my.num ) i.my.xnums[c]
+  40.    if (c in i.my.xs && c in i.my.nums) i.my.xnums[c]
   41.    if (c in i.my.xs && c in i.my.syms) i.my.xsyms[c]
   42.    if (v ~ />/) i.my.w[c] =  1
   43.    if (v ~ /</) i.my.w[c] = -1

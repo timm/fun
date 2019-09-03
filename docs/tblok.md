@@ -13,11 +13,12 @@ Uses:  "[tbl](tbl)"<br>
 Uses:  "[num](num)"<br>
 
 #BEGIN { tests("tblok","_weather,_auto") }
+```awk
+   1.  BEGIN { tests("tblok","_weather") }
+```
 #BEGIN { tests("tblok","_weathernum") }
 #BEGIN { tests("tblok","_dist1") }
-```awk
-   1.  BEGIN { tests("tblok","_dist2") }
-```
+#BEGIN { tests("tblok","_dist2") }
 #BEGIN { tests("tblok","_distances") }
 
 ```awk

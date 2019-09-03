@@ -59,7 +59,7 @@ function TblCols(i,c,v) {
   if (v ~ CLASSCOL) i.my.class = c
   v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
   v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  if (c in i.my.xs && c in i.my.num ) i.my.xnums[c]
+  if (c in i.my.xs && c in i.my.nums) i.my.xnums[c]
   if (c in i.my.xs && c in i.my.syms) i.my.xsyms[c]
   if (v ~ />/) i.my.w[c] =  1
   if (v ~ /</) i.my.w[c] = -1

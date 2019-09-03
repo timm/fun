@@ -7,9 +7,10 @@
 @include "num"
 
 #BEGIN { tests("tblok","_weather,_auto") }
+BEGIN { tests("tblok","_weather") }
 #BEGIN { tests("tblok","_weathernum") }
 #BEGIN { tests("tblok","_dist1") }
-BEGIN { tests("tblok","_dist2") }
+#BEGIN { tests("tblok","_dist2") }
 #BEGIN { tests("tblok","_distances") }
 
 function _weather(f) { return _tbl0(f,"weather") }

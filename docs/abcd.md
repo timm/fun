@@ -21,7 +21,7 @@ For example suppose:
 
 - Six times, `yes` objects are predicted to be `yes`;
 - Twice, a `no` obect is rpedicted to be `no`;
-- Five tines, `maybe`s are called `maybe`s;
+- Five times, `maybe`s are called `maybe`s;
 - And once, a `maybe` is called `no`.
 
 After all that,  `AbcdReport` would print:
@@ -62,32 +62,34 @@ After all that,  `AbcdReport` would print:
 ```
 
 ```awk
-  22.  function AbcdReport(i,   x,p,q,r,s,ds,pd,pf,pn,prec,g,f,acc,a,b,c,d) {
-  23.    p = " %4.2f"
-  24.    q = " %4s"
-  25.    r = " %5s"
-  26.    s = " |"
-  27.    ds= "----"
-  28.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
-  29.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
-  30.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
-  31.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
-  32.    for (x in i.known) {
-  33.      pd = pf = pn = prec = g = f = acc = 0
-  34.      a = i.a[x]
-  35.      b = i.b[x]
-  36.      c = i.c[x]
-  37.      d = i.d[x]
-  38.      if (b+d > 0     ) pd   = d     / (b+d) 
-  39.      if (a+c > 0     ) pf   = c     / (a+c) 
-  40.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
-  41.      if (c+d > 0     ) prec = d     / (c+d) 
-  42.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
-  43.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
-  44.      if (i.yes + i.no > 0 ) 
-  45.         acc  = i.yes / (i.yes + i.no) 
-  46.    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
-  47.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
-  48.  }}
+  22.  function AbcdReport(i,   
+  23.                      x,p,q,r,s,ds,pd,pf,
+  24.                      pn,prec,g,f,acc,a,b,c,d) {
+  25.    p = " %4.2f"
+  26.    q = " %4s"
+  27.    r = " %5s"
+  28.    s = " |"
+  29.    ds= "----"
+  30.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
+  31.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
+  32.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
+  33.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
+  34.    for (x in i.known) {
+  35.      pd = pf = pn = prec = g = f = acc = 0
+  36.      a = i.a[x]
+  37.      b = i.b[x]
+  38.      c = i.c[x]
+  39.      d = i.d[x]
+  40.      if (b+d > 0     ) pd   = d     / (b+d) 
+  41.      if (a+c > 0     ) pf   = c     / (a+c) 
+  42.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
+  43.      if (c+d > 0     ) prec = d     / (c+d) 
+  44.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
+  45.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
+  46.      if (i.yes + i.no > 0 ) 
+  47.         acc  = i.yes / (i.yes + i.no) 
+  48.    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
+  49.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
+  50.  }}
 ```
 

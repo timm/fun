@@ -17,6 +17,7 @@ func _syms(f,   max,s,a,b,i,j,k) {
   Sym(j)
   split(s,a,"")
   for(k in a) Sym1(i, a[k]) # load "i"
+  print(SymEnt(i))
   for(k=1; k<=max; k++) 
     Sym1(j,SymAny(i))  # sample "i" to load "j"
   is(f, SymEnt(i), SymEnt(j), 0.05)

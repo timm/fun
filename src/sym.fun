@@ -42,7 +42,7 @@ given symbols at probability P1, P2, etc then entropy is calcuated[^ent] as foll
 Note that the analog  of entropy for continuous distributions is Standard deviation
 (discussed below).
 
-[^ent]: For an approximate justification of  this formula,  consder a piece of string 10 meters long, stained in two places by a  meter of red and two metres of green. The probability of stumbling over those colors is Pr=0.1 and Pg=0.2, respectively. To measure the variety of the signal in that string, we record the effort associated with reconstructing it (i.e. finding all its parts).  To that end, for each color, we fold the string in half until one color is isolated (this needs approximately _log2(Px)_ folds). The  probability of doing those folds is  proportinal to the odds we'll look for that color. That is,  the total effort is _Px*log2(Px)_ (which must be repeated for all colors; i.e. _&sum;Px*log2(Px)_). Note that, by convention, we throw a minus sign around the summation (otherwise, we will be forever reporting negative values).
+[^ent]: For an approximate justification of  this formula,  consider a piece of string 10 meters long, stained in two places by a  meter of red and two metres of green. The probability of stumbling over those colors is Pr=0.1 and Pg=0.2, respectively. To measure the variety of the signal in that string, we record the effort associated with reconstructing it (i.e. finding all its parts).  To that end, for each color, we fold the string in half until one color is isolated (this needs approximately _log2(Px)_ folds). The  probability of doing those folds is  proportinal to the odds we'll look for that color. That is,  the total effort is _Px*log2(Px)_ (which must be repeated for all colors; i.e. _&sum;Px*log2(Px)_). Note that, by convention, we throw a minus sign around the summation (otherwise, we will be forever reporting negative values).
 
 function SymEnt(i,   p,e,k) {
   for(k in i.cnt) {
@@ -82,4 +82,4 @@ a typical values for `m` is 2.
 function SymLike(i,x,prior,m,   f) {
   f = x in i.cnt ? i.cnt[x] : 0
   return (f + m*prior)/(i.n + m)
-
+}
