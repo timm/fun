@@ -20,7 +20,6 @@ payload `i` from row number `r`
 (which contains the data found in `lst`).
 
 
-
 function ZeroRTrain(i,r,lst) { 
   Tbl1(i.tbl, r, lst) 
 }

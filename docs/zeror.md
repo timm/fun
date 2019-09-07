@@ -28,7 +28,6 @@ payload `i` from row number `r`
 (which contains the data found in `lst`).
 
 
-
 ```awk
    4.  function ZeroRTrain(i,r,lst) { 
    5.    Tbl1(i.tbl, r, lst) 

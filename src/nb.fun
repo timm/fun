@@ -10,7 +10,7 @@
 
 #!class [Nb||NbLike();]1-things-1*[Tbl], [Tbl]1-*[Num||NumLike();], [Tbl]1-*[Sym||SymLike()]
 
-_Nave Bayes_ (here after, `Nb`) collects seperate statistics
+_Naive Bayes_ (here after, `Nb`) collects seperate statistics
 for each class found in the training data.
 Them, to classify a new example, it asks the statistics of
 each class "how much do you _like_ this example?"
@@ -18,6 +18,34 @@ each class "how much do you _like_ this example?"
 seen from that class)..
 The new example gets laballed as the class that
  that "likes" it the most.
+
+For example, here are some red and blue things, measured using some _x,y_ values.
+Red things have a mean x,y value of 7,8 and blue things have a mean x,y value of 3,4.
+The red line shows the "decision boundary" where we start "liking" one color
+more that the other. 
+
+This approach is fast to classifier and also fast to train
+(as you see each row, update the statistics kept for every column).
+Also, it can be very memory effecient since once this
+ classifier updates the column stats, it can forget the row,
+
+Naive Bayes is called "naive" since it keeps statistics on each
+column seperate to all rest. That is, it never considers dependancies
+between the columns. In practice, this rarely matters. Here are some performance results
+of Naive Bayes versus other learners (where those other learners reflect
+on attribute dependancy). Observe that Naive Bayes does pretty well:
+
+Why isn't Naive Bayes so naive?
+It turns other that
+such dependancies exist between attributes, then they alter the decision boundary by some
+amount &epsilon;. 
+[Domingos and Pazzani](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  have
+shown that
+As the number of dimensions grows,
+then the hypervolume of these &epsilons;s become a very small fraction  of the total
+attribute space. That is, the decisions made by a Naive Bayes classifier (that fretted
+about dependancies) is usually the same as an optimal Bayes classifier (that took
+those dependancies into account).
 
 More precisely, `Nb` applies Baye's Theorem to data. This theorem
 says what we conclude is a product of
