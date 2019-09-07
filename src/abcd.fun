@@ -3,6 +3,7 @@
 
 ## Compute classifier  performance measures
 
+
 @include "funny"
 
 To use this code:
@@ -31,27 +32,20 @@ After all that,  `AbcdReport` would print:
 function Abcds(i,learn,wait,train,classify)  {
   i.train    = train    =="" ? learn "Train"    : train
   i.classify = classify =="" ? learn "Classify" : classify
-  i.wait     = wait     =="" ? 20               : want
+  i.wait     = wait     =="" ? 20               : wait
   has(i,"learn",learn)
   has(i,"abcd","Abcd" )
 }
 
-function Abcds1(i,r,lst,    train,classify) {
-  print("learn",length(i.learn))
-
-  train = i.train
-  print("train",train,"wait", i.wait)
-  @train(i.learn,r,lst)
+function Abcds1(i,r,lst,    train,classify, got,want) {
   if( r > i.wait ) {
-    oo(lst,"lst"r )
     classify = i.classify
-    print("class",classify)
     got      = @classify(i.learn,r,lst)
-    print(2)
-    want     = lst[ i.learn.my.class ]
+    want     = lst[ i.learn.tbl.my.class ]
     Abcd1(i.abcd, want,got) 
-    print(3)
   }
+  train = i.train
+  @train(i.learn,r,lst)
 }
 
 function Abcd(i, data,rx)  {

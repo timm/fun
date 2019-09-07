@@ -10,7 +10,6 @@ title: zeror.fun
 ## Zero-R Classifier
 
 Uses:  "[funny](funny)"<br>
-Uses:  "[abcd](abcd)"<br>
 Uses:  "[tbl](tbl)"<br>
 
 ```awk
@@ -23,7 +22,7 @@ Uses:  "[tbl](tbl)"<br>
    4.  function ZeroRTrain(i,r,lst) { 
    5.    Tbl1(i.tbl, r, lst) 
    6.  }
-   7.  function ZeroRClassify(i,r,lst) {
-   8.    return i.tbl.cols[ i.learn.my.class ].mode
+   7.  function ZeroRClassify(i,r,lst,x) {
+   8.    return  i.tbl.cols[ i.tbl.my.class ].mode
    9.  }
 ```

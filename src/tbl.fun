@@ -34,7 +34,6 @@ function Tbl(i, norows) {
 }
 function Tbl1(i,r,lst,    c) {
   if (r==1)  {
-    for(c in lst)
       if (lst[c] !~ SKIPCOL) 
         TblCols(i, c, lst[c])
   } else  {
@@ -43,7 +42,7 @@ function Tbl1(i,r,lst,    c) {
         Col1(i.cols[c],lst[c])
     else
       has2(i.rows,r-1,"Row",i,lst)  
-}}
+} }
 
 function TblAbout(i) {
   i.class = ""

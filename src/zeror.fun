@@ -4,7 +4,6 @@
 ## Zero-R Classifier
 
 @include "funny"
-@include "abcd"
 @include "tbl"
 
 function ZeroR(i) {
@@ -14,6 +13,6 @@ function ZeroR(i) {
 function ZeroRTrain(i,r,lst) { 
   Tbl1(i.tbl, r, lst) 
 }
-function ZeroRClassify(i,r,lst) {
-  return i.tbl.cols[ i.learn.my.class ].mode
+function ZeroRClassify(i,r,lst,x) {
+  return  i.tbl.cols[ i.tbl.my.class ].mode
 }
