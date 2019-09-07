@@ -24,7 +24,7 @@ Red things have a mean x,y value of 7,8 and blue things have a mean x,y value of
 The red line shows the "decision boundary" where we start "liking" one color
 more that the other. 
 
-![](assets/img/bayes201.png)
+![](assets/img/bayes102.png)
 
 This approach is fast to classifier and also fast to train
 (as you see each row, update the statistics kept for every column).
