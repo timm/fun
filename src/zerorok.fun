@@ -11,8 +11,7 @@ function _zeror(f) {
   return _zeror1("labor")
 }
 function _zeror1(d,     z) {
-  Abcds(i,"ZeroR",1)
-  lines(i,"Abcds1",DOT DOT "/data/" d DOT "csv")
-  oo(i.abcd)
+  Abcds(z,"ZeroR",20)
+  lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
+  oo(z.abcd)
 } 
-

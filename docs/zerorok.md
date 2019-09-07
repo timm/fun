@@ -20,9 +20,8 @@ Uses:  "[zeror](zeror)"<br>
    3.    return _zeror1("labor")
    4.  }
    5.  function _zeror1(d,     z) {
-   6.    Abcds(i,"ZeroR",1)
-   7.    lines(i,"Abcds1",DOT DOT "/data/" d DOT "csv")
-   8.    oo(i.abcd)
+   6.    Abcds(z,"ZeroR",20)
+   7.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
+   8.    oo(z.abcd)
    9.  } 
 ```
-

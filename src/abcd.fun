@@ -28,19 +28,22 @@ After all that,  `AbcdReport` would print:
   data |    rx |    14 |     8 |     1 |       |     5 | 0.93 | 1.00 | 0.83 | 0.00 | 0.91 | 0.91 | maybe
 ```
 
-function Abcds(i,learner,wait,train,classify)  {
-  i.train    = train    =="" ? learner "Train"    : train
-  i.classify = classify =="" ? learner "Classify" : test
-  i.wait     = wait     =="" ? 20                 : want
-  has(i,"learn",learner)
+function Abcds(i,learn,wait,train,classify)  {
+  i.train    = train    =="" ? learn "Train"    : train
+  i.classify = classify =="" ? learn "Classify" : classify
+  i.wait     = wait     =="" ? 20               : want
+  has(i,"learn",learn)
   has(i,"abcd","Abcd" )
 }
 
 function Abcds1(i,r,lst,    train,classify) {
+  print("learn",length(i.learn))
+
   train = i.train
-  print("train",train)
+  print("train",train,"wait", i.wait)
   @train(i.learn,r,lst)
   if( r > i.wait ) {
+    oo(lst,"lst"r )
     classify = i.classify
     print("class",classify)
     got      = @classify(i.learn,r,lst)
