@@ -1,6 +1,8 @@
 title: 'FUN (version 1.0)'
-description: "Data mining and  optimization: refactored responsibly" 
-logo: /assets/img/fun.png
-show_downloads: true
+logo: /assets/img/fun.png 
 google_analytics:
 theme: jekyll-theme-minimal
+description: |
+   Data mining and  optimization: refactored responsibly
+   - [row](rows) asda
+
