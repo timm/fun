@@ -22,7 +22,12 @@ title: funny.fun
    7.    gsub(/^[ \t\r]*/,"",s)
    8.    gsub(/[ \t\r]*$/,"",s)
    9.    return s
-  10.  }
+  10.  }o
+```
+
+### lines
+
+```awk
   11.  function lines(i,update,f,sep,  r,line,lst,com) {
   12.    f   = f ? f : "/dev/stdin"
   13.    sep = sep ? sep : "[ \t]*,[ \t]*"

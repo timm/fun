@@ -29,6 +29,29 @@ After all that,  `AbcdReport` would print:
   data |    rx |    14 |     8 |     1 |       |     5 | 0.93 | 1.00 | 0.83 | 0.00 | 0.91 | 0.91 | maybe
 ```
 
+The [lines](funny.fun#lines) function is an interator
+that passes some payload over all the lines in a file.
+When collecting performance statistics for a classifier,
+that payload has to be a _pair_ of things:
+
+- The classifier itself;
+- Some log of the performance scores of that classifier.
+
+The `Abcds` function builds such a paired payload. Here
+`learn` is the learners and `abcd` is the place to store the stats:
+
+
+- Along the way, for each row, we call a `train` function.
+- If we have seen more that `wait` examples, we also call a
+  `classifiy` function (and the results from that `classify`
+  will be recorded by `abcd`.
+
+Note one low-level deatil. For all this to work, this paylaod
+has to know how to train and classify a new example.
+The names of the functions that perform those duties are kept
+in `train` and `classify`. By default, for a leanrner `X`,
+those functions are `XTrain` and `XClassify`.
+
 function Abcds(i,learn,wait,train,classify)  {
   i.train    = train    =="" ? learn "Train"    : train
   i.classify = classify =="" ? learn "Classify" : classify
@@ -36,6 +59,11 @@ function Abcds(i,learn,wait,train,classify)  {
   has(i,"learn",learn)
   has(i,"abcd","Abcd" )
 }
+
+Important point, in the following, this code classifies _before_
+it updates the model. That is, always, this code tests
+on data not yet used for training (which is good practice
+for machine learning experiments).
 
 function Abcds1(i,r,lst,    train,classify, got,want) {
   if( r > i.wait ) {

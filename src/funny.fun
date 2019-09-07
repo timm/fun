@@ -13,7 +13,10 @@ function trim(s) {
   gsub(/^[ \t\r]*/,"",s)
   gsub(/[ \t\r]*$/,"",s)
   return s
-}
+}o
+
+### lines
+
 function lines(i,update,f,sep,  r,line,lst,com) {
   f   = f ? f : "/dev/stdin"
   sep = sep ? sep : "[ \t]*,[ \t]*"
