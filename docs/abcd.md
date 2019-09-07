@@ -35,61 +35,88 @@ After all that,  `AbcdReport` would print:
 ```
 
 ```awk
-   1.  function Abcd(i, data,rx)  {
-   2.    Object(i)
-   3.    has(i,"known")
-   4.    has(i,"a")
-   5.    has(i,"b")
-   6.    has(i,"c")
-   7.    has(i,"d")
-   8.    i.rx   = rx==""? "rx" : rx
-   9.    i.data = data==""? "data" : data
-  10.    i.yes  = i.no = 0
-  11.  }
+   1.  function Abcds(i,learner,wait,train,classify)  {
+   2.    i.train    = train    =="" ? learner "Train"    : train
+   3.    i.classify = classify =="" ? learner "Classify" : test
+   4.    i.wait     = wait     =="" ? 20                 : want
+   5.    has(i,"learn",learner)
+   6.    has(i,"abcd","Abcd" )
+   7.  }
 ```
 
 ```awk
-  12.  function Abcd1(i,actual, predicted,   x) {
-  13.    if (++i.known[actual]    == 1) i.a[actual]   = i.yes + i.no 
-  14.    if (++i.known[predicted] == 1) i.a[predicted]= i.yes + i.no 
-  15.    actual == predicted ? i.yes++ : i.no++ 
-  16.    for (x in i.known) 
-  17.      if (actual == x) 
-  18.        actual == predicted ? i.d[x]++ : i.b[x]++
-  19.      else 
-  20.        predicted == x      ? i.c[x]++ : i.a[x]++
+   8.  function Abcds1(i,r,lst,    train,classify) {
+   9.    train = i.train
+  10.    print("train",train)
+  11.    @train(i.learn,r,lst)
+  12.    if( r > i.wait ) {
+  13.      classify = i.classify
+  14.      print("class",classify)
+  15.      got      = @classify(i.learn,r,lst)
+  16.      print(2)
+  17.      want     = lst[ i.learn.my.class ]
+  18.      Abcd1(i.abcd, want,got) 
+  19.      print(3)
+  20.    }
   21.  }
 ```
 
 ```awk
-  22.  function AbcdReport(i,   
-  23.                      x,p,q,r,s,ds,pd,pf,
-  24.                      pn,prec,g,f,acc,a,b,c,d) {
-  25.    p = " %4.2f"
-  26.    q = " %4s"
-  27.    r = " %5s"
-  28.    s = " |"
-  29.    ds= "----"
-  30.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
-  31.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
-  32.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
-  33.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
-  34.    for (x in i.known) {
-  35.      pd = pf = pn = prec = g = f = acc = 0
-  36.      a = i.a[x]
-  37.      b = i.b[x]
-  38.      c = i.c[x]
-  39.      d = i.d[x]
-  40.      if (b+d > 0     ) pd   = d     / (b+d) 
-  41.      if (a+c > 0     ) pf   = c     / (a+c) 
-  42.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
-  43.      if (c+d > 0     ) prec = d     / (c+d) 
-  44.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
-  45.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
-  46.      if (i.yes + i.no > 0 ) 
-  47.         acc  = i.yes / (i.yes + i.no) 
-  48.    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
-  49.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
-  50.  }}
+  22.  function Abcd(i, data,rx)  {
+  23.    Object(i)
+  24.    has(i,"known")
+  25.    has(i,"a")
+  26.    has(i,"b")
+  27.    has(i,"c")
+  28.    has(i,"d")
+  29.    i.rx   = rx==""? "rx" : rx
+  30.    i.data = data==""? "data" : data
+  31.    i.yes  = i.no = 0
+  32.  }
+```
+
+```awk
+  33.  function Abcd1(i,want, got,   x) {
+  34.    if (++i.known[want] == 1) i.a[want]= i.yes + i.no 
+  35.    if (++i.known[got]  == 1) i.a[got] = i.yes + i.no 
+  36.    want == got ? i.yes++ : i.no++ 
+  37.    for (x in i.known) 
+  38.      if (want == x) 
+  39.        want == got ? i.d[x]++ : i.b[x]++
+  40.      else 
+  41.        got == x      ? i.c[x]++ : i.a[x]++
+  42.  }
+```
+
+```awk
+  43.  function AbcdReport(i,   
+  44.                      x,p,q,r,s,ds,pd,pf,
+  45.                      pn,prec,g,f,acc,a,b,c,d) {
+  46.    p = " %4.2f"
+  47.    q = " %4s"
+  48.    r = " %5s"
+  49.    s = " |"
+  50.    ds= "----"
+  51.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
+  52.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
+  53.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
+  54.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
+  55.    for (x in i.known) {
+  56.      pd = pf = pn = prec = g = f = acc = 0
+  57.      a = i.a[x]
+  58.      b = i.b[x]
+  59.      c = i.c[x]
+  60.      d = i.d[x]
+  61.      if (b+d > 0     ) pd   = d     / (b+d) 
+  62.      if (a+c > 0     ) pf   = c     / (a+c) 
+  63.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
+  64.      if (c+d > 0     ) prec = d     / (c+d) 
+  65.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
+  66.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
+  67.      if (i.yes + i.no > 0 ) 
+  68.         acc  = i.yes / (i.yes + i.no) 
+  69.    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
+  70.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
+  71.  }}
 ```
 

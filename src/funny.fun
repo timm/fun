@@ -22,7 +22,7 @@ function lines(i,update,f,sep,  r,line,lst,com) {
     sub(com,"",line)
     line=trim(line)
     if (line) { 
-      split(line,lst,sep)
+      split(line,lst, sep)
       @update(i,++r,lst) }
   }
   close(f)

@@ -28,6 +28,29 @@ After all that,  `AbcdReport` would print:
   data |    rx |    14 |     8 |     1 |       |     5 | 0.93 | 1.00 | 0.83 | 0.00 | 0.91 | 0.91 | maybe
 ```
 
+function Abcds(i,learner,wait,train,classify)  {
+  i.train    = train    =="" ? learner "Train"    : train
+  i.classify = classify =="" ? learner "Classify" : test
+  i.wait     = wait     =="" ? 20                 : want
+  has(i,"learn",learner)
+  has(i,"abcd","Abcd" )
+}
+
+function Abcds1(i,r,lst,    train,classify) {
+  train = i.train
+  print("train",train)
+  @train(i.learn,r,lst)
+  if( r > i.wait ) {
+    classify = i.classify
+    print("class",classify)
+    got      = @classify(i.learn,r,lst)
+    print(2)
+    want     = lst[ i.learn.my.class ]
+    Abcd1(i.abcd, want,got) 
+    print(3)
+  }
+}
+
 function Abcd(i, data,rx)  {
   Object(i)
   has(i,"known")
@@ -40,15 +63,15 @@ function Abcd(i, data,rx)  {
   i.yes  = i.no = 0
 }
 
-function Abcd1(i,actual, predicted,   x) {
-  if (++i.known[actual]    == 1) i.a[actual]   = i.yes + i.no 
-  if (++i.known[predicted] == 1) i.a[predicted]= i.yes + i.no 
-  actual == predicted ? i.yes++ : i.no++ 
+function Abcd1(i,want, got,   x) {
+  if (++i.known[want] == 1) i.a[want]= i.yes + i.no 
+  if (++i.known[got]  == 1) i.a[got] = i.yes + i.no 
+  want == got ? i.yes++ : i.no++ 
   for (x in i.known) 
-    if (actual == x) 
-      actual == predicted ? i.d[x]++ : i.b[x]++
+    if (want == x) 
+      want == got ? i.d[x]++ : i.b[x]++
     else 
-      predicted == x      ? i.c[x]++ : i.a[x]++
+      got == x      ? i.c[x]++ : i.a[x]++
 }
 
 function AbcdReport(i,   

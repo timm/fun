@@ -50,6 +50,8 @@ code up their own versions (in whatever language they like best).
  Store rows of data (and summarize the columns).
 - [the](the.md): 
  Configuration options.
+- [zeror](zeror.md): 
+ Zero-R Classifier
 
 ---
 

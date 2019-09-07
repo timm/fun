@@ -31,7 +31,7 @@ title: funny.fun
   16.      sub(com,"",line)
   17.      line=trim(line)
   18.      if (line) { 
-  19.        split(line,lst,sep)
+  19.        split(line,lst, sep)
   20.        @update(i,++r,lst) }
   21.    }
   22.    close(f)
