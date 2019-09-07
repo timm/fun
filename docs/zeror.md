@@ -12,13 +12,10 @@ title: zeror.fun
 Uses:  "[funny](funny)"<br>
 Uses:  "[tbl](tbl)"<br>
 
-`ZeroR` classifies
-everything as belonging to the  most frequent
+`ZeroR` classifies everything as belonging to the  most frequent
 class.
 
-Here is a `ZeroR` payload object,
-suitable for streaming over data, all the while
-performing `ZeroR`-style classification.
+Here is a `ZeroR` payload object, suitable for streaming over data.
 
 ```awk
    1.  function ZeroR(i) {
@@ -26,10 +23,11 @@ performing `ZeroR`-style classification.
    3.  }
 ```
 
-Here is the `ZeroR`
-training function, suitable
-for updating the payload `i` from row number
-`r` containint fields `lst`.
+Here is the `ZeroR` training function, suitable for updating the
+payload `i` from row number `r` 
+(which contains the data found in `lst`).
+
+
 
 ```awk
    4.  function ZeroRTrain(i,r,lst) { 
@@ -37,10 +35,9 @@ for updating the payload `i` from row number
    6.  }
 ```
 
-Here is the `ZeroR` classification function, 
-suitable
-for guessing the class of a row containing
-the data in `lst`. 
+Here is the `ZeroR` classification function, that uses the payload
+`i` to guess the class of row number `r`
+(which contains the data found in `lst`).
 
 ```awk
    7.  function ZeroRClassify(i,r,lst,x) {
