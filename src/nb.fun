@@ -24,6 +24,8 @@ Red things have a mean x,y value of 7,8 and blue things have a mean x,y value of
 The red line shows the "decision boundary" where we start "liking" one color
 more that the other. 
 
+![](assets/img/bayes201.png)
+
 This approach is fast to classifier and also fast to train
 (as you see each row, update the statistics kept for every column).
 Also, it can be very memory effecient since once this
@@ -35,6 +37,8 @@ between the columns. In practice, this rarely matters. Here are some performance
 of Naive Bayes versus other learners (where those other learners reflect
 on attribute dependancy). Observe that Naive Bayes does pretty well:
 
+![](assets/img/bayes301.png)
+
 Why isn't Naive Bayes so naive?
 It turns other that
 such dependancies exist between attributes, then they alter the decision boundary by some
@@ -42,7 +46,7 @@ amount &epsilon;.
 [Domingos and Pazzani](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  have
 shown that
 As the number of dimensions grows,
-then the hypervolume of these &epsilons;s become a very small fraction  of the total
+then the hypervolume of these &epsilons;s shrinks to a very small fraction  of the total
 attribute space. That is, the decisions made by a Naive Bayes classifier (that fretted
 about dependancies) is usually the same as an optimal Bayes classifier (that took
 those dependancies into account).
