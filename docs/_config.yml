@@ -3,9 +3,8 @@ logo: /assets/img/fun.png
 google_analytics:
 theme: jekyll-theme-minimal
 description: |
-   Data mining and  optimization: refactored responsibly<br><ul>
-   <li><a href="rows.md">rows</a>
-   <li><a href="row.md">row</a>
-   </ul>
+   Data mining and  optimization: refactored responsibly<br>
+   &bullet; <a href="rows.md">rows</a><br>
+   &bullet; <a href="row.md">row</a> 
     
   
