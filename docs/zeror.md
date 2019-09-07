@@ -32,18 +32,18 @@ for updating the payload `i` from row number
    6.  }
 ```
 
-Here is the `ZeroR` classification
+Here is the `ZeroR` classification function, 
+suitable
+for guessing the class of a row containing
+the data in `lst`. Note that `ZeroR` classifies
+everything as belonging to the  most frequent
+class.
+
+
 ```awk
-   7.  function, suitable
-   8.  for guesseing the class of a row containing
-   9.  the data in `lst`. Note that `ZeroR` classifies
-  10.  everything as belonging to the  most frequent
-  11.  class.
-  12.  
-  13.  
-  14.  function ZeroRClassify(i,r,lst,x) {
-  15.    return  i.tbl.cols[ i.tbl.my.class ].mode
-  16.  }
+   7.  function ZeroRClassify(i,r,lst,x) {
+   8.    return  i.tbl.cols[ i.tbl.my.class ].mode
+   9.  }
 ```
 
 

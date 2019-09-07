@@ -22,9 +22,9 @@ function ZeroRTrain(i,r,lst) {
   Tbl1(i.tbl, r, lst) 
 }
 
-Here is the `ZeroR` classification
-function, suitable
-for guesseing the class of a row containing
+Here is the `ZeroR` classification function, 
+suitable
+for guessing the class of a row containing
 the data in `lst`. Note that `ZeroR` classifies
 everything as belonging to the  most frequent
 class.
