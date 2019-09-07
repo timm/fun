@@ -19,7 +19,31 @@ seen from that class)..
 The new example gets laballed as the class that
  that "likes" it the most.
 
-The `Nb` class reads rows either from some source `Tbl` or from
+More precisely, `Nb` applies Baye's Theorem to data. This theorem
+says what we conclude is a product of
+
+- what we believed before (this is called the _prior_) and 
+- what evidence we see now
+
+That is, the probability of some hypothesis _H_,
+ given evidence _E_, is
+ the
+the probabiliy of that evidence times the probability of that evidence, given that hypotehsis. That is:
+
+- _new = now * before_ or, more formally:
+- _P( H|E ) = P( E|H ) * P(H) _
+
+The right-hand-side of this expression shoudlbe  divided by 
+_P(E)_; i.e. the probability of the evidence. But we never have to compute that since when
+when  we ask "does H1 or H2 have most evidence", then we compute:
+ _P( H1|E ) / P( H2|E )_. 
+Since the probability of the 
+evidence is the same across all hypothesis, then this _P(E)_ term
+just divides away (so we can ignore it).
+
+To implement all this, we need to to keep statistics on all the different
+hypotheses.
+To that end, the `Nb` class reads rows either from some source `Tbl` or from
 disk (via the `lines` function).  Internally, `Nb` maintains its
 own `Tbl`s:
 
@@ -33,8 +57,6 @@ of the `Tbl` who likes it the most).
 Here is a `Nb` payload object,
 suitable for streaming over data, all the while
 performing `Nb`-style classification.
-
-
 
 
 function Nb(i) {
