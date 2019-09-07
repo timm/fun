@@ -6,8 +6,13 @@
 @include "funny"
 @include "tbl"
 
+`ZeroR` classifies
+everything as belonging to the  most frequent
+class.
+
 Here is a `ZeroR` payload object,
-suitable for streaming over data.
+suitable for streaming over data, all the while
+performing `ZeroR`-style classification.
 
 function ZeroR(i) {
   has(i,"tbl","Tbl") 
@@ -25,10 +30,7 @@ function ZeroRTrain(i,r,lst) {
 Here is the `ZeroR` classification function, 
 suitable
 for guessing the class of a row containing
-the data in `lst`. Note that `ZeroR` classifies
-everything as belonging to the  most frequent
-class.
-
+the data in `lst`. 
 
 function ZeroRClassify(i,r,lst,x) {
   return  i.tbl.cols[ i.tbl.my.class ].mode

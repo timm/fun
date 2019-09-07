@@ -16,14 +16,32 @@ Uses:  "[sym](sym)"<br>
 
 <img src="http://yuml.me/diagram/plain;dir:lr/class/[Nb||NbLike();]1-things-1*[Tbl], [Tbl]1-*[Num||NumLike();], [Tbl]1-*[Sym||SymLike()]">
 
-The `Nb` class reads rows either from some source `Tbl` or from disk (via the `lines` function).
-Internally, `Nb` maintains its own `Tbl`s:
+_Nave Bayes_ (here after, `Nb`) collects seperate statistics
+for each class found in the training data.
+Them, to classify a new example, it asks the statistics of
+each class "how much do you _like_ this example?"
+(where "like" means that the example is closest to the statistics
+seen from that class)..
+The new example gets laballed as the class that
+ that "likes" it the most.
+
+The `Nb` class reads rows either from some source `Tbl` or from
+disk (via the `lines` function).  Internally, `Nb` maintains its
+own `Tbl`s:
 
 - One for each class seen during reading.
 - One for the overall stats
  
-To classify a new row, `Nb` asks each of those internal `Tbl`s how much they `like` the new
-row (and the new row gets the classification of the `Tbl` who likes it the most).
+To classify a new row, `Nb` asks each of those internal `Tbl`s how
+much they `like` the new row (and the new row gets the classification
+of the `Tbl` who likes it the most).
+
+Here is a `Nb` payload object,
+suitable for streaming over data, all the while
+performing `Nb`-style classification.
+
+
+
 
 ```awk
    1.  function Nb(i) {
