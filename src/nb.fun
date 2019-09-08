@@ -74,16 +74,16 @@ That is, the probability of some hypothesis _H_,
  the
 the probabiliy of that evidence times the probability of that evidence, given that hypotehsis. That is:
 
-- _new = now * before_ or, more formally:
-- _P( H\|E ) = P( E\|H ) * P(H) _
+- `new = now * before`;  or, more formally, 
+- `P( H|E ) = P( E|H ) * P(H)`  
 
-The right-hand-side of this expression shoudlbe  divided by 
+To be precise, this expression should be  divided by 
 _P(E)_; i.e. the probability of the evidence. But we never have to compute that since when
 when  we ask "does H1 or H2 have most evidence", then we compute:
  _P( H1|E ) / P( H2|E )_. 
 Since the probability of the 
 evidence is the same across all hypothesis, then this _P(E)_ term
-just divides away (so we can ignore it).
+just cancels out (so we can ignore it).
 
 To implement all this, we need to to keep statistics on all the different
 hypotheses.
