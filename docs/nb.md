@@ -44,14 +44,13 @@ column seperate to all rest.
 -  The good news is that this means
 that Naive Bayes classifiers are very memory effecient. All
 you need is the memory for the column statistics
-(and  
-updates
-the
-column stats, there is no need to hang on to the row).
+(since once you  update the column stats, there is no need to hang on to the row).
 - On the other hand, the bad news is that Naive Bayes classifiers never considers dependancies
-between the columns. 
+between the columns. This means, in theory anyway, that Naive Bayes' probability
+calculations could be erroneous.
 
-Strange to say, in practice, this Naive Baues assumption
+Strange to say, in practice, the naive assumption of
+ Naive Bayes 
  rarely matters. Here are some performance results
 of Naive Bayes versus other learners (where those other learners reflect
 on attribute dependancy). Observe that Naive Bayes does pretty well:
@@ -60,12 +59,12 @@ on attribute dependancy). Observe that Naive Bayes does pretty well:
 
 Why isn't Naive Bayes so naive?
 It turns other that
-such dependancies exist between attributes, then they alter the decision boundary by some
-amount &epsilon;. 
+when  dependancies exist between attributes, then they alter the decision boundary by some
+amount &Epsilon;. 
 [Domingos and Pazzani](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  have
 shown that
 As the number of dimensions grows,
-then the hypervolume of these &epsilons;s shrinks to a very small fraction  of the total
+then the hypervolume of these &Epsilons;s shrinks to a very small fraction  of the total
 attribute space. That is, the decisions made by a Naive Bayes classifier (that fretted
 about dependancies) is usually the same as an optimal Bayes classifier (that took
 those dependancies into account).
