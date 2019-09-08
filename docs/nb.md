@@ -161,12 +161,12 @@ row the most (i.e. whose rows are most similar to `lst`).
   27.  }
 ```
 
-Returns `P( E|H ) * P(H)` where `P(H)` is the prior probaility of this class
-(i.e. the ratio of howoften it apears in the data)
-and `P( E|H )` is calcualted by multiplying together the probability
+The `bayestheorem` functionReturns `P( E|H ) * P(H)` where:
+
+- `P(H)` is the prior probaility of this class,
+i.e. the ratio of how often it apears in the data;
+- `P( E|H )` is calcualted by multiplying together the probability
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
-This code skips over cells with unknown values (i.e. those that match `SKIPCOL`.
-Also, the `i.k` and `nthings` variables are used to handle low frequencies.
 
 ```awk
   28.  function bayestheorem(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
@@ -183,4 +183,14 @@ Also, the `i.k` and `nthings` variables are used to handle low frequencies.
   39.      return like
   40.  }
 ```
+
+Note that:
+
+- [NumLike](num.md#like) computes the likelihood by assuming the column data comes from a normal bell curve;
+- [SymLike](sym.md#like) computes the likelihood by assuming the column data comes from a histogram
+  of discrete values.
+- This code skips over cells with unknown values (i.e. those that match `SKIPCOL`).
+- Also, the `i.k` and `nthings` variables are used to handle low freqeuncy data 
+  (in the manner recommended by [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf)). 
+
 

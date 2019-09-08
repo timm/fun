@@ -102,6 +102,7 @@ function nums(n,a,   x,    v,i) {
     if (v != "?") Num1(n, v) }
 }
 
+## Like
 
 `Num`s can also report how much they "like" some number `x`, by assuming it is drawn from some
 normal bell-shapped curve (all we need do is report the height of that curve at `x`).

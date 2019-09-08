@@ -126,6 +126,7 @@ Here's a convenience function to load all the numbers of an array
   55.  }
 ```
 
+## Like
 
 `Num`s can also report how much they "like" some number `x`, by assuming it is drawn from some
 normal bell-shapped curve (all we need do is report the height of that curve at `x`).
