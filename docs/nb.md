@@ -25,7 +25,7 @@ seen from that class)..
 The new example gets laballed as the class that
  that "likes" it the most.
 
-For example, here are some red and blue things, measured using some _x,y_ values.
+For example, here are some red and blue things.
 Red things have a mean x,y value of 7,8 and blue things have a mean x,y value of 3,4.
 The red line shows the "decision boundary" where we start "liking" one color
 more that the other. 
@@ -35,7 +35,7 @@ more that the other.
 `Nb`  is fast to execute (to classify new examples) and  also fast to train
 (as you see each row, update the statistics kept for every column).
 Better yet, it is easy to incrementally update Naive Bayes classifiers, one row
-of data at a time. The e same can not be said for other learers that must reflect
+of data at a time. The  same can not be said for other learers that must reflect
 over all the data to build their models.
 
 Naive Bayes is called "naive" since it keeps statistics on each
@@ -81,7 +81,7 @@ That is, the probability of some hypothesis _H_,
 the probabiliy of that evidence times the probability of that evidence, given that hypotehsis. That is:
 
 - _new = now * before_ or, more formally:
-- _P( H|E ) = P( E|H ) * P(H) _
+- _P( H\|E ) = P( E\|H ) * P(H) _
 
 The right-hand-side of this expression shoudlbe  divided by 
 _P(E)_; i.e. the probability of the evidence. But we never have to compute that since when
