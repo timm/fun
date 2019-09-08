@@ -26,28 +26,31 @@ more that the other.
 
 ![](assets/img/bayes102.png)
 
-`Nb`  is fast to execute (to classify new examples and  also fast to train
+`Nb`  is fast to execute (to classify new examples) and  also fast to train
 (as you see each row, update the statistics kept for every column).
 Better yet, it is easy to incrementally update Naive Bayes classifiers, one row
 of data at a time. The e same can not be said for other learers that must reflect
 over all the data to build their models.
 
 Naive Bayes is called "naive" since it keeps statistics on each
-column seperate to all rest. The good news is that this means
+column seperate to all rest.
+
+-  The good news is that this means
 that Naive Bayes classifiers are very memory effecient. All
 you need is the memory for the column statistics
 (and  
 updates
 the
 column stats, there is no need to hang on to the row).
+- On the other hand, the bad news is that Naive Bayes classifiers never considers dependancies
+between the columns. 
 
-
-On the other hand, the bad news is that Naive Bayes classifiers never considers dependancies
-between the columns. Strange to say, in practice, this rarely matters. Here are some performance results
+Strange to say, in practice, this Naive Baues assumption
+ rarely matters. Here are some performance results
 of Naive Bayes versus other learners (where those other learners reflect
 on attribute dependancy). Observe that Naive Bayes does pretty well:
 
-![](assets/img/bayes301.png)
+[![](assets/img/bayes301.png)](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  
 
 Why isn't Naive Bayes so naive?
 It turns other that
