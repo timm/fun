@@ -34,6 +34,7 @@ function Tbl(i, norows) {
 }
 function Tbl1(i,r,lst,    c) {
   if (r==1)  {
+    for(c in lst)
       if (lst[c] !~ SKIPCOL) 
         TblCols(i, c, lst[c])
   } else  {
@@ -67,3 +68,8 @@ function TblCols(i,c,v) {
        c,v) 
 }
 
+function TblHeader(i,  lst,c) {
+  List(lst)
+  for(c in i.cols)
+    lst[c] = i.cols[c].txt
+}

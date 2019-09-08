@@ -135,7 +135,7 @@ normal bell-shapped curve (all we need do is report the height of that curve at 
   56.  function NumLike(i,x,      var,denom,num) {
   57.    var   = i.sd^2
   58.    denom = (3.14159*2*var)^.5
-  59.    num   =  2.71828^(-(x-i.mu)^2/(2*var))
+  59.    num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
   60.    return num/denom
   61.  }
 ```

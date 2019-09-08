@@ -89,6 +89,7 @@ function Abcd(i, data,rx)  {
 }
 
 function Abcd1(i,want, got,   x) {
+  print(length(i.known))
   if (++i.known[want] == 1) i.a[want]= i.yes + i.no 
   if (++i.known[got]  == 1) i.a[got] = i.yes + i.no 
   want == got ? i.yes++ : i.no++ 
@@ -112,6 +113,7 @@ function AbcdReport(i,
   printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
          ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
   for (x in i.known) {
+    print("cc",x)
     pd = pf = pn = prec = g = f = acc = 0
     a = i.a[x]
     b = i.b[x]
@@ -125,7 +127,7 @@ function AbcdReport(i,
     if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
     if (i.yes + i.no > 0 ) 
        acc  = i.yes / (i.yes + i.no) 
-  printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
+    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
          i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
 }}
 

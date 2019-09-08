@@ -13,7 +13,7 @@ function trim(s) {
   gsub(/^[ \t\r]*/,"",s)
   gsub(/[ \t\r]*$/,"",s)
   return s
-}o
+}
 
 ### lines
 

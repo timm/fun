@@ -121,29 +121,40 @@ After that, we update the statistics in
 - the `all` table;
 - as well as the table for  this row's class.
 
+# new class has to clone from old
+
 function NbTrain(i,r,lst,   class) {
-  i.n++
-  class = lst[ i.all.my.class ]
-  if (! (class in i.things))
-    has1(i.things, class, "Tbl",1)
-  Tbl1(i.things[class], r,lst)
-  Tbl1(i.all,           r,lst)
+  Tbl1(i.all,r,lst)
+  if(r>1) {
+    i.n++
+    class = lst[ i.all.my.class ]
+    NbEnsureClassExists(i, class) 
+    Tbl1(i.things[class], r,lst)
+  }
 }
 
+function NbEnsureClassExists(i,class,   head) {
+  if (! (class in i.things)) {
+    has1(i.things, class, "Tbl",1)
+    TblHeader(i.all, head)
+    Tbl1(i.things[class],1,head)
+  }
+}
+ 
 Here is the `Nb` classification function, that uses the payload
 `i` to guess the class of row number `r`
 (which contains the data found in `lst`).
 To do this,  we find the  class' table that `like`s this
 row the most (i.e. whose rows are most similar to `lst`).
 
-function NbClassify(i,r,lst,    best,class,like,guess) {
-  best = -10^64
+function NbClassify(i,r,lst,    most,class,like,guess) {
+  most = -10^64
   for(class in i.things) {
     like = bayestheorem( i, lst, i.n, 
                                 length(i.things), 
-                                i.things[class]))
-    if (like > best) {
-      best  = like
+                                i.things[class])
+    if (like > most) {
+      most  = like
       guess = class
   }}
   return guess
@@ -156,13 +167,13 @@ i.e. the ratio of how often it apears in the data;
 - `P( E|H )` is calcualted by multiplying together the probability
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
 
-function bayestheorem(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
+function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
     like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
     like = log(like)
-    for(c in  thing.xs) {
-      x = row.cells[c]
+    for(c in thing.my.xs) {
+      x = lst[c]
       if (x == SKIPCOL) continue
-      if (c in thing.nums)
+      if (c in thing.my.nums)
         like += log( NumLike(thing.cols[c], x) )
       else
         like += log( SymLike(thing.cols[c], x, prior, i.m) )
@@ -175,8 +186,11 @@ Note that:
 - [NumLike](num.md#like) computes the likelihood by assuming the column data comes from a normal bell curve;
 - [SymLike](sym.md#like) computes the likelihood by assuming the column data comes from a histogram
   of discrete values.
+- Instead of multiplying probabilities, this code adds the logs of those numbers.
+  This is a numerical methods trick that can assist with mutliplying together very small numbers.
 - This code skips over cells with unknown values (i.e. those that match `SKIPCOL`).
 - Also, the `i.k` and `nthings` variables are used to handle low freqeuncy data 
-  (in the manner recommended by [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf)). 
+  (in the manner recommended by 
+  [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf)). 
 
 

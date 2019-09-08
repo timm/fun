@@ -5,7 +5,16 @@
 @include "funny"
 @include "num"
 
-BEGIN {  tests("colok","_num,_any") }
+BEGIN {  tests("colok","_like,_num,_any") }
+
+
+function _like(f,  m,n) {
+  srand(1)
+  Num(n)
+  m=100
+  while(m--) Num1(n,rand())
+  for(m=0;m<=1;m+=0.1)  print(m,NumLike(n,m))
+}
 
 Walk up a list of random numbers, adding to a `Num`
 counter. Then walk down, removing numbers. Check

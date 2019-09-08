@@ -102,46 +102,48 @@ for machine learning experiments).
 
 ```awk
   29.  function Abcd1(i,want, got,   x) {
-  30.    if (++i.known[want] == 1) i.a[want]= i.yes + i.no 
-  31.    if (++i.known[got]  == 1) i.a[got] = i.yes + i.no 
-  32.    want == got ? i.yes++ : i.no++ 
-  33.    for (x in i.known) 
-  34.      if (want == x) 
-  35.        want == got ? i.d[x]++ : i.b[x]++
-  36.      else 
-  37.        got == x      ? i.c[x]++ : i.a[x]++
-  38.  }
+  30.    print(length(i.known))
+  31.    if (++i.known[want] == 1) i.a[want]= i.yes + i.no 
+  32.    if (++i.known[got]  == 1) i.a[got] = i.yes + i.no 
+  33.    want == got ? i.yes++ : i.no++ 
+  34.    for (x in i.known) 
+  35.      if (want == x) 
+  36.        want == got ? i.d[x]++ : i.b[x]++
+  37.      else 
+  38.        got == x      ? i.c[x]++ : i.a[x]++
+  39.  }
 ```
 
 ```awk
-  39.  function AbcdReport(i,   
-  40.                      x,p,q,r,s,ds,pd,pf,
-  41.                      pn,prec,g,f,acc,a,b,c,d) {
-  42.    p = " %4.2f"
-  43.    q = " %4s"
-  44.    r = " %5s"
-  45.    s = " |"
-  46.    ds= "----"
-  47.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
-  48.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
-  49.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
-  50.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
-  51.    for (x in i.known) {
-  52.      pd = pf = pn = prec = g = f = acc = 0
-  53.      a = i.a[x]
-  54.      b = i.b[x]
-  55.      c = i.c[x]
-  56.      d = i.d[x]
-  57.      if (b+d > 0     ) pd   = d     / (b+d) 
-  58.      if (a+c > 0     ) pf   = c     / (a+c) 
-  59.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
-  60.      if (c+d > 0     ) prec = d     / (c+d) 
-  61.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
-  62.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
-  63.      if (i.yes + i.no > 0 ) 
-  64.         acc  = i.yes / (i.yes + i.no) 
-  65.    printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
-  66.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
-  67.  }}
+  40.  function AbcdReport(i,   
+  41.                      x,p,q,r,s,ds,pd,pf,
+  42.                      pn,prec,g,f,acc,a,b,c,d) {
+  43.    p = " %4.2f"
+  44.    q = " %4s"
+  45.    r = " %5s"
+  46.    s = " |"
+  47.    ds= "----"
+  48.    printf(r s r s r s r s r s r s r s q s q s q s q s q s q s " class\n",
+  49.          "db","rx","num","a","b","c","d","acc","pre","pd","pf","f","g")
+  50.    printf(r  s r s r s r s r s r s r s q s q s q s q s q s q s "-----\n",
+  51.           ds,ds,"----",ds,ds,ds,ds,ds,ds,ds,ds,ds,ds)
+  52.    for (x in i.known) {
+  53.      print("cc",x)
+  54.      pd = pf = pn = prec = g = f = acc = 0
+  55.      a = i.a[x]
+  56.      b = i.b[x]
+  57.      c = i.c[x]
+  58.      d = i.d[x]
+  59.      if (b+d > 0     ) pd   = d     / (b+d) 
+  60.      if (a+c > 0     ) pf   = c     / (a+c) 
+  61.      if (a+c > 0     ) pn   = (b+d) / (a+c) 
+  62.      if (c+d > 0     ) prec = d     / (c+d) 
+  63.      if (1-pf+pd > 0 ) g=2*(1-pf) * pd / (1-pf+pd) 
+  64.      if (prec+pd > 0 ) f=2*prec*pd / (prec + pd)   
+  65.      if (i.yes + i.no > 0 ) 
+  66.         acc  = i.yes / (i.yes + i.no) 
+  67.      printf(r s    r s  r s        r s r s r s r s p s p s  p s p s p s p s  " %s\n",
+  68.           i.data,i.rx,i.yes+i.no,a,  b,  c,  d,  acc,prec,pd, pf, f,  g,  x)
+  69.  }}
 ```
 

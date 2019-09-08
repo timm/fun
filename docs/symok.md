@@ -12,42 +12,54 @@ Uses:  "[funny](funny)"<br>
 Uses:  "[sym](sym)"<br>
 
 ```awk
-   1.  BEGIN {  tests("colok","_sym,_syms") }
+   1.  BEGIN {  tests("colok","_like,_sym,_syms") }
+```
+
+```awk
+   2.  function _like(f,  s,a,k) {
+   3.    Sym(s)
+   4.    split("aaaabbc",a,"")
+   5.    for(k in a) Sym1(s,a[k])
+   6.    print("a",SymLike(s,"a"))
+   7.    print("b",SymLike(s,"b"))
+   8.    print("c",SymLike(s,"c"))
+   9.  }
 ```
 
 If we sample from a `Sym`, does it generate
 items at the right frequency?
 
+
 ```awk
-   2.  func _syms(f,   max,s,a,b,i,j,k) {
-   3.    max=256
-   4.    s="aaaabbc"
-   5.    Sym(i)
-   6.    Sym(j)
-   7.    split(s,a,"")
-   8.    for(k in a) Sym1(i, a[k]) # load "i"
-   9.    print(SymEnt(i))
-  10.    for(k=1; k<=max; k++) 
-  11.      Sym1(j,SymAny(i))  # sample "i" to load "j"
-  12.    is(f, SymEnt(i), SymEnt(j), 0.05)
-  13.  }
+  10.  func _syms(f,   max,s,a,b,i,j,k) {
+  11.    max=256
+  12.    s="aaaabbc"
+  13.    Sym(i)
+  14.    Sym(j)
+  15.    split(s,a,"")
+  16.    for(k in a) Sym1(i, a[k]) # load "i"
+  17.    print(SymEnt(i))
+  18.    for(k=1; k<=max; k++) 
+  19.      Sym1(j,SymAny(i))  # sample "i" to load "j"
+  20.    is(f, SymEnt(i), SymEnt(j), 0.05)
+  21.  }
 ```
 
 Checkng some sample entropy counts:
 
 ```awk
-  14.  function _sym(f) {
-  15.    is(f, _sym1("aaaabbc"), 1.37878) 
-  16.    is(f, _sym1("aaaaaaa"), 0)
-  17.  }
+  22.  function _sym(f) {
+  23.    is(f, _sym1("aaaabbc"), 1.37878) 
+  24.    is(f, _sym1("aaaaaaa"), 0)
+  25.  }
 ```
 
 ```awk
-  18.  func _sym1(s,   a,i,j) {
-  19.    Sym(i)
-  20.    split(s,a,"")
-  21.    for(j in a) 
-  22.      Sym1(i, a[j])
-  23.    return SymEnt(i)
-  24.  }
+  26.  func _sym1(s,   a,i,j) {
+  27.    Sym(i)
+  28.    split(s,a,"")
+  29.    for(j in a) 
+  30.      Sym1(i, a[j])
+  31.    return SymEnt(i)
+  32.  }
 ```

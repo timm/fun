@@ -110,7 +110,7 @@ normal bell-shapped curve (all we need do is report the height of that curve at 
 function NumLike(i,x,      var,denom,num) {
   var   = i.sd^2
   denom = (3.14159*2*var)^.5
-  num   =  2.71828^(-(x-i.mu)^2/(2*var))
+  num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
   return num/denom
 }
 

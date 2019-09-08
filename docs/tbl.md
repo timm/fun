@@ -43,39 +43,47 @@ If `norows` is true. just keep the statistics for the columns.
   13.  }
   14.  function Tbl1(i,r,lst,    c) {
   15.    if (r==1)  {
-  16.        if (lst[c] !~ SKIPCOL) 
-  17.          TblCols(i, c, lst[c])
-  18.    } else  {
-  19.      if (i.norows)
-  20.        for(c in i.cols)
-  21.          Col1(i.cols[c],lst[c])
-  22.      else
-  23.        has2(i.rows,r-1,"Row",i,lst)  
-  24.  } }
+  16.      for(c in lst)
+  17.        if (lst[c] !~ SKIPCOL) 
+  18.          TblCols(i, c, lst[c])
+  19.    } else  {
+  20.      if (i.norows)
+  21.        for(c in i.cols)
+  22.          Col1(i.cols[c],lst[c])
+  23.      else
+  24.        has2(i.rows,r-1,"Row",i,lst)  
+  25.  } }
 ```
 
 ```awk
-  25.  function TblAbout(i) {
-  26.    i.class = ""
-  27.    has(i,"nums")
-  28.    has(i,"syms")
-  29.    has(i,"xnums")
-  30.    has(i,"xsyms")
-  31.    has(i,"goals")
-  32.    has(i,"xs")
-  33.    has(i,"w")
-  34.  }
-  35.  function TblCols(i,c,v) {
-  36.    if (v ~ CLASSCOL) i.my.class = c
-  37.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
-  38.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
-  39.    if (c in i.my.xs && c in i.my.nums) i.my.xnums[c]
-  40.    if (c in i.my.xs && c in i.my.syms) i.my.xsyms[c]
-  41.    if (v ~ />/) i.my.w[c] =  1
-  42.    if (v ~ /</) i.my.w[c] = -1
-  43.    has2(i.cols,c,
-  44.         v ~NUMCOL ? "Num" : "Sym",
-  45.         c,v) 
-  46.  }
+  26.  function TblAbout(i) {
+  27.    i.class = ""
+  28.    has(i,"nums")
+  29.    has(i,"syms")
+  30.    has(i,"xnums")
+  31.    has(i,"xsyms")
+  32.    has(i,"goals")
+  33.    has(i,"xs")
+  34.    has(i,"w")
+  35.  }
+  36.  function TblCols(i,c,v) {
+  37.    if (v ~ CLASSCOL) i.my.class = c
+  38.    v ~ NUMCOL  ? i.my.nums[c] : i.my.syms[c]
+  39.    v ~ GOALCOL ? i.my.goals[c]: i.my.xs[c]
+  40.    if (c in i.my.xs && c in i.my.nums) i.my.xnums[c]
+  41.    if (c in i.my.xs && c in i.my.syms) i.my.xsyms[c]
+  42.    if (v ~ />/) i.my.w[c] =  1
+  43.    if (v ~ /</) i.my.w[c] = -1
+  44.    has2(i.cols,c,
+  45.         v ~NUMCOL ? "Num" : "Sym",
+  46.         c,v) 
+  47.  }
 ```
 
+```awk
+  48.  function TblHeader(i,  lst,c) {
+  49.    List(lst)
+  50.    for(c in i.cols)
+  51.      lst[c] = i.cols[c].txt
+  52.  }
+```

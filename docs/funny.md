@@ -22,7 +22,7 @@ title: funny.fun
    7.    gsub(/^[ \t\r]*/,"",s)
    8.    gsub(/[ \t\r]*$/,"",s)
    9.    return s
-  10.  }o
+  10.  }
 ```
 
 ### lines

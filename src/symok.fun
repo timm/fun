@@ -5,10 +5,20 @@
 @include "funny"
 @include "sym"
 
-BEGIN {  tests("colok","_sym,_syms") }
+BEGIN {  tests("colok","_like,_sym,_syms") }
+
+function _like(f,  s,a,k) {
+  Sym(s)
+  split("aaaabbc",a,"")
+  for(k in a) Sym1(s,a[k])
+  print("a",SymLike(s,"a"))
+  print("b",SymLike(s,"b"))
+  print("c",SymLike(s,"c"))
+}
 
 If we sample from a `Sym`, does it generate
 items at the right frequency?
+
 
 func _syms(f,   max,s,a,b,i,j,k) {
   max=256

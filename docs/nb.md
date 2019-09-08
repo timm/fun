@@ -129,17 +129,30 @@ After that, we update the statistics in
 - the `all` table;
 - as well as the table for  this row's class.
 
+# new class has to clone from old
+
 ```awk
    8.  function NbTrain(i,r,lst,   class) {
-   9.    i.n++
-  10.    class = lst[ i.all.my.class ]
-  11.    if (! (class in i.things))
-  12.      has1(i.things, class, "Tbl",1)
-  13.    Tbl1(i.things[class], r,lst)
-  14.    Tbl1(i.all,           r,lst)
-  15.  }
+   9.    Tbl1(i.all,r,lst)
+  10.    if(r>1) {
+  11.      i.n++
+  12.      class = lst[ i.all.my.class ]
+  13.      NbEnsureClassExists(i, class) 
+  14.      Tbl1(i.things[class], r,lst)
+  15.    }
+  16.  }
 ```
 
+```awk
+  17.  function NbEnsureClassExists(i,class,   head) {
+  18.    if (! (class in i.things)) {
+  19.      has1(i.things, class, "Tbl",1)
+  20.      TblHeader(i.all, head)
+  21.      Tbl1(i.things[class],1,head)
+  22.    }
+  23.  }
+```
+ 
 Here is the `Nb` classification function, that uses the payload
 `i` to guess the class of row number `r`
 (which contains the data found in `lst`).
@@ -147,18 +160,18 @@ To do this,  we find the  class' table that `like`s this
 row the most (i.e. whose rows are most similar to `lst`).
 
 ```awk
-  16.  function NbClassify(i,r,lst,    best,class,like,guess) {
-  17.    best = -10^64
-  18.    for(class in i.things) {
-  19.      like = bayestheorem( i, lst, i.n, 
-  20.                                  length(i.things), 
-  21.                                  i.things[class]))
-  22.      if (like > best) {
-  23.        best  = like
-  24.        guess = class
-  25.    }}
-  26.    return guess
-  27.  }
+  24.  function NbClassify(i,r,lst,    most,class,like,guess) {
+  25.    most = -10^64
+  26.    for(class in i.things) {
+  27.      like = bayestheorem( i, lst, i.n, 
+  28.                                  length(i.things), 
+  29.                                  i.things[class])
+  30.      if (like > most) {
+  31.        most  = like
+  32.        guess = class
+  33.    }}
+  34.    return guess
+  35.  }
 ```
 
 The `bayestheorem` functionReturns `P( E|H ) * P(H)` where:
@@ -169,19 +182,19 @@ i.e. the ratio of how often it apears in the data;
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
 
 ```awk
-  28.  function bayestheorem(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
-  29.      like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
-  30.      like = log(like)
-  31.      for(c in  thing.xs) {
-  32.        x = row.cells[c]
-  33.        if (x == SKIPCOL) continue
-  34.        if (c in thing.nums)
-  35.          like += log( NumLike(thing.cols[c], x) )
-  36.        else
-  37.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
-  38.      }
-  39.      return like
-  40.  }
+  36.  function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
+  37.      like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
+  38.      like = log(like)
+  39.      for(c in thing.my.xs) {
+  40.        x = lst[c]
+  41.        if (x == SKIPCOL) continue
+  42.        if (c in thing.my.nums)
+  43.          like += log( NumLike(thing.cols[c], x) )
+  44.        else
+  45.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
+  46.      }
+  47.      return like
+  48.  }
 ```
 
 Note that:
@@ -189,8 +202,11 @@ Note that:
 - [NumLike](num.md#like) computes the likelihood by assuming the column data comes from a normal bell curve;
 - [SymLike](sym.md#like) computes the likelihood by assuming the column data comes from a histogram
   of discrete values.
+- Instead of multiplying probabilities, this code adds the logs of those numbers.
+  This is a numerical methods trick that can assist with mutliplying together very small numbers.
 - This code skips over cells with unknown values (i.e. those that match `SKIPCOL`).
 - Also, the `i.k` and `nthings` variables are used to handle low freqeuncy data 
-  (in the manner recommended by [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf)). 
+  (in the manner recommended by 
+  [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf)). 
 
 

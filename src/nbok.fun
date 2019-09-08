@@ -3,16 +3,16 @@
 #--------- --------- --------- --------- --------- ---------
 
 @include "funny"
-@include "zeror"
+@include "nb"
 @include "abcd"
 
-BEGIN { tests("zerorok","_zeror") }
+BEGIN { tests("nbok","_nb") }
 
-function _zeror(f) {
-  return _zeror1("weathernon")
+function _nb(f) {
+  return _nb1("weathernon")
 }
-function _zeror1(d,     z) {
-  Abcds(z,"ZeroR",3)
+function _nb1(d,     z) {
+  Abcds(z,"Nb",4)
   lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
   AbcdReport(z.abcd)
 } 
