@@ -73,6 +73,8 @@ function SymAny(i,without,  r,k,m) {
   return k
 }
 
+### Like
+
 `Sym`s can also report how much they "like" some symbol. If `x` occours
 at frequency `f` then it is liked at `f/i.n`. The `m` param is added
 to handle low frequency cases (in the manner recommeded in Section 3.1 of [Yang et al.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.72.8235&rep=rep1&type=pdf). 
