@@ -108,20 +108,55 @@ function Nb(i) {
   has(i,"things")
   i.m = THE.nb.m
   i.k = THE.nb.k
+  i.n = -1
 }
 
-function NbLike(i,row,    best,t,like,guess) {
+Here is the `Nb` training function, suitable for updating
+the payoad `i` from row number `r` 
+(which contains the data found in `lst`).
+In this function, if we have not seen a row of this class before,
+we create a new table for that class.
+After that, we update the statistics in 
+
+- the `all` table;
+- as well as the table for  this row's class.
+
+function NbTrain(i,r,lst,   class) {
+  i.n++
+  class = lst[ i.all.my.class ]
+  if (! (class in i.things))
+    has1(i.things, class, "Tbl",1)
+  Tbl1(i.things[class], r,lst)
+  Tbl1(i.all,           r,lst)
+}
+
+Here is the `Nb` classification function, that uses the payload
+`i` to guess the class of row number `r`
+(which contains the data found in `lst`).
+To do this,  we find the  class' table that `like`s this
+row the most (i.e. whose rows are most similar to `lst`).
+
+function NbClassify(i,r,lst,    best,class,like,guess) {
   best = -10^64
-  for(t in i.things) {
-    like = _nblike( i, row, length(i.all.rows) length(i.things), i.things[t]))
+  for(class in i.things) {
+    like = bayestheorem( i, lst, i.n, 
+                                length(i.things), 
+                                i.things[class]))
     if (like > best) {
       best  = like
-      guess = t
+      guess = class
   }}
   return guess
 }
 
-function _nblike(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
+Returns `P( E|H ) * P(H)` where `P(H)` is the prior probaility of this class
+(i.e. the ratio of howoften it apears in the data)
+and `P( E|H )` is calcualted by multiplying together the probability
+that the value in `row` column `c` belongs to the distribution seen  in column `c`.
+This code skips over cells with unknown values (i.e. those that match `SKIPCOL`.
+Also, the `i.k` and `nthings` variables are used to handle low frequencies.
+
+function bayestheorem(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
     like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
     like = log(like)
     for(c in  thing.xs) {
@@ -133,14 +168,5 @@ function _nblike(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
         like += log( SymLike(thing.cols[c], x, prior, i.m) )
     }
     return like
-}
-
-function NbFromFile(i,f) { lines(i.all,"Nb1",f) }
-
-Add a new row to the NaiveBayes classifier
-
-function Nb1(i,r,lst) {
-  Tbl1(i,r,lst)
-  i.rows[length(i.rows)]
 }
 

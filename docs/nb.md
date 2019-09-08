@@ -115,48 +115,72 @@ performing `Nb`-style classification.
    3.    has(i,"things")
    4.    i.m = THE.nb.m
    5.    i.k = THE.nb.k
-   6.  }
+   6.    i.n = -1
+   7.  }
 ```
 
+Here is the `Nb` training function, suitable for updating
+the payoad `i` from row number `r` 
+(which contains the data found in `lst`).
+In this function, if we have not seen a row of this class before,
+we create a new table for that class.
+After that, we update the statistics in 
+
+- the `all` table;
+- as well as the table for  this row's class.
+
 ```awk
-   7.  function NbLike(i,row,    best,t,like,guess) {
-   8.    best = -10^64
-   9.    for(t in i.things) {
-  10.      like = _nblike( i, row, length(i.all.rows) length(i.things), i.things[t]))
-  11.      if (like > best) {
-  12.        best  = like
-  13.        guess = t
-  14.    }}
-  15.    return guess
-  16.  }
+   8.  function NbTrain(i,r,lst,   class) {
+   9.    i.n++
+  10.    class = lst[ i.all.my.class ]
+  11.    if (! (class in i.things))
+  12.      has1(i.things, class, "Tbl",1)
+  13.    Tbl1(i.things[class], r,lst)
+  14.    Tbl1(i.all,           r,lst)
+  15.  }
 ```
 
+Here is the `Nb` classification function, that uses the payload
+`i` to guess the class of row number `r`
+(which contains the data found in `lst`).
+To do this,  we find the  class' table that `like`s this
+row the most (i.e. whose rows are most similar to `lst`).
+
 ```awk
-  17.  function _nblike(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
-  18.      like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
-  19.      like = log(like)
-  20.      for(c in  thing.xs) {
-  21.        x = row.cells[c]
-  22.        if (x == SKIPCOL) continue
-  23.        if (c in thing.nums)
-  24.          like += log( NumLike(thing.cols[c], x) )
-  25.        else
-  26.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
-  27.      }
-  28.      return like
-  29.  }
+  16.  function NbClassify(i,r,lst,    best,class,like,guess) {
+  17.    best = -10^64
+  18.    for(class in i.things) {
+  19.      like = bayestheorem( i, lst, i.n, 
+  20.                                  length(i.things), 
+  21.                                  i.things[class]))
+  22.      if (like > best) {
+  23.        best  = like
+  24.        guess = class
+  25.    }}
+  26.    return guess
+  27.  }
 ```
 
-```awk
-  30.  function NbFromFile(i,f) { lines(i.all,"Nb1",f) }
-```
+Returns `P( E|H ) * P(H)` where `P(H)` is the prior probaility of this class
+(i.e. the ratio of howoften it apears in the data)
+and `P( E|H )` is calcualted by multiplying together the probability
+that the value in `row` column `c` belongs to the distribution seen  in column `c`.
+This code skips over cells with unknown values (i.e. those that match `SKIPCOL`.
+Also, the `i.k` and `nthings` variables are used to handle low frequencies.
 
-Add a new row to the NaiveBayes classifier
-
 ```awk
-  31.  function Nb1(i,r,lst) {
-  32.    Tbl1(i,r,lst)
-  33.    i.rows[length(i.rows)]
-  34.  }
+  28.  function bayestheorem(i,row,nall,nthings,thing,    like,prior,c,x,inc) {
+  29.      like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
+  30.      like = log(like)
+  31.      for(c in  thing.xs) {
+  32.        x = row.cells[c]
+  33.        if (x == SKIPCOL) continue
+  34.        if (c in thing.nums)
+  35.          like += log( NumLike(thing.cols[c], x) )
+  36.        else
+  37.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
+  38.      }
+  39.      return like
+  40.  }
 ```
 
