@@ -6,12 +6,14 @@
 @include "nb"
 @include "abcd"
 
-BEGIN { tests("nbok","_nb") }
+BEGIN { tests("nbok","_nb1,_nb2") }
 
-function _nb(f) {
-  return _nb1("weathernon")
-}
-function _nb1(d,     z) {
+function _nb1(f) { return _nb0("weathernon") }
+function _nb2(f) { return _nb0("diabetes",20) }
+function _nb0(d,n,    z) {
+  print("")
+  print(d)
+  n = n=="" ? 4 : n
   Abcds(z,"Nb",4)
   lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
   AbcdReport(z.abcd)

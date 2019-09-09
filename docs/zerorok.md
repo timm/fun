@@ -18,11 +18,14 @@ Uses:  "[abcd](abcd)"<br>
 
 ```awk
    2.  function _zeror(f) {
-   3.    return _zeror1("weathernon")
-   4.  }
-   5.  function _zeror1(d,     z) {
-   6.    Abcds(z,"ZeroR",3)
-   7.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
-   8.    AbcdReport(z.abcd)
-   9.  } 
+   3.    _zeror1("weathernon")
+   4.    _zeror1("diabetes")
+   5.  }
+   6.  function _zeror1(d,     z) {
+   7.    print("")
+   8.    print(d)
+   9.    Abcds(z,"ZeroR",3)
+  10.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
+  11.    AbcdReport(z.abcd)
+  12.  } 
 ```

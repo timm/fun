@@ -13,16 +13,18 @@ Uses:  "[nb](nb)"<br>
 Uses:  "[abcd](abcd)"<br>
 
 ```awk
-   1.  BEGIN { tests("nbok","_nb") }
+   1.  BEGIN { tests("nbok","_nb1,_nb2") }
 ```
 
 ```awk
-   2.  function _nb(f) {
-   3.    return _nb1("weathernon")
-   4.  }
-   5.  function _nb1(d,     z) {
-   6.    Abcds(z,"Nb",4)
-   7.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
-   8.    AbcdReport(z.abcd)
-   9.  } 
+   2.  function _nb1(f) { return _nb0("weathernon") }
+   3.  function _nb2(f) { return _nb0("diabetes",20) }
+   4.  function _nb0(d,n,    z) {
+   5.    print("")
+   6.    print(d)
+   7.    n = n=="" ? 4 : n
+   8.    Abcds(z,"Nb",4)
+   9.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
+  10.    AbcdReport(z.abcd)
+  11.  } 
 ```

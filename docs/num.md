@@ -136,7 +136,7 @@ normal bell-shapped curve (all we need do is report the height of that curve at 
   57.    var   = i.sd^2
   58.    denom = (3.14159*2*var)^.5
   59.    num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
-  60.    return num/denom
+  60.    return num/(denom + 10^-64)
   61.  }
 ```
 

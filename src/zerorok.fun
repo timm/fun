@@ -9,9 +9,12 @@
 BEGIN { tests("zerorok","_zeror") }
 
 function _zeror(f) {
-  return _zeror1("weathernon")
+  _zeror1("weathernon")
+  _zeror1("diabetes")
 }
 function _zeror1(d,     z) {
+  print("")
+  print(d)
   Abcds(z,"ZeroR",3)
   lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
   AbcdReport(z.abcd)

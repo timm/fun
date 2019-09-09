@@ -104,7 +104,7 @@ performing `Nb`-style classification.
 
 
 function Nb(i) {
-  has1(i,"all","Tbl",1) # Tables do not keep rows (uses less memory).
+  has1(i,"tbl","Tbl",1) # Tables do not keep rows (uses less memory).
   has(i,"things")
   i.m = THE.nb.m
   i.k = THE.nb.k
@@ -118,17 +118,17 @@ In this function, if we have not seen a row of this class before,
 we create a new table for that class.
 After that, we update the statistics in 
 
-- the `all` table;
+- the `tbl` table (which holds information on all rows)
 - as well as the table for  this row's class.
 
 # new class has to clone from old
 
 function NbTrain(i,r,lst,   class) {
-  Tbl1(i.all,r,lst)
+  Tbl1(i.tbl,r,lst)
   if(r>1) {
     i.n++
-    class = lst[ i.all.my.class ]
-    NbEnsureClassExists(i, class) 
+    class = lst[ i.tbl.my.class ]
+    NbEnsureClassExists(i,class) 
     Tbl1(i.things[class], r,lst)
   }
 }
@@ -136,7 +136,7 @@ function NbTrain(i,r,lst,   class) {
 function NbEnsureClassExists(i,class,   head) {
   if (! (class in i.things)) {
     has1(i.things, class, "Tbl",1)
-    TblHeader(i.all, head)
+    TblHeader(i.tbl, head)
     Tbl1(i.things[class],1,head)
   }
 }
@@ -150,6 +150,7 @@ row the most (i.e. whose rows are most similar to `lst`).
 function NbClassify(i,r,lst,    most,class,like,guess) {
   most = -10^64
   for(class in i.things) {
+    guess = guess=="" ? class : guess
     like = bayestheorem( i, lst, i.n, 
                                 length(i.things), 
                                 i.things[class])
