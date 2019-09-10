@@ -10,6 +10,51 @@
 
 #!class [Nb||NbLike();]1-things-1*[Tbl], [Tbl]1-*[Num||NumLike();], [Tbl]1-*[Sym||SymLike()]
 
+A _Naive Bayes_ classifier is a simple statistical-based learning scheme.
+
+Advantages:
+
++ Tiny memory footprint
++ Simplicity
++ Often works surprisingly well
++ Fast training, fast learning
+  - Better yet, it is easy to incrementally update Naive Bayes classifiers, one row
+    of data at a time. 
+  - The  same can not be said for other learers that must reflect
+over all the data to build their models.
+
+Assumptions:
+
++ Learning is done best via statistical modeling
++ Attributes are
+    + equally important
+    + statistically independent (given the class value)
+      - This means that we only need to keep summary statistics on each column,
+        rather than pairs, triples, etc of columns.
+    + Which  means that knowledge about the value of a particular attribute 
+      doesn't tell us anything about the value of another attribute (if the class is known)
+  
+Although based on assumptions that are almost never correct, this scheme works well in practice.
+ Here are some performance results
+of Naive Bayes versus other learners (where those other learners reflect
+on attribute dependancy). Observe that Naive Bayes does pretty well:
+
+[![](assets/img/bayes301.png)](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  
+
+Why isn't Naive Bayes naive?
+It turns other that
+when  dependancies exist between attributes, then they alter the decision boundary by some
+amount &Epsilon;. 
+[Domingos and Pazzani](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  have
+shown that
+As the number of dimensions grows,
+then the hypervolume of these &Epsilon;s shrinks to a very small fraction  of the total
+attribute space. That is, the decisions made by a Naive Bayes classifier (that fretted
+about dependancies) is usually the same as an optimal Bayes classifier (that took
+those dependancies into account).
+
+## How it Works
+
 _Naive Bayes_ (here after, `Nb`) collects seperate statistics
 for each class found in the training data.
 Them, to classify a new example, it asks the statistics of
@@ -26,42 +71,6 @@ more that the other.
 
 ![](assets/img/bayes102.png)
 
-`Nb`  is fast to execute (to classify new examples) and  also fast to train
-(as you see each row, update the statistics kept for every column).
-Better yet, it is easy to incrementally update Naive Bayes classifiers, one row
-of data at a time. The  same can not be said for other learers that must reflect
-over all the data to build their models.
-
-Naive Bayes is called "naive" since it keeps statistics on each
-column seperate to all rest.
-
--  The good news is that this means
-that Naive Bayes classifiers are very memory effecient. All
-you need is the memory for the column statistics
-(since once you  update the column stats, there is no need to hang on to the row).
-- On the other hand, the bad news is that Naive Bayes classifiers never considers dependancies
-between the columns. This means, in theory anyway, that Naive Bayes' probability
-calculations could be erroneous.
-
-Strange to say, in practice, the naive assumption of
- Naive Bayes 
- rarely matters. Here are some performance results
-of Naive Bayes versus other learners (where those other learners reflect
-on attribute dependancy). Observe that Naive Bayes does pretty well:
-
-[![](assets/img/bayes301.png)](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  
-
-Why isn't Naive Bayes so naive?
-It turns other that
-when  dependancies exist between attributes, then they alter the decision boundary by some
-amount &Epsilon;. 
-[Domingos and Pazzani](http://engr.case.edu/ray_soumya/mlrg/optimality_of_nb.pdf)  have
-shown that
-As the number of dimensions grows,
-then the hypervolume of these &Epsilons;s shrinks to a very small fraction  of the total
-attribute space. That is, the decisions made by a Naive Bayes classifier (that fretted
-about dependancies) is usually the same as an optimal Bayes classifier (that took
-those dependancies into account).
 
 More precisely, `Nb` applies Baye's Theorem to data. This theorem
 says what we conclude is a product of
@@ -97,6 +106,172 @@ own `Tbl`s:
 To classify a new row, `Nb` asks each of those internal `Tbl`s how
 much they `like` the new row (and the new row gets the classification
 of the `Tbl` who likes it the most).
+
+weathernom:
+
+    outlook  temperature  humidity   windy   play
+    -------  -----------  --------   -----   ----
+    rainy    cool        normal    TRUE    no
+    rainy    mild        high      TRUE    no
+    sunny    hot         high      FALSE   no
+    sunny    hot         high      TRUE    no
+    sunny    mild        high      FALSE   no
+    overcast cool        normal    TRUE    yes
+    overcast hot         high      FALSE   yes
+    overcast hot         normal    FALSE   yes
+    overcast mild        high      TRUE    yes
+    rainy    cool        normal    FALSE   yes
+    rainy    mild        high      FALSE   yes
+    rainy    mild        normal    FALSE   yes
+    sunny    cool        normal    FALSE   yes
+    sunny    mild        normal    TRUE    yes%%
+
+This data can be summarized as follows:
+    
+               Outlook            Temperature           Humidity
+    ====================   =================   =================
+              Yes    No            Yes   No            Yes    No
+    Sunny       2     3     Hot     2     2    High      3     4
+    Overcast    4     0     Mild    4     2    Normal    6     1
+    Rainy       3     2     Cool    3     1
+              -----------         ---------            ----------
+    Sunny     2/9   3/5     Hot   2/9   2/5    High    3/9   4/5
+    Overcast  4/9   0/5     Mild  4/9   2/5    Normal  6/9   1/5
+    Rainy     3/9   2/5     Cool  3/9   1/5
+    
+                Windy        Play
+    =================    ========
+          Yes     No     Yes   No
+    False 6      2       9     5
+    True  3      3
+          ----------   ----------
+    False  6/9    2/5   9/14  5/14
+    True   3/9    3/5
+
+So, what happens on a new day:
+
+    Outlook       Temp.         Humidity    Windy         Play
+    Sunny         Cool          High        True          ?%%
+
+First find the likelihood of the two classes
+
++ For "yes" = 2/9 * 3/9 * 3/9 * 3/9 * 9/14 = 0.0053
++ For "no" = 3/5 * 1/5 * 4/5 * 3/5 * 5/14 = 0.0206
+
+Conversion into a probability by normalization:
+
++ P("yes") = 0.0053 / (0.0053 + 0.0206) = 0.205
++ P("no") = 0.0206 / (0.0053 + 0.0206) = 0.795
+
+So, we aren't playing golf today.
+
+### The "low-frequencies problem"
+
+What if an attribute value doesn't occur with every class value (e.g. "Humidity = high" for class "yes")?
+
++ Probability will be zero!
++ Pr[Humidity = High | yes] = 0
++ And since we are multiplying all the probabilities,
+  - A posteriori probability will also be zero! Pr[ yes | E] = 0 (No matter how likely the other values are!)
+
+So we  use an estimators for low frequency attribute ranges
+
++ Add a little "m" to the count for every attribute value-class combination
+      + The Laplace estimator
+      + Result: probabilities will never be zero.
+
+And use an estimator for low frequency classes
+
++ Add a little "k" to class counts
+      + The M-estimate
+
+Magic numbers: m=2, k=1
+
+### Handling numerics
+
+The above assumes that the attributes are discrete. The usual approximation is to assume a "Gaussian" (i.e. a "normal" or "bell-shaped" curve) for the numerics.
+
+The probability density function for the normal distribution is defined by the mean and standardDev (standard deviation)
+
++ `m` = mean
++ `s` = standard deviatopm
++ `x` = the value we are trying to score (will be maximum if `x` is the mean)
+
+Code:
+
+    function NumLike(i,x,      
+                     var,denom,num) {
+      var   = i.sd^2
+      denom = (3.14159*2*var)^.5
+      num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
+      return num/(denom + 10^-64)
+    } 
+
+For example:
+
+    outlook  temperature humidity windy play
+    -------  ----------- -------- ----- ---
+    sunny    85      85       FALSE no
+    sunny    80      90       TRUE  no
+    overcast 83      86       FALSE yes
+    rainy    70      96       FALSE yes
+    rainy    68      80       FALSE yes
+    rainy    65      70       TRUE  no
+    overcast 64      65       TRUE  yes
+    sunny    72      95       FALSE no
+    sunny    69      70       FALSE yes
+    rainy    75      80       FALSE yes
+    sunny    75      70       TRUE  yes
+    overcast 72      90       TRUE  yes
+    overcast 81      75       FALSE yes
+    rainy    71      91       TRUE  no
+
+This generates the following statistics:
+
+    
+                 Outlook           Temperature               Humidity
+    =====================    =================      =================
+               Yes    No             Yes    No            Yes      No
+    Sunny       2      3             83     85             86      85
+    Overcast    4      0             70     80             96      90
+    Rainy       3      2             68     65             80      70
+              -----------            ----------            ----------
+    Sunny     2/9    3/5    mean     73     74.6  mean     79.1   86.2
+    Overcast  4/9    0/5    std dev   6.2    7.9  std dev  10.2    9.7
+    Rainy     3/9    2/5
+    
+                  Windy            Play
+    ===================     ===========
+               Yes   No     Yes     No
+    False       6     2      9       5
+    True        3     3
+                -------     ----------
+    False     6/9   2/5     9/14  5/14
+    True      3/9   3/5
+
+Example density value:
+
++ _f(temperature=66|yes)_ = `norm(66, 73, 6.2)` =0.0340
+
+Classifying a new day:
+    
+        Outlook    Temp.    Humidity    Windy    Play
+        Sunny      66       90          true     ?%%
+
++ Likelihood of "yes" = 2/9 * 0.0340 * 0.0221 * 3/9 * 9/14 = 0.000036
++ Likelihood of "no" = 3/5 * 0.0291 * 0.0380 * 3/5 * 5/14 = 0.000136
++ So:
+     + P("yes") = 0.000036 / (0.000036 + 0. 000136) = 20.9%
+     + P("no") = 0. 000136 / (0.000036 + 0. 000136) = 79.1%
+
+Note: missing values during training: not included in calculation of mean and standard deviation
+
+BTW, an alternative to the above is apply some discretization policy to the data. 
+Such discretization is good practice since it can dramatically improve the performance of a Naive Bayes classifier (see [Dougherty95](http://robotics.stanford.edu/users/sahami/papers-dir/disc.pdf)).
+
+## Code
+
+In this code, the different ways we can `like` symbolic or numeric data is implemented in the `Num` and `Sym` class.
 
 Here is a `Nb` payload object,
 suitable for streaming over data, all the while
