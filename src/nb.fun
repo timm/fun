@@ -94,18 +94,6 @@ Since the probability of the
 evidence is the same across all hypothesis, then this _P(E)_ term
 just cancels out.
 
-To implement all this, we need to to keep statistics on all the different
-hypotheses.
-To that end, the `Nb` class reads rows either from some source `Tbl` or from
-disk (via the `lines` function).  Internally, `Nb` maintains its
-own `Tbl`s:
-
-- One for each class seen during reading.
-- One for the overall stats
- 
-To classify a new row, `Nb` asks each of those internal `Tbl`s how
-much they `like` the new row (and the new row gets the classification
-of the `Tbl` who likes it the most).
 
 For example:
 
@@ -273,12 +261,27 @@ Such discretization is good practice since it can dramatically improve the perfo
 
 ## Code
 
-In this code, the different ways we can `like` symbolic or numeric data is implemented in the `Num` and `Sym` class.
+To implement all this, we need to to keep statistics on all the different
+hypotheses.
+To that end, the `Nb` class reads rows either from some source `Tbl` or from
+disk (via the `lines` function).  Internally, `Nb` maintains its
+own `Tbl`s:
+
+- One for each class seen during reading.
+- One for the overall stats
+ 
+To classify a new row, `Nb` asks each of those internal `Tbl`s how
+much they `like` the new row (and the new row gets the classification
+of the `Tbl` who likes it the most).
+
+By the way,
+in this code, the different ways we can `like` symbolic or numeric data is implemented in the 
+[Num](num.md#like) and
+[Sym](sym.md#like) class.
 
 Here is a `Nb` payload object,
 suitable for streaming over data, all the while
 performing `Nb`-style classification.
-
 
 function Nb(i) {
   has1(i,"tbl","Tbl",1) # Tables do not keep rows (uses less memory).
