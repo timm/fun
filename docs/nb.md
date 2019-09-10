@@ -89,16 +89,16 @@ That is, the probability of some hypothesis _H_,
  the
 the probabiliy of that evidence times the probability of that evidence, given that hypotehsis. That is:
 
-- `new = now * before`;  or, more formally, 
-- `P( H|E ) = P( E|H ) * P(H)`  
+- `new = now * before`;  `
+- or, more formally,  `P( H|E ) = P( E|H ) * P(H) / P(E)`  
 
-To be precise, this expression should be  divided by 
-_P(E)_; i.e. the probability of the evidence. But we never have to compute that since when
-when  we ask "does H1 or H2 have most evidence", then we compute:
+To be precise, we need not compute the
+_P(E)_ term (which is the  probability of the evidence).
+When  we ask "does H1 or H2 have most evidence", then we compute:
  _P( H1|E ) / P( H2|E )_. 
 Since the probability of the 
 evidence is the same across all hypothesis, then this _P(E)_ term
-just cancels out (so we can ignore it).
+just cancels out.
 
 To implement all this, we need to to keep statistics on all the different
 hypotheses.
@@ -112,6 +112,8 @@ own `Tbl`s:
 To classify a new row, `Nb` asks each of those internal `Tbl`s how
 much they `like` the new row (and the new row gets the classification
 of the `Tbl` who likes it the most).
+
+For example:
 
 weathernom:
 
@@ -176,9 +178,9 @@ So, we aren't playing golf today.
 What if an attribute value doesn't occur with every class value (e.g. "Humidity = high" for class "yes")?
 
 + Probability will be zero!
-+ Pr[Humidity = High | yes] = 0
++ `Pr[Humidity = High | yes] = 0`
 + And since we are multiplying all the probabilities,
-  - A posteriori probability will also be zero! Pr[ yes | E] = 0 (No matter how likely the other values are!)
+  - A posteriori probability will also be zero  `Pr[ yes | E] = 0` ,no matter how likely the other values are.
 
 So we  use an estimators for low frequency attribute ranges
 
@@ -205,11 +207,11 @@ The probability density function for the normal distribution is defined by the m
 
 Code:
 
-    function NumLike(i,x,      
+    function numLike(sd,mu,x,      
                      var,denom,num) {
-      var   = i.sd^2
+      var   = sd^2
       denom = (3.14159*2*var)^.5
-      num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
+      num   =  2.71828^(-(x-mu)^2/(2*var+0.0001))
       return num/(denom + 10^-64)
     } 
 
@@ -257,7 +259,7 @@ This generates the following statistics:
 
 Example density value:
 
-+ _f(temperature=66|yes)_ = `norm(66, 73, 6.2)` =0.0340
++ `P(temperature=66|yes)` = `numLIke(73, 6.2, 66)` =0.0340
 
 Classifying a new day:
     
@@ -303,8 +305,6 @@ After that, we update the statistics in
 
 - the `tbl` table (which holds information on all rows)
 - as well as the table for  this row's class.
-
-# new class has to clone from old
 
 ```awk
    8.  function NbTrain(i,r,lst,   class) {
