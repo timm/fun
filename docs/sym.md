@@ -39,6 +39,17 @@ as well as the most frequently seen symbol (which is called the  `mode`).
   15.  }
 ```
 
+```awk
+  16.  function SymVariety(i) { return SymEnt(i) }
+```
+
+```awk
+  17.  function SymXpect(i,j, n) {
+  18.    n = i.n + j.n
+  19.    return SymEnt(i) * i.n/n + SymEnt(j) * j.n/n 
+  20.  }
+```
+
 Entropy is a measure of the variety of a set of systems.
 One way to build a learner is to find splits in the data that most reduces
 that variety (and then to recursively split divide each split).
@@ -53,13 +64,13 @@ Note that the analog  of entropy for continuous distributions is Standard deviat
 [^ent]: For an approximate justification of  this formula,  consider a piece of string 10 meters long, stained in two places by a  meter of red and two metres of green. The probability of stumbling over those colors is Pr=0.1 and Pg=0.2, respectively. To measure the variety of the signal in that string, we record the effort associated with reconstructing it (i.e. finding all its parts).  To that end, for each color, we fold the string in half until one color is isolated (this needs approximately _log2(Px)_ folds). The  probability of doing those folds is  proportinal to the odds we'll look for that color. That is,  the total effort is _Px*log2(Px)_ (which must be repeated for all colors; i.e. _&sum;Px*log2(Px)_). Note that, by convention, we throw a minus sign around the summation (otherwise, we will be forever reporting negative values).
 
 ```awk
-  16.  function SymEnt(i,   p,e,k) {
-  17.    for(k in i.cnt) {
-  18.      p  = i.cnt[k]/i.n
-  19.      e -= p*log(p)/log(2)  # log(N)/log(2) is the same an log2(N)
-  20.    }
-  21.    return e
-  22.  }
+  21.  function SymEnt(i,   p,e,k) {
+  22.    for(k in i.cnt) {
+  23.      p  = i.cnt[k]/i.n
+  24.      e -= p*log(p)/log(2)  # log(N)/log(2) is the same an log2(N)
+  25.    }
+  26.    return e
+  27.  }
 ```
 
 To sample symbols from this distribution, (1) pick a random number;
@@ -74,15 +85,15 @@ from the _opposite_ of this distribution. This is useful if this
 distribution is loaded up with things we want to avoid.
 
 ```awk
-  23.  function SymAny(i,without,  r,k,m) {
-  24.    r = rand()
-  25.    for(k in i.cnt) {
-  26.      m   = without ? i.n - i.cnt[k] : i.cnt[k]
-  27.      r  -= m/i.n
-  28.      if (r <= 0) return k
-  29.    }
-  30.    return k
-  31.  }
+  28.  function SymAny(i,without,  r,k,m) {
+  29.    r = rand()
+  30.    for(k in i.cnt) {
+  31.      m   = without ? i.n - i.cnt[k] : i.cnt[k]
+  32.      r  -= m/i.n
+  33.      if (r <= 0) return k
+  34.    }
+  35.    return k
+  36.  }
 ```
 
 ### Like
@@ -94,8 +105,8 @@ In the following, `m` defaults to zero but if you want to be smarter,
 a typical values for `m` is 2.
 
 ```awk
-  32.  function SymLike(i,x,prior,m,   f) {
-  33.    f = x in i.cnt ? i.cnt[x] : 0
-  34.    return (f + m*prior)/(i.n + m)
-  35.  }
+  37.  function SymLike(i,x,prior,m,   f) {
+  38.    f = x in i.cnt ? i.cnt[x] : 0
+  39.    return (f + m*prior)/(i.n + m)
+  40.  }
 ```

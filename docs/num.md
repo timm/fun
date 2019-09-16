@@ -83,47 +83,59 @@ small.
   35.  }
 ```
 
+```awk
+  36.  function NumVariety(i) { return i.sd }
+```
+
+```awk
+  37.  function NumXpect(i,j, n) {
+  38.    n = i.n + j.n
+  39.    return i.sd * i.n/n + j.sd * j.n/n 
+  40.  }
+```
+
+
 To sample from `Num`, we assume that its numbers are like a a normal
 bell-shaped curve. If so,  then the [Box Muller
 ](https://people.maths.ox.ac.uk/gilesm/mc/mc/lec1.pdf) can do the
 sampling:
 
 ```awk
-  36.  function NumAny(i) { 
-  37.    return i.m + i.sd * z()
-  38.  }
+  41.  function NumAny(i) { 
+  42.    return i.m + i.sd * z()
+  43.  }
 ```
 
 ```awk
-  39.  function z() {
-  40.    return sqrt(-2*log(rand()))*cos(6.2831853*rand())
-  41.  
-  42.  }
-  43.  function NumAnyT(i) { # Another any, assumes a triangle distribution
-  44.    return triangle(i.lo, i.mu, i.hi)
-  45.  }
+  44.  function z() {
+  45.    return sqrt(-2*log(rand()))*cos(6.2831853*rand())
+  46.  
+  47.  }
+  48.  function NumAnyT(i) { # Another any, assumes a triangle distribution
+  49.    return triangle(i.lo, i.mu, i.hi)
+  50.  }
 ```
 
 Here, we check if two `Num`s are significantly different
 and differ by mroe than a small effect:
 
 ```awk
-  46.  function NumDiff(i,j) {
-  47.    return diff(i,j) # defined in "Nums"
-  48.  }
+  51.  function NumDiff(i,j) {
+  52.    return diff(i,j) # defined in "Nums"
+  53.  }
 ```
 
 Here's a convenience function to load all the numbers of an array 
 `a` into a `Num`. 
 
 ```awk
-  49.  function nums(n,a,   x,    v,i) {
-  50.    if (!isarray(n)) # if n is not already a Num..
-  51.      Num(n)         # ... then make it a num
-  52.    for(i in a)  {
-  53.      v= x ? a[i][x] : a[i]
-  54.      if (v != "?") Num1(n, v) }
-  55.  }
+  54.  function nums(n,a,   x,    v,i) {
+  55.    if (!isarray(n)) # if n is not already a Num..
+  56.      Num(n)         # ... then make it a num
+  57.    for(i in a)  {
+  58.      v= x ? a[i][x] : a[i]
+  59.      if (v != "?") Num1(n, v) }
+  60.  }
 ```
 
 ## Like
@@ -132,11 +144,11 @@ Here's a convenience function to load all the numbers of an array
 normal bell-shapped curve (all we need do is report the height of that curve at `x`).
 
 ```awk
-  56.  function NumLike(i,x,      var,denom,num) {
-  57.    var   = i.sd^2
-  58.    denom = (3.14159*2*var)^.5
-  59.    num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
-  60.    return num/(denom + 10^-64)
-  61.  }
+  61.  function NumLike(i,x,      var,denom,num) {
+  62.    var   = i.sd^2
+  63.    denom = (3.14159*2*var)^.5
+  64.    num   =  2.71828^(-(x-i.mu)^2/(2*var+0.0001))
+  65.    return num/(denom + 10^-64)
+  66.  }
 ```
 

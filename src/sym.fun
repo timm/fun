@@ -31,6 +31,13 @@ function Sym1(i,v,  tmp) {
   return v
 }
 
+function SymVariety(i) { return SymEnt(i) }
+
+function SymXpect(i,j, n) {
+  n = i.n + j.n
+  return SymEnt(i) * i.n/n + SymEnt(j) * j.n/n 
+}
+
 Entropy is a measure of the variety of a set of systems.
 One way to build a learner is to find splits in the data that most reduces
 that variety (and then to recursively split divide each split).

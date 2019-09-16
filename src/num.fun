@@ -67,6 +67,14 @@ function NumLess(i,v, d) {
   return v
 }
 
+function NumVariety(i) { return i.sd }
+
+function NumXpect(i,j, n) {
+  n = i.n + j.n
+  return i.sd * i.n/n + j.sd * j.n/n 
+}
+
+
 To sample from `Num`, we assume that its numbers are like a a normal
 bell-shaped curve. If so,  then the [Box Muller
 ](https://people.maths.ox.ac.uk/gilesm/mc/mc/lec1.pdf) can do the
