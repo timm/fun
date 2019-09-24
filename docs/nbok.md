@@ -23,7 +23,7 @@ Uses:  "[abcd](abcd)"<br>
    5.    print("")
    6.    print(d)
    7.    n = n=="" ? 4 : n
-   8.    Abcds(z,"Nb",4)
+   8.    Abcds(z,"Nb",n)
    9.    lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
   10.    AbcdReport(z.abcd)
   11.  } 

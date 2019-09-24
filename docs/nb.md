@@ -291,7 +291,7 @@ performing `Nb`-style classification.
 
 ```awk
    1.  function Nb(i) {
-   2.    has1(i,"tbl","Tbl",1) # Tables do not keep rows (uses less memory).
+   2.    has(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
    3.    has(i,"things")
    4.    i.m = THE.nb.m
    5.    i.k = THE.nb.k
@@ -362,7 +362,7 @@ that the value in `row` column `c` belongs to the distribution seen  in column `
 
 ```awk
   37.  function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
-  38.      like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
+  38.      like = prior = (length(i.tbl.rows)  + i.k) / (nall + i.k * nthings)
   39.      like = log(like)
   40.      for(c in thing.my.xs) {
   41.        x = lst[c]

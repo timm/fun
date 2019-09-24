@@ -284,7 +284,7 @@ suitable for streaming over data, all the while
 performing `Nb`-style classification.
 
 function Nb(i) {
-  has1(i,"tbl","Tbl",1) # Tables do not keep rows (uses less memory).
+  has(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
   has(i,"things")
   i.m = THE.nb.m
   i.k = THE.nb.k
@@ -347,7 +347,7 @@ i.e. the ratio of how often it apears in the data;
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
 
 function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
-    like = prior = (length(thing.rows)  + i.k) / (nall + i.k * nthings)
+    like = prior = (length(i.tbl.rows)  + i.k) / (nall + i.k * nthings)
     like = log(like)
     for(c in thing.my.xs) {
       x = lst[c]

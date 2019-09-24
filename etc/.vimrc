@@ -121,5 +121,6 @@ set spell spelllang=en_us
 nn <F7> :setlocal spell! spell?<CR>
 
 let g:vim_markdown_fenced_languages = ['awk=awk']
+set spellfile=./.mywords.add
 colorscheme evening
 hi Normal guibg=NONE ctermbg=NONE

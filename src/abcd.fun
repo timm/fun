@@ -75,7 +75,6 @@ function Abcds1(i,r,lst,    train,classify, got,want) {
   train = i.train
   @train(i.learn,r,lst)
 }
-
 function Abcd(i, data,rx)  {
   Object(i)
   has(i,"known")

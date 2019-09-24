@@ -14,7 +14,7 @@ function _nb0(d,n,    z) {
   print("")
   print(d)
   n = n=="" ? 4 : n
-  Abcds(z,"Nb",4)
+  Abcds(z,"Nb",n)
   lines(z,"Abcds1",DOT DOT "/data/" d DOT "csv")
   AbcdReport(z.abcd)
 } 

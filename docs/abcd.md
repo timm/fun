@@ -84,9 +84,6 @@ for machine learning experiments).
   15.    train = i.train
   16.    @train(i.learn,r,lst)
   17.  }
-```
-
-```awk
   18.  function Abcd(i, data,rx)  {
   19.    Object(i)
   20.    has(i,"known")
