@@ -291,7 +291,7 @@ performing `Nb`-style classification.
 
 ```awk
    1.  function Nb(i) {
-   2.    has(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
+   2.    has1(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
    3.    has(i,"things")
    4.    i.m = THE.nb.m
    5.    i.k = THE.nb.k
@@ -344,7 +344,7 @@ row the most (i.e. whose rows are most similar to `lst`).
   27.      guess = guess=="" ? class : guess
   28.      like = bayestheorem( i, lst, i.n, 
   29.                                  length(i.things), 
-  30.                                  i.things[class])
+  30.                                  i.things[class], class)
   31.      if (like > most) {
   32.        most  = like
   33.        guess = class
@@ -361,19 +361,20 @@ i.e. the ratio of how often it apears in the data;
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
 
 ```awk
-  37.  function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
-  38.      like = prior = (length(i.tbl.rows)  + i.k) / (nall + i.k * nthings)
-  39.      like = log(like)
-  40.      for(c in thing.my.xs) {
-  41.        x = lst[c]
-  42.        if (x == SKIPCOL) continue
-  43.        if (c in thing.my.nums)
-  44.          like += log( NumLike(thing.cols[c], x) )
-  45.        else
-  46.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
-  47.      }
-  48.      return like
-  49.  }
+  37.  function bayestheorem(i,lst,nall,nthings,thing,class,    like,prior,c,x,inc,n1) {
+  38.      n1 = i.tbl.cols[ i.tbl.my.class ].cnt[class]
+  39.      like = prior = (n1  + i.k) / (nall + i.k * nthings)
+  40.      like = log(like)
+  41.      for(c in thing.my.xs) {
+  42.        x = lst[c]
+  43.        if (x == SKIPCOL) continue
+  44.        if (c in thing.my.nums)
+  45.          like += log( NumLike(thing.cols[c], x) )
+  46.        else
+  47.          like += log( SymLike(thing.cols[c], x, prior, i.m) )
+  48.      }
+  49.      return like
+  50.  }
 ```
 
 Note that:

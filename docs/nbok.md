@@ -17,7 +17,7 @@ Uses:  "[abcd](abcd)"<br>
 ```
 
 ```awk
-   2.  function _nb1(f) { return _nb0("weathernon") }
+   2.  function _nb1(f) { return 1 } #_nb0("weathernon") }
    3.  function _nb2(f) { return _nb0("diabetes",20) }
    4.  function _nb0(d,n,    z) {
    5.    print("")

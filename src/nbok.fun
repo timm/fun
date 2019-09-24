@@ -8,7 +8,7 @@
 
 BEGIN { tests("nbok","_nb1,_nb2") }
 
-function _nb1(f) { return _nb0("weathernon") }
+function _nb1(f) { return 1 } #_nb0("weathernon") }
 function _nb2(f) { return _nb0("diabetes",20) }
 function _nb0(d,n,    z) {
   print("")

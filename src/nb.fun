@@ -284,7 +284,7 @@ suitable for streaming over data, all the while
 performing `Nb`-style classification.
 
 function Nb(i) {
-  has(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
+  has1(i,"tbl","Tbl") # Tables do not keep rows (uses less memory).
   has(i,"things")
   i.m = THE.nb.m
   i.k = THE.nb.k
@@ -331,7 +331,7 @@ function NbClassify(i,r,lst,    most,class,like,guess) {
     guess = guess=="" ? class : guess
     like = bayestheorem( i, lst, i.n, 
                                 length(i.things), 
-                                i.things[class])
+                                i.things[class], class)
     if (like > most) {
       most  = like
       guess = class
@@ -346,8 +346,9 @@ i.e. the ratio of how often it apears in the data;
 - `P( E|H )` is calcualted by multiplying together the probability
 that the value in `row` column `c` belongs to the distribution seen  in column `c`.
 
-function bayestheorem(i,lst,nall,nthings,thing,    like,prior,c,x,inc) {
-    like = prior = (length(i.tbl.rows)  + i.k) / (nall + i.k * nthings)
+function bayestheorem(i,lst,nall,nthings,thing,class,    like,prior,c,x,inc,n1) {
+    n1 = i.tbl.cols[ i.tbl.my.class ].cnt[class]
+    like = prior = (n1  + i.k) / (nall + i.k * nthings)
     like = log(like)
     for(c in thing.my.xs) {
       x = lst[c]
